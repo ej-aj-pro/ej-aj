@@ -19,6 +19,20 @@ const novice = defineCollection({
     korak: z.number().optional(),
     // YouTube ids from src/data/videi.yaml, shown as recommended videos under the article.
     videi: z.array(z.string()).default([]),
+    // Podcast episode the article summarises, shown as a card with its cover above the text.
+    // slika is the thumbnail_url from the platform's oEmbed (loaded from its CDN, like YouTube).
+    podcast: z
+      .object({
+        oddaja: z.string(),
+        naslov: z.string(),
+        datum: z.coerce.date(),
+        trajanje: z.string().optional(),
+        url: z.url(),
+        // Locative, used as "Poslušajte na {platforma}", e.g. "Spotifyju".
+        platforma: z.string(),
+        slika: z.url(),
+      })
+      .optional(),
   }),
 });
 
