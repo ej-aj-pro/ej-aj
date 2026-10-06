@@ -1,0 +1,78 @@
+---
+// The podcast episode an article summarises: cover image and a direct link to the episode.
+// Nothing from the platform runs on the page; only the cover loads from its CDN.
+import type { CollectionEntry } from 'astro:content';
+import { formatDate } from '../site';
+
+interface Props {
+  podcast: NonNullable<CollectionEntry<'novice'>['data']['podcast']>;
+}
+
+const { oddaja, naslov, datum, trajanje, url, platforma, slika } = Astro.props.podcast;
+---
+
+<figure class="podcast">
+  <a class="podcast-cover" href={url} aria-label={`Poslušajte epizodo na ${platforma}: ${naslov}`}>
+    <img src={slika} alt="" decoding="async" referrerpolicy="no-referrer" width="640" height="360" />
+  </a>
+  <figcaption>
+    <span class="podcast-show">{oddaja}</span>
+    <strong class="podcast-title">{naslov}</strong>
+    <span class="podcast-meta">{formatDate(datum)}{trajanje && ` · ${trajanje}`}</span>
+    <a class="podcast-link" href={url}>Poslušajte na {platforma} →</a>
+  </figcaption>
+</figure>
+
+<style>
+  .podcast {
+    margin: 0 0 2rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+    padding: 14px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+  }
+  @media (min-width: 640px) {
+    .podcast {
+      grid-template-columns: 260px minmax(0, 1fr);
+      align-items: center;
+      gap: 20px;
+    }
+  }
+  .podcast-cover {
+    display: block;
+    aspect-ratio: 16 / 9;
+    border-radius: calc(var(--radius) - 4px);
+    overflow: hidden;
+    background: var(--accent-soft);
+  }
+  .podcast-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .podcast-cover:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+  }
+  .podcast figcaption {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .podcast-show,
+  .podcast-meta {
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  .podcast-title {
+    font-size: 1.05rem;
+    line-height: 1.35;
+  }
+  .podcast-link {
+    margin-top: 6px;
+    font-weight: 600;
+  }
+</style>
