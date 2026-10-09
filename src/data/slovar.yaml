@@ -162,6 +162,16 @@
     temelji na MCP.
   glej: [mcp]
 
+- id: podatkovno-skladisce
+  izraz: Podatkovno skladišče
+  angl: Data warehouse
+  razlaga: >-
+    Osrednja zbirka podatkov podjetja, v kateri so urejeni podatki iz različnih sistemov,
+    na primer prodaje, računovodstva in spletne trgovine, pripravljeni za analize in poročila.
+    AI orodja se lahko s skladiščem povežejo in iz njega sestavijo poročila ali nadzorne
+    plošče.
+  glej: [konektor, zasebnost-podatkov]
+
 - id: rutina
   izraz: Rutina (načrtovano opravilo)
   angl: Routine, scheduled task
@@ -527,3 +537,13 @@
     ni bilo. Za podjetja je največje tveganje prevara, na primer lažen glasovni klic
     "direktorja", ki naroči nujno nakazilo. Nenavadne zahteve vedno preverite po drugem kanalu.
   glej: [generativna-ai, ai-act]
+
+- id: vodni-zig
+  izraz: Vodni žig
+  angl: Watermark
+  razlaga: >-
+    Oznaka, pri AI običajno nevidna, ki jo ponudnik AI doda v ustvarjeno besedilo, sliko, video ali zvok, da
+    lahko programska oprema pozneje prepozna, da je vsebina nastala z AI. Pri besedilu je
+    oznaka skrita v izbiri besed, zato jo popravki in prevodi oslabijo. Če oznake ni, to ne
+    dokazuje, da je vsebino ustvaril človek.
+  glej: [deepfake, ai-act, generativna-ai]
