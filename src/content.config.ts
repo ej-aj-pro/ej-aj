@@ -105,4 +105,15 @@ const narocnine = defineCollection({
   }),
 });
 
-export const collections = { novice, slovar, modeli, narocnine, videi };
+// Changelog of the tables on /modeli/ (src/data/spremembe.yaml), filled by the monthly refresh.
+const spremembe = defineCollection({
+  loader: file('src/data/spremembe.yaml'),
+  schema: z.object({
+    datum: z.coerce.date(),
+    podrocje: z.enum(['modeli', 'narocnine']),
+    besedilo: z.string(),
+    vir: z.url(),
+  }),
+});
+
+export const collections = { novice, slovar, modeli, narocnine, videi, spremembe };
