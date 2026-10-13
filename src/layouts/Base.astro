@@ -15,9 +15,13 @@ interface Props {
   jsonLd?: Record<string, unknown>[];
   /** Share image path (1200x630), e.g. "/og/<id>.png". Defaults to the site image. */
   image?: string;
+  /** Include the page in site search (Pagefind). Off for listing pages, whose cards only repeat other pages. */
+  search?: boolean;
+  /** Search filter "Vrsta" shown next to results, e.g. "Vodnik" or "Slovar". */
+  searchType?: string;
 }
 
-const { title, description = SITE.description, type = 'website', published, modified, jsonLd = [], image = '/og.png' } = Astro.props;
+const { title, description = SITE.description, type = 'website', published, modified, jsonLd = [], image = '/og.png', search = true, searchType } = Astro.props;
 // Search results show about 60 characters of a title; long titles drop the site name suffix so
 // the words that describe the page are the ones that stay visible.
 const fullTitle = !title ? `${SITE.domain}: AI novice, vodniki in cene AI orodij v slovenščini` : title.length > 52 ? title : `${title} | ${SITE.name}`;
@@ -97,11 +101,14 @@ const nav = [
               </a>
             ))
           }
+          <a class="nav-iskanje" href="/iskanje/" aria-label="Iskanje" title="Iskanje" aria-current={path.startsWith('/iskanje/') ? 'page' : undefined}>
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" /></svg>
+          </a>
         </nav>
       </div>
     </header>
 
-    <main>
+    <main data-pagefind-body={search ? '' : undefined} data-pagefind-filter={search && searchType ? `Vrsta:${searchType}` : undefined}>
       <slot />
     </main>
 

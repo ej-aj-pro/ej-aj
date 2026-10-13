@@ -31,7 +31,7 @@ if (description.length > 158) description = `${description.slice(0, 155)}...`;
 const articles = postsMentioning(entry.id, await getPosts()).slice(0, 6);
 ---
 
-<Base
+<Base searchType="Slovar"
   title={`${izraz}: kaj pomeni?`}
   description={description}
   jsonLd={[
@@ -78,7 +78,7 @@ const articles = postsMentioning(entry.id, await getPosts()).slice(0, 6);
 
     {
       related.length > 0 && (
-        <section class="related">
+        <section class="related" data-pagefind-ignore>
           <h2>Povezani izrazi</h2>
           <ul>
             {related.map((r) => (
@@ -93,7 +93,7 @@ const articles = postsMentioning(entry.id, await getPosts()).slice(0, 6);
 
     {
       articles.length > 0 && (
-        <section class="articles">
+        <section class="articles" data-pagefind-ignore>
           <h2>Kje o tem pišemo</h2>
           <ul>
             {articles.map((p) => (
@@ -106,7 +106,7 @@ const articles = postsMentioning(entry.id, await getPosts()).slice(0, 6);
       )
     }
 
-    <nav class="pager" aria-label="Sosednja gesla">
+    <nav class="pager" aria-label="Sosednja gesla" data-pagefind-ignore>
       {prev ? <a href={`/slovar/${prev.id}/`}>← {prev.data.izraz}</a> : <span />}
       <a href="/slovar/">Vsi izrazi</a>
       {next ? <a href={`/slovar/${next.id}/`}>{next.data.izraz} →</a> : <span />}

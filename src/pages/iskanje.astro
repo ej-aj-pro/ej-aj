@@ -1,0 +1,85 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  search={false}
+  title="Iskanje"
+  description="Iskanje po novicah, vodnikih, AI slovarju in cenah AI orodij na ej-aj.si."
+>
+  <link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
+  <div class="wrap narrow">
+    <header class="article-head">
+      <span class="eyebrow">Iskanje</span>
+      <h1>Iskanje po strani</h1>
+      <p class="lede">Novice, vodniki, gesla iz AI slovarja in cene orodij na enem mestu.</p>
+    </header>
+    <div id="iskanje"></div>
+    <noscript><p>Iskanje deluje samo z vklopljenim JavaScriptom.</p></noscript>
+  </div>
+</Base>
+
+<script is:inline src="/pagefind/pagefind-ui.js"></script>
+<script is:inline>
+  (() => {
+    const el = document.getElementById('iskanje');
+    // The index is made by `pagefind` after `astro build`, so it does not exist in `astro dev`.
+    if (typeof PagefindUI === 'undefined') {
+      el.textContent = 'Iskanje je na voljo po gradnji strani (npm run build).';
+      return;
+    }
+    // Pagefind has no Slovenian stemmer, but it matches every search word as a prefix. Dropping
+    // one case ending turns "naročnina" into "naročnin", which finds naročnine, naročnino ...
+    const ENDINGS = ['ami', 'ega', 'emu', 'ih', 'im', 'om', 'ov', 'em', 'ah', 'a', 'e', 'i', 'o', 'u'];
+    const stem = (word) => {
+      if (word.length < 4 || !/^\p{L}+$/u.test(word)) return word;
+      const end = ENDINGS.find((e) => word.endsWith(e) && word.length - e.length >= 3);
+      return end ? word.slice(0, -end.length) : word;
+    };
+    const processTerm = (term) => term.toLowerCase().split(/\s+/).map(stem).join(' ');
+    // Pagefind has no Slovenian strings. Counts are written as "Zadetki: N" so they need no
+    // Slovenian plural forms (zadetek, zadetka, zadetki, zadetkov).
+    const ui = new PagefindUI({
+      element: '#iskanje',
+      showImages: false,
+      showSubResults: true,
+      autofocus: true,
+      processTerm,
+      translations: {
+        placeholder: 'Vpišite iskani izraz',
+        clear_search: 'Počisti',
+        load_more: 'Več zadetkov',
+        search_label: 'Iskanje po strani',
+        filters_label: 'Vrsta',
+        zero_results: 'Za [SEARCH_TERM] ni zadetkov',
+        many_results: '[SEARCH_TERM], zadetki: [COUNT]',
+        one_result: '[SEARCH_TERM], zadetki: [COUNT]',
+        alt_search: 'Za [SEARCH_TERM] ni zadetkov. Prikazujemo zadetke za [DIFFERENT_TERM]',
+        search_suggestion: 'Za [SEARCH_TERM] ni zadetkov. Poskusite z enim od teh iskanj:',
+        searching: 'Iščem [SEARCH_TERM] ...',
+      },
+    });
+    const q = new URLSearchParams(location.search).get('q');
+    if (q) ui.triggerSearch(q);
+  })();
+</script>
+
+<style>
+  #iskanje {
+    --pagefind-ui-scale: 0.9;
+    --pagefind-ui-primary: var(--accent);
+    --pagefind-ui-text: var(--ink);
+    --pagefind-ui-background: var(--surface);
+    --pagefind-ui-border: var(--line);
+    --pagefind-ui-tag: var(--accent-soft);
+    --pagefind-ui-border-width: 1px;
+    --pagefind-ui-border-radius: 10px;
+    --pagefind-ui-font: var(--font);
+  }
+  /* On phones the filter list would push the results below the fold. */
+  @media (max-width: 640px) {
+    #iskanje :global(.pagefind-ui__filter-panel) {
+      display: none;
+    }
+  }
+</style>
