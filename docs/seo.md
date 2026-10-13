@@ -22,12 +22,45 @@ iskanj). Po 14. oktobru preveri v Search Console, kateri nizi dejansko prinašaj
   zavihku Actions pošlje vse strani iz sitemapa (enkrat po mergeu).
 - Naslovi in opisi naslovnice, /novice/, /vodniki/ in /slovar/ s ključnimi besedami.
 
+## GEO: citati v AI odgovorih (13. oktober 2026)
+
+AI pomočniki s spletnim iskanjem (ChatGPT prek Binga in lastnega indeksa, Gemini prek Googla,
+Claude prek Brave Search, Perplexity z lastnim indeksom) izberejo vire med prvimi zadetki svojih
+poizvedb. Za ej-aj.si zato velja isto kot za SEO: rangirati v Bingu, Googlu in Brave. Posebnih
+oznak, ki bi same od sebe prinesle citate, ni. Prednost imamo pri vprašanjih, na katera angleški
+viri ne odgovorijo (cene v evrih, slovenščina, slovenska statistika, AI Act v slovenski praksi).
+
+Tehnično (PR tehnicno/geo):
+
+- Vsak članek ima različico v Markdownu (`/vodniki/<slug>.md`, `/novice/<id>.md`), napovedano z
+  `<link rel="alternate" type="text/markdown">`. Glava ima datum objave, posodobitve in povezavo
+  do izvirnika, relativne povezave so absolutne. Pomočniki in agenti, ki stran berejo kot
+  besedilo, tako dobijo čisto vsebino brez navigacije.
+- `/llms-full.txt`: vsi članki (najprej vodniki) in slovar v eni datoteki; `/llms.txt` nanjo kaže.
+- `Organization` v JSON-LD ima `logo`, `description`, `publishingPrinciples` (/o-projektu/),
+  `sameAs` (GitHub), `areaServed` in `knowsAbout`; `url` kaže na naslovnico.
+- `FAQPage` na vodnikih namenoma ni: le en naslov razdelka je vprašanje, odgovori pa morajo biti
+  vidni na strani. Smiselno postane, ko vodniki dobijo razdelke v obliki vprašanj.
+- AI crawlerji (GPTBot, OAI-SearchBot, ChatGPT-User, ClaudeBot, Claude-SearchBot, PerplexityBot,
+  Google-Extended) 13. 10. dobijo 200. Test z user agentom ne zazna Cloudflarove blokade za
+  preverjene bote, zato naj Anže v Cloudflaru (AI Crawl Control) preveri, da "Block AI bots" ni
+  vklopljen. Tam je vidno tudi, kateri AI boti stran obiskujejo.
+
+Merjenje: `node scripts/geo-meritve.mjs` postavi vprašanja iz `scripts/geo-vprasanja.yaml`
+Claudu, ChatGPT, Geminiju in Perplexityju prek API-ja z vklopljenim iskanjem in lokacijo
+Slovenija ter zapiše, ali odgovor citira ej-aj.si ali ga je iskanje le našlo. Rezultati gredo v
+`docs/geo-meritve/<datum>.json` in `.md` (primerjava s prejšnjo meritvijo, najpogosteje citirane
+domene). Ponudnik teče le, če je nastavljen njegov ključ (`ANTHROPIC_API_KEY`, `OPENAI_API_KEY`,
+`GEMINI_API_KEY`, `PERPLEXITY_API_KEY`; shrani jih v `~/.zshrc` tako kot `BUTTONDOWN_API_KEY`). Meritev stane
+nekaj dolarjev, zato enkrat na mesec; `--dry-run` izpiše vprašanja in po buildu preveri, da
+ciljne strani obstajajo. Seznam vprašanj ostane stabilen, nova vprašanja gredo na konec.
+
 ## Nastavitve, ki jih mora narediti Anže (Cloudflare)
 
-- **Always Use HTTPS** (SSL/TLS, Edge Certificates; agentu varnostno pravilo aplikacije
-  preklopa ne dovoli, zato ga naredi Anže): `http://ej-aj.si/` 30. 9. vrne 200 namesto
-  preusmeritve na https. Google zato vidi dve različici vsake strani.
-- Po želji HSTS na isti strani (šele ko HTTPS preusmeritev deluje nekaj dni).
+- **Always Use HTTPS**: urejeno, `http://ej-aj.si/` 13. 10. vrne 301 na https (30. 9. je še
+  vrnil 200).
+- Po želji HSTS (SSL/TLS, Edge Certificates), zdaj ko HTTPS preusmeritev deluje.
+- **AI Crawl Control**: preveri, da "Block AI bots" ni vklopljen (glej razdelek GEO zgoraj).
 
 ## Kaj ljudje iščejo (predlogi Google in Bing, Slovenija)
 

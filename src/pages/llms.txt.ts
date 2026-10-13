@@ -18,6 +18,8 @@ export const GET: APIRoute = async ({ site }) => {
     '',
     `> ${SITE.tagline}. ${SITE.description} Vsebina je v slovenščini, vsaka novica ima vir.`,
     '',
+    `Vsak članek ima tudi različico v Markdownu na istem naslovu s končnico .md namesto zadnje poševnice (na primer ${abs('/vodniki/brezplacna-ai-orodja.md')}). Vsi članki in slovar v eni datoteki: ${abs('/llms-full.txt')}.`,
+    '',
     '## Glavne strani',
     '',
     `- [Cene AI orodij in primerjava modelov](${abs('/modeli/')}): naročnine za ChatGPT, Claude, Gemini, Microsoft Copilot in druga orodja (posamezniki in podjetja) ter cene API, kontekstno okno in priporočila za Claude, GPT, Gemini, Mistral, Llama, DeepSeek in slovenski GaMS, z viri in datumom preverjanja.`,
