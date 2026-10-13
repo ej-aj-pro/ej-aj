@@ -1,0 +1,15 @@
+# Changelog for the tables on /modeli/ and /cene/<orodje>/ (src/data/modeli.yaml,
+# src/data/narocnine.yaml). One entry per change a reader would care about: a model added or
+# removed, a price, context window or availability that changed, a plan added or removed.
+# Not for re-checks where only `preverjeno` moved. Newest first.
+# Fields: id (YYYY-MM-DD-slug), datum (day the change went into the table), podrocje
+# (modeli | narocnine), besedilo (one or two Slovenian sentences, facts only, numbers from the
+# source), vir (the page that confirms the change).
+
+- id: 2026-09-29-claude-sonnet-5-5
+  datum: 2026-09-29
+  podrocje: modeli
+  besedilo: >-
+    Claude Sonnet 5.5 je v tabeli modelov zamenjal Claude Sonnet 5. Cena prek API ostaja 2 $ za
+    milijon vhodnih in 10 $ za milijon izhodnih tokenov.
+  vir: https://www.anthropic.com/claude-sonnet-5-5

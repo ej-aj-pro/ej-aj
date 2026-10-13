@@ -12,7 +12,7 @@ Stanje: 3. oktober 2026.
 | `/` | naslovnica z razdelki novice, modeli in cene, statistika, slovar, vodniki | |
 | `/novice/` | tedenski pregledi in članki | `src/content/novice/*.md` |
 | `/vodniki/` | praktični vodniki (trajni naslovi brez datuma) | `src/content/novice/*.md`, `type: vodnik` |
-| `/modeli/` | naročnine (23 paketov) in 15 modelov s cenami API | `src/data/narocnine.yaml`, `src/data/modeli.yaml` |
+| `/modeli/` | naročnine (23 paketov), 15 modelov s cenami API in zadnje spremembe tabel (vsaka sprememba modela ali cene, tudi zunaj mesečne rutine, dobi vnos) | `src/data/narocnine.yaml`, `src/data/modeli.yaml`, `src/data/spremembe.yaml` |
 | `/cene/` | preusmeritev 301 na `/modeli/#narocnine` | `public/_redirects` |
 | `/statistika/` | raba AI v Sloveniji, 10 interaktivnih grafov | `src/data/statistika.json`, generira `scripts/osvezi-statistiko.mjs` |
 | `/prirocnik/` | priročnik: 10 vodnikov o dobri rabi Claude (`serija: prirocnik`, `korak`) | `src/content/novice/*.md` |
