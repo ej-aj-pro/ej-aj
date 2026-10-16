@@ -54,6 +54,8 @@ const PHRASES = {
   api: ['API'],
   peskovnik: ['peskovnik', 'sandbox'],
   'digitalni-dvojcek': ['digitalni dvojček', 'digitalni dvojčki', 'digitalnega dvojčka', 'digitalnem dvojčku', 'digitalnih dvojčkov', 'digitalnih dvojčkih', 'digital twin'],
+  'casovna-vrsta': ['časovna vrsta', 'časovne vrste', 'časovnih vrst', 'časovnim vrstam', 'časovnih vrstah', 'time series'],
+  'algoritmicno-upravljanje': ['algoritmično upravljanje', 'algoritmičnega upravljanja', 'algoritmičnemu upravljanju', 'algoritmičnem upravljanju', 'algoritmičnim upravljanjem', 'algorithmic management'],
   // Not linked (in SKIP), only used to find articles that mention the product.
   copilot: ['Copilot'],
 };
