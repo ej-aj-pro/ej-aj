@@ -295,6 +295,10 @@
   .grafika-kartice[data-stevilo='3'] {
     grid-template-columns: repeat(3, 1fr);
   }
+  .grafika-kartice[data-stevilo='5'],
+  .grafika-kartice[data-stevilo='6'] {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
 }
 .grafika-kartice > li {
   --ton: var(--t-siva);
@@ -340,4 +344,19 @@
   border-radius: 50%;
   color: #fff;
   background: var(--ton);
+}
+
+/* Process: the numbered boxes of the decision steps, with a short text under each step */
+.grafika-postopek > li + li {
+  margin-top: 18px;
+}
+.grafika-postopek > li + li::after {
+  top: -16px;
+  height: 12px;
+}
+.grafika-postopek p:not(.grafika-vprasanje) {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 0.93rem;
+  line-height: 1.5;
 }

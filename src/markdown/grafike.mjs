@@ -4,7 +4,7 @@
 // searched and read aloud, and every fact in it sits in the article file for fact-checking.
 //
 //   ```grafika
-//   vrsta: casovnica            # casovnica | odlocitev | kartice
+//   vrsta: casovnica            # casovnica | odlocitev | kartice | postopek
 //   naslov: Kdaj začnejo veljati pravila
 //   tocke:                      # casovnica: datum, besedilo, optional stanje: velja | prihaja
 //     - datum: 2. februar 2025
@@ -16,6 +16,7 @@
 // odlocitev: koraki: [{ vprasanje, da, ne }], konec. An empty `da` or `ne` means "go on to the
 // next step"; `konec` is the result when every step is passed.
 // kartice: kartice: [{ naslov, ton, tocke: [..] }], ton is zelena | rumena | rdeca | modra.
+// postopek: koraki: [{ naslov, besedilo }], numbered steps in order.
 // Text may use **bold**; everything else is escaped. Invalid input fails the build.
 
 import yaml from 'js-yaml';
@@ -81,7 +82,17 @@ function kartice(spec) {
   return `<ul class="grafika-kartice" data-stevilo="${items.length}">${items.join('')}</ul>`;
 }
 
-const VRSTE = { casovnica, odlocitev, kartice };
+function postopek(spec) {
+  if (!Array.isArray(spec.koraki) || !spec.koraki.length) fail('postopek potrebuje "koraki"', spec);
+  const items = spec.koraki.map((k) => {
+    if (!k.naslov) fail('vsak korak potrebuje "naslov"', k);
+    const besedilo = k.besedilo ? `<p>${inline(k.besedilo)}</p>` : '';
+    return `<li><p class="grafika-vprasanje">${inline(k.naslov)}</p>${besedilo}</li>`;
+  });
+  return `<ol class="grafika-koraki grafika-postopek">${items.join('')}</ol>`;
+}
+
+const VRSTE = { casovnica, odlocitev, kartice, postopek };
 
 export function grafikaHtml(source) {
   let spec;
@@ -91,7 +102,7 @@ export function grafikaHtml(source) {
     throw new Error(`grafika: neveljaven YAML (${e.message})`);
   }
   const render = VRSTE[spec?.vrsta];
-  if (!render) fail(`neznana vrsta "${spec?.vrsta}" (casovnica, odlocitev, kartice)`, spec);
+  if (!render) fail(`neznana vrsta "${spec?.vrsta}" (casovnica, odlocitev, kartice, postopek)`, spec);
   if (!spec.naslov) fail('manjka "naslov"', spec);
   const vir = spec.vir ? `<p class="grafika-vir">Vir: ${inline(spec.vir)}</p>` : '';
   return `<figure class="grafika grafika-vrsta-${spec.vrsta}"><figcaption class="grafika-naslov">${inline(spec.naslov)}</figcaption>${render(spec)}${vir}</figure>`;
