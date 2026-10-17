@@ -1,12 +1,12 @@
 ---
 name: posodobi-modele
-description: Monthly refresh of the ej-aj.si model comparison (src/data/modeli.yaml), subscription prices (src/data/narocnine.yaml) and the AI statistics page (src/data/statistika.json). Re-checks every price, context window and availability against the providers' official pages, adds notable new models, re-downloads the statistics from Eurostat, Microsoft and StatCounter, and opens a PR with a clear diff summary. Use when asked to "posodobi modele", "preveri cene modelov", or by the monthly routine. Never merges.
+description: Monthly refresh of the ej-aj.si model comparison (src/data/modeli.yaml), subscription prices (src/data/narocnine.yaml), the AI statistics page (src/data/statistika.json) and the funding calls page (src/data/razpisi.yaml). Re-checks every price, context window and availability against the providers' official pages, adds notable new models, re-downloads the statistics from Eurostat, Microsoft and StatCounter, and opens a PR with a clear diff summary. Use when asked to "posodobi modele", "preveri cene modelov", or by the monthly routine. Never merges.
 ---
 
 # Posodobi primerjavo modelov
 
-Output: a branch `modeli/YYYY-MM` with changes to `src/data/modeli.yaml`, `src/data/narocnine.yaml`
-and `src/data/statistika.json`, and an open PR.
+Output: a branch `modeli/YYYY-MM` with changes to `src/data/modeli.yaml`, `src/data/narocnine.yaml`,
+`src/data/statistika.json` and `src/data/razpisi.yaml`, and an open PR.
 **Never merge, never push to `main`.** Read `/Users/anze/Desktop/Claude/ej-aj/AGENTS.md` first.
 
 Every `gh` and network `git` command needs the prefix
@@ -87,6 +87,35 @@ node scripts/osvezi-statistiko.mjs
 - When a new Eurostat year appears (usually in the autumn), mention it at the top of the PR: it
   changes the headline numbers on the homepage.
 
+## 2d. Re-check funding calls (one more subagent, same message as 2 and 2b)
+
+`/razpisi/` lists public funding for AI in Slovenia from `src/data/razpisi.yaml`. Launch one
+subagent (`general-purpose`) with the file and this task:
+
+> For every entry, open `vir` and each URL in `viri` with WebFetch and report: is the call still
+> open, closed, or has a new round been published; the current deadline (and cut-off dates);
+> who can apply; co-financing share or amount; whether the text mentions AI. Then look for new
+> calls or vouchers that fund AI, digitalisation that includes AI, or AI training for Slovenian
+> companies or organisations, only on the funders' own pages: podjetniskisklad.si (vavčerji,
+> javni razpisi), gov.si (Javne objave), aris-rs.si (Razpisi), srips-rs.si (Vsi razpisi),
+> uradni-list.si (Razpisi, search "umetna inteligenca" and "digital"), the Slovenian EDIH and
+> AI factory sites, and the EU Funding & Tenders portal for SME calls on AI. Only report values
+> you saw on an opened page, with the URL. Return JSON: `{"entries": [{"id", "status",
+> "rok", "rok_datum", "kdo", "kaj", "sredstva", "ai", "source_urls", "changes"}],
+> "new_calls": [...], "failed_sources": [...]}`
+
+Then in `src/data/razpisi.yaml`:
+- Change only what the subagent confirmed on the funder's page; set `preverjeno` to today for
+  every entry re-checked. Never take a fact from news sites, consultants or memory.
+- A call whose deadline passed: set `status: zaprt`. Remove `zaprt` entries whose deadline is more
+  than about four months old, unless a new round is announced.
+- New calls: add them with `vir` on the funder's page. Write `kdo`, `kaj` and `ai` in plain
+  Slovenian (`docs/slog.md`); `ai` says plainly whether the call text mentions AI or only
+  digitalisation.
+- New or changed calls get the same fact-check as other content: a separate fact-checker
+  subagent opens every source and checks every number, date and name. List the calls in the PR
+  (section "Razpisi": added, closed, removed, changed).
+
 ## 3. Update the YAML
 
 - Same rules for `src/data/narocnine.yaml`; `kaj_dobite` stays a short Slovenian summary of
@@ -103,7 +132,7 @@ node scripts/osvezi-statistiko.mjs
 
 ```bash
 npm run build
-git add src/data/modeli.yaml src/data/narocnine.yaml src/data/statistika.json src/pages/statistika.astro
+git add src/data/modeli.yaml src/data/narocnine.yaml src/data/statistika.json src/pages/statistika.astro src/data/razpisi.yaml
 git commit -m "Refresh model comparison ($MONTH)"
 GH_TOKEN="$(gh auth token --user ej-aj-pro 2>/dev/null || gh auth token --user AnzeNocAI)" git push -u origin "modeli/$MONTH"
 GH_TOKEN="$(gh auth token --user ej-aj-pro 2>/dev/null || gh auth token --user AnzeNocAI)" gh pr create --repo ej-aj-pro/ej-aj --base main \
@@ -112,12 +141,12 @@ GH_TOKEN="$(gh auth token --user ej-aj-pro 2>/dev/null || gh auth token --user A
 
 PR body (Slovenian): a table of changes (model, field, old, new, source), added and removed
 models, a section "Statistika" with the script's list of changed values and the sentences you
-rewrote (or "brez sprememb"), sources that failed, and "Merge = objava na ej-aj.si". If nothing changed, do not open
+rewrote (or "brez sprememb"), a section "Razpisi", sources that failed, and "Merge = objava na ej-aj.si". If nothing changed, do not open
 a PR; report "brez sprememb" instead and delete the branch.
 
 Remove the worktree at the end: `git -C /Users/anze/Desktop/Claude/ej-aj worktree remove "$WT"`.
 
 ## 5. Final message
 
-Slovenian, short: PR link (or "brez sprememb"), the list of changes (models, prices, statistics),
+Slovenian, short: PR link (or "brez sprememb"), the list of changes (models, prices, statistics, funding calls),
 failed sources.

@@ -122,4 +122,32 @@ const prompti = defineCollection({
   }),
 });
 
-export const collections = { novice, slovar, modeli, narocnine, videi, prompti };
+// Public funding for AI in Slovenia for /razpisi/ (src/data/razpisi.yaml). Every fact comes from
+// the funder's own page in `vir`; the monthly refresh (skill posodobi-modele) re-checks each entry.
+const razpisi = defineCollection({
+  loader: file('src/data/razpisi.yaml'),
+  schema: z.object({
+    naziv: z.string(),
+    izvajalec: z.string(),
+    vrsta: z.enum(['vavcer', 'razpis', 'poziv', 'storitev']),
+    // odprt: applications are open; napovedan: the funder announced it, not open yet; stalno: a
+    // service without a deadline; zaprt: deadline passed (kept a few months, then dropped).
+    status: z.enum(['odprt', 'napovedan', 'stalno', 'zaprt']),
+    kdo: z.string(),
+    kaj: z.string(),
+    sredstva: z.string(),
+    // Deadline as the funder states it, in words.
+    rok: z.string(),
+    // Final deadline as a date. Past it, the page shows the entry as closed even before the
+    // monthly refresh changes `status`.
+    rok_datum: z.coerce.date().optional(),
+    // How the call mentions AI, or that it only covers digitalisation in general.
+    ai: z.string(),
+    opomba: z.string().optional(),
+    vir: z.url(),
+    viri: z.array(z.url()).default([]),
+    preverjeno: z.coerce.date(),
+  }),
+});
+
+export const collections = { novice, slovar, modeli, narocnine, videi, prompti, razpisi };

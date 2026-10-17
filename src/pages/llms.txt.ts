@@ -25,6 +25,7 @@ export const GET: APIRoute = async ({ site }) => {
     `- [Začnite tukaj](${abs('/zacnite/')}): vodniki po vrsti za začetnike, za tiste, ki AI že uporabljajo, za podjetja, ki ga uvajajo, in za ustvarjalce slik in videov.`,
     `- [Cene AI orodij in primerjava modelov](${abs('/modeli/')}): naročnine za ChatGPT, Claude, Gemini, Microsoft Copilot in druga orodja (posamezniki in podjetja) ter cene API, kontekstno okno in priporočila za Claude, GPT, Gemini, Mistral, Llama, DeepSeek in slovenski GaMS, z viri in datumom preverjanja.`,
     ...PRODUCTS.map((p) => `- [Koliko stane ${p.ime}](${abs(`/cene/${p.slug}/`)}): cene vseh paketov za posameznike in podjetja z viri, osveženo vsak mesec.`),
+    `- [Razpisi in vavčerji za AI v Sloveniji](${abs('/razpisi/')}): odprti, napovedani in nedavno zaprti razpisi, vavčerji in brezplačna podpora za umetno inteligenco v podjetjih (Slovenski podjetniški sklad, ministrstva, ARIS, sklad za kadre, evropska vozlišča), s pogoji, zneski, roki in viri, preverjeno vsak mesec.`,
     `- [AI v Sloveniji v številkah](${abs('/statistika/')}): delež podjetij in prebivalcev, ki uporabljajo AI, primerjava z državami EU in delež klepetalnikov (Eurostat, SURS, Microsoft, StatCounter).`,
     `- [Najbolj uporabljeni AI klepetalniki po državah](${abs('/statistika/klepetalniki-po-drzavah/')}): deleži ChatGPT, Gemini, Copilot, Perplexity in Claude v 48 državah Evrope in sveta (StatCounter), osveženo vsak mesec.`,
     `- [AI slovar](${abs('/slovar/')}): ${terms.length} izrazov umetne inteligence, razloženih po domače.`,
