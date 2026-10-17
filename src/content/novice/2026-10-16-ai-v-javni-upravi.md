@@ -1,5 +1,5 @@
 ---
-title: 'AI v javni upravi: kaj smejo javni uslužbenci, smernice države in obveznosti po AI Act'
+title: 'Javni uslužbenci in AI: kaj dovoljujejo smernice države, Informacijski pooblaščenec in AI Act'
 description: 'Kaj državne smernice in Informacijski pooblaščenec dovoljujejo pri rabi ChatGPT in Copilota v javni upravi, kako organ uvede AI sistem in kaj od decembra 2027 zahteva AI Act.'
 date: 2026-10-16
 type: vodnik

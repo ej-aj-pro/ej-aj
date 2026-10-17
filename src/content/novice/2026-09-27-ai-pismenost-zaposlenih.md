@@ -1,5 +1,5 @@
 ---
-title: 'AI pismenost zaposlenih: kaj zahteva AI Act in kako pripraviti usposabljanje'
+title: 'Usposabljanje zaposlenih za AI pismenost: kaj zahteva AI Act in kako ga pripraviti'
 description: 'Kaj po julijski spremembi zahteva člen 4 AI Act, kaj Evropska komisija šteje za zadostne ukrepe, kako usposabljanje prilagoditi vlogam, kako ga zapisati in kje so brezplačna gradiva.'
 date: 2026-09-27
 type: vodnik

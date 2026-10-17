@@ -1,5 +1,5 @@
 ---
-title: 'AI Act za slovenska podjetja: kaj velja jeseni 2026'
+title: 'Akt o umetni inteligenci (AI Act): kaj velja za slovenska podjetja jeseni 2026'
 description: 'Kaj Akt o umetni inteligenci zahteva od podjetij, ki uporabljajo ChatGPT, Claude ali Copilot: AI pismenost, prepovedi, preglednost, novi roki in kdo nadzira v Sloveniji.'
 date: 2026-09-26
 type: vodnik

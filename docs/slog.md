@@ -42,6 +42,12 @@ Slovenian equivalents of typical LLM vocabulary. One in a long text is fine, clu
   Never click bait: no teasers, no hidden subject, no promotional adjectives ("hitrejši in
   cenejši", "vse, kar morate vedeti"). Good: "Anthropic izdal Claude Sonnet 5.5: kaj je novega
   in kdaj ga izbrati namesto Opus 5.5".
+- Vary how titles start (Anže, 17. 10. 2026). Do not open with "AI" by default: lead with the
+  reader's subject (profession, task, tool or law), for example "Kadrovska služba in umetna
+  inteligenca: ..." or "Ustvarjanje slik z AI: ...". Keep the search phrase somewhere in the
+  title, mix "AI" and "umetna inteligenca", and before choosing a title look at the ten newest
+  titles on the front page so the new one does not repeat their opening. Changing a title never
+  changes the URL (slug), so older titles can be improved safely.
 - Write for a business reader who is not technical: short sentences, one thought per sentence,
   everyday words. If a simpler word works, use it.
 - Every technical term (token, API, agent, kontekstno okno, predogled, tenant ...) gets a short
@@ -65,3 +71,4 @@ Slovenian equivalents of typical LLM vocabulary. One in a long text is fine, clu
 5. Would a sceptical reader roll their eyes at any sentence? Rewrite it.
 6. Does the title say exactly what the article is about? Is every technical term explained at
    first use?
+7. Does the title start differently from the ten newest titles on the front page?

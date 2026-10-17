@@ -1,5 +1,5 @@
 ---
-title: 'AI tečaji in usposabljanja v Sloveniji: brezplačni spletni tečaji, delavnice in sofinanciranje'
+title: 'Tečaji in usposabljanja za AI v Sloveniji: brezplačni spletni tečaji, delavnice in sofinanciranje'
 description: 'Kje se zaposleni v Sloveniji naučijo osnov AI: brezplačni Elements of AI v slovenščini, tečaji ponudnikov AI orodij, delavnice KCUI in javni programi za odrasle in podjetja.'
 date: 2026-10-16
 type: vodnik
