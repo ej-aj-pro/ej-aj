@@ -132,6 +132,8 @@ Pri uvajanju AI pomagata **Kompetenčni center za umetno inteligenco (KCUI)**, k
 
 Viri: [Uradni list RS 85/2025](https://www.uradni-list.si/glasilo-uradni-list-rs/vsebina/2025-01-3035/zakon-o-izvajanju-uredbe-eu-o-dolocitvi-harmoniziranih-pravil-o-umetni-inteligenci-ziudhpui), [Informacijski pooblaščenec](https://www.ip-rs.si/umetna-inteligenca/pogosta-vprasanja/), [KCUI](https://www.kcui.si/), [AI4SI, vodič uvajanja UI](https://ai4si.gzs.si/b/vodic-uvajanja-umetne-inteligence-v-podjetja-20)
 
+Katere obveznosti veljajo za vašo rabo, lahko preverite z odkljukanjem v orodju [Ali je moja raba AI visoko tvegana?](/ai-act-preverjanje/).
+
 ## Kontrolni seznam
 
 - [ ] Vemo, katera AI orodja uporabljamo in kdo jih uporablja.

@@ -1,0 +1,291 @@
+---
+import Base from '../layouts/Base.astro';
+
+// Interactive check: which AI Act obligations apply to a company that uses an AI system
+// (a deployer). Every statement summarises the AI Act as amended by the AI Omnibus (in force
+// 27 July 2026) and the guide /vodniki/ai-act-za-slovenska-podjetja/; keep them in step.
+// Fact-checked 17. 10. 2026.
+const PREPOVEDI = [
+  'Podzavestne, manipulativne ali zavajajoče tehnike, ki bistveno vplivajo na odločitve ljudi in jim lahko povzročijo resno škodo.',
+  'Izkoriščanje ranljivosti ljudi zaradi starosti, invalidnosti ali posebnega socialnega ali ekonomskega položaja, s katerim se bistveno vpliva na njihovo vedenje in jim lahko povzroči resno škodo.',
+  'Družbeno točkovanje: ocenjevanje ljudi skozi daljše obdobje po njihovem vedenju ali osebnih lastnostih, ki vodi v slabšo obravnavo v nepovezanih okoliščinah ali v obravnavo, ki je neupravičena ali nesorazmerna.',
+  'Napovedovanje, ali bo nekdo storil kaznivo dejanje, samo na podlagi profiliranja ali ocene osebnostnih lastnosti.',
+  'Ustvarjanje ali širjenje baz za prepoznavanje obrazov z neciljanim zajemanjem slik obrazov s spleta ali posnetkov nadzornih kamer.',
+  'Sklepanje o čustvih zaposlenih ali učencev na delovnem mestu ali v izobraževanju (razen iz zdravstvenih ali varnostnih razlogov).',
+  'Biometrična kategorizacija posameznikov za sklepanje o njihovi rasi, političnem prepričanju, članstvu v sindikatu, veri ali filozofskem prepričanju, spolnem življenju ali spolni usmerjenosti.',
+  'Biometrična identifikacija na daljavo v realnem času v javno dostopnih prostorih za kazenski pregon (razen ozkih izjem).',
+  'Ustvarjanje ali predelava realističnih slik, videov ali zvoka intimnih delov ali spolnih dejanj prepoznavne osebe brez njene izrecne privolitve ter ustvarjanje gradiva spolne zlorabe otrok (prepoved velja od 2. decembra 2026).',
+];
+const PODROCJA = [
+  ['Biometrija', 'prepoznavanje ljudi na daljavo, razvrščanje ljudi po občutljivih lastnostih na podlagi obraza, glasu ali drugih telesnih značilnosti, prepoznavanje čustev (ne pa preverjanje, ali je oseba res tista, za katero se izdaja, na primer odklep vrat z obrazom)'],
+  ['Kritična infrastruktura', 'AI kot varnostni del (njegova napaka bi ogrozila zdravje ali varnost ljudi) pri upravljanju in delovanju kritične digitalne infrastrukture, cestnega prometa ali oskrbe z vodo, plinom, ogrevanjem ali elektriko'],
+  ['Izobraževanje', 'v šolah in ustanovah za izobraževanje ali poklicno usposabljanje: vpis in razporejanje, ocenjevanje učnih dosežkov, določanje ravni izobrazbe, odkrivanje prepovedanega vedenja med preizkusi znanja'],
+  ['Zaposlovanje', 'ciljano objavljanje oglasov za delo, analiza in filtriranje prijav, ocenjevanje kandidatov, odločanje o pogojih dela, napredovanju ali odpovedi, dodeljevanje nalog glede na vedenje ali osebne lastnosti, spremljanje in ocenjevanje uspešnosti in vedenja zaposlenih'],
+  ['Bistvene storitve', 'ocena upravičenosti do javnih ugodnosti in storitev (vključno z zdravstvenimi) ter njihova dodelitev ali odvzem, kadar to dela organ ali kdo v njegovem imenu, kreditna sposobnost posameznikov (razen odkrivanja goljufij), ocena tveganja in cena življenjskih in zdravstvenih zavarovanj, razvrščanje nujnih klicev, določanje prednosti pri napotitvi nujnih služb in triaža v nujni medicinski pomoči'],
+  ['Kazenski pregon', 'sistemi, ki jih uporabljajo organi pregona ali kdo v njihovem imenu, na primer za oceno zanesljivosti dokazov ali tveganja ponovitve kaznivega dejanja'],
+  ['Migracije in meje', 'sistemi, ki jih uporabljajo pristojni organi ali kdo v njihovem imenu, na primer za oceno tveganja oseb ali pomoč pri obravnavi prošenj za azil, vizume in dovoljenja za prebivanje'],
+  ['Pravosodje in volitve', 'pomoč sodišču ali pri alternativnem reševanju sporov pri ugotavljanju dejstev in uporabi prava, vplivanje na izid volitev ali referenduma ali na to, kako ljudje volijo (ne pa orodja za organizacijo kampanje, katerih izhoda volivci ne vidijo)'],
+];
+const PREGLEDNOST = [
+  ['klepet', 'Ljudje se z AI pogovarjajo, na primer klepetalnik na spletni strani ali glasovni pomočnik.'],
+  ['deepfake', 'Z AI ustvarjamo ali predelujemo slike, video ali zvok, ki spominjajo na resnične osebe, predmete, kraje ali dogodke in bi lahko delovali verodostojno.'],
+  ['besedila', 'Z AI ustvarjena besedila objavljamo za obveščanje javnosti o zadevah javnega interesa.'],
+  ['custva', 'AI prepoznava čustva ljudi (zunaj delovnega mesta in šole) ali jih razvršča po biometričnih podatkih, na primer po obrazu ali glasu.'],
+];
+---
+
+<Base
+  title="Ali je moja raba AI visoko tvegana? Preverjanje obveznosti po AI Act"
+  description="Odkljukajte, za kaj podjetje uporablja AI, in preverite, ali gre za prepovedano, visoko tvegano rabo ali obveznosti preglednosti po Aktu o umetni inteligenci."
+  searchType="Vodnik"
+>
+  <div class="wrap narrow">
+    <header class="article-head">
+      <span class="eyebrow">Orodje</span>
+      <h1>Ali je moja raba AI visoko tvegana?</h1>
+      <p class="lede">
+        Odkljukajte, za kaj vaše podjetje uporablja AI. Spodaj se sproti izpiše, katere obveznosti
+        po Aktu o umetni inteligenci (AI Act) veljajo in od kdaj. Preverjanje je za podjetja, ki AI
+        sistem uporabljajo (AI Act jih imenuje uvajalci). Kdor AI sistem razvije ali ga da razviti in
+        ga pod svojim imenom ponudi drugim ali uporablja sam, plačljivo ali brezplačno, je ponudnik
+        in ima več obveznosti. Ponudnik lahko postane tudi podjetje, ki splošno orodje, na primer
+        ChatGPT, uporabi za visoko tvegan namen s spodnjega seznama (člen 25). Preverjanje ni pravni
+        nasvet.
+      </p>
+    </header>
+
+    <form id="aiact" class="aia" onsubmit="return false">
+      <fieldset>
+        <legend>1. Ali AI uporabljate za kaj od tega?</legend>
+        <p class="aia-namig">Te rabe so prepovedane (člen 5).</p>
+        {PREPOVEDI.map((t, i) => (
+          <label><input type="checkbox" name="prepoved" value={i} /> <span>{t}</span></label>
+        ))}
+      </fieldset>
+
+      <fieldset>
+        <legend>2. Ali AI uporabljate na katerem od teh področij?</legend>
+        <p class="aia-namig">To so področja visoko tvegane rabe iz Priloge III.</p>
+        {PODROCJA.map(([n, t], i) => (
+          <label><input type="checkbox" name="podrocje" value={i} /> <span><strong>{n}:</strong> {t}</span></label>
+        ))}
+        <div class="aia-izjema" hidden>
+          <p class="aia-namig">Če ste odkljukali več področij, odgovorite za sistem, ki je najbližje visokemu tveganju.</p>
+          <p><strong>Ali sistem ljudi profilira</strong>, torej iz njihovih podatkov samodejno ocenjuje na primer delovno uspešnost, zanesljivost ali vedenje?</p>
+          <label><input type="radio" name="profilira" value="da" /> da</label>
+          <label><input type="radio" name="profilira" value="ne" /> ne</label>
+          <div class="aia-izjema2" hidden>
+            <p><strong>Ali sistem opravlja le eno od teh nalog:</strong> ozko postopkovno nalogo, pripravljalno nalogo pred človeško oceno, izboljšanje že opravljenega človeškega dela ali iskanje odstopanj od prejšnjih odločitev, pri čemer človeške ocene ne nadomesti in nanjo ne vpliva brez človeškega pregleda?</p>
+            <label><input type="radio" name="izjema" value="da" /> da</label>
+            <label><input type="radio" name="izjema" value="ne" /> ne ali ne vem</label>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>3. Ali velja kaj od tega?</legend>
+        <p class="aia-namig">Za te rabe veljajo pravila o preglednosti (člen 50).</p>
+        {PREGLEDNOST.map(([v, t]) => (
+          <label><input type="checkbox" name="preglednost" value={v} /> <span>{t}</span></label>
+        ))}
+      </fieldset>
+    </form>
+
+    <section class="aia-rezultat" aria-live="polite">
+      <h2>Kaj velja za vas</h2>
+      <div id="aia-izpis">
+        <p>
+          Za vsako podjetje, ki zaposlenim omogoči AI orodja, velja člen 4 o AI pismenosti. Odkljukajte
+          rabe zgoraj za podrobnejši izpis.
+        </p>
+      </div>
+      <p class="aia-vec">
+        Podrobnosti, globe in nadzorni organi v Sloveniji so v vodniku{' '}
+        <a href="/vodniki/ai-act-za-slovenska-podjetja/">Akt o umetni inteligenci (AI Act)</a>. Za
+        zaposlovanje glejte vodnik <a href="/vodniki/ai-v-kadrovski-sluzbi/">Kadrovska služba in umetna inteligenca</a>,
+        za javni sektor <a href="/vodniki/ai-v-javni-upravi/">Javni uslužbenci in AI</a>, za
+        usposabljanje <a href="/vodniki/ai-pismenost-zaposlenih/">AI pismenost zaposlenih</a>.
+      </p>
+    </section>
+  </div>
+</Base>
+
+<script>
+  const form = document.getElementById('aiact') as HTMLFormElement;
+  const out = document.getElementById('aia-izpis')!;
+  const izjema = form.querySelector<HTMLElement>('.aia-izjema')!;
+  const izjema2 = form.querySelector<HTMLElement>('.aia-izjema2')!;
+  const checked = (name: string) => [...form.querySelectorAll<HTMLInputElement>(`input[name="${name}"]:checked`)];
+  const radio = (name: string) => form.querySelector<HTMLInputElement>(`input[name="${name}"]:checked`)?.value;
+  const blok = (ton: string, naslov: string, html: string) =>
+    `<div class="aia-blok aia-${ton}"><h3>${naslov}</h3>${html}</div>`;
+  const PONUDNIK =
+    '<p>Če ste sistem razvili sami ali za ta namen uporabljate splošno orodje, na primer ChatGPT, ste lahko ponudnik in za vas veljajo strožje obveznosti ponudnika (člen 25).</p>';
+
+  function render() {
+    const prepovedi = checked('prepoved');
+    const podrocja = checked('podrocje');
+    const preglednost = checked('preglednost').map((i) => i.value);
+    izjema.hidden = podrocja.length === 0;
+    const profilira = radio('profilira');
+    izjema2.hidden = podrocja.length === 0 || profilira !== 'ne';
+    const parts: string[] = [];
+
+    if (prepovedi.length) {
+      parts.push(
+        blok(
+          'rdeca',
+          'Prepovedana raba',
+          '<p>Odkljukane rabe so po členu 5 prepovedane. Prepovedi veljajo od 2. februarja 2025, prepovedi ustvarjanja intimnih podob brez privolitve in gradiva spolne zlorabe otrok pa od 2. decembra 2026. Za kršitve so predvidene globe do 35 milijonov evrov ali 7 % svetovnega letnega prometa, kar je višje (za mala in srednja podjetja nižji znesek). Takšno rabo opustite.</p>'
+        )
+      );
+    }
+
+    if (podrocja.length) {
+      if (profilira === 'ne' && radio('izjema') === 'da') {
+        parts.push(
+          blok(
+            'rumena',
+            'Morda ni visoko tvegano',
+            '<p>Po členu 6(3) sistem s seznama v Prilogi III ni visoko tvegan, če ne predstavlja znatnega tveganja za zdravje, varnost ali temeljne pravice ljudi, med drugim zato, ker bistveno ne vpliva na izid odločitve. To oceno naredi in zapiše ponudnik. Vprašajte ga, ali jo je naredil. Če ste za ta namen uporabili splošno orodje, na primer ChatGPT, ste lahko ponudnik vi in oceno morate narediti sami. Če niste prepričani, sistem obravnavajte kot visoko tveganega. Ko se namen rabe spremeni, preverite znova.</p>'
+          )
+        );
+      } else {
+        const opomba =
+          profilira === 'da'
+            ? '<p>Sistem s seznama v Prilogi III, ki ljudi profilira, je vedno visoko tvegan. Izjema po členu 6(3) zanj ne velja.</p>'
+            : profilira === 'ne'
+              ? '<p>Ker izjema po členu 6(3) ni potrjena, sistem obravnavajte kot visoko tveganega.</p>'
+              : '<p>Odgovorite na vprašanje o profiliranju zgoraj: za nekatere sisteme velja izjema po členu 6(3).</p>';
+        parts.push(
+          blok(
+            'oranzna',
+            'Visoko tvegana raba',
+            `${opomba}<p>Pravila za visoko tvegane sisteme iz Priloge III se začnejo uporabljati 2. decembra 2027. Od takrat mora podjetje kot uvajalec med drugim:</p>
+<ul><li>uporabljati sistem po navodilih ponudnika in spremljati njegovo delovanje po teh navodilih,</li>
+<li>dodeliti človeški nadzor ljudem z ustreznim znanjem, usposobljenostjo in pooblastili,</li>
+<li>skrbeti, da so vhodni podatki, ki jih nadzira, ustrezni za namen sistema,</li>
+<li>hraniti samodejne zapise delovanja sistema (dnevnike) vsaj šest mesecev,</li>
+<li>ob tveganju ali resnem incidentu prekiniti uporabo in obvestiti ponudnika ter nadzorni organ,</li>
+<li>pred uvedbo na delovnem mestu obvestiti predstavnike delavcev in delavce,</li>
+<li>obvestiti ljudi, o katerih sistem pomaga odločati.</li></ul>
+<p>Organi javne oblasti in tisti, ki sistem uporabljajo v njihovem imenu, morajo pred prvo uporabo sebe in uporabo sistema vpisati v podatkovno zbirko EU. Osebe javnega prava (na primer državni organi, občine, javni zavodi), zasebniki, ki izvajajo javne storitve, ter uvajalci sistemov za oceno kreditne sposobnosti ali za oceno tveganja in cen življenjskih in zdravstvenih zavarovanj morajo pred prvo uporabo pripraviti še oceno učinka na temeljne pravice: zapis, koga sistem zadeva, kakšna tveganja zanje prinaša in kako jih bodo obvladovali. Izid sporočijo nadzornemu organu. Za kritično infrastrukturo ti dve obveznosti ne veljata, taki sistemi se registrirajo na nacionalni ravni.</p>
+<p>Za sisteme, ki so bili dani na trg ali v uporabo pred 2. decembrom 2027, ta pravila veljajo šele, ko se njihova zasnova bistveno spremeni. Sisteme, namenjene organom javne oblasti, je treba uskladiti najpozneje do 2. avgusta 2030 (člen 111).</p>${PONUDNIK}`
+          )
+        );
+      }
+    } else if (preglednost.includes('custva')) {
+      parts.push(
+        blok(
+          'oranzna',
+          'Verjetno visoko tvegana raba',
+          '<p>Prepoznavanje čustev in razvrščanje ljudi po občutljivih lastnostih na podlagi biometričnih podatkov sta na seznamu visoko tveganih rab (Priloga III, točka 1). Odkljukajte še področje Biometrija zgoraj, da vidite obveznosti.</p>'
+        )
+      );
+    }
+
+    if (preglednost.length) {
+      const t: string[] = [];
+      if (preglednost.includes('klepet'))
+        t.push('<li>Ponudnik klepetalnika mora poskrbeti, da ljudje vedo, da se pogovarjajo z AI, razen če je to očitno. Če ste klepetalnik zgradili sami ali ga ponujate pod svojim imenom, ste ponudnik vi. Če uporabljate tujega, preverite, ali to jasno piše.</li>');
+      if (preglednost.includes('deepfake'))
+        t.push('<li>Slike, video in zvok, ki ste jih ustvarili ali predelali z AI in spominjajo na resnične osebe, predmete, kraje ali dogodke, morate jasno označiti kot umetne. Pri očitno umetniških, ustvarjalnih, satiričnih ali izmišljenih delih zadošča oznaka, ki ne moti ogleda.</li>');
+      if (preglednost.includes('besedila'))
+        t.push('<li>Besedila, objavljena za obveščanje javnosti o zadevah javnega interesa, morate označiti kot ustvarjena z AI, razen če jih je pregledal človek in zanje nekdo nosi uredniško odgovornost.</li>');
+      if (preglednost.includes('custva'))
+        t.push('<li>Ljudi, na katerih uporabljate prepoznavanje čustev ali biometrično kategorizacijo, morate o tem obvestiti.</li>');
+      parts.push(blok('modra', 'Pravila o preglednosti', `<p>Veljajo od 2. avgusta 2026 (člen 50):</p><ul>${t.join('')}</ul>`));
+    }
+
+    parts.push(
+      blok(
+        'zelena',
+        'AI pismenost velja za vse',
+        '<p>Člen 4 od podjetij, ki uporabljajo AI, zahteva ukrepe, s katerimi podpirajo AI pismenost zaposlenih in drugih oseb, ki AI uporabljajo v njihovem imenu. Obveznost velja od 2. februarja 2025, nadzorni organi jo nadzirajo od 2. avgusta 2026. Potrdilo ni potrebno. V Sloveniji nadzira inšpekcija za informacijsko družbo, slovenski zakon za kršitev predvideva globe.</p>'
+      )
+    );
+    out.innerHTML = parts.join('');
+  }
+  form.addEventListener('change', render);
+  render();
+</script>
+
+<style>
+  .aia fieldset {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
+    padding: 16px 18px 12px;
+    margin: 0 0 16px;
+  }
+  .aia legend {
+    font-weight: 650;
+    padding: 0 6px;
+  }
+  .aia-namig {
+    margin: 0 0 10px;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+  .aia label {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    padding: 6px 0;
+    font-size: 0.95rem;
+    line-height: 1.45;
+    cursor: pointer;
+  }
+  .aia input {
+    margin-top: 4px;
+    flex: none;
+  }
+  .aia-izjema {
+    margin-top: 10px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    background: var(--bg);
+    border: 1px dashed var(--line);
+    font-size: 0.95rem;
+  }
+  .aia-izjema p {
+    margin: 0 0 6px;
+  }
+  .aia-izjema2 {
+    margin-top: 10px;
+  }
+  .aia-rezultat {
+    margin: 24px 0 8px;
+  }
+  .aia-rezultat h2 {
+    font-size: 1.25rem;
+    margin: 0 0 12px;
+  }
+  .aia-rezultat :global(.aia-blok) {
+    border: 1px solid var(--line);
+    border-left: 5px solid var(--ton);
+    border-radius: 12px;
+    padding: 12px 16px;
+    margin: 0 0 12px;
+    background: var(--surface);
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  .aia-rezultat :global(.aia-blok h3) {
+    margin: 0 0 6px;
+    font-size: 1.02rem;
+  }
+  .aia-rezultat :global(.aia-blok p),
+  .aia-rezultat :global(.aia-blok ul) {
+    margin: 6px 0;
+  }
+  .aia-rezultat :global(.aia-rdeca) { --ton: var(--t-rdeca); }
+  .aia-rezultat :global(.aia-oranzna) { --ton: var(--t-oranzna); }
+  .aia-rezultat :global(.aia-rumena) { --ton: var(--t-rumena); }
+  .aia-rezultat :global(.aia-modra) { --ton: var(--t-modra); }
+  .aia-rezultat :global(.aia-zelena) { --ton: var(--t-zelena); }
+  .aia-vec {
+    color: var(--muted);
+    font-size: 0.92rem;
+  }
+</style>
