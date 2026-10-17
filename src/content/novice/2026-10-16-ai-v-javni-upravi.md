@@ -29,6 +29,26 @@ V glavnem delu smernic država dodaja, da uporaba AI orodij na spletu ne izpolnj
 
 Informacijski pooblaščenec (IP) je februarja 2026 izdal podobna priporočila za javne uslužbence. Najprej preverite notranje akte organa, ali je raba AI sploh dovoljena in s katerimi orodji. Če ni urejena, o tem obvestite nadrejene. Osebnih podatkov ne vnašajte, če niste prepričani, da je tak vnos za konkretno orodje zakonito urejen. Brisanje imena, naslova in EMŠO še ni anonimizacija. Vsak odgovor preverite, ker si AI lahko izmisli dejstva (temu pravimo haluciniranje) in ponavlja predsodke iz podatkov, na katerih se je učil. Končna presoja ostane v človeških rokah, odločevalec pa mora znati odločitev obrazložiti.
 
+```grafika
+vrsta: kartice
+naslov: Kaj sme v javno dostopno AI orodje (po državnih smernicah)
+kartice:
+  - naslov: Ne
+    ton: rdeca
+    opis: Varovani podatki, tudi osnutki tajnih dokumentov.
+    tocke:
+      - Osebni, zdravstveni in biometrični podatki.
+      - Davčne tajnosti, tajni podatki in poslovne skrivnosti.
+      - Celotno dejansko stanje s polnimi osebnimi podatki za pripravo obrazložitve.
+  - naslov: Le izjemoma
+    ton: rumena
+    opis: Anonimizirani podatki iz uradnih postopkov, le kot pomoč pri pisanju obrazložitev ali besedil za službene potrebe.
+  - naslov: Da
+    ton: zelena
+    opis: Dokumenti in informacije, ki bi jih lahko kadarkoli objavili tudi na spletu.
+vir: Smernice za razvoj, uvajanje in uporabo UI v javni upravi s prilogo s priporočili
+```
+
 **Kaj to pomeni za vas:** po naši oceni je v javni upravi najbolj varna raba AI pri besedilih, ki so ali bodo tako ali tako javna: obvestila za javnost, osnutki splošnih dopisov, povzetki objavljenih predpisov in prevodi javnih gradiv. Splošna pravila za vse organizacije so v vodniku [Kateri podatki ne sodijo v ChatGPT](/vodniki/varna-raba-ai-v-podjetju/).
 
 Viri: [Smernice, priloga s priporočili za javno dostopna orodja (NIO)](https://nio.gov.si/api/files/4c828505-dac3-4439-a9b1-61f53d83cbaf/file?download=true), [Smernice za razvoj, uvajanje in uporabo UI v javni upravi (NIO)](https://nio.gov.si/api/files/b847fdc8-1c01-4a97-8f0c-0f1668050707/file?download=true), [Informacijski pooblaščenec, priporočila za javne uslužbence (februar 2026)](https://www.ip-rs.si/fileadmin/user_upload/Pdf/Priporocila/Varna%20in%20odgovorna%20uporaba%20UI%20pri%20delu_%20Priporo%C4%8Dila%20za%20javne%20uslu%C5%BEbence_10feb2026.pdf)
@@ -59,6 +79,27 @@ Oceno učinka na temeljne pravice morajo narediti tudi zasebna podjetja, ki opra
 ZIUDHPUI v 21. členu že zdaj zahteva, da organi javnega sektorja najpozneje ob uvedbi AI sistema na enotni informacijski točki ministrstva objavijo, kateri organ sistem uporablja, za kaj in s kakšnimi cilji, osnovna načela delovanja algoritmov, številko in datum ocene učinka v zvezi z varstvom osebnih podatkov (pri visoko tveganih sistemih tudi ocene učinka na temeljne pravice) ter možnosti pravnega varstva. Obveznost ne velja za kazenski pregon, obrambo, nacionalno varnost, migracije, azil in nadzor meja. Nadzor izvaja inšpekcija za informacijsko družbo.
 
 Že zdaj velja člen 4 o AI pismenosti: organ mora sprejeti ukrepe, s katerimi podpira znanje zaposlenih, ki AI uporabljajo. Nadzor izvaja inšpekcija za informacijsko družbo. Od 2. avgusta 2026 velja tudi člen 50 o preglednosti. Če organ z AI ustvari besedilo, ki ga objavi za obveščanje javnosti o zadevah javnega interesa, mora razkriti, da je besedilo ustvarjeno z AI. Obveznost odpade, če je besedilo pregledal človek in zanj nekdo nosi uredniško odgovornost. Nadzor nad preglednostjo izvaja Agencija za komunikacijska omrežja in storitve (AKOS).
+
+```grafika
+vrsta: casovnica
+naslov: Roki za organe javne uprave (stanje oktobra 2026)
+tocke:
+  - datum: 2. februar 2025
+    besedilo: "AI pismenost (člen 4 AI Act): ukrepi, s katerimi organ podpira znanje zaposlenih, ki AI uporabljajo."
+    stanje: velja
+  - datum: 21. november 2025
+    besedilo: "ZIUDHPUI začne veljati. Po 21. členu organ najpozneje ob uvedbi AI sistema objavi podatke o njem na enotni informacijski točki."
+    stanje: velja
+  - datum: 2. avgust 2026
+    besedilo: "Preglednost (člen 50): besedila o zadevah javnega interesa, ustvarjena z AI, so označena, razen če jih je pregledal človek in zanje nekdo nosi uredniško odgovornost."
+    stanje: velja
+  - datum: 2. december 2027
+    besedilo: Za nove visoko tvegane sisteme iz Priloge III registracija v zbirki EU in ocena učinka na temeljne pravice pred prvo uporabo.
+    stanje: prihaja
+  - datum: 2. avgust 2030
+    besedilo: Skrajni rok za visoko tvegane sisteme, ki jih organ uporablja že pred 2. decembrom 2027.
+    stanje: prihaja
+```
 
 **Kaj to pomeni za vas:** po naši oceni naj organ že zdaj popiše AI sisteme, ki jih uporablja ali naroča, in pri vsakem preveri, ali sodi na seznam iz Priloge III. Za nove sisteme, ki sodijo nanj, je treba od decembra 2027 pred prvo uporabo opraviti registracijo in oceno učinka, za podatke po 21. členu ZIUDHPUI pa je čas že zdaj. Širši pregled je v vodniku [AI Act za slovenska podjetja](/vodniki/ai-act-za-slovenska-podjetja/).
 

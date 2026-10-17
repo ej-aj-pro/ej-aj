@@ -9,7 +9,7 @@ plugin `src/markdown/grafike.mjs` turns it into HTML (styles: `src/styles/grafik
 visual is text: it reads well on phones, follows dark mode, search engines and screen readers
 read it, and every fact in it stays in the article file where the fact-checker sees it.
 
-Three kinds:
+Four kinds:
 
 ````
 ```grafika
@@ -34,6 +34,14 @@ konec: Visoko tvegano, veljajo obveznosti uvajalca.   # result when every step i
 ```
 
 ```grafika
+vrsta: postopek
+naslov: Kako pripraviti usposabljanje
+koraki:
+  - naslov: Popišite orodja.
+    besedilo: Kdo jih uporablja in za kaj.   # optional
+```
+
+```grafika
 vrsta: kartice
 naslov: Kateri podatki smejo v AI orodje
 kartice:
@@ -49,7 +57,7 @@ Rules:
 
 - One or two visuals per article, where they replace or summarise something the reader would
   otherwise have to piece together: dates (časovnica), a yes/no decision (odlocitev), groups
-  or options side by side (kartice, two to four).
+  or options side by side (kartice, two to six), steps in order (postopek).
 - Every fact in a visual comes from the article's sources, and the fact-checker checks the
   visual like the text. A visual may replace a table or a list, but never adds unsourced facts.
 - Plain text only; `**bold**` works, links do not. Quote values that contain a colon.

@@ -84,6 +84,24 @@ Viri: [Ministrstvo, razpisna dokumentacija JR DDK 2026 do 2028 (maj 2026)](https
 
 ## Kako izbrati
 
-Po naši oceni je za zaposlene, ki AI še ne uporabljajo, dober začetek Elements of AI v slovenščini ali osnovna delavnica KCUI. Za zaposlene, ki že uporabljajo določeno orodje, so po naši oceni koristnejši tečaji ponudnika tega orodja, na primer AI Fluency pri Anthropicu ali OpenAI Academy. Akademija ARISA je namenjena tistim, ki se želijo naučiti tehničnih osnov, tudi programiranja. Potrdilo s kreditnimi točkami potrebujete le, če ga zahteva vaš delodajalec ali študij, za AI Act ga ne.
+```grafika
+vrsta: kartice
+naslov: Kateri tečaj za koga (naša ocena)
+kartice:
+  - naslov: AI še ne uporabljajo
+    ton: modra
+    opis: Elements of AI v slovenščini ali osnovna delavnica KCUI.
+  - naslov: Že uporabljajo določeno orodje
+    ton: modra
+    opis: Tečaj ponudnika tega orodja, na primer AI Fluency pri Anthropicu ali OpenAI Academy.
+  - naslov: Želijo tehnične osnove
+    ton: modra
+    opis: Akademija ARISA, tudi s programiranjem v Pythonu.
+  - naslov: Stari 30 let ali več, potrebujejo osnove dela z računalnikom
+    ton: modra
+    opis: Brezplačni programi izvajalcev iz razpisa JR DDK, kjer jih izvajajo.
+```
+
+Potrdilo s kreditnimi točkami potrebujete le, če ga zahteva vaš delodajalec ali študij, za AI Act ga ne.
 
 **Kaj to pomeni za vas:** po naši oceni naj vsako usposabljanje, ne glede na izvajalca, dopolni kratko srečanje o pravilih vašega podjetja. Predlogo pravil najdete v vodniku [Predloga pravil rabe AI](/vodniki/predloga-pravil-rabe-ai/), osnovne pojme pa v vodniku [Kaj je umetna inteligenca](/vodniki/kaj-je-umetna-inteligenca/).
