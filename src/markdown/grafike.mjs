@@ -105,7 +105,7 @@ export function grafikaHtml(source) {
   if (!render) fail(`neznana vrsta "${spec?.vrsta}" (casovnica, odlocitev, kartice, postopek)`, spec);
   if (!spec.naslov) fail('manjka "naslov"', spec);
   const vir = spec.vir ? `<p class="grafika-vir">Vir: ${inline(spec.vir)}</p>` : '';
-  return `<figure class="grafika grafika-${spec.vrsta}"><figcaption class="grafika-naslov">${inline(spec.naslov)}</figcaption>${render(spec)}${vir}</figure>`;
+  return `<figure class="grafika grafika-vrsta-${spec.vrsta}"><figcaption class="grafika-naslov">${inline(spec.naslov)}</figcaption>${render(spec)}${vir}</figure>`;
 }
 
 // Sätteri mdast plugin (see slovar-povezave.mjs for the API shape).
