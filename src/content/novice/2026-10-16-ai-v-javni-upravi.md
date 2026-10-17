@@ -35,17 +35,18 @@ naslov: Kaj sme v javno dostopno AI orodje (po državnih smernicah)
 kartice:
   - naslov: Ne
     ton: rdeca
-    opis: Varovani podatki, tudi osnutki tajnih dokumentov.
+    opis: Varovani podatki ter tajni dokumenti in njihovi osnutki.
     tocke:
       - Osebni, zdravstveni in biometrični podatki.
       - Davčne tajnosti, tajni podatki in poslovne skrivnosti.
+      - Drugi podatki, katerih razkritje bi lahko škodovalo organu, postopku ali ljudem.
       - Celotno dejansko stanje s polnimi osebnimi podatki za pripravo obrazložitve.
   - naslov: Le izjemoma
     ton: rumena
     opis: Anonimizirani podatki iz uradnih postopkov, le kot pomoč pri pisanju obrazložitev ali besedil za službene potrebe.
   - naslov: Da
     ton: zelena
-    opis: Dokumenti in informacije, ki bi jih lahko kadarkoli objavili tudi na spletu.
+    opis: Dokumenti in informacije, ki bi jih lahko kadarkoli objavili tudi na spletu. Za besedilo, ki nastane, ste odgovorni sami.
 vir: Smernice za razvoj, uvajanje in uporabo UI v javni upravi s prilogo s priporočili
 ```
 
@@ -76,7 +77,7 @@ Za visoko tvegane sisteme iz Priloge III se pravila po spremembi AI Act, ki jo j
 
 Oceno učinka na temeljne pravice morajo narediti tudi zasebna podjetja, ki opravljajo javne storitve, kadar uporabljajo visoko tvegane sisteme iz Priloge III. Kdor je prizadet z odločitvijo, ki je bila sprejeta na podlagi izhodnih podatkov visoko tveganega sistema iz Priloge III (razen kritične infrastrukture) in ima zanj pravne ali podobno pomembne posledice, ima po členu 86 pravico do jasnega pojasnila o vlogi AI v postopku odločanja in o glavnih elementih odločitve, če mu tega ne zagotavlja že drug predpis EU. Slovenski Zakon o izvajanju uredbe o umetni inteligenci (ZIUDHPUI) v 31. členu med prekrške uvajalca uvršča tudi opustitev registracije, kadar je uvajalec organ javne uprave, in opustitev ocene učinka na temeljne pravice.
 
-ZIUDHPUI v 21. členu že zdaj zahteva, da organi javnega sektorja najpozneje ob uvedbi AI sistema na enotni informacijski točki ministrstva objavijo, kateri organ sistem uporablja, za kaj in s kakšnimi cilji, osnovna načela delovanja algoritmov, številko in datum ocene učinka v zvezi z varstvom osebnih podatkov (pri visoko tveganih sistemih tudi ocene učinka na temeljne pravice) ter možnosti pravnega varstva. Obveznost ne velja za kazenski pregon, obrambo, nacionalno varnost, migracije, azil in nadzor meja. Nadzor izvaja inšpekcija za informacijsko družbo.
+ZIUDHPUI v 21. členu že zdaj zahteva, da organi javnega sektorja najpozneje ob uvedbi AI sistema na enotni informacijski točki ministrstva objavijo, kateri organ sistem uporablja, za kaj in s kakšnimi cilji, osnovna načela delovanja algoritmov, številko in datum ocene učinka v zvezi z varstvom osebnih podatkov (pri visoko tveganih sistemih tudi ocene učinka na temeljne pravice) ter možnosti pravnega varstva. Po prehodni določbi (41. člen) morajo organi objaviti podatke tudi o AI sistemih, ki so jih uporabljali že ob uveljavitvi zakona. Obveznost ne velja za kazenski pregon, obrambo, nacionalno varnost, migracije, azil in nadzor meja. Nadzor izvaja inšpekcija za informacijsko družbo.
 
 Že zdaj velja člen 4 o AI pismenosti: organ mora sprejeti ukrepe, s katerimi podpira znanje zaposlenih, ki AI uporabljajo. Nadzor izvaja inšpekcija za informacijsko družbo. Od 2. avgusta 2026 velja tudi člen 50 o preglednosti. Če organ z AI ustvari besedilo, ki ga objavi za obveščanje javnosti o zadevah javnega interesa, mora razkriti, da je besedilo ustvarjeno z AI. Obveznost odpade, če je besedilo pregledal človek in zanj nekdo nosi uredniško odgovornost. Nadzor nad preglednostjo izvaja Agencija za komunikacijska omrežja in storitve (AKOS).
 
@@ -88,13 +89,13 @@ tocke:
     besedilo: "AI pismenost (člen 4 AI Act): ukrepi, s katerimi organ podpira znanje zaposlenih, ki AI uporabljajo."
     stanje: velja
   - datum: 21. november 2025
-    besedilo: "ZIUDHPUI začne veljati. Po 21. členu organ najpozneje ob uvedbi AI sistema objavi podatke o njem na enotni informacijski točki."
+    besedilo: "ZIUDHPUI začne veljati. Po 21. členu organ podatke o AI sistemu objavi na enotni informacijski točki najpozneje ob uvedbi, po 41. členu pa tudi za sisteme, ki jih je uporabljal že ob uveljavitvi zakona."
     stanje: velja
   - datum: 2. avgust 2026
-    besedilo: "Preglednost (člen 50): besedila o zadevah javnega interesa, ustvarjena z AI, so označena, razen če jih je pregledal človek in zanje nekdo nosi uredniško odgovornost."
+    besedilo: "Preglednost (člen 50): če organ z AI ustvari besedilo, ki ga objavi za obveščanje javnosti o zadevah javnega interesa, mora to razkriti, razen če je besedilo pregledal človek in zanj nekdo nosi uredniško odgovornost."
     stanje: velja
   - datum: 2. december 2027
-    besedilo: Za nove visoko tvegane sisteme iz Priloge III registracija v zbirki EU in ocena učinka na temeljne pravice pred prvo uporabo.
+    besedilo: Za nove visoko tvegane sisteme iz Priloge III (razen kritične infrastrukture) registracija v zbirki EU in ocena učinka na temeljne pravice pred prvo uporabo.
     stanje: prihaja
   - datum: 2. avgust 2030
     besedilo: Skrajni rok za visoko tvegane sisteme, ki jih organ uporablja že pred 2. decembrom 2027.

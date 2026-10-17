@@ -82,15 +82,14 @@ vrsta: postopek
 naslov: AI pismenost v podjetju v petih korakih
 koraki:
   - naslov: Popišite AI orodja.
-    besedilo: Katera orodja se v podjetju uporabljajo, kdo jih uporablja in za kaj. Vključite tudi zunanje sodelavce.
+    besedilo: Zapišite, katera orodja se v podjetju uporabljajo, kdo jih uporablja in za kaj. Vključite tudi zunanje sodelavce.
   - naslov: Sprejmite pravila rabe AI.
     besedilo: Dajte jih vsem, ki uporabljajo AI.
   - naslov: Določite, kdo potrebuje kaj.
     besedilo: Po tabeli zgoraj določite, katera skupina potrebuje kaj, in izberite obliko.
-  - naslov: Izvedite usposabljanje.
-    besedilo: Usposabljanje zapišite.
+  - naslov: Izvedite usposabljanje in ga zapišite.
   - naslov: Osvežujte pravila in zapis.
-    besedilo: Ko uvedete novo orodje, in vsaj enkrat na leto.
+    besedilo: Osvežite jih, ko uvedete novo orodje, in vsaj enkrat na leto.
 ```
 
 Po podatkih Eurostata za leto 2025 je pomanjkanje znanja najpogostejši razlog, zakaj slovenska podjetja, ki so o AI razmišljala, tega še ne uporabljajo. Več številk je na strani [AI v Sloveniji v številkah](/statistika/).

@@ -21,16 +21,16 @@ naslov: Kje odpoveste naročnino in kdaj dobite denar nazaj
 kartice:
   - naslov: ChatGPT
     ton: siva
-    opis: Settings, Billing, Cancel plan. Odpovejte vsaj 24 ur pred plačilom. V EU sorazmerno vračilo ob odpovedi v 14 dneh od nakupa.
+    opis: Settings, Billing, Cancel plan. Odpovejte vsaj 24 ur pred plačilom. V EU sorazmerno vračilo, če odpoveste v 14 dneh od nakupa. Zahtevate ga v klepetu pomoči.
   - naslov: Claude
     ton: siva
-    opis: Začetnice, Settings, Billing, Cancel. Odpovejte vsaj 24 ur pred plačilom. V EGP vračilo, sorazmerno z rabo, v 14 dneh od nakupa.
+    opis: Začetnice, Settings, Billing, Cancel. Odpovejte vsaj 24 ur pred plačilom. V EGP vračilo, sorazmerno z rabo, v 14 dneh od nakupa. Zahtevate ga prek Get help.
   - naslov: Gemini (Google One)
     ton: siva
-    opis: Nastavitve, Prekliči naročnino. Po odpovedi ostane le 15 GB prostora. V EGP odstop v 14 dneh, ugodnosti izgubite takoj.
+    opis: Google One, Nastavitve, Prekliči naročnino. Po koncu obdobja ostane le 15 GB prostora. V EGP lahko v 14 dneh od nakupa odstopite, a ob odstopu ugodnosti izgubite takoj.
   - naslov: Microsoft 365 s Copilotom
     ton: siva
-    opis: account.microsoft.com, Services & subscriptions, Manage, Cancel. Vračilo v večini primerov v 30 dneh od prvega nakupa ali pred prvim ponavljajočim se plačilom.
+    opis: account.microsoft.com, Services & subscriptions, Manage, Cancel. Vračilo v večini primerov v 30 dneh od prvega nakupa ali pred prvim ponavljajočim se plačilom, kar je prej. Enkrat na račun tudi vračilo zadnjega podaljšanja, če odpoveste v 30 dneh po plačilu.
   - naslov: Mistral (Vibe)
     ton: siva
     opis: admin.mistral.ai, Subscriptions, Unsubscribe. Ob odpovedi v 14 dneh od prvega nakupa samodejno vračilo.

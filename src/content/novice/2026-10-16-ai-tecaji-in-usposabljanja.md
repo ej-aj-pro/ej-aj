@@ -97,9 +97,9 @@ kartice:
   - naslov: Želijo tehnične osnove
     ton: modra
     opis: Akademija ARISA, tudi s programiranjem v Pythonu.
-  - naslov: Stari 30 let ali več, potrebujejo osnove dela z računalnikom
+  - naslov: Stari 30 let ali več, potrebujejo osnove dela z računalnikom in AI
     ton: modra
-    opis: Brezplačni programi izvajalcev iz razpisa JR DDK, kjer jih izvajajo.
+    opis: Brezplačni programi iz razpisa JR DDK. Povprašajte pri lokalnih izvajalcih izobraževanja odraslih.
 ```
 
 Potrdilo s kreditnimi točkami potrebujete le, če ga zahteva vaš delodajalec ali študij, za AI Act ga ne.
