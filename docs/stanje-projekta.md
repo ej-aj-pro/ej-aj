@@ -16,6 +16,7 @@ Stanje: 3. oktober 2026.
 | `/cene/` | preusmeritev 301 na `/modeli/#narocnine` | `public/_redirects` |
 | `/statistika/` | raba AI v Sloveniji, 10 interaktivnih grafov | `src/data/statistika.json`, generira `scripts/osvezi-statistiko.mjs` |
 | `/prirocnik/` | priročnik: 10 vodnikov o dobri rabi Claude (`serija: prirocnik`, `korak`) | `src/content/novice/*.md` |
+| `/razpisi/` | razpisi, vavčerji in brezplačna podpora za AI (odprto, napovedano, brez roka, nedavno zaprto); mesečno preverjanje v skillu `posodobi-modele` | `src/data/razpisi.yaml` |
 | `/videi/` | priporočeni videi (YouTube, naloži se šele ob kliku) | `src/data/videi.yaml` |
 | `/slovar/`, `/slovar/<id>/` | 54 izrazov, vsak s svojo stranjo | `src/data/slovar.yaml` |
 | `/o-projektu/`, `/zasebnost/` (še v PR #7) | | |

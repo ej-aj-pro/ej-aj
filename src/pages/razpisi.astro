@@ -1,0 +1,293 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { formatDate } from '../site';
+
+// Public funding for AI in Slovenia. Data and sources: src/data/razpisi.yaml, re-checked monthly
+// by the skill posodobi-modele. An open entry whose rok_datum has passed is shown as closed at
+// build time, and the script below does the same in the browser between builds.
+type Razpis = CollectionEntry<'razpisi'>;
+
+const all = await getCollection('razpisi');
+const now = new Date();
+const expired = (r: Razpis) => !!r.data.rok_datum && r.data.rok_datum.valueOf() < now.valueOf() - 864e5;
+const isClosed = (r: Razpis) => r.data.status === 'zaprt' || (r.data.status === 'odprt' && expired(r));
+const byDeadline = (a: Razpis, b: Razpis) =>
+  (a.data.rok_datum?.valueOf() ?? Infinity) - (b.data.rok_datum?.valueOf() ?? Infinity);
+
+const SKUPINE = [
+  {
+    id: 'odprto',
+    naslov: 'Odprto zdaj',
+    opis: 'Prijave potekajo. Pred prijavo preberite razpisno dokumentacijo, pogoji so tam podrobnejši kot tukaj.',
+    items: all.filter((r) => r.data.status === 'odprt' && !isClosed(r)).sort(byDeadline),
+  },
+  {
+    id: 'napovedano',
+    naslov: 'Napovedano',
+    opis: 'Izvajalec je razpis napovedal, prijave pa še niso odprte. Zneski in roki se lahko do objave spremenijo.',
+    items: all.filter((r) => r.data.status === 'napovedan').sort(byDeadline),
+  },
+  {
+    id: 'brez-roka',
+    naslov: 'Podpora brez roka',
+    opis: 'Storitve, ki so podjetjem na voljo ves čas, dokler traja financiranje izvajalca.',
+    items: all.filter((r) => r.data.status === 'stalno'),
+  },
+  {
+    id: 'zaprto',
+    naslov: 'Nedavno zaprto',
+    opis: 'Rok je potekel. Razpise pustimo na seznamu nekaj mesecev, ker se podobni pogosto ponovijo.',
+    items: all.filter(isClosed).sort((a, b) => byDeadline(b, a)),
+  },
+].filter((s) => s.items.length);
+
+const VRSTA: Record<Razpis['data']['vrsta'], string> = {
+  vavcer: 'Vavčer',
+  razpis: 'Javni razpis',
+  poziv: 'Javni poziv',
+  storitev: 'Storitev',
+};
+const STATUS: Record<Razpis['data']['status'], string> = {
+  odprt: 'Odprto',
+  napovedan: 'Napovedano',
+  stalno: 'Brez roka',
+  zaprt: 'Zaprto',
+};
+
+const preverjeno = new Date(Math.max(...all.map((r) => r.data.preverjeno.valueOf())));
+const host = (url: string) => new URL(url).hostname.replace(/^www\./, '');
+---
+
+<Base
+  searchType="Orodje"
+  title="Razpisi in vavčerji za AI v Sloveniji"
+  description="Odprti in napovedani razpisi, vavčerji in brezplačna podpora za umetno inteligenco v slovenskih podjetjih: kdo se lahko prijavi, koliko denarja, rok in povezava na izvajalca."
+  jsonLd={[
+    {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      name: 'Razpisi in vavčerji za AI v Sloveniji',
+      itemListElement: all.map((r, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: r.data.naziv,
+        url: new URL(`/razpisi/#${r.id}`, Astro.site).toString(),
+      })),
+    },
+  ]}
+>
+  <div class="wrap narrow">
+    <header class="article-head">
+      <span class="eyebrow">Razpisi</span>
+      <h1>Razpisi in vavčerji za AI v Sloveniji</h1>
+      <p class="lede">
+        Javni denar in brezplačna podpora, ki ju slovensko podjetje ali organizacija lahko porabi za
+        umetno inteligenco: za uvedbo orodij, razvoj ali usposabljanje zaposlenih. Pri vsakem vnosu
+        piše, kdo se lahko prijavi, kaj se financira, koliko denarja je na voljo in do kdaj, s
+        povezavo na stran izvajalca.
+      </p>
+      <p class="how">
+        Podatke preverjamo vsak mesec, vsakega na strani izvajalca razpisa. Zadnje preverjanje:{' '}
+        {formatDate(preverjeno)}. Seznam ni popoln in ni pravni ali finančni nasvet: pred prijavo vedno
+        preberite razpisno dokumentacijo.
+      </p>
+      <nav class="jump" aria-label="Razdelki">
+        {SKUPINE.map((s) => <a href={`#${s.id}`}>{s.naslov} ({s.items.length})</a>)}
+      </nav>
+    </header>
+
+    {
+      SKUPINE.map((s) => (
+        <section class="skupina" id={s.id} aria-labelledby={`${s.id}-naslov`}>
+          <h2 id={`${s.id}-naslov`}>{s.naslov}</h2>
+          <p class="how">{s.opis}</p>
+          {s.items.map((r) => {
+            const closed = isClosed(r);
+            return (
+              <article
+                class:list={['razpis', { zaprt: closed }]}
+                id={r.id}
+                data-rok={r.data.status === 'odprt' && r.data.rok_datum ? r.data.rok_datum.toISOString().slice(0, 10) : undefined}
+              >
+                <p class="meta">
+                  <span class:list={['status', closed ? 'zaprt' : r.data.status]}>{closed ? 'Zaprto' : STATUS[r.data.status]}</span>
+                  <span>{VRSTA[r.data.vrsta]}</span>
+                  <span>{r.data.izvajalec}</span>
+                </p>
+                <h3>
+                  <a href={`#${r.id}`}>{r.data.naziv}</a>
+                </h3>
+                <dl>
+                  <dt>Kdo se lahko prijavi</dt>
+                  <dd>{r.data.kdo}</dd>
+                  <dt>Kaj se financira</dt>
+                  <dd>{r.data.kaj}</dd>
+                  <dt>Delež ali znesek</dt>
+                  <dd>{r.data.sredstva}</dd>
+                  <dt>Rok</dt>
+                  <dd class="rok">{r.data.rok}</dd>
+                  <dt>AI v razpisu</dt>
+                  <dd>{r.data.ai}</dd>
+                  {r.data.opomba && (
+                    <>
+                      <dt>Opomba</dt>
+                      <dd>{r.data.opomba}</dd>
+                    </>
+                  )}
+                </dl>
+                <p class="vir">
+                  Vir: <a href={r.data.vir}>{host(r.data.vir)}</a>
+                  {r.data.viri.map((url) => (
+                    <>
+                      {', '}
+                      <a href={url}>{host(url)}</a>
+                    </>
+                  ))}
+                  <span class="preverjeno"> · preverjeno {formatDate(r.data.preverjeno)}</span>
+                </p>
+              </article>
+            );
+          })}
+        </section>
+      ))
+    }
+
+    <section class="skupina" aria-labelledby="kje-naslov">
+      <h2 id="kje-naslov">Kje spremljati nove razpise</h2>
+      <p>
+        Vavčerje in razpise za podjetja objavlja{' '}
+        <a href="https://www.podjetniskisklad.si/">Slovenski podjetniški sklad</a>, razpise ministrstev
+        stran <a href="https://www.gov.si/zbirke/javne-objave/">Javne objave na gov.si</a>, slovenske
+        javne razpise pa tudi <a href="https://www.uradni-list.si/">Uradni list RS</a> v razglasnem delu.
+        Razpise za raziskave objavlja <a href="https://www.aris-rs.si/">ARIS</a>, za usposabljanje
+        zaposlenih pa <a href="https://www.srips-rs.si/">Javni štipendijski, razvojni, invalidski in
+        preživninski sklad</a>.
+      </p>
+      <p>
+        Slovenski podjetniški sklad v{' '}
+        <a href="https://www.podjetniskisklad.si/javni-razpisi-pozivi-programi/plan-objav-razpisov-in-pozivov/">načrtu objav za leto 2026</a>{' '}
+        nima razpisa za digitalno preobrazbo podjetij. Zadnji tak razpis,{' '}
+        <a href="https://www.podjetniskisklad.si/p4d-2025-spodbude-za-digitalno-transformacijo-msp/">P4D 2025</a>,
+        se je zaprl 7. maja 2025.
+      </p>
+      <p>
+        Če denar dobite za usposabljanje, si oglejte še{' '}
+        <a href="/vodniki/ai-tecaji-in-usposabljanja/">pregled AI tečajev in usposabljanj v Sloveniji</a>,
+        pred uvedbo AI v podjetje pa{' '}
+        <a href="/ai-act-preverjanje/">preverjanje obveznosti po Aktu o umetni inteligenci</a>.
+      </p>
+    </section>
+  </div>
+</Base>
+
+<script>
+  // Between builds, mark open calls whose deadline has passed.
+  const today = new Date().toISOString().slice(0, 10);
+  for (const el of document.querySelectorAll<HTMLElement>('.razpis[data-rok]')) {
+    if (el.dataset.rok! < today) {
+      el.classList.add('zaprt');
+      const status = el.querySelector('.status');
+      if (status) {
+        status.textContent = 'Rok je potekel';
+        status.className = 'status zaprt';
+      }
+    }
+  }
+</script>
+
+<style>
+  .how {
+    color: var(--muted);
+    margin: 12px 0 0;
+  }
+  .jump {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+  }
+  .jump a {
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 4px 12px;
+    font-size: 0.9rem;
+    text-decoration: none;
+  }
+  .skupina {
+    margin: 40px 0 0;
+    scroll-margin-top: 80px;
+  }
+  .skupina h2 {
+    margin-bottom: 0;
+  }
+  .razpis {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
+    padding: 18px 20px;
+    margin-top: 16px;
+    scroll-margin-top: 80px;
+  }
+  .razpis.zaprt {
+    background: transparent;
+  }
+  .razpis h3 {
+    margin: 6px 0 12px;
+    font-size: 1.1rem;
+    line-height: 1.35;
+  }
+  .razpis h3 a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .razpis h3 a:hover {
+    text-decoration: underline;
+  }
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  .status {
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .status.zaprt {
+    color: var(--muted);
+  }
+  .status.napovedan {
+    color: var(--t-oranzna);
+  }
+  dl {
+    display: grid;
+    grid-template-columns: 11em 1fr;
+    gap: 6px 16px;
+    margin: 0;
+    font-size: 0.95rem;
+  }
+  dt {
+    color: var(--muted);
+  }
+  dd {
+    margin: 0;
+  }
+  .vir {
+    margin: 14px 0 0;
+    font-size: 0.85rem;
+    color: var(--muted);
+    overflow-wrap: anywhere;
+  }
+  @media (max-width: 560px) {
+    dl {
+      grid-template-columns: 1fr;
+      gap: 2px;
+    }
+    dd {
+      margin-bottom: 8px;
+    }
+  }
+</style>

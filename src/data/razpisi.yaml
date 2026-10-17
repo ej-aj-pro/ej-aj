@@ -1,0 +1,335 @@
+# Javna sredstva in brezplačna podpora za AI v Sloveniji (stran /razpisi/).
+# Vsako dejstvo je s strani izvajalca (vir, viri): gov.si, podjetniskisklad.si, aris-rs.si,
+# srips-rs.si, Uradni list, europa.eu ali stran evropskega projekta. Nič iz novic, svetovalcev ali
+# spomina. Mesečno preverjanje: skill posodobi-modele, korak 2d. Zaprte razpise odstranimo približno
+# štiri mesece po roku. rok_datum je zadnji rok; po njem stran vnos sama pokaže kot zaprt.
+
+# Odprto
+
+- id: aris-crp-2026
+  naziv: Ciljni raziskovalni program CRP 2026
+  izvajalec: ARIS (skupaj z ministrstvi)
+  vrsta: razpis
+  status: odprt
+  kdo: >-
+    Raziskovalne organizacije in zasebni raziskovalci, vpisani pri ARIS. Vodja projekta mora imeti
+    doktorat. Podjetje lahko sodeluje le, če je vpisano v evidenco raziskovalnih organizacij pri
+    ARIS.
+  kaj: >-
+    Raziskovalni projekti na teme, ki jih potrebujejo ministrstva in drugi organi. Med njimi so
+    tudi teme o umetni inteligenci.
+  sredstva: Skupaj okvirno 5.431.100 EUR za vse teme.
+  rok: 17. november 2026 do 14.00
+  rok_datum: 2026-11-17
+  ai: >-
+    Da, pri nekaterih temah, na primer varstvo avtorskih pravic in osebnih podatkov pri velikih
+    jezikovnih modelih, smernice za njihovo rabo v javni upravi in asistent z velikim jezikovnim
+    modelom za podatke Geodetske uprave. Večina tem ni o AI.
+  vir: https://www.aris-rs.si/objave/razpisi/javni-razpis-za-izbiro-raziskovalnih-projektov-ciljnega-raziskovalnega-programa-crp-2026-v-letu-2026-2026-10-16
+  preverjeno: 2026-10-17
+
+- id: eic-accelerator
+  naziv: EIC Accelerator
+  izvajalec: Evropski svet za inovacije (Evropska komisija)
+  vrsta: razpis
+  status: odprt
+  kdo: >-
+    Posamezna zagonska ter mala in srednja podjetja iz EU ali držav, pridruženih programu Obzorje
+    Evropa, tudi posamezniki, ki šele ustanavljajo podjetje. Nekoliko večja podjetja (do 499
+    zaposlenih) lahko zaprosijo le za naložbo v kapital.
+  kaj: >-
+    Razvoj inovacije do trga, ko je izdelek že preizkušen v okolju, podobnem resničnemu. Najprej
+    oddate kratko prijavo, šele po njeni odobritvi polno prijavo.
+  sredstva: >-
+    Nepovratna sredstva do 2,5 milijona EUR, naložba v kapital od 1 do 10 milijonov EUR ali
+    oboje skupaj.
+  rok: >-
+    Kratka prijava kadar koli. Naslednji rok za polno prijavo je 4. november 2026, za leto 2027 roki
+    še niso objavljeni.
+  ai: Ni posebej omenjen. Razpis je odprt za vsa področja, tudi za AI.
+  vir: https://eic.ec.europa.eu/eic-funding-opportunities/eic-accelerator_en
+  preverjeno: 2026-10-17
+
+- id: digitalna-evropa-ai4sme
+  naziv: 'Digitalna Evropa: kibernetska varnost malih in srednjih podjetij z AI (CYBER-11-AI4SME)'
+  izvajalec: Evropski kompetenčni center za kibernetsko varnost (ECCC), program Digitalna Evropa
+  vrsta: razpis
+  status: odprt
+  kdo: >-
+    Pravne osebe iz EU ali Evropskega gospodarskega prostora (EGP), ki razvijajo ali uvajajo AI
+    orodja za kibernetsko varnost malih in srednjih podjetij. Prijavi se lahko posamezna
+    organizacija ali konzorcij. Organizacije ne smejo biti pod nadzorom iz držav zunaj EU in EGP.
+  kaj: >-
+    Razvoj in uvedba AI orodij, s katerimi mala in srednja podjetja obvladujejo tveganja, zaznajo
+    napade, se nanje odzovejo in o njih poročajo.
+  sredstva: Za to temo skupaj 20 milijonov EUR.
+  rok: 14. januar 2027 do 17.00 po bruseljskem času
+  rok_datum: 2027-01-14
+  ai: Da, AI je jedro razpisa.
+  vir: https://cybersecurity-centre.europa.eu/news/new-eccc-call-proposals-under-digital-europe-programme-open-applications-2026-09-01_en
+  viri:
+    - https://cybersecurity-centre.europa.eu/document/8e1d6074-95ed-4b23-8bd3-2ca42b096411_en
+    - https://digital-strategy.ec.europa.eu/en/funding/call-proposals-strengthening-cybersecurity-capacities-european-smes-cybersecure-ai-powered
+  preverjeno: 2026-10-17
+
+# Napovedano
+
+- id: aris-ai-manjsi-projekti
+  naziv: Podpora aplikativnim projektom manjših vrednosti na področju umetne inteligence
+  izvajalec: ARIS in Ministrstvo za notranje zadeve in javno upravo (prej Ministrstvo za digitalno preobrazbo)
+  vrsta: razpis
+  status: napovedan
+  kdo: >-
+    Po programu ukrepov ministrstva mikro, mala in srednja ter zagonska podjetja. Program dela ARIS
+    ciljno skupino opisuje širše (tudi večja podjetja, ki sodelujejo z raziskovalnimi
+    organizacijami), zato pogoje preverite ob objavi.
+  kaj: >-
+    AI rešitve v dveh korakih: najprej preizkus in prvi delujoči prototip, nato vključitev v
+    poslovne procese in preizkus v praksi.
+  sredstva: >-
+    Za obdobje 2026 do 2030 do 6,4 milijona EUR. Po programu ukrepov je sofinanciranje od 35 do
+    100 % upravičenih stroškov, odvisno od aktivnosti in vrste organizacije.
+  rok: Objava je predvidena v zadnjem četrtletju 2026.
+  ai: Da, razpis je namenjen samo AI.
+  opomba: >-
+    Zneski in pogoji so iz načrtovalnih dokumentov ministrstva in ARIS. V objavljenem razpisu se
+    lahko spremenijo.
+  vir: https://www.aris-rs.si/objave/razpisi/podpora-aplikativnim-projektom-manjsih-vrednosti-na-podrocju-umetne-inteligence-2026-12-31
+  viri:
+    - https://www.gov.si/assets/ministrstva/MNZJU/MDP/DDD/DDD-dokumenti/Program-ukrepov-spodbujanja-podjetnistva-MDP/Dopolnjen_program_ukrepov_MDP-V9_050126.pdf
+    - https://www.aris-rs.si/uploads/sl/finan/inc/PDFN2026_ARIS.pdf
+  preverjeno: 2026-10-17
+
+- id: aris-ai-inovacijski-projekti
+  naziv: Podpora inovacijskim projektom s področja umetne inteligence
+  izvajalec: ARIS in Ministrstvo za notranje zadeve in javno upravo (prej Ministrstvo za digitalno preobrazbo)
+  vrsta: razpis
+  status: napovedan
+  kdo: >-
+    Po programu ukrepov ministrstva srednja in velika podjetja v konzorcijih z drugimi podjetji in
+    raziskovalnimi organizacijami. Upravičenke so lahko tudi raziskovalne organizacije.
+  kaj: >-
+    Uvajanje AI v poslovanje pri rešitvah, ki so že blizu uporabe, na primer na področjih
+    energetike, okolja, kmetijstva, prometa, zdravstva in pametnih tovarn. Najprej preizkus, nato
+    izvedba.
+  sredstva: >-
+    Do 16.256.405,36 EUR iz programa evropske kohezijske politike za obdobje 2026 do 2029. Sofinanciranje do
+    60 % upravičenih stroškov, odvisno od vrste pomoči in regije.
+  rok: >-
+    Objava je predvidena v zadnjem četrtletju 2026 (v programu dela ARIS iz marca 2026 je bila
+    načrtovana za drugo četrtletje).
+  ai: Da, razpis je namenjen samo AI.
+  opomba: >-
+    Zneski in pogoji so iz načrtovalnih dokumentov ministrstva in ARIS. V objavljenem razpisu se
+    lahko spremenijo.
+  vir: https://www.aris-rs.si/objave/razpisi/podpora-inovacijskim-projektom-s-podrocja-umetne-inteligence-2026-12-31
+  viri:
+    - https://www.gov.si/assets/ministrstva/MNZJU/MDP/DDD/DDD-dokumenti/Program-ukrepov-spodbujanja-podjetnistva-MDP/Dopolnjen_program_ukrepov_MDP-V9_050126.pdf
+    - https://www.aris-rs.si/uploads/sl/finan/inc/PDFN2026_ARIS.pdf
+  preverjeno: 2026-10-17
+
+- id: mk-digitalizacija-slovenscine
+  naziv: Digitalizacija slovenščine
+  izvajalec: Ministrstvo za kulturo
+  vrsta: razpis
+  status: napovedan
+  kdo: >-
+    Raziskovalne organizacije in javni zavodi s področja kulture. Podjetja kot prijavitelji niso
+    navedena.
+  kaj: >-
+    Jezikovne tehnologije ter podatkovni in jezikovni viri za slovenščino, ki podpirajo razvoj in
+    rabo AI v slovenskem jeziku.
+  sredstva: 3.700.000 EUR, od tega 2.345.800 EUR iz EU.
+  rok: >-
+    Ministrstvo je objavo napovedalo za september 2026 (portal evropskasredstva.si navaja 30. april
+    2026). Do dneva preverjanja razpis ni bil objavljen.
+  ai: Da, razpis podpira razvoj in rabo AI za slovenščino.
+  vir: https://www.gov.si/drzavni-organi/ministrstva/ministrstvo-za-kulturo/javne-objave/napoved-predvidenih-javnih-razpisov-in-pozivov-ministrstva-za-kulturo
+  viri:
+    - https://evropskasredstva.si/razpisi/napovedan
+  preverjeno: 2026-10-17
+
+- id: sps-v11-kibernetska-varnost
+  naziv: Vavčer za kibernetsko varnost (V11)
+  izvajalec: Slovenski podjetniški sklad
+  vrsta: vavcer
+  status: napovedan
+  kdo: Po načrtu objav sklad vse spodbude v letu 2026 namenja mikro, malim in srednjim podjetjem.
+  kaj: Stroški za boljšo kibernetsko varnost podjetja.
+  sredstva: Do 9.999,99 EUR na podjetje, skupaj 2,5 milijona EUR.
+  rok: Objava je predvidena v drugi polovici leta 2026. Sklad si pridržuje pravico do spremembe.
+  ai: Ne, vavčer je za kibernetsko varnost. Navajamo ga, ker je edini napovedani digitalni vavčer sklada.
+  vir: https://www.podjetniskisklad.si/javni-razpisi-pozivi-programi/plan-objav-razpisov-in-pozivov/
+  preverjeno: 2026-10-17
+
+- id: slaif
+  naziv: SLAIF, slovenska tovarna umetne inteligence
+  izvajalec: Konzorcij, ki ga vodi IZUM, z univerzami, IJS, Arnesom, GZS in Tehnološkim parkom Ljubljana (sofinancirata EuroHPC in Slovenija)
+  vrsta: storitev
+  status: napovedan
+  kdo: Podjetja, tudi mala in srednja ter zagonska, javne ustanove in raziskovalci.
+  kaj: >-
+    Načrtovane storitve: svetovanje, dostop do superračunalnikov, vnaprej naučeni modeli in
+    podatkovni nabori, oblačne AI storitve, usposabljanja in hekatoni.
+  sredstva: >-
+    Projekt storitev tovarne je vreden 11.680.000 EUR (brez superračunalnika). Ali bo dostop za
+    podjetja brezplačen, na straneh projekta ni navedeno.
+  rok: >-
+    Projekt traja od 1. septembra 2025 do 31. avgusta 2028. Javnega poziva za dostop še ni, SLING
+    podjetjem svetuje, naj povpraševanje za vire in storitve SLAIF pošljejo na podpora@sling.si.
+  ai: Da, projekt je namenjen AI.
+  opomba: Do takrat podjetja dostop do superračunalnika Vega dobijo prek SLING (glejte spodaj).
+  vir: https://www.sling.si/slaif/
+  viri:
+    - https://www.tp-lj.si/en/projects/slaif-the-slovenian-artificial-intelligence-factory-2025-11-18
+    - https://www.sling.si/podpora/za-industrijo/
+  preverjeno: 2026-10-17
+
+# Podpora brez roka
+
+- id: edih-digi-si
+  naziv: EDIH DIGI-SI 2.0, evropsko digitalno inovacijsko stičišče
+  izvajalec: Konzorcij, ki ga vodi Digitalno inovacijsko stičišče Slovenije (program Digitalna Evropa)
+  vrsta: storitev
+  status: stalno
+  kdo: Mala in srednja podjetja, zagonska podjetja in organizacije javnega sektorja v Sloveniji.
+  kaj: >-
+    Preizkus pred naložbo (dostop do AI infrastrukture, testno okolje za AI agente), ocena
+    digitalne zrelosti, načrt digitalne preobrazbe, delavnice, svetovanje glede Akta o umetni
+    inteligenci in pomoč pri iskanju financiranja.
+  sredstva: >-
+    Cene storitev na strani niso navedene. Projekt je vreden 2.836.999,07 EUR, polovico krije EU,
+    do polovice Ministrstvo za notranje zadeve in javno upravo.
+  rok: Brez roka. Projekt traja od 1. aprila 2026 do 31. marca 2029.
+  ai: Da, več storitev je namenjenih AI.
+  vir: https://digi-si.eu/storitve
+  viri:
+    - https://digi-si.eu/o-nas
+  preverjeno: 2026-10-17
+
+- id: src-edih
+  naziv: SRC-EDIH 2.0, evropsko digitalno inovacijsko stičišče
+  izvajalec: Razvojni center Novo mesto s partnerji
+  vrsta: storitev
+  status: stalno
+  kdo: Mikro, mala in srednja podjetja, predvsem proizvodna.
+  kaj: >-
+    Preizkus poslovne ideje v testnih okoljih z AI rešitvami, usposabljanja, svetovanje glede
+    Akta o umetni inteligenci in pomoč pri prijavah na razpise.
+  sredstva: Po navedbah stičišča so storitve za mala in srednja podjetja brezplačne.
+  rok: Brez roka.
+  ai: Da, AI je eno glavnih področij stičišča.
+  vir: https://src-edih.si/storitve/testiranje
+  viri:
+    - https://src-edih.si/pomoc
+    - https://src-edih.si/o-projektu
+  preverjeno: 2026-10-17
+
+- id: eurohpc-ai-factories
+  naziv: 'EuroHPC AI Factories: dostop do grafičnih procesorjev za AI'
+  izvajalec: Skupno podjetje EuroHPC (EU)
+  vrsta: poziv
+  status: stalno
+  kdo: >-
+    Podjetja, tudi mala in srednja ter zagonska. Raziskovalci in javni sektor imajo svoj način
+    dostopa.
+  kaj: >-
+    Računalniški čas na evropskih superračunalnikih za učenje in preizkušanje AI modelov. Za
+    začetnike dostop za 1 do 3 mesece v dveh delovnih dneh, za srednje potrebe do 50.000 ur
+    grafičnih procesorjev, za večje projekte več.
+  sredstva: Za AI mala in srednja podjetja ter zagonska podjetja je dostop brezplačen.
+  rok: >-
+    Manjši dostop brez roka, vloge se obravnavajo po vrstnem redu. Za več kot 50.000 ur sta roka
+    dvakrat na mesec, odobritev pride v 10 delovnih dneh po roku.
+  ai: Da, dostop je namenjen AI.
+  vir: https://www.eurohpc-ju.europa.eu/ai-factories/ai-factories-access-modes_en
+  viri:
+    - https://www.eurohpc-ju.europa.eu/playground-access-ai-factories_en
+    - https://www.eurohpc-ju.europa.eu/ai-factories/ai-factories-access-modes/fast-lane-access-ai-factories_en
+    - https://www.eurohpc-ju.europa.eu/large-scale-access-ai-factories_en
+  preverjeno: 2026-10-17
+
+- id: sling-vega
+  naziv: Pilotni dostop za gospodarstvo do superračunalnika Vega
+  izvajalec: SLING, slovenska superračunalniška mreža
+  vrsta: storitev
+  status: stalno
+  kdo: Podjetja, ki želijo preizkusiti superračunalnik.
+  kaj: >-
+    Pilotni dostop do superračunalnika Vega, ocena pripravljenosti podjetja na superračunalništvo,
+    usposabljanja ter za izbrana mala in srednja podjetja pomoč pri prijavah na razpise.
+  sredstva: >-
+    Pilotni dostop do 2.000 ur procesorskih ali 400 ur grafičnih vozlišč. Ocena pripravljenosti in
+    usposabljanja so brezplačni, za pilotni dostop stran cene ne navaja.
+  rok: Brez roka.
+  ai: Delno. SLING omenja rabo superračunalnika za AI in podjetja usmerja tudi k virom in storitvam SLAIF.
+  vir: https://www.sling.si/podpora/za-industrijo/
+  viri:
+    - https://www.sling.si/razpisi-za-odprti-dostop-in-rabo-virov/
+  preverjeno: 2026-10-17
+
+# Nedavno zaprto
+
+- id: srips-koc-2026-2029
+  naziv: Kompetenčni centri za razvoj kadrov (KOC 2026 do 2029)
+  izvajalec: Javni štipendijski, razvojni, invalidski in preživninski sklad RS
+  vrsta: razpis
+  status: zaprt
+  kdo: >-
+    Partnerstvo vsaj 15 mikro, malih in srednjih podjetij, eno od njih je prijavitelj. Posamezno
+    podjetje se ni moglo prijaviti samo.
+  kaj: >-
+    Usposabljanje zaposlenih v malih in srednjih podjetjih. Najmanj 20 % usposabljanj mora biti
+    za digitalne ali zelene kompetence.
+  sredstva: >-
+    Skupaj 14.577.560 EUR za 20 centrov, največ 728.878 EUR na partnerstvo. Pri usposabljanjih
+    50 % stroškov, za srednja podjetja do 60 %, za mikro in mala do 70 %.
+  rok: 18. september 2026 (rok je bil podaljšan s 3. septembra). Izbor še ni objavljen.
+  rok_datum: 2026-09-18
+  ai: Ne. Razpis omenja digitalne kompetence, AI posebej ne.
+  vir: https://www.srips-rs.si/vsi-razpisi/razpis/jr-koc-2026-2029
+  preverjeno: 2026-10-17
+
+- id: aris-inovacijski-vavcerji-2026
+  naziv: Inovacijski vavčerji 2026
+  izvajalec: ARIS
+  vrsta: vavcer
+  status: zaprt
+  kdo: >-
+    Mikro, mala in srednja podjetja, registrirana kot gospodarske družbe, ki za razvoj naročijo
+    storitve pri javno financiranih raziskovalnih organizacijah.
+  kaj: >-
+    Raziskovalne in razvojne storitve za nov ali izboljšan izdelek, proces ali storitev, na
+    primer meritve, preizkusi, analize, modeliranje in simulacije.
+  sredstva: >-
+    Do 50 % upravičenih stroškov, od 10.000 do 25.000 EUR na vavčer. Skupaj 1.000.000 EUR.
+  rok: 10. junij in 10. september 2026
+  rok_datum: 2026-09-10
+  ai: Ne, AI ni omenjen. Vavčer pa lahko pokrije storitve raziskovalne organizacije tudi pri razvoju AI rešitve.
+  vir: https://www.aris-rs.si/objave/razpisi/javni-razpis-inovacijski-vavcerji-2026-kratica-javnega-poziva-jr-vavcerji-2026-05-12
+  preverjeno: 2026-10-17
+
+- id: jr-ddk-2026-2028
+  naziv: Brezplačna izobraževanja o digitalnih kompetencah za odrasle (JR DDK 2026 do 2028)
+  izvajalec: Ministrstvo za digitalno preobrazbo (njegove naloge je prevzelo Ministrstvo za notranje zadeve in javno upravo)
+  vrsta: razpis
+  status: zaprt
+  kdo: >-
+    Prijavljali so se izvajalci izobraževanj. Za udeležence, prebivalce Slovenije, stare 30 let
+    ali več, so izobraževanja brezplačna.
+  kaj: >-
+    Neformalna izobraževanja o digitalnih kompetencah. Vsaj 10 % vsakega programa mora biti o AI
+    in novih tehnologijah.
+  sredstva: >-
+    Okvirno 6.513.654,99 EUR, največ 500.000 EUR na vlogo. Izvajalec dobi 1.512 EUR za skupino z
+    12 pedagoškimi urami.
+  rok: >-
+    Rok za izvajalce je bil 6. julij 2026, izobraževanja lahko potekajo do 27. oktobra 2028.
+    Seznama izbranih izvajalcev ob preverjanju nismo našli.
+  rok_datum: 2026-07-06
+  ai: Da, vsaj 10 % vsebine vsakega programa.
+  opomba: >-
+    Zaposleni, stari 30 let ali več, se lahko na ta izobraževanja prijavijo sami. Povprašajte pri
+    lokalnih izvajalcih izobraževanja odraslih.
+  vir: https://www.gov.si/assets/ministrstva/MNZJU/MDP/DDD/DDD-dokumenti/JR-DDK-2026-2028/RD-JR-DDK_2026-2028-v2.docx
+  preverjeno: 2026-10-17
