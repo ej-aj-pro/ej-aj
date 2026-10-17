@@ -63,8 +63,10 @@ export function sortPlans(plans: Plan[]) {
   });
 }
 
-const whole = new Intl.NumberFormat('sl-SI', { maximumFractionDigits: 0 });
-const cents = new Intl.NumberFormat('sl-SI', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+// useGrouping 'always': the Slovenian locale leaves four-digit numbers ungrouped (4080), the site
+// writes 4.080.
+const whole = new Intl.NumberFormat('sl-SI', { maximumFractionDigits: 0, useGrouping: 'always' });
+const cents = new Intl.NumberFormat('sl-SI', { minimumFractionDigits: 2, maximumFractionDigits: 2, useGrouping: 'always' });
 // 23 €, 21,99 €, 13,60 € (never 13,6 €).
 const money = { format: (v: number) => (Number.isInteger(v) ? whole : cents).format(v) };
 

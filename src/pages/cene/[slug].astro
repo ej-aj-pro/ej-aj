@@ -106,6 +106,12 @@ const faq = [
           <section class="block">
             <h2>{g.title}</h2>
             <NarocnineTabela plans={rows} />
+            {g.key === 'podjetje' && (
+              <p class="narrow">
+                Strošek za celotno ekipo in primerjavo z drugimi orodji izračunate v{' '}
+                <a href="/cene/kalkulator/">kalkulatorju stroškov</a>.
+              </p>
+            )}
           </section>
         );
       })
