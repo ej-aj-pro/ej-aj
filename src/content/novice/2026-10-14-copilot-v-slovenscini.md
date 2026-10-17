@@ -24,10 +24,24 @@ Posodobljena aplikacija Copilot je na voljo od 18. avgusta 2026. V njej se prija
 
 V praksi ločimo štiri primere:
 
-1. Brezplačni Copilot za osebno rabo, z osebnim Microsoftovim računom.
-2. Copilot v naročninah Microsoft 365 Personal, Family in Premium za gospodinjstva.
-3. Microsoft Copilot Chat, ki je brez doplačila vključen v poslovne pakete Microsoft 365.
-4. Plačljivi Microsoft 365 Copilot (zdaj Microsoft Copilot), dodatek na uporabnika za podjetja.
+```grafika
+vrsta: kartice
+naslov: Štirje Copiloti in kako so zaščiteni podatki
+kartice:
+  - naslov: Brezplačni Copilot
+    ton: siva
+    opis: Za osebno rabo, z osebnim Microsoftovim računom. Pravila zaščite službenega računa zanj ne veljajo.
+  - naslov: Copilot v Microsoft 365 za gospodinjstva
+    ton: siva
+    opis: V naročninah Personal (99 € na leto), Family (129 € na leto) in Premium (219 € na leto). Funkcije AI ima samo lastnik naročnine. Pozivov in datotek Microsoft ne uporablja za učenje modelov, zaščita podatkov za podjetja pa ne velja.
+  - naslov: Microsoft Copilot Chat
+    ton: zelena
+    opis: Brez doplačila vključen v poslovne pakete Microsoft 365, tudi v Business Basic. S službenim računom velja zaščita podatkov za podjetja.
+  - naslov: Plačljivi Microsoft 365 Copilot (zdaj Microsoft Copilot)
+    ton: zelena
+    opis: Dodatek na uporabnika za podjetja. Microsoft 365 Copilot Business (k paketu Business, do 300 uporabnikov) stane 18,20 € na uporabnika na mesec ob letni obvezi, brez DDV, dodatek za velika podjetja pa 26,00 €. Odgovarja tudi iz službenih podatkov.
+vir: Microsoftove strani, navedene v razdelkih spodaj
+```
 
 **Kaj to pomeni za vas:** po naši oceni je ob vprašanju "ali imamo Copilot" najprej treba preveriti, s katerim računom ste prijavljeni. Isto ime pomeni zelo različno zaščito podatkov.
 
