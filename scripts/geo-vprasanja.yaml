@@ -1,0 +1,87 @@
+# Questions for scripts/geo-meritve.mjs: how often AI assistants with web search cite ej-aj.si.
+# Written the way a Slovenian user would type them into ChatGPT, Claude, Gemini or Perplexity.
+# Keep the list stable between runs, otherwise the monthly numbers can't be compared; add new
+# questions at the end and remove a question only when its page is gone.
+#
+# id: short and stable (results are compared by id)
+# vprasanje: the question as a user would ask it
+# cilj: the page on ej-aj.si that answers it (to see whether the right page gets cited)
+
+- id: chatgpt-cena
+  vprasanje: Koliko stane ChatGPT Plus v evrih?
+  cilj: /cene/chatgpt/
+- id: claude-cena
+  vprasanje: Koliko stane Claude Pro v Sloveniji?
+  cilj: /cene/claude/
+- id: copilot-cena
+  vprasanje: Koliko stane Microsoft 365 Copilot za podjetje?
+  cilj: /cene/microsoft-copilot/
+- id: brezplacna-orodja
+  vprasanje: Katera AI orodja lahko uporabljam brezplačno in kakšne so omejitve?
+  cilj: /vodniki/brezplacna-ai-orodja/
+- id: chatgpt-slovenscina
+  vprasanje: Kako nastavim ChatGPT, da dela v slovenščini?
+  cilj: /vodniki/chatgpt-v-slovenscini/
+- id: ai-slovenscina
+  vprasanje: Kateri AI klepetalnik najbolje zna slovensko?
+  cilj: /vodniki/kako-dobro-ai-zna-slovensko/
+- id: chatgpt-claude-gemini
+  vprasanje: ChatGPT, Claude ali Gemini, kaj naj izberem za malo podjetje?
+  cilj: /vodniki/chatgpt-claude-ali-gemini/
+- id: izbira-orodja
+  vprasanje: Kako izbrati AI orodje za podjetje?
+  cilj: /vodniki/kako-izbrati-ai-orodje-za-podjetje/
+- id: ai-act
+  vprasanje: Kaj AI Act pomeni za slovenska mala podjetja?
+  cilj: /vodniki/ai-act-za-slovenska-podjetja/
+- id: ai-pismenost
+  vprasanje: Ali moram zaposlene usposobiti za AI pismenost po AI Act?
+  cilj: /vodniki/ai-pismenost-zaposlenih/
+- id: pravila-rabe
+  vprasanje: Imate predlogo za pravila rabe umetne inteligence v podjetju?
+  cilj: /vodniki/predloga-pravil-rabe-ai/
+- id: varna-raba
+  vprasanje: Ali je varno vnašati podatke strank v ChatGPT?
+  cilj: /vodniki/varna-raba-ai-v-podjetju/
+- id: racunovodstvo
+  vprasanje: Kako lahko računovodski servis uporablja umetno inteligenco?
+  cilj: /vodniki/ai-v-racunovodstvu/
+- id: odvetniki
+  vprasanje: Ali smejo odvetniki v Sloveniji uporabljati ChatGPT?
+  cilj: /vodniki/ai-za-pravnike-in-odvetnike/
+- id: zaznavalniki
+  vprasanje: Ali AI detektorji delujejo za slovenska besedila?
+  cilj: /vodniki/zaznavalniki-ai-besedila/
+- id: slike
+  vprasanje: S katerim AI orodjem lahko ustvarim slike in ali jih smem uporabiti v oglasu?
+  cilj: /vodniki/ai-za-ustvarjanje-slik/
+- id: excel-word
+  vprasanje: Kako uporabljati umetno inteligenco v Excelu in Wordu?
+  cilj: /vodniki/ai-v-excelu-wordu-outlooku/
+- id: kaj-je-ai
+  vprasanje: Kaj je umetna inteligenca in kako deluje? Razloži preprosto.
+  cilj: /vodniki/kaj-je-umetna-inteligenca/
+- id: model-za-nalogo
+  vprasanje: Kateri AI model je najboljši za pisanje, kateri za programiranje in kateri za analizo podatkov?
+  cilj: /vodniki/kateri-model-za-kaj/
+- id: odpoved-narocnine
+  vprasanje: Kako odpovem naročnino na ChatGPT Plus?
+  cilj: /vodniki/odpoved-narocnine-ai/
+- id: claude-skills
+  vprasanje: Kaj so Claude skills in kako jih naredim?
+  cilj: /vodniki/claude-skills/
+- id: statistika-podjetja
+  vprasanje: Koliko slovenskih podjetij uporablja umetno inteligenco?
+  cilj: /statistika/
+- id: klepetalniki-slovenija
+  vprasanje: Kateri AI klepetalnik je najbolj uporabljen v Sloveniji?
+  cilj: /statistika/klepetalniki-po-drzavah/
+- id: rag
+  vprasanje: Kaj je RAG pri umetni inteligenci?
+  cilj: /slovar/rag/
+- id: novice
+  vprasanje: Kje lahko berem tedenske novice o umetni inteligenci v slovenščini?
+  cilj: /novice/
+- id: viri
+  vprasanje: Kateri so dobri slovenski viri o umetni inteligenci za podjetja?
+  cilj: /

@@ -23,6 +23,7 @@
     "esbuild": true
   },
   "devDependencies": {
+    "@anthropic-ai/sdk": "^0.133.0",
     "docx": "^9.7.2",
     "pagefind": "1.5.2"
   }

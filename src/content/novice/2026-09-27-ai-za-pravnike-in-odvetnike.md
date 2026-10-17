@@ -1,5 +1,5 @@
 ---
-title: 'AI za pravnike in odvetnike: kaj dovoljuje odvetniška tajnost in kako začeti'
+title: 'Umetna inteligenca za pravnike in odvetnike: kaj dovoljuje odvetniška tajnost in kako začeti'
 description: 'Za odvetniške pisarne in pravne službe: kje AI pri delu pomaga, kaj o tem pravita Zakon o odvetništvu in CCBE, zakaj je izmišljena sodna praksa resno tveganje in kako začeti.'
 date: 2026-09-27
 type: vodnik

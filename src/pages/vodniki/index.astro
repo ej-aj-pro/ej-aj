@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import Motiv from '../../components/Motiv.astro';
 import { getPosts, postPath } from '../../lib';
 import { formatDate } from '../../site';
 
@@ -26,14 +27,17 @@ const handbookCount = (await getPosts()).filter((p) => p.data.serija === 'priroc
     <ul class="post-list">
       {
         guides.map((post) => (
-          <li>
-            <div class="meta">
-              <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
+          <li class="z-motivom">
+            <Motiv post={post} class="motiv-mini" />
+            <div>
+              <div class="meta">
+                <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
+              </div>
+              <h2>
+                <a href={postPath(post)}>{post.data.title}</a>
+              </h2>
+              <p>{post.data.description}</p>
             </div>
-            <h2>
-              <a href={postPath(post)}>{post.data.title}</a>
-            </h2>
-            <p>{post.data.description}</p>
           </li>
         ))
       }

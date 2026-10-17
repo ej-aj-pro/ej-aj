@@ -19,7 +19,8 @@ Stanje: 3. oktober 2026.
 | `/videi/` | priporočeni videi (YouTube, naloži se šele ob kliku) | `src/data/videi.yaml` |
 | `/slovar/`, `/slovar/<id>/` | 54 izrazov, vsak s svojo stranjo | `src/data/slovar.yaml` |
 | `/o-projektu/`, `/zasebnost/` (še v PR #7) | | |
-| `/rss.xml`, `/llms.txt`, `/sitemap-index.xml` | generirano | |
+| `/rss.xml`, `/llms.txt`, `/llms-full.txt`, `/sitemap-index.xml` | generirano | |
+| `/vodniki/<slug>.md`, `/novice/<id>.md` | članek v Markdownu za AI pomočnike (GEO, `docs/seo.md`) | |
 
 Objavljeno (25 člankov): tedenski pregled #1, 2 novičarska članka (`type: clanek`: Claude Sonnet
 5.5, nov Microsoft Copilot s Home, Code in Autopilot), 12 samostojnih vodnikov (AI Act, varna raba,
@@ -107,8 +108,8 @@ slovar. Analitika: Cloudflare Web Analytics (brez piškotkov).
 
 ## Odprto
 
-0. **HTTPS** je urejen (13. 10. `http://ej-aj.si` vrne 301). Search Console je vključen in
-   povezan; po 14. 10. iz njega izberi teme (glej `docs/seo.md`).
+0. **HTTPS:** urejeno, `http://ej-aj.si` 13. 10. vrne 301 na https. Odprt je še pregled v
+   Search Console po 14. 10. (glej `docs/seo.md`).
 1. **Newsletter** (PR #7 objavljen 29. 9.): Buttondown, uporabnik `ej-aj`, račun noc.anze@gmail.com,
    brezplačni paket. Ime ej-aj.si, barva #1f3bd6, odgovori na pozdrav@ej-aj.si, slovenska noga.
    Slovenščine Buttondown ne podpira, potrditveni mail je v angleščini (lastno besedilo zahteva

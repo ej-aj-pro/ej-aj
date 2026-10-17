@@ -17,6 +17,11 @@ const novice = defineCollection({
     // Series of guides with a hub page, e.g. "prirocnik" -> /prirocnik/; korak orders them.
     serija: z.enum(['prirocnik']).optional(),
     korak: z.number().optional(),
+    // Topic illustration on cards and lists (src/data/motivi.mjs); chosen from the file name when
+    // left out.
+    motiv: z
+      .enum(['zakon', 'varnost', 'ljudje', 'sola', 'stavba', 'dokument', 'kalkulator', 'klepet', 'jezik', 'slika', 'predvajanje', 'koda', 'novice', 'cip', 'kljukica', 'zvezek', 'denar'])
+      .optional(),
     // YouTube ids from src/data/videi.yaml, shown as recommended videos under the article.
     videi: z.array(z.string()).default([]),
     // Podcast episode the article summarises, shown as a card with its cover above the text.
@@ -105,4 +110,16 @@ const narocnine = defineCollection({
   }),
 });
 
-export const collections = { novice, slovar, modeli, narocnine, videi };
+// Prompt templates for /prompti/ (src/data/prompti.yaml).
+const prompti = defineCollection({
+  loader: file('src/data/prompti.yaml'),
+  schema: z.object({
+    kategorija: z.enum(['pisanje', 'dokumenti', 'podatki', 'ucenje', 'ai']),
+    naslov: z.string(),
+    za_kaj: z.string(),
+    prompt: z.string(),
+    nasvet: z.string().optional(),
+  }),
+});
+
+export const collections = { novice, slovar, modeli, narocnine, videi, prompti };
