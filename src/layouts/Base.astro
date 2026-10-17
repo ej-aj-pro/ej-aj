@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import '../styles/grafike.css';
 import { SITE } from '../site';
 import Ikona from '../components/Ikona.astro';
 
@@ -15,9 +16,11 @@ interface Props {
   jsonLd?: Record<string, unknown>[];
   /** Share image path (1200x630), e.g. "/og/<id>.png". Defaults to the site image. */
   image?: string;
+  /** Path of the page's plain Markdown copy (articles), announced with rel="alternate". */
+  markdown?: string;
 }
 
-const { title, description = SITE.description, type = 'website', published, modified, jsonLd = [], image = '/og.png' } = Astro.props;
+const { title, description = SITE.description, type = 'website', published, modified, jsonLd = [], image = '/og.png', markdown } = Astro.props;
 // Search results show about 60 characters of a title; long titles drop the site name suffix so
 // the words that describe the page are the ones that stay visible.
 const fullTitle = !title ? `${SITE.domain}: AI novice, vodniki in cene AI orodij v slovenščini` : title.length > 52 ? title : `${title} | ${SITE.name}`;
@@ -40,7 +43,14 @@ const siteLd = [
     '@type': 'Organization',
     '@id': `${Astro.site}#avtor`,
     name: SITE.domain,
-    url: new URL('/o-projektu/', Astro.site).toString(),
+    url: Astro.site?.toString(),
+    description: SITE.description,
+    logo: { '@type': 'ImageObject', url: new URL('/icon-512.png', Astro.site).toString(), width: 512, height: 512 },
+    // How content is made and checked; search and answer engines read it as the editorial policy.
+    publishingPrinciples: new URL('/o-projektu/', Astro.site).toString(),
+    sameAs: ['https://github.com/ej-aj-pro/ej-aj'],
+    areaServed: { '@type': 'Country', name: 'Slovenija' },
+    knowsAbout: ['umetna inteligenca', 'generativna umetna inteligenca', 'AI Act', 'cene AI orodij'],
   },
 ];
 const path = Astro.url.pathname;
@@ -65,6 +75,7 @@ const nav = [
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="alternate" type="application/rss+xml" title={SITE.name} href="/rss.xml" />
+    {markdown && <link rel="alternate" type="text/markdown" href={markdown} />}
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta property="og:type" content={type} />
     <meta property="og:title" content={fullTitle} />

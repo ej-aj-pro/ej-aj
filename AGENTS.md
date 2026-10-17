@@ -44,6 +44,8 @@ Read it at the start of every session.
   repo Anže appears by first name only, never with his surname.
 - Slovenian number format: `1.500`, `0,10 USD`, `40 %`.
 - Separate fact (what was announced) from interpretation (**Kaj to pomeni za vas:**).
+- Visual aids: timelines, decision steps and card rows are written as ```grafika blocks in the
+  Markdown (`docs/grafike.md`); their facts are fact-checked like the text.
 
 ## Accuracy rules
 

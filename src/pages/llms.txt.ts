@@ -18,6 +18,8 @@ export const GET: APIRoute = async ({ site }) => {
     '',
     `> ${SITE.tagline}. ${SITE.description} Vsebina je v slovenščini, vsaka novica ima vir.`,
     '',
+    `Vsak članek ima tudi različico v Markdownu na istem naslovu s končnico .md namesto zadnje poševnice (na primer ${abs('/vodniki/brezplacna-ai-orodja.md')}). Vsi članki in slovar v eni datoteki: ${abs('/llms-full.txt')}.`,
+    '',
     '## Glavne strani',
     '',
     `- [Začnite tukaj](${abs('/zacnite/')}): vodniki po vrsti za začetnike, za tiste, ki AI že uporabljajo, za podjetja, ki ga uvajajo, in za ustvarjalce slik in videov.`,

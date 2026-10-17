@@ -6,7 +6,7 @@ import Podcast from '../components/Podcast.astro';
 import Video from '../components/Video.astro';
 import Base from './Base.astro';
 import Newsletter from '../components/Newsletter.astro';
-import { getPosts, postPath, relatedPosts } from '../lib';
+import { getPosts, postMarkdownPath, postPath, relatedPosts } from '../lib';
 import { SITE, TYPE_LABEL, formatDate } from '../site';
 
 interface Props {
@@ -50,6 +50,7 @@ const image = existsSync(`public/og/${post.id}.png`) ? `/og/${post.id}.png` : '/
   published={post.data.date}
   modified={post.data.updated}
   image={image}
+  markdown={postMarkdownPath(post)}
   jsonLd={[
     {
       '@context': 'https://schema.org',
