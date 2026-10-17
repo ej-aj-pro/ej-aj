@@ -13,9 +13,12 @@ const all = (await getCollection('narocnine')).filter((p) => p.data.za === 'podj
 const priced = all.filter((p) => p.data.cena_mesec !== null || p.data.cena_letno !== null);
 const onRequest = all.filter((p) => p.data.cena_mesec === null && p.data.cena_letno === null);
 const slugOf = (produkt: string) => PRODUCTS.find((x) => x.produkt === produkt)?.slug;
-// "Microsoft Copilot" + "Microsoft 365 Copilot Business" would repeat the product name.
-const label = (produkt: string, paket: string) =>
-  paket.includes(produkt.split(' ').at(-1)!) ? paket : `${produkt} ${paket}`;
+// Reader-facing product name from PRODUCTS (Mistral Le Chat is now Vibe), without repeating it
+// when the plan name already contains it ("Microsoft 365 Copilot Business").
+const label = (produkt: string, paket: string) => {
+  const ime = PRODUCTS.find((x) => x.produkt === produkt)?.ime.replace(/ \(.*\)$/, '') ?? produkt;
+  return paket.includes(ime.split(' ').at(-1)!) ? paket : `${ime} ${paket}`;
+};
 const rows = priced.map((p) => ({
   id: p.id,
   ime: label(p.data.produkt, p.data.paket),
