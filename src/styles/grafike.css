@@ -1,0 +1,343 @@
+/* Topic illustrations on cards and lists (src/components/Motiv.astro) and visuals inside
+   articles (src/markdown/grafike.mjs). Tones reuse the chart palette from grafi.css, which is
+   checked for colour blindness; text stays in --ink and --muted for contrast, tones only colour
+   icons, bands and borders. */
+:root {
+  --t-modra: #2a78d6;
+  --t-oranzna: #eb6834;
+  --t-zelena: #1baf7a;
+  --t-rumena: #eda100;
+  --t-roza: #e87ba4;
+  --t-rdeca: #d6453d;
+  --t-siva: #8a8f9b;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --t-modra: #3987e5;
+    --t-oranzna: #d95926;
+    --t-zelena: #199e70;
+    --t-rumena: #c98500;
+    --t-roza: #d55181;
+    --t-rdeca: #e0645c;
+    --t-siva: #7d828d;
+  }
+}
+
+/* Topic illustration */
+.motiv {
+  display: grid;
+  place-items: center;
+  color: var(--ton);
+  background: color-mix(in srgb, var(--ton) 13%, var(--surface));
+}
+.motiv svg {
+  width: 44px;
+  height: 44px;
+}
+
+/* Cards with an illustration band on top */
+.card.card-motiv {
+  padding: 0;
+  overflow: hidden;
+  gap: 0;
+}
+.card-cover {
+  display: block;
+  text-decoration: none;
+}
+.card-cover .motiv {
+  height: 92px;
+  border-bottom: 1px solid var(--line);
+}
+.card-cover:hover .motiv svg {
+  transform: scale(1.06);
+}
+.card-cover .motiv svg {
+  transition: transform 0.2s ease;
+}
+.card-body {
+  padding: 18px 22px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Lists: a small square next to each entry */
+.post-list li.z-motivom {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 16px;
+  align-items: start;
+}
+.motiv-mini {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  margin-top: 2px;
+}
+.motiv-mini svg {
+  width: 28px;
+  height: 28px;
+}
+@media (max-width: 480px) {
+  .post-list li.z-motivom {
+    grid-template-columns: 44px 1fr;
+    gap: 12px;
+  }
+  .motiv-mini {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+  }
+  .motiv-mini svg {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+/* Visuals inside articles */
+.grafika {
+  font-family: var(--font);
+  margin: 28px 0 32px;
+  padding: 20px 20px 16px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.grafika .grafika-naslov {
+  font-weight: 650;
+  font-size: 1.02rem;
+  line-height: 1.4;
+  margin: 0 0 16px;
+}
+.grafika p,
+.grafika ul,
+.grafika ol {
+  margin: 0;
+}
+@media (max-width: 480px) {
+  .grafika {
+    padding: 16px 14px 14px;
+    margin: 24px 0 28px;
+  }
+  .grafika-koraki > li {
+    padding: 12px 12px 12px 46px;
+  }
+}
+.grafika .grafika-vir {
+  margin-top: 14px;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+/* Timeline: a vertical line with dots, dates on top */
+.grafika-casovnica {
+  list-style: none;
+  padding: 0;
+  position: relative;
+}
+.grafika-casovnica::before {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  background: color-mix(in srgb, var(--t-modra) 35%, var(--line));
+}
+.grafika-casovnica > li {
+  position: relative;
+  padding: 0 0 18px 30px;
+}
+.grafika-casovnica > li:last-child {
+  padding-bottom: 0;
+}
+.grafika-casovnica > li::before {
+  content: '';
+  position: absolute;
+  left: 1px;
+  top: 4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 2px solid var(--t-modra);
+}
+.grafika-casovnica > li.velja::before {
+  background: var(--t-modra);
+}
+.grafika-casovnica > li.prihaja::before {
+  border-color: var(--t-siva);
+}
+.grafika-datum {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-weight: 650;
+  font-size: 0.95rem;
+}
+.grafika-casovnica p {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-top: 2px;
+}
+.grafika-casovnica > li.prihaja .grafika-oznaka {
+  color: var(--muted);
+  background: color-mix(in srgb, var(--t-siva) 14%, var(--surface));
+}
+.grafika-oznaka {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--t-modra);
+  background: color-mix(in srgb, var(--t-modra) 12%, var(--surface));
+  border-radius: 999px;
+  padding: 1px 8px;
+}
+
+/* Decision steps: numbered boxes joined by arrows, yes/no below each question */
+.grafika-koraki {
+  list-style: none;
+  padding: 0;
+  counter-reset: korak;
+}
+.grafika-koraki > li {
+  counter-increment: korak;
+  position: relative;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px 14px 12px 50px;
+  background: var(--bg);
+}
+.grafika-koraki > li + li {
+  margin-top: 26px;
+}
+.grafika-koraki > li + li::after {
+  content: '';
+  position: absolute;
+  left: 26px;
+  top: -22px;
+  height: 18px;
+  border-left: 2px solid var(--line);
+}
+.grafika-koraki > li::before {
+  content: counter(korak);
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--surface);
+  background: var(--t-modra);
+}
+.grafika-vprasanje {
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.45;
+}
+.grafika-veje {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 10px;
+}
+@media (max-width: 560px) {
+  .grafika-veje {
+    grid-template-columns: 1fr;
+  }
+}
+.grafika-veja {
+  font-size: 0.92rem;
+  line-height: 1.45;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border-left: 3px solid var(--t-siva);
+  background: var(--surface);
+}
+.grafika-veja.da {
+  border-left-color: var(--t-oranzna);
+}
+.grafika-veja.ne {
+  border-left-color: var(--t-zelena);
+}
+.grafika-veja.naprej {
+  color: var(--muted);
+}
+.grafika-konec {
+  margin-top: 14px !important;
+  padding: 12px 14px;
+  border-radius: 12px;
+  font-weight: 600;
+  background: color-mix(in srgb, var(--t-oranzna) 12%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--t-oranzna) 40%, var(--line));
+}
+
+/* Cards: one column on phones, up to four side by side */
+.grafika-kartice {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 620px) {
+  .grafika-kartice[data-stevilo='2'],
+  .grafika-kartice[data-stevilo='4'] {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grafika-kartice[data-stevilo='3'] {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.grafika-kartice > li {
+  --ton: var(--t-siva);
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--ton);
+  border-radius: 12px;
+  padding: 12px 14px 14px;
+  background: var(--bg);
+}
+.grafika-kartice > li.ton-zelena { --ton: var(--t-zelena); }
+.grafika-kartice > li.ton-rumena { --ton: var(--t-rumena); }
+.grafika-kartice > li.ton-rdeca { --ton: var(--t-rdeca); }
+.grafika-kartice > li.ton-modra { --ton: var(--t-modra); }
+.grafika-kartica-naslov {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  font-size: 0.98rem;
+  line-height: 1.35;
+  margin-bottom: 6px;
+}
+.grafika-kartice p {
+  font-size: 0.92rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+.grafika-kartice ul {
+  padding-left: 18px;
+  margin-top: 6px;
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+.grafika-kartice ul li + li {
+  margin-top: 3px;
+}
+
+.grafika-znak {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  margin-top: -1px;
+  padding: 2px;
+  border-radius: 50%;
+  color: #fff;
+  background: var(--ton);
+}

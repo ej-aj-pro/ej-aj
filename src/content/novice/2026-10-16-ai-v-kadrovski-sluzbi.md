@@ -67,6 +67,19 @@ Priloga III AI Act (seznam področij, kjer je raba AI visoko tvegana) v 4. točk
 
 Člen 6(3) določa izjeme. Sistem ni visoko tvegan, če ne predstavlja znatnega tveganja za zdravje, varnost ali temeljne pravice in bistveno ne vpliva na izid odločitve, na primer ker opravlja le ozko postopkovno nalogo, izboljša že opravljeno človeško delo, išče vzorce ali odstopanja od prejšnjih odločitev, ne da bi nadomestil človeško presojo, ali opravi le pripravljalno nalogo. Ponudnik mora tako oceno dokumentirati. Izjema ne velja, kadar sistem profilira ljudi, torej iz njihovih podatkov samodejno ocenjuje na primer delovno uspešnost, zanesljivost ali vedenje. Tak sistem je vedno visoko tvegan.
 
+```grafika
+vrsta: odlocitev
+naslov: Ali je vaše orodje za kadrovsko službo po AI Act visoko tvegano?
+koraki:
+  - vprasanje: "Ali je orodje namenjeno izbiri kandidatov ali odločanju o zaposlenih: ciljnemu objavljanju oglasov (komu se oglas prikaže), analizi in filtriranju prijav, ocenjevanju kandidatov, odločanju o pogojih dela, napredovanju ali odpovedi, dodeljevanju nalog glede na vedenje ali osebne lastnosti ali spremljanju in ocenjevanju dela in vedenja zaposlenih?"
+    ne: "Ni visoko tvegana raba po 4. točki Priloge III. Sem ne sodi na primer pisanje besedila oglasa s klepetalnikom. GDPR in ZDR-1 veljata še vedno."
+  - vprasanje: Ali orodje profilira ljudi, torej iz njihovih podatkov samodejno ocenjuje na primer delovno uspešnost, zanesljivost ali vedenje?
+    da: "Visoko tvegano, izjema po členu 6(3) ne velja. Od 2. decembra 2027 veljajo obveznosti uvajalca (človeški nadzor, dnevniki, obveščanje delavcev in kandidatov)."
+  - vprasanje: "Ali orodje bistveno ne vpliva na izid odločitve, ker opravlja le eno od teh nalog: ozko postopkovno nalogo, izboljša že opravljeno človeško delo, išče vzorce ali odstopanja od prejšnjih odločitev, ne da bi nadomestilo človeško presojo, ali opravi le pripravljalno nalogo?"
+    da: Lahko gre za izjemo po členu 6(3). Ponudnik mora tako oceno dokumentirati, zato jo od njega zahtevajte.
+konec: "Visoko tvegano: od 2. decembra 2027 veljajo obveznosti uvajalca (človeški nadzor, dnevniki, obveščanje delavcev in kandidatov)."
+```
+
 Zakaj je ta raba strogo urejena, kaže primer, o katerem je leta 2018 poročala agencija Reuters. Amazon je preizkušal orodje, ki je ocenjevalo življenjepise, naučeno pa je bilo na prijavah iz desetih let, večinoma moških. Po poročanju Reutersa je orodje slabše ocenjevalo življenjepise z besedo "women's" (ženski, na primer kapetanka ženskega šahovskega kluba). Kadroviki se po navedbah virov niso zanašali samo na njegove ocene, podjetje pa je projekt opustilo.
 
 Julija 2026 je začel veljati AI Omnibus, del svežnja sprememb Digital Omnibus, s katerim je EU spremenila AI Act. Po njem se pravila za visoko tvegane sisteme iz Priloge III začnejo uporabljati 2. decembra 2027. Od takrat mora podjetje, ki tak sistem uporablja (AI Act ga imenuje uvajalec), med drugim:
