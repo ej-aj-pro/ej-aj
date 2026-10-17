@@ -1,0 +1,206 @@
+---
+import Base from '../layouts/Base.astro';
+import Newsletter from '../components/Newsletter.astro';
+import { getPosts, guideSlug, postPath } from '../lib';
+
+// Reading paths through existing guides. Titles and descriptions come from the articles, so this
+// page adds no claims of its own. A slug that no longer exists fails the build.
+const PATHS = [
+  {
+    id: 'zacetniki',
+    naslov: 'Z AI šele začenjate',
+    opis: 'Za vse, ki AI še niso uporabljali ali so ga le nekajkrat poskusili. Tehnično predznanje ni potrebno.',
+    vodniki: [
+      'kaj-je-umetna-inteligenca',
+      'brezplacna-ai-orodja',
+      'chatgpt-v-slovenscini',
+      'copilot-v-slovenscini',
+      'kako-uporabljati-chatgpt-in-claude',
+      'kako-napisati-dober-prompt',
+      'varna-raba-ai-v-podjetju',
+    ],
+    se: [
+      { href: '/slovar/', label: 'AI slovar: izrazi, razloženi po domače' },
+      { href: '/vodniki/ai-tecaji-in-usposabljanja/', label: 'Tečaji in usposabljanja za AI v Sloveniji' },
+    ],
+  },
+  {
+    id: 'napredni',
+    naslov: 'AI že uporabljate in želite več',
+    opis: 'Za tiste, ki AI uporabljajo vsak dan in želijo boljše odgovore, manj ponavljanja in agente, ki delo opravijo sami.',
+    vodniki: [
+      'kateri-model-za-kaj',
+      'chatgpt-claude-ali-gemini',
+      'kontekst-podjetja-za-ai',
+      'gemini-notebook-notebooklm',
+      'claude-code-ali-klepet',
+      'claude-skills',
+      'rutine-claude',
+      'lasten-ai-agent',
+    ],
+    se: [
+      { href: '/prirocnik/', label: 'Celoten priročnik o Claudu (10 korakov)' },
+      { href: '/modeli/', label: 'Modeli in cene API' },
+    ],
+  },
+  {
+    id: 'podjetja',
+    naslov: 'AI uvajate v podjetje',
+    opis: 'Za vodje in skrbnike, ki izbirajo orodje, pišejo pravila in pripravljajo zaposlene.',
+    vodniki: [
+      'kako-izbrati-ai-orodje-za-podjetje',
+      'varna-raba-ai-v-podjetju',
+      'ai-act-za-slovenska-podjetja',
+      'predloga-pravil-rabe-ai',
+      'ai-pismenost-zaposlenih',
+      'ai-tecaji-in-usposabljanja',
+      'kako-preveriti-ali-ai-deluje',
+    ],
+    se: [
+      { href: '/vodniki/ai-v-racunovodstvu/', label: 'Računovodstvo z umetno inteligenco' },
+      { href: '/vodniki/ai-za-pravnike-in-odvetnike/', label: 'Umetna inteligenca za pravnike in odvetnike' },
+      { href: '/vodniki/ai-v-kadrovski-sluzbi/', label: 'Kadrovska služba in umetna inteligenca' },
+      { href: '/vodniki/ai-v-javni-upravi/', label: 'Javni uslužbenci in AI' },
+      { href: '/vodniki/ai-v-soli/', label: 'Umetna inteligenca v šoli' },
+      { href: '/vodniki/ai-v-excelu-wordu-outlooku/', label: 'Excel, Word in Outlook z umetno inteligenco' },
+    ],
+  },
+  {
+    id: 'ustvarjalci',
+    naslov: 'Ustvarjate slike, video ali besedila',
+    opis: 'Za tiste, ki z AI pripravljajo vsebine, in za vse, ki jih zanima, ali se AI besedilo da prepoznati.',
+    vodniki: ['ai-za-ustvarjanje-slik', 'ai-za-video-glasbo-in-glas', 'ai-prevajalniki-za-slovenscino', 'zaznavalniki-ai-besedila'],
+    se: [],
+  },
+];
+
+const guides = (await getPosts()).filter((p) => p.data.type === 'vodnik');
+const paths = PATHS.map((path) => ({
+  ...path,
+  vodniki: path.vodniki.map((slug) => {
+    const post = guides.find((p) => guideSlug(p.id) === slug);
+    if (!post) throw new Error(`zacnite.astro: no guide with slug "${slug}"`);
+    return post;
+  }),
+}));
+const digest = (await getPosts()).find((p) => p.data.type === 'tedenski-pregled');
+---
+
+<Base
+  search={false}
+  title="Začnite tukaj: vodniki o AI po predznanju"
+  description="Kje začeti z umetno inteligenco: vodniki po vrsti za začetnike, za tiste, ki AI že uporabljajo, za podjetja, ki ga uvajajo, in za ustvarjalce slik in videov."
+>
+  <div class="wrap narrow">
+    <header class="article-head">
+      <span class="eyebrow">Začnite tukaj</span>
+      <h1>Kje začeti z AI</h1>
+      <p class="lede">
+        Izberite pot glede na to, koliko AI že uporabljate. Vodnike na vsaki poti je najlažje brati
+        po vrsti, vsak pa je razumljiv tudi sam.
+      </p>
+      <nav class="jump" aria-label="Poti">
+        {paths.map((p) => <a href={`#${p.id}`}>{p.naslov}</a>)}
+      </nav>
+    </header>
+
+    {
+      paths.map((path) => (
+        <section class="pot" id={path.id} aria-labelledby={`${path.id}-naslov`}>
+          <h2 id={`${path.id}-naslov`}>{path.naslov}</h2>
+          <p class="pot-opis">{path.opis}</p>
+          <ol class="koraki">
+            {path.vodniki.map((post) => (
+              <li>
+                <a href={postPath(post)}>{post.data.title}</a>
+                <p>{post.data.description}</p>
+              </li>
+            ))}
+          </ol>
+          {path.se.length > 0 && (
+            <p class="se">
+              Še:{' '}
+              {path.se.map((link, i) => (
+                <>
+                  {i > 0 && ' · '}
+                  <a href={link.href}>{link.label}</a>
+                </>
+              ))}
+            </p>
+          )}
+        </section>
+      ))
+    }
+
+    <section class="pot" aria-labelledby="tekoce-naslov">
+      <h2 id="tekoce-naslov">Novice</h2>
+      <p class="pot-opis">
+        Tedenski pregled povzame AI novice tedna in pri vsaki pove, kaj pomeni za vas.
+        {digest && (
+          <>
+            {' '}Zadnji: <a href={postPath(digest)}>{digest.data.title}</a>.
+          </>
+        )}
+      </p>
+      <Newsletter />
+    </section>
+  </div>
+</Base>
+
+<style>
+  .jump {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+  }
+  .jump a {
+    font-size: 0.92rem;
+    padding: 6px 12px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    text-decoration: none;
+    background: var(--surface);
+  }
+  .jump a:hover {
+    border-color: var(--accent);
+  }
+  .pot {
+    margin: 48px 0 0;
+    scroll-margin-top: 80px;
+  }
+  .pot h2 {
+    font-size: 1.5rem;
+    margin: 0 0 6px;
+  }
+  .pot-opis {
+    color: var(--muted);
+    margin: 0 0 16px;
+  }
+  .koraki {
+    margin: 0;
+    padding-left: 1.4em;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .koraki a {
+    font-weight: 650;
+    line-height: 1.35;
+  }
+  .koraki p {
+    margin: 4px 0 0;
+    font-size: 0.92rem;
+    color: var(--muted);
+  }
+  /* The sticky header wraps to two rows on phones. */
+  @media (max-width: 560px) {
+    .pot {
+      scroll-margin-top: 150px;
+    }
+  }
+  .se {
+    margin: 16px 0 0;
+    font-size: 0.95rem;
+  }
+</style>
