@@ -1,5 +1,5 @@
 ---
-title: 'AI za video, glasbo in glas: orodja, cene in katera podpirajo slovenščino'
+title: 'Video, glasba in glas z AI: orodja, cene in katera podpirajo slovenščino'
 description: 'Pregled AI orodij za ustvarjanje videov, glasbe, govora in prepisov: Gemini, Runway, Kling, Synthesia, HeyGen, Suno, ElevenLabs, Truebar. Cene, pravice in slovenščina.'
 date: 2026-10-03
 type: vodnik

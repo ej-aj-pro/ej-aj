@@ -35,23 +35,29 @@ Priporočila Informacijskega pooblaščenca so napisana za javne uslužbence, ve
 
 Praktična razdelitev v tri skupine:
 
-**Nikoli, ne glede na paket:**
-
-- gesla, dostopni ključi (API ključi, s katerimi programi dostopajo do storitev), podatki za prijavo v bančne in druge sisteme,
-- podatki, zaščiteni s poklicno tajnostjo, če tega ne dovoljujejo pravila vašega poklica (na primer odvetniki in zdravniki),
-- posebne vrste osebnih podatkov iz člena 9 GDPR brez jasne pravne podlage: zdravje, rasno ali etnično poreklo, politično mnenje, versko ali filozofsko prepričanje, članstvo v sindikatu, genetski podatki, biometrični podatki za edinstveno identifikacijo, spolno življenje ali usmerjenost.
-
-**Samo v poslovnem paketu s pogodbo o obdelavi in po internih pravilih:**
-
-- osebni podatki strank, zaposlenih in kandidatov (imena, maili, telefonske številke, EMŠO, naslovi),
-- pogodbe, ponudbe, cene in drugi dokumenti, označeni kot poslovna skrivnost,
-- interni dokumenti, ki niso namenjeni javnosti.
-
-**Brez težav v katerem koli paketu:**
-
-- javno objavljena besedila (vaša spletna stran, objavljeni članki),
-- splošna vprašanja brez podatkov o konkretnih ljudeh ali podjetjih,
-- lastna besedila brez zaupnih vsebin (osnutek objave, struktura predstavitve).
+```grafika
+vrsta: kartice
+naslov: Kateri podatki smejo v AI orodje
+kartice:
+  - naslov: Nikoli, ne glede na paket
+    ton: rdeca
+    tocke:
+      - Gesla, dostopni ključi (API ključi, s katerimi programi dostopajo do storitev), podatki za prijavo v bančne in druge sisteme.
+      - Podatki, zaščiteni s poklicno tajnostjo, če tega ne dovoljujejo pravila vašega poklica (na primer odvetniki in zdravniki).
+      - "Posebne vrste osebnih podatkov iz člena 9 GDPR brez jasne pravne podlage: zdravje, rasno ali etnično poreklo, politično mnenje, versko ali filozofsko prepričanje, članstvo v sindikatu, genetski podatki, biometrični podatki za edinstveno identifikacijo, spolno življenje ali usmerjenost."
+  - naslov: Samo v poslovnem paketu s pogodbo o obdelavi in po internih pravilih
+    ton: rumena
+    tocke:
+      - Osebni podatki strank, zaposlenih in kandidatov (imena, maili, telefonske številke, EMŠO, naslovi).
+      - Pogodbe, ponudbe, cene in drugi dokumenti, označeni kot poslovna skrivnost.
+      - Interni dokumenti, ki niso namenjeni javnosti.
+  - naslov: Brez težav v katerem koli paketu
+    ton: zelena
+    tocke:
+      - Javno objavljena besedila (vaša spletna stran, objavljeni članki).
+      - Splošna vprašanja brez podatkov o konkretnih ljudeh ali podjetjih.
+      - Lastna besedila brez zaupnih vsebin (osnutek objave, struktura predstavitve).
+```
 
 Za poklicne tajnosti je dober zgled Svet evropskih odvetniških zbornic (CCBE), ki je oktobra 2025 odvetnikom svetoval, naj v orodja generativne AI ne vnašajo osebnih ali zaupnih podatkov stranke, razen če so zagotovljena ustrezna zaščita, na primer pogodbena zaveza zaupnosti, pogodba o obdelavi ali delovanje v lokalnem, zavarovanem okolju. Slovenski Zakon o odvetništvu odvetniku nalaga, da kot tajnost varuje vse, kar mu je zaupala stranka, Zakon o zdravniški službi pa zdravniku, da varuje podatke o zdravstvenem stanju bolnika.
 

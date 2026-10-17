@@ -3,6 +3,7 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import { satteri } from '@astrojs/markdown-satteri';
 import slovarPovezave from './src/markdown/slovar-povezave.mjs';
+import grafike from './src/markdown/grafike.mjs';
 import { readdirSync, readFileSync } from 'node:fs';
 import yaml from 'js-yaml';
 
@@ -30,6 +31,6 @@ export default defineConfig({
     }),
   ],
   markdown: {
-    processor: satteri({ mdastPlugins: [slovarPovezave] }),
+    processor: satteri({ mdastPlugins: [grafike, slovarPovezave] }),
   },
 });
