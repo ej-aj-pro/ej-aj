@@ -74,4 +74,6 @@ Drugi prompt je daljši, a pove, kdo je stranka, kdo bo bral, kaj je pomembno, i
 - [ ] Ali je jasno, kakšno obliko in dolžino želim?
 - [ ] Ali piše, kaj naj AI naredi, ko podatka nima?
 
+Predloge za pogoste naloge, napisane po teh pravilih, so zbrane na strani [Predloge promptov](/prompti/).
+
 Ko imate dober prompt za nalogo, ki se ponavlja, ga ne pišite vsakič znova. Shranite ga v projekt ali skill, kot je opisano v naslednjih delih priročnika.

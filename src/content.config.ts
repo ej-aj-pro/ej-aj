@@ -110,4 +110,16 @@ const narocnine = defineCollection({
   }),
 });
 
-export const collections = { novice, slovar, modeli, narocnine, videi };
+// Prompt templates for /prompti/ (src/data/prompti.yaml).
+const prompti = defineCollection({
+  loader: file('src/data/prompti.yaml'),
+  schema: z.object({
+    kategorija: z.enum(['pisanje', 'dokumenti', 'podatki', 'ucenje', 'ai']),
+    naslov: z.string(),
+    za_kaj: z.string(),
+    prompt: z.string(),
+    nasvet: z.string().optional(),
+  }),
+});
+
+export const collections = { novice, slovar, modeli, narocnine, videi, prompti };
