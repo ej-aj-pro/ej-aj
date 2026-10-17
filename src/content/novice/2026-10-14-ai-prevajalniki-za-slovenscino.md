@@ -1,5 +1,5 @@
 ---
-title: 'AI prevajalniki za slovenščino: DeepL, Google Translate, ChatGPT, Claude in slovenski prevajalnik'
+title: 'Prevajalniki z AI za slovenščino: DeepL, Google Translate, ChatGPT, Claude in slovenski prevajalnik'
 description: 'Kaj ponujajo DeepL, Google Translate, Microsoft, ChatGPT, Claude in Gemini pri prevajanju v slovenščino, katera javna orodja so na voljo in kako varno prevedete zaupen dokument.'
 date: 2026-10-14
 type: vodnik

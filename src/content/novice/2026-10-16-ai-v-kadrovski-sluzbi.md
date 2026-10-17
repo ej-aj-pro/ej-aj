@@ -1,5 +1,5 @@
 ---
-title: 'AI v kadrovski službi: za kaj ga lahko uporabite in kje veljajo omejitve zakona'
+title: 'Kadrovska služba in umetna inteligenca: kje prihrani čas in kje zakon postavlja meje'
 description: 'Kje AI kadrovikom prihrani čas, kateri podatki o kandidatih in zaposlenih ne sodijo v klepetalnik in kaj AI Act, GDPR in ZDR-1 pravijo o izbiri kandidatov z AI.'
 date: 2026-10-16
 type: vodnik
