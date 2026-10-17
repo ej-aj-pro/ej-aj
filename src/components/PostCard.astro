@@ -2,6 +2,7 @@
 import type { CollectionEntry } from 'astro:content';
 import { TYPE_LABEL, formatDate } from '../site';
 import { postPath } from '../lib';
+import Motiv from './Motiv.astro';
 
 interface Props {
   post: CollectionEntry<'novice'>;
@@ -10,11 +11,14 @@ interface Props {
 const { post } = Astro.props;
 ---
 
-<article class="card">
-  <div class="meta">
-    <span class="tag">{TYPE_LABEL[post.data.type]}</span>
-    <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
+<article class="card card-motiv">
+  <a class="card-cover" href={postPath(post)} tabindex="-1" aria-hidden="true"><Motiv post={post} /></a>
+  <div class="card-body">
+    <div class="meta">
+      <span class="tag">{TYPE_LABEL[post.data.type]}</span>
+      <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
+    </div>
+    <h3><a href={postPath(post)}>{post.data.title}</a></h3>
+    <p>{post.data.description}</p>
   </div>
-  <h3><a href={postPath(post)}>{post.data.title}</a></h3>
-  <p>{post.data.description}</p>
 </article>

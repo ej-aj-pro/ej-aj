@@ -367,6 +367,17 @@
     uvajajo postopoma v več letih.
   glej: [zasebnost-podatkov]
 
+- id: algoritmicno-upravljanje
+  izraz: Algoritmično upravljanje
+  angl: Algorithmic management
+  razlaga: >-
+    Raba programov in AI za naloge, ki jih sicer opravljajo vodje: razporejanje dela in
+    izmen, spremljanje uspešnosti ali predlaganje odločitev o zaposlenih. Ker vpliva na
+    delovne pogoje, ga EU posebej ureja pri delu prek spletnih platform, AI Act pa
+    sisteme za zaposlovanje, dodeljevanje nalog ter spremljanje in ocenjevanje zaposlenih
+    uvršča med visoko tvegane.
+  glej: [ai-act, umetna-inteligenca]
+
 - id: chatgpt
   izraz: ChatGPT
   razlaga: >-
@@ -441,6 +452,17 @@
     ročno. Primer: filter neželene pošte, ki se iz tisočih označenih sporočil nauči prepoznati
     nove.
   glej: [globoko-ucenje, umetna-inteligenca]
+
+- id: casovna-vrsta
+  izraz: Časovna vrsta
+  angl: Time series
+  razlaga: >-
+    Zaporedje meritev istega podatka, običajno v enakih časovnih presledkih, na primer dnevna prodaja,
+    mesečne zaloge ali urna poraba energije. Modeli za napovedovanje časovnih vrst iz
+    preteklih vrednosti ocenijo, kako se bo podatek gibal naprej. Za to se uporabljajo
+    statistične metode in modeli strojnega učenja, ki so praviloma precej manjši od
+    jezikovnih modelov.
+  glej: [strojno-ucenje, parametri]
 
 - id: globoko-ucenje
   izraz: Globoko učenje

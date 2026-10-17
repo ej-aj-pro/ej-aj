@@ -1,5 +1,5 @@
 ---
-title: 'AI za ustvarjanje slik: orodja, cene, avtorske pravice in označevanje'
+title: 'Ustvarjanje slik z AI: orodja, cene, avtorske pravice in označevanje'
 description: 'Pregled AI orodij za slike: ChatGPT, Gemini, Midjourney, Adobe Firefly, Canva, Ideogram in druga. Cene, brezplačni paketi, komercialna raba, avtorske pravice in vodni žigi.'
 date: 2026-10-03
 type: vodnik
