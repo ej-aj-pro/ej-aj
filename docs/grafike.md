@@ -76,5 +76,6 @@ and a tone in `motivi.mjs`.
 ## Development note
 
 Worktrees share `node_modules` (a symlink to the main checkout), and Astro keeps its content
-cache in `node_modules/.astro`. After changing a Markdown plugin, delete that folder, or the
-build reuses the old rendering of unchanged articles.
+cache in `node_modules/.astro`; the dev server also keeps `.astro/data-store.json` in the
+worktree. After changing a Markdown plugin, delete both, or the build and the dev server reuse
+the old rendering of unchanged articles.
