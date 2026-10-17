@@ -10,7 +10,7 @@ const { compact = false } = Astro.props;
 
 {
   SITE.newsletterAction && (
-    <section class:list={['newsletter', { compact }]} aria-labelledby="newsletter-title">
+    <section class:list={['newsletter', { compact }]} aria-labelledby="newsletter-title" data-pagefind-ignore>
       <div>
         <h2 id="newsletter-title">AI novice na e-mail</h2>
         <p>

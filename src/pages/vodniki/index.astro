@@ -8,7 +8,7 @@ const guides = (await getPosts()).filter((p) => p.data.type === 'vodnik' && !p.d
 const handbookCount = (await getPosts()).filter((p) => p.data.serija === 'prirocnik').length;
 ---
 
-<Base
+<Base search={false}
   title="Vodniki: kako uporabljati AI v podjetju"
   description="Praktični vodniki o umetni inteligenci za slovenska podjetja: pravila, orodja in postopki, korak za korakom."
 >

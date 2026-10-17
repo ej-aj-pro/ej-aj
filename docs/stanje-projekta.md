@@ -78,6 +78,13 @@ slovar. Analitika: Cloudflare Web Analytics (brez piškotkov).
   Letnice na strani se berejo iz podatkov, razlagalne povedi pa je treba ob novih podatkih preveriti.
 - Grafi na `/statistika/` so v čistem SVG brez knjižnic (`src/scripts/grafi.ts`); paleta je
   preverjena za barvno slepoto, barve so CSS spremenljivke na `.viz`.
+- **Iskanje** (`/iskanje/`): Pagefind zgradi indeks po `astro build` (skripta `build` v
+  `package.json`), zato v `npm run dev` iskanje ne deluje; preizkusi ga z `npm run build` in
+  `npm run preview`. Indeksira se `<main>`; `Base` ima `search={false}` za strani s seznami
+  (naslovnica, /novice/, /vodniki/, /slovar/) in `searchType` za filter "Vrsta". Ponavljajoče se
+  bloke (Preberite še, newsletter, kazalo) izključi `data-pagefind-ignore`. Slovenskega krnjenja
+  Pagefind nima, zato `src/pages/iskanje.astro` iskanim besedam odreže eno končnico, Pagefind pa
+  vsako besedo išče kot začetek ("naročnina" najde naročnine, naročnino ...).
 - Validator: `node scripts/preveri.mjs --links <datoteka>`; CI ga poganja ob vsakem PR-ju in blokira
   `[DOPOLNI: ...]` v straneh. Lokalno v peskovniku povezave vrnejo "fetch failed"; preveri jih CI.
 - Predogled delovne kopije: `.claude/launch.json` kaže na glavni checkout. Za worktree začasno dodaj
@@ -110,9 +117,8 @@ slovar. Analitika: Cloudflare Web Analytics (brez piškotkov).
    Buttondownu (`/Users/anze/Desktop/Claude/ej-aj/ej-aj-newsletter/2026-09-29.md`), pošlje ga Anže. Brez stalnega urnika,
    zato besedilo ne obljublja "vsak petek". Odprto: pošiljanje z `newsletter@ej-aj.si` (sending
    domain v Buttondownu, DNS v Cloudflare, Email Routing za ta naslov; Anže je odobril).
-2. **Rutini** sta od 26. 9. 2026 ustvarjeni v tej instanci (glej spodaj). Anže naj stari v instanci
-   DIA izklopi in novi prvič požene z "Run now", da se shranijo odobritve orodij. Prvi zagoni:
-   posodobitev modelov 1. oktobra, tedenski pregled #2 2. oktobra.
+2. **Rutini** tečeta v drugi Claude instanci (Anže, 13. 10. 2026). Kopiji v tej instanci sta
+   namenoma izklopljeni; ne predlagaj ponovnega vklopa.
 3. **Tabela naročnin:** Microsoft je še v USD (obstajajo slovenske cene v EUR), Mistral Team po
    francoski ceni (za Slovenijo 30,49 €). Popravi ju mesečna rutina 1. oktobra; skill to že ve.
 4. E-pošta `pozdrav@ej-aj.si` se preusmerja na anze999@gmail.com (Cloudflare Email Routing).
@@ -202,7 +208,7 @@ Trends; brez podatkov o obsegu iskanj):
 5. **Search Console**: čez nekaj tednov pogledati, kateri iskalni nizi prinašajo obiske (Anže
    mora dovoliti delo v svojem Chrome profilu).
 6. **Vodniki iz Anžetovih zapiskov** (skill `nov-vodnik`), ko bo v `/Users/anze/Desktop/Claude/ej-aj/ej-aj-inbox/` kaj.
-7. Iskanje (Pagefind): s 25 članki se približujemo meji približno 30.
+7. ~~Iskanje (Pagefind)~~ (13. 10., stran `/iskanje/`, glej Tehnika).
 
 ## Rutine (za ponovno ustvarjanje)
 

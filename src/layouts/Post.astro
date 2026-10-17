@@ -50,6 +50,7 @@ const image = existsSync(`public/og/${post.id}.png`) ? `/og/${post.id}.png` : '/
   published={post.data.date}
   modified={post.data.updated}
   image={image}
+  searchType={post.data.type === 'vodnik' ? 'Vodnik' : 'Novica'}
   markdown={postMarkdownPath(post)}
   jsonLd={[
     {
@@ -78,7 +79,7 @@ const image = existsSync(`public/og/${post.id}.png`) ? `/og/${post.id}.png` : '/
 >
   <article class="wrap narrow">
     <header class="article-head">
-      <div class="meta">
+      <div class="meta" data-pagefind-ignore>
         <span class="tag">{TYPE_LABEL[post.data.type]}</span>
         <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
         {post.data.updated && (
@@ -93,7 +94,7 @@ const image = existsSync(`public/og/${post.id}.png`) ? `/og/${post.id}.png` : '/
     </header>
     {
       toc.length >= 4 && (
-        <nav class="toc" aria-label="Vsebina">
+        <nav class="toc" aria-label="Vsebina" data-pagefind-ignore>
           <strong>Vsebina</strong>
           <ol>
             {toc.map((h) => (
@@ -111,7 +112,7 @@ const image = existsSync(`public/og/${post.id}.png`) ? `/og/${post.id}.png` : '/
     </div>
     {
       videos.length > 0 && (
-        <section class="post-videos">
+        <section class="post-videos" data-pagefind-ignore>
           <h2>{videos.length === 1 ? 'Priporočen video' : videos.length === 2 ? 'Priporočena videa' : 'Priporočeni videi'}</h2>
           {videos.map((v) => (
             <Video video={v} />
@@ -121,7 +122,7 @@ const image = existsSync(`public/og/${post.id}.png`) ? `/og/${post.id}.png` : '/
     }
     {
       series.length > 0 && (
-        <nav class="series-nav" aria-label="Priročnik">
+        <nav class="series-nav" aria-label="Priročnik" data-pagefind-ignore>
           <a class="series-hub" href="/prirocnik/">
             Priročnik: korak {at + 1} od {series.length}
           </a>
@@ -146,7 +147,7 @@ const image = existsSync(`public/og/${post.id}.png`) ? `/og/${post.id}.png` : '/
     }
     {
       related.length > 0 && (
-        <section class="related-posts" aria-labelledby="preberite-se">
+        <section class="related-posts" aria-labelledby="preberite-se" data-pagefind-ignore>
           <h2 id="preberite-se">Preberite še</h2>
           <ul>
             {related.map((r) => (
@@ -159,7 +160,7 @@ const image = existsSync(`public/og/${post.id}.png`) ? `/og/${post.id}.png` : '/
         </section>
       )
     }
-    <p class="disclosure">
+    <p class="disclosure" data-pagefind-ignore>
       Pri pripravi je pomagal AI (Claude). Vsako trditev smo preverili pri navedenem viru, besedilo
       je pred objavo pregledal in uredil {SITE.author}. Ste opazili napako?
       <a href="https://github.com/ej-aj-pro/ej-aj/issues">Sporočite jo na GitHubu</a>.

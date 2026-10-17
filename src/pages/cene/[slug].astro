@@ -60,7 +60,7 @@ const faq = [
 ];
 ---
 
-<Base
+<Base searchType="Cene"
   title={title}
   description={description}
   jsonLd={[
@@ -152,7 +152,7 @@ const faq = [
       </p>
     </section>
 
-    <section class="block narrow">
+    <section class="block narrow" data-pagefind-ignore>
       <h2>Primerjava z drugimi orodji</h2>
       <ul class="others">
         {PRODUCTS.filter((p) => p.slug !== product.slug).map((p) => (
