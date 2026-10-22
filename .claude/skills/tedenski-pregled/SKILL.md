@@ -95,6 +95,12 @@ Also read, as a list of leads only, Anže's private weekly report if one exists 
 Any lead you use must be re-verified at its primary source. Never copy text or client
 references from that report; it is private.
 
+Also read `docs/namigi-za-pregled.md` in the worktree (leads Anže asked to include, with their
+primary sources). Treat every lead like a collector item: re-open the source, keep it only if it
+falls in the window and the page still supports it, and follow any note there about articles
+that already cover a topic. In the digest PR, delete the leads you used or rejected from that
+file and list rejected ones with the reason under **Za preveriti**.
+
 ## 4. Select 5 to 10 items
 
 Reader: a Slovenian business person curious about AI, not an engineer. Pick what changes what
