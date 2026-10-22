@@ -1,0 +1,234 @@
+# Razpisi za AI, digitalizacijo in tehnologijo za /razpisi/. Vsak podatek mora biti razviden iz
+# strani v "viri" (prva povezava je uradna objava razpisa, nanjo vodi gumb na strani).
+# stanje: odprt (prijave so mogoče), napovedan (razpisovalec ga je napovedal, objavljen še ni),
+# zaprt (rok je potekel; ostane na strani do 12 mesecev kot orientacija za naslednje leto).
+# Status vedno preverimo na strani razpisa, ne na seznamu razpisovalca. Osvežuje ga skill
+# posodobi-razpise vsak teden.
+
+# Odprti
+
+- id: eic-pathfinder-deeprap
+  naslov: 'EIC Pathfinder: zaupanja vredni kognitivni AI sistemi (DeepRAP)'
+  razpisovalec: Evropska komisija, Evropski svet za inovacije (EIC)
+  raven: eu
+  stanje: odprt
+  za_koga: Raziskovalne skupine in podjetja z vizionarskimi raziskavami. Pogoje glede sestave prijaviteljev preverite v razpisu.
+  kaj: Raziskave modelov in arhitektur AI, ki zmorejo sklepanje, abstrakcijo in načrtovanje ter delajo z več vrstami podatkov.
+  znesek: null
+  rok: 2026-10-28
+  teme: [ai, raziskave]
+  viri:
+    - https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-EIC-2026-PATHFINDERCHALLENGES-01-03
+  preverjeno: 2026-10-22
+
+- id: eic-accelerator-2026
+  naslov: 'EIC Accelerator: kratka prijava'
+  razpisovalec: Evropska komisija, Evropski svet za inovacije (EIC)
+  raven: eu
+  stanje: odprt
+  za_koga: Posamezno malo ali srednje podjetje (tudi startup) s sedežem v državi EU ali pridruženi državi.
+  kaj: Nepovratna sredstva, naložba v kapital in podpora pri rasti za inovacije, ki temeljijo na znanstvenem ali tehnološkem preboju in potrebujejo veliko denarja in časa do prvih prihodkov.
+  znesek: null
+  rok: 2026-11-04
+  rok_opis: rok za kratke prijave v letu 2026
+  teme: [ai, startup, raziskave]
+  viri:
+    - https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-EIC-2026-ACCELERATOR-01
+  preverjeno: 2026-10-22
+
+- id: digital-ai4sme
+  naslov: 'Digitalna Evropa: kibernetska varnost MSP z rešitvami na podlagi AI'
+  razpisovalec: Evropska komisija, Evropski center za kibernetsko varnost (ECCC)
+  raven: eu
+  stanje: odprt
+  za_koga: Organizacije, ki malim in srednjim podjetjem ponudijo AI orodja in storitve za kibernetsko varnost. Pogoje za prijavitelje preverite v dokumentaciji razpisa.
+  kaj: Uvajanje AI orodij, s katerimi se MSP pripravijo na kibernetske napade, se pred njimi zaščitijo in se nanje odzovejo, tudi usposabljanje zaposlenih.
+  znesek: 20 milijonov EUR skupaj, predvidoma 5 projektov
+  rok: 2027-01-14
+  teme: [ai, kibernetska-varnost]
+  viri:
+    - https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/DIGITAL-ECCC-2027-DEPLOY-CYBER-11-AI4SME
+  preverjeno: 2026-10-22
+
+- id: sps-v2
+  naslov: 'Vavčer za patente, modele in znamke (V2)'
+  razpisovalec: Slovenski podjetniški sklad
+  raven: slovenija
+  stanje: odprt
+  za_koga: Mikro, mala in srednja podjetja ter samostojni podjetniki s sedežem v Sloveniji.
+  kaj: Priprava prijave, registracija, vzdrževanje in širjenje patenta, modela ali znamke v tujino, prevod prijave in vrednotenje.
+  znesek: 500 do 5.000 EUR, 60 % upravičenih stroškov
+  rok: 2028-03-31
+  teme: [intelektualna-lastnina]
+  viri:
+    - https://www.podjetniskisklad.si/v2-vavcer-za-patente-modele-znamke/
+  preverjeno: 2026-10-22
+
+- id: sps-v6
+  naslov: 'Vavčer za pripravo prijave na Obzorje Evropa (V6)'
+  razpisovalec: Slovenski podjetniški sklad
+  raven: slovenija
+  stanje: odprt
+  za_koga: Mikro, mala in srednja podjetja s sedežem v Sloveniji.
+  kaj: Priprava projektnega predloga na razpise drugega stebra programa Obzorje Evropa, kamor spadajo tudi digitalne in industrijske teme.
+  znesek: 500 do 4.000 EUR, 60 % upravičenih stroškov
+  rok: 2028-03-31
+  teme: [raziskave]
+  viri:
+    - https://www.podjetniskisklad.si/v6-vavcer-za-sofinanciranje-priprave-projektnih-predlogov-na-razpise-drugega-stebra-okvirnega-programa-eu-obzorje-evropa/
+  preverjeno: 2026-10-22
+
+- id: sps-v7
+  naslov: 'Vavčer za pripravo prijave na EIC (V7)'
+  razpisovalec: Slovenski podjetniški sklad
+  raven: slovenija
+  stanje: odprt
+  za_koga: Mikro, mala in srednja podjetja s sedežem v Sloveniji.
+  kaj: Priprava projektnega predloga na razpise Evropskega sveta za inovacije (EIC), na primer EIC Accelerator.
+  znesek: 500 do 9.999,99 EUR, 60 % upravičenih stroškov
+  rok: 2028-03-31
+  teme: [startup, raziskave]
+  viri:
+    - https://www.podjetniskisklad.si/v7-vavcer-za-sofinanciranje-priprave-projektnih-predlogov-na-razpise-podprogramov-evropskega-sveta-za-inovacije-eic-v-okviru-programa-obzorje-evropa/
+  preverjeno: 2026-10-22
+
+# Napovedani
+
+- id: sps-v11
+  naslov: 'Vavčer za kibernetsko varnost (V11)'
+  razpisovalec: Slovenski podjetniški sklad
+  raven: slovenija
+  stanje: napovedan
+  napoved: druga polovica 2026
+  za_koga: Mikro, mala in srednja podjetja.
+  kaj: Sofinanciranje stroškov za večjo kibernetsko varnost podjetja.
+  znesek: do 9.999,99 EUR, skupaj 2,5 milijona EUR
+  rok: null
+  teme: [kibernetska-varnost, digitalizacija]
+  viri:
+    - https://www.podjetniskisklad.si/javni-razpisi-pozivi-programi/plan-objav-razpisov-in-pozivov/
+  preverjeno: 2026-10-22
+
+- id: sps-v9
+  naslov: 'Vavčer za prototipiranje (V9)'
+  razpisovalec: Slovenski podjetniški sklad
+  raven: slovenija
+  stanje: napovedan
+  napoved: druga polovica 2026
+  za_koga: Mikro, mala in srednja podjetja.
+  kaj: Sofinanciranje stroškov zunanjega izvajalca, ki izdela prototip.
+  znesek: do 5.000 EUR, skupaj 0,5 milijona EUR
+  rok: null
+  teme: [startup, raziskave]
+  viri:
+    - https://www.podjetniskisklad.si/javni-razpisi-pozivi-programi/plan-objav-razpisov-in-pozivov/
+  preverjeno: 2026-10-22
+
+- id: aris-ai-aplikativni
+  naslov: 'Aplikativni projekti manjših vrednosti na področju umetne inteligence'
+  razpisovalec: ARIS (Javna agencija za znanstvenoraziskovalno in inovacijsko dejavnost)
+  raven: slovenija
+  stanje: napovedan
+  napoved: četrto četrtletje 2026
+  za_koga: Pogoji še niso objavljeni.
+  kaj: Podpora manjšim aplikativnim projektom s področja AI, torej projektom, ki znanje prenesejo v uporabo.
+  znesek: null
+  rok: null
+  teme: [ai]
+  viri:
+    - https://www.aris-rs.si/objave/nacrtovani-razpisi
+  preverjeno: 2026-10-22
+
+- id: aris-rri-2026-2
+  naslov: 'Spodbude za raziskovalno razvojne projekte, drugi krog (JR RRI 2026/2)'
+  razpisovalec: ARIS (Javna agencija za znanstvenoraziskovalno in inovacijsko dejavnost)
+  raven: slovenija
+  stanje: napovedan
+  napoved: četrto četrtletje 2026
+  za_koga: V prvem krogu podjetja s sedežem v Sloveniji ne glede na velikost, tudi konzorciji do treh podjetij.
+  kaj: Raziskovalno razvojni projekti podjetij. Prvi krog (JR RRI 2026/1) je imel okvirno 15 milijonov EUR, projekti so imeli od 100.000 do 300.000 EUR upravičenih stroškov, rok je bil 13. 5. 2026.
+  znesek: null
+  rok: null
+  teme: [raziskave]
+  viri:
+    - https://www.aris-rs.si/objave/nacrtovani-razpisi
+    - https://www.aris-rs.si/objave/razpisi/javni-razpis-spodbude-za-raziskovalno-razvojne-projekte-2026-1-jr-rri-2026-1-2026-03-03
+  preverjeno: 2026-10-22
+
+- id: aris-eureka
+  naslov: 'Eureka 2027 do 2031'
+  razpisovalec: ARIS (Javna agencija za znanstvenoraziskovalno in inovacijsko dejavnost)
+  raven: slovenija
+  stanje: napovedan
+  napoved: četrto četrtletje 2026
+  za_koga: Pogoji še niso objavljeni.
+  kaj: Sodelovanje v mednarodni mreži Eureka za razvojne projekte. Podrobnosti še niso objavljene.
+  znesek: null
+  rok: null
+  teme: [raziskave]
+  viri:
+    - https://www.aris-rs.si/objave/nacrtovani-razpisi
+  preverjeno: 2026-10-22
+
+- id: horizon-apply-ai-booster
+  naslov: 'Obzorje Evropa, Apply AI: inovacije z AI v prednostnih sektorjih'
+  razpisovalec: Evropska komisija, Obzorje Evropa
+  raven: eu
+  stanje: napovedan
+  odpre: 2026-11-17
+  za_koga: Raziskovalni in inovacijski projekti, v katerih sodelujejo raziskovalne organizacije in podjetja.
+  kaj: Rešitve z AI za izzive v sektorjih, ki jih izpostavlja evropska strategija Apply AI, na primer zdravstvo, mobilnost in proizvodnja.
+  znesek: 42 milijonov EUR skupaj, predvidoma 3 projekti
+  rok: 2027-03-18
+  teme: [ai, raziskave, zdravje]
+  viri:
+    - https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL4-2027-04-DIGITAL-EMERGING-04
+  preverjeno: 2026-10-22
+
+- id: eic-pre-accelerator-widening
+  naslov: 'EIC Pre-accelerator za države Widening'
+  razpisovalec: Evropska komisija, Obzorje Evropa
+  raven: eu
+  stanje: napovedan
+  odpre: 2027-05-05
+  za_koga: Posamezna mala in srednja podjetja (deep tech startupi) s sedežem v državah Widening, med katerimi je Slovenija.
+  kaj: Priprava inovacije na trg in na vlagatelje, na primer raziskava trga, poslovni model in pot do komercializacije.
+  znesek: 500.000 do 1.000.000 EUR na projekt, do 70 % upravičenih stroškov, skupaj 40 milijonov EUR, predvidoma 60 projektov
+  rok: 2027-11-18
+  teme: [startup, raziskave]
+  viri:
+    - https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-WIDERA-2027-01-WIDENING-01
+    - https://rea.ec.europa.eu/news/bridging-innovation-gaps-horizon-europe-boosting-ri-emerging-regions-2026-03-18_en
+    - https://eic.ec.europa.eu/eic-funding-opportunities/eic-pre-accelerator_en
+  preverjeno: 2026-10-22
+
+# Zaprti v zadnjih 12 mesecih (orientacija za naslednje leto)
+
+- id: aris-vavcerji-2026
+  naslov: 'Inovacijski vavčerji 2026'
+  razpisovalec: ARIS (Javna agencija za znanstvenoraziskovalno in inovacijsko dejavnost)
+  raven: slovenija
+  stanje: zaprt
+  za_koga: Mikro, mala in srednja podjetja.
+  kaj: Raziskovalne in razvojne storitve javnih raziskovalnih organizacij, na primer testiranje, razvoj programske opreme ter modeliranje in simulacije.
+  znesek: 10.000 do 25.000 EUR na vlogo, do 50 % upravičenih stroškov
+  rok: 2026-09-10
+  rok_opis: drugi in zadnji rok
+  teme: [raziskave, digitalizacija]
+  viri:
+    - https://www.aris-rs.si/objave/razpisi/javni-razpis-inovacijski-vavcerji-2026-kratica-javnega-poziva-jr-vavcerji-2026-05-12
+  preverjeno: 2026-10-22
+
+- id: sps-p2-2026
+  naslov: 'Spodbude za zagon inovativnih podjetij (P2 2026)'
+  razpisovalec: Slovenski podjetniški sklad
+  raven: slovenija
+  stanje: zaprt
+  za_koga: Mlada inovativna podjetja (startupi) z izdelkom v razvoju.
+  kaj: Nepovratna sredstva za razvoj izdelka in vstop na trg, izplačana v treh delih.
+  znesek: do 72.000 EUR, 100 % upravičenih stroškov, skupaj 2,16 milijona EUR
+  rok: 2026-03-12
+  teme: [startup]
+  viri:
+    - https://www.gov.si/zbirke/javne-objave/javni-razpis-spodbude-za-zagon-inovativnih-podjetij-v-letu-2026/
+  preverjeno: 2026-10-22
