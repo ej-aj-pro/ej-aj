@@ -1,5 +1,5 @@
 ---
-title: 'ChatGPT, Claude ali Gemini: primerjava cen, funkcij in zasebnosti'
+title: 'ChatGPT, Claude ali Gemini: kateri izbrati? Primerjava cen, funkcij in zasebnosti'
 description: 'ChatGPT, Claude in Gemini drug ob drugem: koliko stanejo osebni paketi, kaj dobite brezplačno, katere funkcije ima kateri, kaj naredijo z vašimi podatki in kako izbrati.'
 date: 2026-09-27
 updated: 2026-10-03

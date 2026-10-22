@@ -120,6 +120,58 @@ Dodano 3. 10. 2026 (seja, ko je Anže prosil za SEO in nove vsebine):
 - Naslednje teme iz seznama: 3 (Copilot v slovenščini), 6 (AI v šoli), 10 (prevajalniki),
   11 (tečaji). Nova ideja: stran `/skilli/` z brezplačnimi slovenskimi skilli (glej spodaj).
 
+## Search Console, prvi izvoz (22. oktober 2026)
+
+Izvoz "Performance on Search", spletno iskanje, 25. 9. do 20. 10. 2026 (19. in 20. 10. še brez
+podatkov zaradi zamika). Skupaj 21 klikov in 1.022 prikazov, 93 % iz Slovenije, povprečno mesto
+okoli 8. Google skrije večino poizvedb: seznam poizvedb pojasni le 5 od 21 klikov. Številke so
+majhne, zato kažejo smer, ne trdnih razlik. Naslednji pregled: konec novembra 2026.
+
+Trend: prvi teden okoli 17 prikazov na dan, drugi okoli 50, zadnji okoli 70.
+
+Kaj deluje:
+
+- **Cene** prinašajo največ klikov na poizvedbo: "claude cena", "gemini cena", "cena claude",
+  "copilot cena", "claude paketi", "gemini cenik", "copilot business cena" (skupaj okoli 45
+  prikazov, mesta 3 do 10). `/cene/claude/` ima 3 klike, mesto 4,1, CTR 7,9 %.
+- **Agenti in priročnik:** `/vodniki/lasten-ai-agent/` (3 kliki, mesto 4,8, CTR 7,3 %) in
+  `/prirocnik/` (3 kliki, mesto 5,2).
+- Ime strani že iščejo ("ej aj", "aj ai", "ej ai").
+
+Priložnosti:
+
+1. **"chat gpt v slovenščini"** je največja poizvedba (37 prikazov, mesto 7,4, 0 klikov). Okoli nje
+   so "gemini v slovenščini", "chat gpt slovenščina", "slovenski ai chat", "umetna inteligenca v
+   slovenščini", "gpt slovenija". Manjkata vodnika **Gemini v slovenščini** in **Claude v
+   slovenščini**; smiselna je zbirna stran **AI v slovenščini**, ki poveže ChatGPT, Copilot,
+   Gemini, Claude, "Kako dobro AI zna slovensko" (37 prikazov, mesto 14) in prevajalnike.
+2. **`/cene/chatgpt/` v izvozu ni**, čeprav je v sitemapu od 3. 10. in ima enak naslov kot
+   `/cene/claude/`. Anže naj v Search Console preveri URL (pregled URL-ja, zahteva za indeksiranje).
+3. **Slovar** dobi okoli tretjino prikazov (gpt 46, prompt 25, vibe coding 23, agent 21, token 22,
+   veliki jezikovni model 20, mcp 19), klikov pa skoraj nič: na razlage izrazov Google pogosto
+   odgovori sam. Slovar je vhod; vsako geslo mora voditi naprej na vodnik ali ceno.
+4. **Agenti:** "agent" mesto 22, "ai agenti" 100, "ai pomočnik" 30, "ai asistent" 73. Manjka
+   trajni vodnik **AI agenti za podjetja: kaj so in kako začeti**, na katerega kažejo novice o
+   Claude Duet, Dots in Muse.
+5. **Dobro mesto, malo klikov:** "ChatGPT, Claude ali Gemini" (72 prikazov, mesto 7, 1 klik),
+   odpoved naročnine (51 prikazov, mesto 4,4, 1 klik), "ChatGPT v slovenščini" (41, mesto 7,2,
+   0 klikov).
+6. Šibko: "kaj je umetna inteligenca" (mesto 58, vodnik 18,7), "skladnost z ai act" (64; vodnik
+   AI Act 13,7, orodje `/ai-act-preverjanje/` v izvozu še ni), "ai orodja za podjetnike" (80).
+
+Novice in tedenski pregledi imajo v iskanju 1 do 2 prikaza na članek. Obisk iz iskanja prinašajo
+vodniki, cene in slovar; novice so za redne bralce in newsletter. Pri novih vsebinah imajo zato
+prednost trajni vodniki.
+
+Narejeno na podlagi izvoza (PR `tehnicno/seo-search-console`):
+
+- Vodniki, ki jih strani s cenami že navajajo (`vodniki` v `src/cene.ts`), pod besedilom
+  povežejo nazaj na `/cene/<orodje>/`; gesla ChatGPT, GPT, Claude, Claude Code, Gemini in Copilot
+  v slovarju povežejo na ceno (`slovar` v `src/cene.ts`). Prej je na strani s cenami kazal le en
+  članek.
+- Naslova "ChatGPT v slovenščini" in "ChatGPT, Claude ali Gemini" sta bližje iskanim nizom
+  ("brezplačno", "kateri izbrati").
+
 ## Zunaj strani (največji vzvod za novo domeno)
 
 Nova domena brez povratnih povezav bo mesece rangirala nizko ne glede na vsebino. Možnosti, ki
