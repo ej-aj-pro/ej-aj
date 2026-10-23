@@ -14,7 +14,7 @@ Stanje: 3. oktober 2026.
 | `/vodniki/` | praktični vodniki (trajni naslovi brez datuma) | `src/content/novice/*.md`, `type: vodnik` |
 | `/modeli/` | naročnine (23 paketov) in 15 modelov s cenami API | `src/data/narocnine.yaml`, `src/data/modeli.yaml` |
 | `/cene/` | preusmeritev 301 na `/modeli/#narocnine` | `public/_redirects` |
-| `/razpisi/` | razpisi za AI, digitalizacijo in tehnologijo (odprti, napovedani, zaprti v zadnjih 12 mesecih), samo seznam s povezavo na uradno objavo; dni do roka računa brskalnik | `src/data/razpisi.yaml`, osvežuje skill `posodobi-razpise` (rutina ob ponedeljkih) |
+| `/razpisi/` | razpisi za AI, digitalizacijo in tehnologijo (odprti, napovedani, zaprti v zadnjih 12 mesecih), samo seznam s povezavo na uradno objavo; dni do roka računa brskalnik | `src/data/razpisi.yaml`, osvežuje skill `posodobi-razpise` (oblačna rutina ob ponedeljkih) |
 | `/statistika/` | raba AI v Sloveniji, 10 interaktivnih grafov | `src/data/statistika.json`, generira `scripts/osvezi-statistiko.mjs` |
 | `/prirocnik/` | priročnik: 10 vodnikov o dobri rabi Claude (`serija: prirocnik`, `korak`) | `src/content/novice/*.md` |
 | `/videi/` | priporočeni videi (YouTube, naloži se šele ob kliku) | `src/data/videi.yaml` |
@@ -236,29 +236,12 @@ Steps:
 5. Final message in Slovenian, short: the PR link, the headlines, failed sources, and anything Anže must check by hand. If any step failed, say exactly which one and what state things were left in; do not work around failures silently.
 ```
 
-### ej-aj-posodobi-razpise
+### ej-aj posodobi razpise (oblačna rutina)
 
-- Urnik: ob ponedeljkih ob 8.00 (`0 8 * * 1`). Ustvarjena 22. 10. 2026; prvi zagon pride v poštev šele, ko je PR z `/razpisi/` na main.
-- Prompt:
-
-```
-You are running as a scheduled local routine for Anže. Task: refresh the calls page /razpisi/ (src/data/razpisi.yaml) on his public site ej-aj.si and open a pull request. You never merge and never push to main; merging is publishing and only Anže does that.
-
-Repo: /Users/anze/Desktop/Claude/ej-aj (GitHub: ej-aj-pro/ej-aj). Always use absolute paths.
-
-GitHub auth: the active gh account on this Mac is a different one (AnzeNoc) and must NOT be switched with `gh auth switch`. Prefix every network command (git fetch, git push, gh ...) with GH_TOKEN="$(gh auth token --user ej-aj-pro 2>/dev/null || gh auth token --user AnzeNocAI)".
-
-Steps:
-1. cd /Users/anze/Desktop/Claude/ej-aj && GH_TOKEN="$(gh auth token --user ej-aj-pro 2>/dev/null || gh auth token --user AnzeNocAI)" git fetch origin
-2. Load the current instructions from main:
-   git show origin/main:.claude/skills/posodobi-razpise/SKILL.md
-   git show origin/main:AGENTS.md
-   git show origin/main:docs/slog.md
-   If the skill or src/data/razpisi.yaml does not exist on origin/main, stop and report in Slovenian: "Stran z razpisi še ni na main. Mergaj PR z /razpisi/, potem rutino zaženi ročno." Do nothing else.
-3. Follow the skill exactly. It works in its own worktree under /Users/anze/.cache/ej-aj-worktrees/ (outside iCloud), re-checks every call on its official page, adds new calls only from opened official pages, has a fact-checker subagent re-check every change, runs scripts/razpisi.mjs preveri and the build, and opens one PR.
-4. Slovenian copy, no em dashes or en dashes. Never fill a value from memory; when a page gives no amount, the amount stays empty.
-5. Final message in Slovenian, short: PR link, new calls, status changes, failed sources. If a step failed, say which one and what state things were left in.
-```
+- Teče v oblaku (claude.ai, routine `trig_015XrvdAK5saQgJGd8JSmU35`, https://claude.ai/code/routines/trig_015XrvdAK5saQgJGd8JSmU35), zato Mac ne rabi biti prižgan. Ustvarjena 23. 10. 2026; nadomešča lokalno rutino `ej-aj-posodobi-razpise`, ki je izklopljena.
+- Urnik: `0 7 * * 1` v UTC, torej ob ponedeljkih ob 8.00 pozimi in ob 9.00 poleti. Model Claude Opus 5.5, okolje Default, repo `ej-aj-pro/ej-aj`, brez konektorjev.
+- Odpre PR in nikoli ne mergea. Anže je 23. 10. želel samodejno objavo; samodejni varnostni pregled je zapis pravila za samodejni merge zavrnil, zato merge ostaja ročen.
+- Prompt je shranjen v rutini: prebere `.claude/skills/posodobi-razpise/SKILL.md` z `origin/main` in sledi razdelku "Cloud routine".
 
 ### ej-aj-posodobi-modele
 
