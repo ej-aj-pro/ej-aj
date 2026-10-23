@@ -34,6 +34,14 @@ consortia with companies) and have a deadline in the future. Keep the page reada
 rows in "odprt" and "napovedan" together; prefer calls that a Slovenian SME can realistically
 use.
 
+Support without a deadline (`stanje: stalno`, section "Podpora in dostop brez roka"): services a
+Slovenian company can use at any time on these topics, such as the European digital innovation
+hubs (EDIH) in Slovenia, EuroHPC AI Factories access and SLING's industry access to the Vega
+supercomputer. Keep it short (about six rows), `rok: null`, the conditions in `rok_opis`, and
+re-check each entry weekly like a call; when a service gets a call with a deadline, list the
+call instead. An announced service (for example SLAIF before it opens to companies) is
+`napovedan`.
+
 ## 1. Branch
 
 ```bash
