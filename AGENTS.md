@@ -29,8 +29,8 @@ Read it at the start of every session.
   placeholders that the validator blocks. Manual for now.
 - `.claude/skills/posodobi-razpise/`: weekly refresh of `/razpisi/` (`src/data/razpisi.yaml`):
   re-checks every call on its official page, adds new AI, digital and R&D calls (helpers in
-  `scripts/razpisi.mjs`), fact-checker subagent, opens a PR. Run by a local Monday routine
-  (`ej-aj-posodobi-razpise`).
+  `scripts/razpisi.mjs`), fact-checker subagent, opens a PR. Run by a weekly **cloud** routine
+  (claude.ai routine "ej-aj posodobi razpise", Mondays 07:00 UTC), so it runs with the Mac off.
 - `.claude/skills/newsletter/`: turns the latest published digest into a newsletter email
   (file in `/Users/anze/Desktop/Claude/ej-aj/ej-aj-newsletter/`, optional Buttondown draft via API). Never sends.
 - Routines and skills do their work in git worktrees under `~/.cache/ej-aj-worktrees/`, never
