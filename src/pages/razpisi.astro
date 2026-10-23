@@ -13,6 +13,7 @@ const open = all.filter((r) => r.data.stanje === 'odprt').sort((a, b) => time(a.
 const announced = all
   .filter((r) => r.data.stanje === 'napovedan')
   .sort((a, b) => time(a.data.odpre ?? a.data.rok) - time(b.data.odpre ?? b.data.rok));
+const ongoing = all.filter((r) => r.data.stanje === 'stalno').sort((a, b) => a.data.naslov.localeCompare(b.data.naslov, 'sl'));
 const closed = all.filter((r) => r.data.stanje === 'zaprt').sort((a, b) => time(b.data.rok) - time(a.data.rok));
 const lastChecked = new Date(Math.max(...all.map((r) => r.data.preverjeno.valueOf())));
 
@@ -35,6 +36,12 @@ const sections = [
     title: 'Napovedani razpisi',
     rows: announced,
     how: 'Razpisovalec jih je napovedal v svojem planu objav, objavljeni pa še niso. Termini in zneski se do objave lahko spremenijo.',
+  },
+  {
+    id: 'brez-roka',
+    title: 'Podpora in dostop brez roka',
+    rows: ongoing,
+    how: 'Storitve inovacijskih stičišč in dostop do superračunalnikov, kamor se lahko prijavite kadar koli, brez enkratnega razpisnega roka. Pogoje in morebitne cene preverite pri izvajalcu.',
   },
   {
     id: 'zaprti',
@@ -62,6 +69,7 @@ const sections = [
       <nav class="jump" aria-label="Na tej strani">
         <a href="#odprti">Odprti ({open.length})</a>
         <a href="#napovedani">Napovedani ({announced.length})</a>
+        <a href="#brez-roka">Brez roka ({ongoing.length})</a>
         <a href="#zaprti">Zaprti</a>
         <a href="/vodniki/kako-nastaja-pregled-razpisov/">Kako nastaja seznam</a>
       </nav>
@@ -121,7 +129,10 @@ const sections = [
                           {r.data.rok_opis && <span class="sub">{r.data.rok_opis}</span>}
                         </>
                       ) : (
-                        <span class="datum">še ni znan</span>
+                        <>
+                          <span class="datum">{r.data.stanje === 'stalno' ? 'brez roka' : 'še ni znan'}</span>
+                          {r.data.rok_opis && <span class="sub">{r.data.rok_opis}</span>}
+                        </>
                       )}
                       {r.data.odpre && <span class="sub">odpre se {short(r.data.odpre)}</span>}
                       {r.data.napoved && <span class="sub">napovedano: {r.data.napoved}</span>}

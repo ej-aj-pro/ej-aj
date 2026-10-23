@@ -205,6 +205,109 @@
     - https://eic.ec.europa.eu/eic-funding-opportunities/eic-pre-accelerator_en
   preverjeno: 2026-10-22
 
+# Napovedani (preneseno iz PR #91)
+
+- id: aris-ai-inovacijski-projekti
+  naslov: 'Podpora inovacijskim projektom s področja umetne inteligence'
+  razpisovalec: ARIS in Ministrstvo za notranje zadeve in javno upravo
+  raven: slovenija
+  stanje: napovedan
+  napoved: zadnje četrtletje 2026
+  za_koga: Po programu ukrepov ministrstva predvsem srednja in velika podjetja, v konzorcijih z drugimi podjetji in raziskovalnimi organizacijami. Upravičenke so lahko tudi raziskovalne organizacije.
+  kaj: 'Uvajanje AI v poslovanje pri rešitvah, ki so že blizu uporabe, na primer na področjih energetike, okolja, kmetijstva, prometa, zdravstva in pametnih tovarn. Najprej preizkus, nato izvedba. Zneski in pogoji so iz načrtovalnih dokumentov in se lahko do objave spremenijo.'
+  znesek: do 16.256.405,36 EUR skupaj za obdobje 2026 do 2029, do 60 % upravičenih stroškov
+  rok: null
+  teme: [ai, raziskave]
+  viri:
+    - https://www.aris-rs.si/objave/razpisi/podpora-inovacijskim-projektom-s-podrocja-umetne-inteligence-2026-12-31
+    - https://www.gov.si/assets/ministrstva/MNZJU/MDP/DDD/DDD-dokumenti/Program-ukrepov-spodbujanja-podjetnistva-MDP/Dopolnjen_program_ukrepov_MDP-V9_050126.pdf
+    - https://www.aris-rs.si/uploads/sl/finan/inc/PDFN2026_ARIS.pdf
+  preverjeno: 2026-10-23
+
+- id: slaif
+  naslov: 'SLAIF, slovenska tovarna umetne inteligence'
+  razpisovalec: Konzorcij, ki ga vodi IZUM (sofinancirata EuroHPC in Slovenija)
+  raven: slovenija
+  stanje: napovedan
+  napoved: 'stran za prijavo na slaif.si še ne deluje, projekt traja do 31. avgusta 2028'
+  za_koga: Podjetja, tudi mala in srednja ter zagonska, javne ustanove in raziskovalci.
+  kaj: 'Načrtovane storitve: svetovanje, dostop do superračunalnikov, vnaprej naučeni modeli in podatkovni nabori, oblačne AI storitve, usposabljanja in hekatoni. Za uporabo računskih virov in storitev SLAIF že zdaj SLING podjetjem svetuje, naj povpraševanje pošljejo na podpora@sling.si.'
+  znesek: 'Stran slaif.si omenja brezplačen dostop do računskih virov, prijava pa na njej še ne deluje, zato pogojev ni mogoče potrditi.'
+  rok: null
+  teme: [ai]
+  viri:
+    - https://www.sling.si/slaif/
+    - https://slaif.si/
+    - https://www.tp-lj.si/en/projects/slaif-the-slovenian-artificial-intelligence-factory-2025-11-18
+    - https://www.sling.si/podpora/za-industrijo/
+  preverjeno: 2026-10-23
+
+# Podpora in dostop brez roka
+
+- id: edih-digi-si
+  naslov: 'EDIH DIGI-SI 2.0, evropsko digitalno inovacijsko stičišče'
+  razpisovalec: Konzorcij, ki ga vodi Digitalno inovacijsko stičišče Slovenije (program Digitalna Evropa)
+  raven: slovenija
+  stanje: stalno
+  za_koga: Mala in srednja podjetja, zagonska podjetja in organizacije javnega sektorja v Sloveniji.
+  kaj: Preizkus pred naložbo (dostop do AI infrastrukture, testno okolje za AI agente), ocena digitalne zrelosti, načrt digitalne preobrazbe, delavnice, svetovanje glede Akta o umetni inteligenci in pomoč pri iskanju financiranja.
+  znesek: 'Za mala in srednja podjetja so storitve ob razpoložljivosti sredstev brezplačne (sofinancirata program Digitalna Evropa in Slovenija). Pri vsaki storitvi je navedena cena, na primer 800 EUR za oceno digitalne zrelosti.'
+  rok: null
+  rok_opis: projekt traja od 1. aprila 2026 do 31. marca 2029
+  teme: [ai, digitalizacija]
+  viri:
+    - https://digi-si.eu/storitve
+    - https://digi-si.eu/storitve/sm1a-ocena-digitalne-zrelosti
+    - https://digi-si.eu/o-nas
+  preverjeno: 2026-10-23
+
+- id: src-edih
+  naslov: 'SRC-EDIH 2.0, evropsko digitalno inovacijsko stičišče'
+  razpisovalec: Razvojni center Novo mesto s partnerji
+  raven: slovenija
+  stanje: stalno
+  za_koga: Mikro, mala in srednja podjetja, predvsem proizvodna.
+  kaj: Preizkus poslovne ideje v testnih okoljih z AI rešitvami, usposabljanja, svetovanje glede Akta o umetni inteligenci in pomoč pri prijavah na razpise.
+  znesek: Po navedbah stičišča so storitve za mala in srednja podjetja brezplačne.
+  rok: null
+  teme: [ai, digitalizacija]
+  viri:
+    - https://src-edih.si/storitve/testiranje
+    - https://src-edih.si/pomoc
+    - https://src-edih.si/o-projektu
+  preverjeno: 2026-10-23
+
+- id: eurohpc-ai-factories
+  naslov: 'EuroHPC AI Factories: dostop do grafičnih procesorjev za AI'
+  razpisovalec: Skupno podjetje EuroHPC
+  raven: eu
+  stanje: stalno
+  za_koga: Podjetja, tudi mala in srednja ter zagonska. Raziskovalci in javni sektor imajo svoj način dostopa.
+  kaj: Računalniški čas na evropskih superračunalnikih za učenje in preizkušanje AI modelov. Za začetnike dostop za 1 do 3 mesece, za srednje potrebe do 50.000 ur grafičnih procesorjev, za večje projekte več.
+  znesek: Za AI mala in srednja podjetja ter zagonska podjetja je dostop brezplačen.
+  rok: null
+  rok_opis: nad 50.000 ur dva roka na mesec
+  teme: [ai]
+  viri:
+    - https://www.eurohpc-ju.europa.eu/ai-factories/ai-factories-access-modes_en
+    - https://www.eurohpc-ju.europa.eu/playground-access-ai-factories_en
+  preverjeno: 2026-10-23
+
+- id: sling-vega
+  naslov: 'Pilotni dostop za gospodarstvo do superračunalnika Vega'
+  razpisovalec: SLING, slovenska superračunalniška mreža
+  raven: slovenija
+  stanje: stalno
+  za_koga: Podjetja, ki želijo preizkusiti superračunalnik, tudi za AI.
+  kaj: Pilotni dostop do superračunalnika Vega, ocena pripravljenosti podjetja na superračunalništvo, usposabljanja ter za izbrana mala in srednja podjetja pomoč pri prijavah na razpise.
+  znesek: 'Pilotni dostop do 2.000 vozliščnih ur na procesorskih ali 400 na grafičnih vozliščih, za največ 3 mesece in en projekt na leto. Ocena pripravljenosti in usposabljanja so brezplačni, za pilotni dostop stran cene ne navaja.'
+  rok: null
+  teme: [ai, raziskave]
+  viri:
+    - https://www.sling.si/pilotni-projekt/
+    - https://www.sling.si/podpora/za-industrijo/
+  preverjeno: 2026-10-23
+
 # Zaprti v zadnjih 12 mesecih (orientacija za naslednje leto)
 
 - id: aris-vavcerji-2026
