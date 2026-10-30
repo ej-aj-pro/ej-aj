@@ -5,7 +5,7 @@ date: 2026-10-23
 type: vodnik
 ---
 
-Kaj Akt o umetni inteligenci (AI Act) zahteva od podjetij, ki AI uporabljajo, je opisano v vodniku [AI Act za slovenska podjetja](/vodniki/ai-act-za-slovenska-podjetja/). Ta vodnik odgovarja na naslednje vprašanje: kdo v podjetju to naredi. Veliko nalog po naši oceni pristane v kadrovski službi, ker gre za usposabljanje zaposlenih, pravila, ki jih morajo zaposleni upoštevati, in obveščanje delavcev. Pri tem veljata tudi Zakon o delovnih razmerjih (ZDR-1) in Zakon o sodelovanju delavcev pri upravljanju (ZSDU), ki ju vodniki o AI Act redko omenjajo. Viri so preverjeni 23. oktobra 2026. Vodnik ni pravni nasvet.
+Kaj Akt o umetni inteligenci (AI Act) zahteva od podjetij, ki AI uporabljajo, je opisano v vodniku [AI Act za slovenska podjetja](/vodniki/ai-act-za-slovenska-podjetja/). Ta vodnik odgovarja na naslednje vprašanje: kdo v podjetju to naredi. Veliko nalog po naši oceni pristane v kadrovski službi, ker gre za usposabljanje zaposlenih, pravila, ki jih morajo zaposleni upoštevati, in obveščanje delavcev. Pri tem veljata tudi Zakon o delovnih razmerjih (ZDR-1) in Zakon o sodelovanju delavcev pri upravljanju (ZSDU), ki ju vodniki o AI Act redko omenjajo. Viri so preverjeni 30. oktobra 2026. Vodnik ni pravni nasvet.
 
 ## Na kratko
 
@@ -109,7 +109,7 @@ Viri: [Informacijski pooblaščenec, mnenje o uporabi orodij UI (28. 8. 2026)](h
 
 ## 6. Visoko tvegana raba: pripravite se do decembra 2027
 
-Če AI uporabljate pri zaposlovanju, ocenjevanju dela ali odločanju o napredovanju in odpovedi, je raba praviloma visoko tvegana. Evropska komisija je smernice o tem, kdaj je sistem visoko tvegan, 19. maja 2026 objavila kot osnutek za posvetovanje z deležniki, končne različice pa do 23. oktobra 2026 še ni objavila. Kaj tak sistem pomeni za kadrovsko službo in kaj že danes velja po GDPR, je v vodniku [AI v kadrovski službi](/vodniki/ai-v-kadrovski-sluzbi/).
+Če AI uporabljate pri zaposlovanju, ocenjevanju dela ali odločanju o napredovanju in odpovedi, je raba praviloma visoko tvegana. Evropska komisija je smernice o tem, kdaj je sistem visoko tvegan, 19. maja 2026 objavila kot osnutek za posvetovanje z deležniki, končne različice pa do 30. oktobra 2026 še ni objavila. Kaj tak sistem pomeni za kadrovsko službo in kaj že danes velja po GDPR, je v vodniku [AI v kadrovski službi](/vodniki/ai-v-kadrovski-sluzbi/).
 
 **Kaj to pomeni za vas:** če v popisu (korak 1) najdete tako rabo, se z vodstvom dogovorite, ali jo boste obdržali. Pred 2. decembrom 2027 boste potrebovali dokumentacijo ponudnika, človeški nadzor in obvestilo delavcem po členu 26(7).
 

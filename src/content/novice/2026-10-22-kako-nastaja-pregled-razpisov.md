@@ -37,7 +37,7 @@ Zato agent pri vsakem razpisu odpre njegovo stran in od tam prepiše stanje, rok
 
 ## Kaj se zgodi vsak teden
 
-Enkrat na teden se samodejno zažene rutina (opravilo, ki ga agent izvede ob nastavljenem času). Ta za vsak razpis na seznamu znova odpre uradno stran in preveri, ali se je spremenilo stanje, rok ali znesek. Napovedani razpisi, ki so bili objavljeni, se premaknejo med odprte, potekli med zaprte. Nato agent pregleda vire za nove razpise.
+Enkrat na teden se samodejno zažene rutina (opravilo, ki ga agent izvede ob nastavljenem času). Ta za vsak razpis na seznamu znova odpre uradno stran in preveri, ali se je spremenilo stanje, rok ali znesek. Napovedani razpisi, ki so bili objavljeni, se premaknejo med odprte, potekli med zaprte. Nato agent pregleda vire za nove razpise. Enako preveri tudi storitve brez roka, na primer inovacijska stičišča in dostop do superračunalnikov. Te so na strani v posebnem razdelku.
 
 Vsako spremembo pred objavo preveri ločen agent, ki ne pozna prvega izdelka in znova odpre vsak vir. Šele nato spremembe pregleda urednik. Ker je stran objavljena največ enkrat na teden, število dni do roka izračuna bralčev brskalnik, razpis s preteklim rokom pa se samodejno označi.
 

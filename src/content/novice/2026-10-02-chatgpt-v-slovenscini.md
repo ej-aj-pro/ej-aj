@@ -1,5 +1,5 @@
 ---
-title: 'ChatGPT v slovenščini: kako ustvarite račun, nastavite jezik in začnete'
+title: 'ChatGPT v slovenščini: kako začnete brezplačno, nastavite jezik in uporabljate glas'
 description: 'Kako se registrirate v ChatGPT, preklopite vmesnik v slovenščino, dosežete, da odgovarja slovensko, uporabljate glas in aplikacijo ter kaj dobite brezplačno.'
 date: 2026-10-02
 type: vodnik

@@ -129,7 +129,8 @@ const razpisi = defineCollection({
     naslov: z.string(),
     razpisovalec: z.string(),
     raven: z.enum(['slovenija', 'eu']),
-    stanje: z.enum(['odprt', 'napovedan', 'zaprt']),
+    // stalno: support without a deadline (innovation hubs, access to supercomputers).
+    stanje: z.enum(['odprt', 'napovedan', 'stalno', 'zaprt']),
     // Announced calls: when the issuer says it will publish, e.g. "druga polovica 2026".
     napoved: z.string().optional(),
     // Announced calls with a known opening date.

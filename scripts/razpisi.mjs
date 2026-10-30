@@ -27,6 +27,7 @@ function preveri() {
     const odpre = day(r.odpre);
     const preverjeno = day(r.preverjeno);
     if (r.stanje === 'odprt' && !rok) errors.push(`${r.id}: odprt razpis brez roka`);
+    if (r.stanje === 'stalno' && rok) errors.push(`${r.id}: stalna podpora ima rok, stanje naj bo odprt`);
     if (r.stanje === 'odprt' && rok && rok < today) errors.push(`${r.id}: rok ${rok} je potekel, stanje naj bo zaprt`);
     if (r.stanje === 'napovedan' && odpre && odpre <= today) warnings.push(`${r.id}: napovedan za ${odpre}, preveri, ali je že objavljen`);
     if (r.stanje === 'zaprt' && rok) {
