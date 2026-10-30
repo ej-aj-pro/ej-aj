@@ -14,7 +14,7 @@
   valuta: EUR
   kaj_dobite: Neomejen klepet z omejitvami pri nalaganju datotek, ustvarjanju slik, glasovnem pogovoru in poglobljenem raziskovanju.
   vir: https://chatgpt.com/pricing/
-  preverjeno: 2026-09-26
+  preverjeno: 2026-10-17
 
 - id: chatgpt-go
   produkt: ChatGPT
@@ -25,7 +25,7 @@
   kaj_dobite: Več sporočil z orodji, več nalaganja datotek in slik ter daljši spomin kot pri brezplačnem paketu.
   opomba: Paket lahko vključuje oglase. Samo mesečno plačilo.
   vir: https://chatgpt.com/pricing/
-  preverjeno: 2026-09-26
+  preverjeno: 2026-10-17
 
 - id: chatgpt-plus
   produkt: ChatGPT
@@ -36,7 +36,7 @@
   kaj_dobite: Zmogljivejše sklepanje, projekti, načrtovana opravila, lastni GPT-ji in več poglobljenega raziskovanja.
   opomba: Samo mesečno plačilo.
   vir: https://chatgpt.com/pricing/
-  preverjeno: 2026-09-26
+  preverjeno: 2026-10-17
 
 - id: chatgpt-pro
   produkt: ChatGPT
@@ -44,10 +44,10 @@
   za: posameznik
   cena_mesec: 103
   valuta: EUR
-  kaj_dobite: Petkrat več uporabe kot Plus in dostop do najzmogljivejšega OpenAI modela GPT-6 Astra.
-  opomba: Stran navaja "od 103 €".
+  kaj_dobite: Tri stopnje uporabe in sklepanje Pro z modelom GPT-6 Astra.
+  opomba: Stran navaja "od 103 €" in tri stopnje uporabe. Po OpenAIjevi strani s pomočjo se imenujejo Pro 100, Pro 200 in Pro 500 in stanejo 100, 200 in 500 USD na mesec; evrskih cen višjih stopenj stran ne pokaže.
   vir: https://chatgpt.com/pricing/
-  preverjeno: 2026-09-26
+  preverjeno: 2026-10-17
 
 - id: claude-free
   produkt: Claude
@@ -57,7 +57,7 @@
   valuta: EUR
   kaj_dobite: Klepet na spletu, namizju in telefonu, iskanje po spletu, ustvarjanje datotek, spomin in konektorji.
   vir: https://claude.com/pricing
-  preverjeno: 2026-09-26
+  preverjeno: 2026-10-17
 
 - id: claude-pro
   produkt: Claude
@@ -69,7 +69,7 @@
   ddv: brez DDV
   kaj_dobite: Več uporabe, projekti, Claude Code, Claude Design, dokumenti in predstavitve, načrtovana opravila, Claude za Chrome in Microsoft 365.
   vir: https://claude.com/pricing
-  preverjeno: 2026-09-26
+  preverjeno: 2026-10-17
 
 - id: claude-max
   produkt: Claude
@@ -79,9 +79,9 @@
   valuta: EUR
   ddv: brez DDV
   kaj_dobite: Petkrat ali dvajsetkrat več uporabe kot Pro, višje omejitve izhoda in prednost ob obremenitvah.
-  opomba: Stran navaja "od 90 €". Različica z dvajsetkratno uporabo je dražja. Samo mesečno plačilo.
+  opomba: Stran navaja "od 90 €". Evrske cene različice z dvajsetkratno uporabo stran ne pokaže; Anthropicova stran s pomočjo jo navaja pri 200 USD na mesec. Samo mesečno plačilo.
   vir: https://claude.com/pricing
-  preverjeno: 2026-09-26
+  preverjeno: 2026-10-17
 
 - id: gemini-free
   produkt: Gemini
@@ -89,9 +89,9 @@
   za: posameznik
   cena_mesec: 0
   valuta: EUR
-  kaj_dobite: Hitri model Flash, omejen dostop do Pro modela, ustvarjanje slik, Deep Research, Gemini Live in 15 GB prostora.
+  kaj_dobite: Hitri model Flash-Lite, ustvarjanje in urejanje slik, Deep Research, Gemini Live, Canvas in 15 GB prostora.
   vir: https://gemini.google/subscriptions/
-  preverjeno: 2026-09-26
+  preverjeno: 2026-10-17
 
 - id: google-ai-plus
   produkt: Gemini
@@ -101,7 +101,7 @@
   valuta: EUR
   kaj_dobite: Dvakrat višje omejitve kot brezplačno, Gemini v Gmailu in 400 GB prostora.
   vir: https://gemini.google/subscriptions/
-  preverjeno: 2026-09-26
+  preverjeno: 2026-10-17
 
 - id: google-ai-pro
   produkt: Gemini
@@ -109,9 +109,9 @@
   za: posameznik
   cena_mesec: 21.99
   valuta: EUR
-  kaj_dobite: Štirikrat višje omejitve kot brezplačno, najzmogljivejši Gemini Pro z Deep Search in 5 TB prostora.
+  kaj_dobite: Štirikrat višje omejitve kot brezplačno, dostop do modela Gemini 4 Argon in 5 TB prostora.
   vir: https://gemini.google/subscriptions/
-  preverjeno: 2026-09-26
+  preverjeno: 2026-10-17
 
 - id: google-ai-ultra
   produkt: Gemini
@@ -122,40 +122,43 @@
   kaj_dobite: Petkrat višje omejitve kot AI Pro, YouTube Premium in več kot 20 TB prostora.
   opomba: Različica z dvajsetkratnimi omejitvami stane 219,99 € na mesec.
   vir: https://gemini.google/subscriptions/
-  preverjeno: 2026-09-26
+  preverjeno: 2026-10-17
 
 - id: m365-personal
   produkt: Microsoft Copilot
   paket: Microsoft 365 Personal
   za: posameznik
-  cena_mesec: 9.99
-  valuta: USD
+  cena_mesec: 10
+  cena_letno: 8.25
+  valuta: EUR
   kaj_dobite: Copilot v Wordu, Excelu, PowerPointu in Outlooku za eno osebo ter 1 TB prostora.
-  opomba: Cena v USD za ZDA; cena za Slovenijo se lahko razlikuje.
-  vir: https://www.microsoft.com/en-us/copilot/pricing/individuals
-  preverjeno: 2026-09-26
+  opomba: Pri letnem plačilu 99 € na leto.
+  vir: https://www.microsoft.com/sl-si/copilot/pricing/individuals
+  preverjeno: 2026-10-17
 
 - id: m365-premium
   produkt: Microsoft Copilot
   paket: Microsoft 365 Premium
   za: posameznik
-  cena_mesec: 19.99
-  valuta: USD
+  cena_mesec: 22
+  cena_letno: 18.25
+  valuta: EUR
   kaj_dobite: Vse iz paketa Family ter višje omejitve za Copilot klepet, raziskovanje in agente.
-  opomba: Cena v USD za ZDA; cena za Slovenijo se lahko razlikuje.
-  vir: https://www.microsoft.com/en-us/copilot/pricing/individuals
-  preverjeno: 2026-09-26
+  opomba: Pri letnem plačilu 219 € na leto. Paket Family stane 129 € na leto ali 13 € na mesec.
+  vir: https://www.microsoft.com/sl-si/copilot/pricing/individuals
+  preverjeno: 2026-10-17
 
 - id: mistral-pro
   produkt: Mistral Le Chat
   paket: Pro
   za: posameznik
-  cena_mesec: 17.99
+  cena_mesec: 18.29
   valuta: EUR
-  ddv: z DDV (cena za Francijo)
-  kaj_dobite: Več sporočil in iskanj po spletu, več slik in 30 € mesečnega dobroimetja za API.
+  ddv: z DDV
+  kaj_dobite: Več sporočil in iskanj po spletu, več slik in mesečno dobroimetje za API.
+  opomba: Storitev se zdaj imenuje Vibe. Cena za Slovenijo.
   vir: https://mistral.ai/pricing/
-  preverjeno: 2026-09-26
+  preverjeno: 2026-10-17
 
 - id: perplexity-pro
   produkt: Perplexity
@@ -167,7 +170,7 @@
   kaj_dobite: Iskanje z AI in izbiro modelov, poglobljeno raziskovanje in višje omejitve.
   opomba: Stran navaja le ceno pri letnem plačilu.
   vir: https://www.perplexity.ai/pro
-  preverjeno: 2026-09-26
+  preverjeno: 2026-10-17
 
 # Podjetja
 
@@ -182,7 +185,7 @@
   kaj_dobite: Skupni delovni prostor, konektorji (Google Workspace, Microsoft 365, Slack, GitHub), SSO, skrbniške nastavitve; OpenAI se na podatkih podjetja privzeto ne uči.
   opomba: Sedež Premium s petkrat več uporabe stane 130 € mesečno ali 105 € pri letnem plačilu.
   vir: https://chatgpt.com/pricing/?type=team
-  preverjeno: 2026-09-26
+  preverjeno: 2026-10-17
 
 - id: chatgpt-enterprise
   produkt: ChatGPT
@@ -193,7 +196,7 @@
   kaj_dobite: Varnost in podpora za večja podjetja, SCIM, upravljanje šifrirnih ključev, analitika uporabe.
   opomba: Cena po dogovoru, letno plačilo.
   vir: https://chatgpt.com/pricing/
-  preverjeno: 2026-09-26
+  preverjeno: 2026-10-17
 
 - id: claude-team
   produkt: Claude
@@ -207,7 +210,7 @@
   kaj_dobite: Vse funkcije Claude in več uporabe kot Pro, za ekipe od 2 do 150 ljudi, osrednje plačevanje in skrbniške nastavitve.
   opomba: Sedež Premium s petkrat več uporabe stane 105,23 € mesečno ali 90 € pri letnem plačilu.
   vir: https://claude.com/pricing
-  preverjeno: 2026-09-26
+  preverjeno: 2026-10-17
 
 - id: claude-enterprise
   produkt: Claude
@@ -217,56 +220,58 @@
   cena_letno: 20
   valuta: USD
   ddv: brez DDV
+  min_uporabnikov: 20
   kaj_dobite: Vse iz paketa Team ter SCIM, revizijski dnevniki, vloge, nadzor hrambe podatkov in omejitve porabe.
   opomba: Poleg sedeža se uporaba plačuje po cenah API, letno plačilo.
   vir: https://claude.com/pricing
-  preverjeno: 2026-09-26
+  preverjeno: 2026-10-17
 
 - id: workspace-business-standard
   produkt: Gemini
   paket: v Google Workspace Business Standard
   za: podjetje
-  cena_mesec: null
+  cena_mesec: 16.2
   cena_letno: 13.6
   valuta: EUR
   kaj_dobite: Poslovna e-pošta, 2 TB prostora na uporabnika in Gemini v Gmailu, Dokumentih, Preglednicah, Predstavitvah in Meetu.
-  opomba: Cena velja ob letni zavezi. Paket Business Starter (6,80 €) ima Gemini le v omejenem obsegu.
+  opomba: Letna cena velja ob letni zavezi, mesečna pri prilagodljivem paketu. Paket Business Starter (6,80 € pri letni zavezi) ima Gemini le v omejenem obsegu.
   vir: https://workspace.google.com/pricing
-  preverjeno: 2026-09-26
+  preverjeno: 2026-10-17
 
 - id: m365-copilot-business
   produkt: Microsoft Copilot
   paket: Microsoft 365 Copilot Business
   za: podjetje
-  cena_mesec: null
-  cena_letno: 18
-  valuta: USD
+  cena_mesec: 21.84
+  cena_letno: 18.2
+  valuta: EUR
+  ddv: brez DDV
   kaj_dobite: Dodatek k obstoječemu paketu Microsoft 365, ki prinese Copilot v Wordu, Excelu, PowerPointu, Outlooku in Teams ter vnaprej pripravljeni agenti.
-  opomba: Promocijska cena za prvo leto do 31. decembra 2026 (redno 21 USD). Cena v USD za ZDA.
-  vir: https://www.microsoft.com/en-us/copilot/pricing/business
-  preverjeno: 2026-09-26
+  opomba: Obstoječe stranke s paketom Business ga ob nakupu od 1. julija do 31. decembra 2026 prvo leto plačajo 15,60 € na mesec (letna obveza). Paket Business Standard s Copilotom stane 20,36 €, Business Premium s Copilotom 27,73 € (z aplikacijo Teams, letna obveza).
+  vir: https://www.microsoft.com/sl-si/copilot/solutions/business
+  preverjeno: 2026-10-17
 
 - id: mistral-team
   produkt: Mistral Le Chat
   paket: Team
   za: podjetje
-  cena_mesec: 29.99
+  cena_mesec: 30.49
   valuta: EUR
-  ddv: z DDV (cena za Francijo)
+  ddv: z DDV
   min_uporabnikov: 2
   kaj_dobite: Skupni delovni prostor, do 30 GB prostora na uporabnika in izvoz podatkov.
-  opomba: Najmanjša mesečna poraba je 60 €.
+  opomba: Cena za Slovenijo. Za najmanj dva uporabnika stran navaja 61 € na mesec.
   vir: https://mistral.ai/pricing/
-  preverjeno: 2026-09-26
+  preverjeno: 2026-10-17
 
 - id: perplexity-enterprise
   produkt: Perplexity
   paket: Enterprise Pro
   za: podjetje
-  cena_mesec: 40
-  cena_letno: 33.33
+  cena_mesec: null
+  cena_letno: 34
   valuta: USD
-  kaj_dobite: Iskanje z AI za podjetja, SSO in SCIM, revizijski dnevniki in nastavljiva hramba datotek.
-  opomba: Letno plačilo znaša 400 USD na uporabnika.
-  vir: https://www.perplexity.ai/enterprise
-  preverjeno: 2026-09-26
+  kaj_dobite: Iskanje z AI za podjetja po spletu, datotekah in aplikacijah, SSO, brez učenja na vaših podatkih. SCIM, revizijski dnevniki in nastavljiva hramba podatkov zahtevajo pogodbo.
+  opomba: Stran navaja le ceno pri letnem plačilu.
+  vir: https://www.perplexity.ai/hub/pricing?p=enterprise
+  preverjeno: 2026-10-17

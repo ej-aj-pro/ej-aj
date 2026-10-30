@@ -14,6 +14,7 @@ Stanje: 3. oktober 2026.
 | `/vodniki/` | praktični vodniki (trajni naslovi brez datuma) | `src/content/novice/*.md`, `type: vodnik` |
 | `/modeli/` | naročnine (23 paketov) in 15 modelov s cenami API | `src/data/narocnine.yaml`, `src/data/modeli.yaml` |
 | `/cene/` | preusmeritev 301 na `/modeli/#narocnine` | `public/_redirects` |
+| `/razpisi/` | razpisi za AI, digitalizacijo in tehnologijo (odprti, napovedani, zaprti v zadnjih 12 mesecih), samo seznam s povezavo na uradno objavo; dni do roka računa brskalnik | `src/data/razpisi.yaml`, osvežuje skill `posodobi-razpise` (oblačna rutina ob ponedeljkih) |
 | `/statistika/` | raba AI v Sloveniji, 10 interaktivnih grafov | `src/data/statistika.json`, generira `scripts/osvezi-statistiko.mjs` |
 | `/prirocnik/` | priročnik: 10 vodnikov o dobri rabi Claude (`serija: prirocnik`, `korak`) | `src/content/novice/*.md` |
 | `/videi/` | priporočeni videi (YouTube, naloži se šele ob kliku) | `src/data/videi.yaml` |
@@ -110,13 +111,21 @@ slovar. Analitika: Cloudflare Web Analytics (brez piškotkov).
 
 0. **HTTPS:** urejeno, `http://ej-aj.si` 13. 10. vrne 301 na https. Odprt je še pregled v
    Search Console po 14. 10. (glej `docs/seo.md`).
-1. **Newsletter** (PR #7 objavljen 29. 9.): Buttondown, uporabnik `ej-aj`, račun noc.anze@gmail.com,
+1. **Newsletter** (PR #7 objavljen 29. 9.): Buttondown, uporabnik `ej-aj`, Anžetov Gmail račun,
    brezplačni paket. Ime ej-aj.si, barva #1f3bd6, odgovori na pozdrav@ej-aj.si, slovenska noga.
    Slovenščine Buttondown ne podpira, potrditveni mail je v angleščini (lastno besedilo zahteva
    paket Standard). API ključ je v `~/.zshrc` kot `BUTTONDOWN_API_KEY`. Prvi mail je osnutek v
    Buttondownu (`/Users/anze/Desktop/Claude/ej-aj/ej-aj-newsletter/2026-09-29.md`), pošlje ga Anže. Brez stalnega urnika,
-   zato besedilo ne obljublja "vsak petek". Odprto: pošiljanje z `newsletter@ej-aj.si` (sending
-   domain v Buttondownu, DNS v Cloudflare, Email Routing za ta naslov; Anže je odobril).
+   zato besedilo ne obljublja "vsak petek".
+   Pošiljanje z `newsletter@ej-aj.si` je urejeno (29. 9.): sending domain `ej-aj.si` je v Buttondownu
+   potrjen (`sending_domain_status: valid`), pošiljatelj je `newsletter@ej-aj.si`, ime pošiljatelja
+   "ej-aj.si". V Cloudflare DNS so dodani DKIM (TXT `20260929134901pm._domainkey`), CNAME
+   `pm-bounces` na `pm.mtasv.net` in `track` na `webhook-consumer.buttondown.email` (oba DNS only)
+   ter DMARC (TXT `_dmarc`, `p=quarantine`, poročila na Postmark). Email Routing posreduje
+   `newsletter@ej-aj.si` na isti cilj kot `pozdrav@`. Obstoječi MX, SPF in DKIM za Email Routing so
+   nespremenjeni. Pozor: zaradi `p=quarantine` pošta, poslana "kot" `@ej-aj.si` mimo Buttondowna
+   (npr. iz Gmaila prek njegovega SMTP), ne prestane DMARC. Tabela zapisov v Buttondownu včasih
+   za hip pokaže "Required"; merodajen je API ali `dig`.
 2. **Rutini** tečeta v drugi Claude instanci (Anže, 13. 10. 2026). Kopiji v tej instanci sta
    namenoma izklopljeni; ne predlagaj ponovnega vklopa.
 3. **Tabela naročnin:** Microsoft je še v USD (obstajajo slovenske cene v EUR), Mistral Team po
@@ -166,6 +175,9 @@ slovar. Analitika: Cloudflare Web Analytics (brez piškotkov).
   preverjevalec našel napake (14 oziroma 13, predvsem pretiravanja in mnenja kot dejstva).
 - Preimenovanja, ki jih morajo upoštevati prihodnji članki: NotebookLM je zdaj Gemini Notebook,
   Mistral Le Chat je zdaj Vibe, Microsoft 365 Copilot Chat je zdaj Microsoft Copilot Chat.
+- Vloge vsebin so zapisane v `AGENTS.md` ("Content types"): pregled za vse novice, članek samo za
+  teme, ki izpolnijo tri pogoje, vodnik za trajno znanje. Skill `tedenski-pregled` v PR predlaga
+  0 do 2 kandidata za članek; Anže izbere, vsak izbrani je svoj PR.
 - Validator obravnava `www.perplexity.ai` kot gostitelja, ki blokira skripte.
 - Repo je zdaj v `/Users/anze/Desktop/Claude/ej-aj`; worktreeje po selitvi popravi
   `git worktree repair <pot>`.
@@ -234,6 +246,13 @@ Steps:
 4. Rules that always apply: Slovenian copy, no em dashes or en dashes; every news item has a source link and every number, date and name must come from an opened source; never invent anything; no client names or client data (his private knowledge-base report may be read only as a list of leads, never copied).
 5. Final message in Slovenian, short: the PR link, the headlines, failed sources, and anything Anže must check by hand. If any step failed, say exactly which one and what state things were left in; do not work around failures silently.
 ```
+
+### ej-aj posodobi razpise (oblačna rutina)
+
+- Teče v oblaku (claude.ai, routine `trig_015XrvdAK5saQgJGd8JSmU35`, https://claude.ai/code/routines/trig_015XrvdAK5saQgJGd8JSmU35), zato Mac ne rabi biti prižgan. Ustvarjena 23. 10. 2026; nadomešča lokalno rutino `ej-aj-posodobi-razpise`, ki je izklopljena.
+- Urnik: `0 7 * * 1` v UTC, torej ob ponedeljkih ob 8.00 pozimi in ob 9.00 poleti. Model Claude Opus 5.5, okolje Default, repo `ej-aj-pro/ej-aj`, brez konektorjev.
+- Odpre PR in nikoli ne mergea. Anže je 23. 10. želel samodejno objavo; samodejni varnostni pregled je zapis pravila za samodejni merge zavrnil, zato merge ostaja ročen.
+- Prompt je shranjen v rutini: prebere `.claude/skills/posodobi-razpise/SKILL.md` z `origin/main` in sledi razdelku "Cloud routine".
 
 ### ej-aj-posodobi-modele
 

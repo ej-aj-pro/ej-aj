@@ -7,6 +7,13 @@ import { getCollection } from 'astro:content';
 import { getPosts, postPath } from '../lib';
 import stat from '../data/statistika.json';
 
+// Calls teaser: open calls and the nearest deadline, from the same data as /razpisi/.
+const calls = await getCollection('razpisi');
+const openCalls = calls.filter((r) => r.data.stanje === 'odprt' && r.data.rok);
+const nextCall = [...openCalls].sort((a, b) => a.data.rok!.valueOf() - b.data.rok!.valueOf())[0];
+const announcedCalls = calls.filter((r) => r.data.stanje === 'napovedan').length;
+const shortDate = (d: Date) => d.toLocaleDateString('sl-SI', { day: 'numeric', month: 'numeric', year: 'numeric' });
+
 const all = await getPosts();
 // Handbook steps have their own section, so they don't push the digests out of "Zadnje".
 const posts = all.filter((p) => !p.data.serija).slice(0, 6);
@@ -98,12 +105,25 @@ const pct = (v: number) => `${new Intl.NumberFormat('sl-SI', { minimumFractionDi
 
   <section class="wrap section">
     <div class="section-head">
+      <h2>Razpisi za AI in digitalizacijo</h2>
+      <a href="/razpisi/">Vsi razpisi</a>
+    </div>
+    <p class="section-lede">
+      {openCalls.length} odprtih in {announcedCalls} napovedanih razpisov v Sloveniji in EU za
+      podjetja, ki uvajajo AI ali razvijajo tehnologijo.
+      {nextCall && <>Najbližji rok: {nextCall.data.naslov}, {shortDate(nextCall.data.rok!)}.</>} Pri
+      vsakem je povezava na uradno objavo, seznam pregledamo vsak teden.
+    </p>
+  </section>
+
+  <section class="wrap section">
+    <div class="section-head">
       <h2>Modeli in cene</h2>
       <a href="/modeli/">Odpri primerjavo</a>
     </div>
     <p class="section-lede">
       Naročnine za ChatGPT, Claude, Gemini, Copilot in druga orodja, za posameznike in podjetja, ter
-      cene modelov prek API-ja, od Clauda in GPT do slovenskega GaMS. Vsak podatek ima vir.
+      cene modelov prek API-ja, od Clauda in GPT do slovenskega GaMS. Vsak podatek ima vir. Koliko stane orodje za vašo ekipo, izračunate v <a href="/cene/kalkulator/">kalkulatorju stroškov</a>.
     </p>
   </section>
 

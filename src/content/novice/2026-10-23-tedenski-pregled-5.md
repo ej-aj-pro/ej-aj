@@ -12,7 +12,7 @@ V petem tedenskem pregledu sta dve novici o nakupu modelov prek Google Cloud, pr
 
 ## 1. Modeli OpenAI prihajajo v Google Cloud
 
-OpenAI je 21. oktobra napovedal, da bodo njegovi najzmogljivejši modeli in Codex, OpenAI-jevo orodje za programiranje z agenti, na voljo v Model Garden, Googlovem katalogu modelov v oblaku Google Cloud. Podjetja jih bodo kupovala prek Google Cloud Marketplace, tista z dogovorjeno porabo v Google Cloud pa bodo lahko te nakupe vštela vanjo. Modeli OpenAI bodo kmalu na voljo tudi v Google Antigravity in v Gemini Agent. Splošna dostopnost je načrtovana v prihodnjih tednih, do takrat je treba dostop zaprositi. Microsoft po navedbah OpenAI ostaja njegov glavni partner za oblak.
+OpenAI je 21. oktobra napovedal, da bodo njegovi najzmogljivejši modeli in Codex, OpenAI-jevo orodje za programiranje z agenti, na voljo v Model Garden, Googlovem katalogu modelov v oblaku Google Cloud. Podjetja jih bodo kupovala prek Google Cloud Marketplace, tista z dogovorjeno porabo v Google Cloud pa bodo lahko te nakupe vštela vanjo. Modeli OpenAI bodo kmalu na voljo tudi v Google Antigravity in v Gemini Agent. Splošna dostopnost je po poročanju načrtovana v nekaj tednih, datuma OpenAI ni objavil; do takrat je treba dostop zaprositi. Microsoft po navedbah OpenAI ostaja njegov glavni partner za oblak.
 
 **Kaj to pomeni za vas:** podjetje, ki že dela v Google Cloud, bo lahko modele GPT uporabljalo prek obstoječega računa pri Googlu in dogovorjene porabe. Za zdaj gre za napoved, cen in regij OpenAI še ni objavil.
 
@@ -34,13 +34,13 @@ Mistral je 20. oktobra izdal Voxtral 3, družino modelov za govor. Trije modeli 
 
 Vir: [Mistral, Voxtral 3](https://mistral.ai/news/voxtral-3/)
 
-## 4. Mistral Large 4 v javnem predogledu, uteži napovedane za konec oktobra
+## 4. Mistral Large 4: javni predogled, uteži so zdaj objavljene
 
-Mistral je 21. oktobra ob objavi sodelovanja z Nvidio pri AI za inženirsko načrtovanje (letalstvo, avtomobilska industrija in polprevodniki) opisal model Mistral Large 4, ki je v javnem predogledu. Model ima približno bilijon parametrov, od katerih jih je dejavnih 49 milijard. Naučili so ga na 3.800 grafičnih procesorjih Nvidia Grace Blackwell v Mistralovih podatkovnih centrih v Evropi. Uteži namerava Mistral objaviti konec oktobra, licence in cen pa na strani ne navaja.
+Mistral je 21. oktobra ob objavi sodelovanja z Nvidio pri AI za inženirsko načrtovanje (letalstvo, avtomobilska industrija in polprevodniki) opisal model Mistral Large 4, ki je bil takrat v javnem predogledu. Model ima približno bilijon parametrov, od katerih jih je dejavnih 49 milijard. Naučili so ga na 3.800 grafičnih procesorjih Nvidia Grace Blackwell v Mistralovih podatkovnih centrih v Evropi. Uteži je Mistral napovedal za konec oktobra in jih objavil 29. oktobra, kar je opisano v [pregledu #6](/novice/2026-10-30-tedenski-pregled-6/).
 
 **Kaj to pomeni za vas:** razlika med skupnim in dejavnim številom parametrov je značilna za zasnovo mešanice strokovnjakov, pri kateri model za vsak odgovor uporabi le del sebe. Tak model je cenejši za delovanje, kot nakazuje njegova velikost, a za namestitev na lastnem strežniku bo kljub temu potrebna zelo zmogljiva oprema, zato bo večina podjetij uporabljala API.
 
-Vir: [Mistral, Mistral Advances AI for Engineering with NVIDIA](https://mistral.ai/news/mistral-nvidia-ai-for-industrial-engineering/)
+Viri: [Mistral, Mistral Advances AI for Engineering with NVIDIA](https://mistral.ai/news/mistral-nvidia-ai-for-industrial-engineering/), [Mistral, Large 4 z odprtimi utežmi](https://mistral.ai/news/mistral-large-4-oss/)
 
 ## 5. Agent Skills gre pod okrilje Linux Foundation
 
@@ -62,8 +62,8 @@ Vir: [Claude, Claude Security now scans continuously and tracks fixes](https://c
 
 Ministrstvo za notranje zadeve in javno upravo je 22. oktobra opozorilo na razpise evropskega projekta LLM-BRIDGE, ki ga koordinira konzorcij za jezikovne tehnologije ALT-EDIC in sofinancira EU iz programa Digitalna Evropa. V 14-tedenski pospeševalni program bo izbranih 16 podjetij, ki imajo za trg pripravljene rešitve generativne AI ali jezikovnih tehnologij (stopnja tehnološke zrelosti TRL 8 do 9), rok za prijavo je 18. novembra 2026 ob 17.00. Po strani projekta program ponuja svetovanje, dostop do evropskih superračunalnikov ter pomoč pri regulativi in pripravi na naložbo, denarnih sredstev pa ne omenja. Ena podporna organizacija bo izbrana za izvedbo 12-tedenskega inkubacijskega programa za zgodnje zagonske projekte, z rokom 28. novembra 2026 ob 17.00 in do 60.000 EUR sredstev, informativni spletni seminar za ta razpis pa bo 3. novembra 2026 ob 11.00. Prijavijo se lahko organizacije iz držav EU in držav, pridruženih programu Digitalna Evropa.
 
-**Kaj to pomeni za vas:** slovensko podjetje z delujočim izdelkom na področju generativne AI ali obdelave jezika se lahko prijavi v pospeševalni program, ki je brezplačen, a zahteva čas vsaj enega od ustanoviteljev. Do roka je slabe štiri tedne.
+**Kaj to pomeni za vas:** slovensko podjetje z delujočim izdelkom na področju generativne AI ali obdelave jezika se lahko prijavi v pospeševalni program, ki je brezplačen, a zahteva čas vsaj enega od ustanoviteljev. Rok je 18. novembra 2026.
 
 Viri: [gov.si, Nove priložnosti za podjetja in podporne organizacije na področju generativne umetne inteligence](https://www.gov.si/novice/2026-10-22-nove-priloznosti-za-podjetja-in-podporne-organizacije-na-podrocju-generativne-umetne-inteligence/), [LLM-BRIDGE, pospeševalni program](https://www.llm-bridge.eu/open-call-acceleration-programme-1st-cohort/), [LLM-BRIDGE, inkubacijski program](https://www.llm-bridge.eu/open-call-for-incubator-2nd-cohort/)
 
-Naslednji pregled izide v petek, 30. oktobra.
+Naslednji pregled izide v petek, 6. novembra.
