@@ -1,0 +1,215 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+
+// Order of the yaml file is kept inside each category.
+const KATEGORIJE = [
+  { id: 'pisanje', naslov: 'Pisanje in e-pošta' },
+  { id: 'dokumenti', naslov: 'Dokumenti in sestanki' },
+  { id: 'podatki', naslov: 'Preglednice in podatki' },
+  { id: 'ucenje', naslov: 'Učenje in načrtovanje' },
+  { id: 'ai', naslov: 'Boljši odgovori AI' },
+] as const;
+
+const prompts = await getCollection('prompti');
+const groups = KATEGORIJE.map((k) => ({ ...k, prompts: prompts.filter((p) => p.data.kategorija === k.id) }));
+
+// Placeholders in [square brackets] are highlighted so readers see what to replace.
+const parts = (text: string) => text.split(/(\[[^\]\n]+\])/g).filter(Boolean);
+---
+
+<Base
+  searchType="Prompt"
+  title="Predloge promptov za vsakdanje delo z AI"
+  description="Predloge promptov v slovenščini za ChatGPT, Claude, Gemini in Copilot: maili, povzetki dokumentov, zapisniki, Excel formule, primerjava ponudb in učenje. Kopirajte in dopolnite."
+  jsonLd={[
+    {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      name: 'Predloge promptov za vsakdanje delo z AI',
+      itemListElement: prompts.map((p, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: p.data.naslov,
+        url: new URL(`/prompti/#${p.id}`, Astro.site).toString(),
+      })),
+    },
+  ]}
+>
+  <div class="wrap narrow">
+    <header class="article-head">
+      <span class="eyebrow">Predloge promptov</span>
+      <h1>Predloge promptov za vsakdanje delo z AI</h1>
+      <p class="lede">
+        Predloge za naloge, ki se v pisarni ponavljajo. Delujejo v ChatGPT, Claudu, Geminiju in
+        Copilotu. Kopirajte jih in besedilo v <mark class="ph">[oglatih oklepajih]</mark> zamenjajte s
+        svojim.
+      </p>
+      <p class="how">
+        Vsaka predloga pove, za koga je rezultat, zakaj je kaj pomembno in kaj naj AI naredi, ko
+        podatka nima. Zakaj to deluje, je razloženo v vodniku{' '}
+        <a href="/vodniki/kako-napisati-dober-prompt/">Kako napisati dober prompt</a>. Zaupnih
+        podatkov ne vnašajte v brezplačna orodja, glejte vodnik{' '}
+        <a href="/vodniki/varna-raba-ai-v-podjetju/">Kateri podatki ne sodijo v ChatGPT</a>.
+      </p>
+      <nav class="jump" aria-label="Kategorije">
+        {groups.map((g) => <a href={`#${g.id}`}>{g.naslov}</a>)}
+      </nav>
+    </header>
+
+    {
+      groups.map((g) => (
+        <section class="kategorija" id={g.id} aria-labelledby={`${g.id}-naslov`}>
+          <h2 id={`${g.id}-naslov`}>{g.naslov}</h2>
+          {g.prompts.map((p) => (
+            <article class="prompt" id={p.id}>
+              <h3>
+                <a href={`#${p.id}`}>{p.data.naslov}</a>
+              </h3>
+              <p class="za-kaj">{p.data.za_kaj}</p>
+              <div class="besedilo">
+                <pre>{parts(p.data.prompt.trimEnd()).map((part) => (part.startsWith('[') ? <mark class="ph">{part}</mark> : part))}</pre>
+                <button type="button" class="kopiraj" data-pagefind-ignore>
+                  Kopiraj
+                </button>
+              </div>
+              {p.data.nasvet && (
+                <p class="nasvet">
+                  <strong>Na kaj paziti:</strong> {p.data.nasvet}
+                </p>
+              )}
+            </article>
+          ))}
+        </section>
+      ))
+    }
+
+    <p class="how konec">
+      Ko predloga za vašo nalogo deluje, jo shranite v projekt ali v navodila po meri, da je ne
+      lepite vsakič znova. Kako, piše v vodniku{' '}
+      <a href="/vodniki/kontekst-podjetja-za-ai/">Kako AI-ju dati kontekst podjetja</a>.
+    </p>
+  </div>
+</Base>
+
+<script>
+  for (const button of document.querySelectorAll<HTMLButtonElement>('.kopiraj')) {
+    button.addEventListener('click', async () => {
+      const text = button.parentElement?.querySelector('pre')?.textContent ?? '';
+      try {
+        await navigator.clipboard.writeText(text);
+        button.textContent = 'Kopirano';
+      } catch {
+        // Clipboard can be blocked (http, old browsers): select the text so Ctrl+C works.
+        const range = document.createRange();
+        range.selectNodeContents(button.parentElement!.querySelector('pre')!);
+        getSelection()?.removeAllRanges();
+        getSelection()?.addRange(range);
+        button.textContent = 'Označeno, kopirajte s Ctrl+C';
+      }
+      setTimeout(() => (button.textContent = 'Kopiraj'), 2500);
+    });
+  }
+</script>
+
+<style>
+  .how {
+    color: var(--muted);
+    margin: 12px 0 0;
+  }
+  .jump {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+  }
+  .jump a {
+    font-size: 0.92rem;
+    padding: 6px 12px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    text-decoration: none;
+    background: var(--surface);
+  }
+  .kategorija {
+    margin: 48px 0 0;
+    scroll-margin-top: 80px;
+  }
+  .kategorija h2 {
+    font-size: 1.5rem;
+    margin: 0 0 8px;
+  }
+  .prompt {
+    margin: 24px 0 0;
+    scroll-margin-top: 80px;
+  }
+  .prompt h3 {
+    font-size: 1.1rem;
+    margin: 0 0 4px;
+  }
+  .prompt h3 a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .za-kaj {
+    margin: 0 0 10px;
+    color: var(--muted);
+  }
+  .besedilo {
+    position: relative;
+  }
+  .besedilo pre {
+    margin: 0;
+    padding: 16px 16px 16px;
+    padding-right: 96px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--surface);
+    color: var(--ink);
+    font-family: var(--font);
+    font-size: 0.93rem;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+  .ph {
+    background: var(--accent-soft);
+    color: var(--accent);
+    border-radius: 4px;
+    padding: 0 2px;
+  }
+  .kopiraj {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 6px 12px;
+    font: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--bg);
+    color: var(--ink);
+    cursor: pointer;
+  }
+  .kopiraj:hover {
+    border-color: var(--accent);
+  }
+  .nasvet {
+    margin: 10px 0 0;
+    font-size: 0.93rem;
+  }
+  .konec {
+    margin-top: 48px;
+  }
+  @media (max-width: 560px) {
+    .kategorija,
+    .prompt {
+      scroll-margin-top: 150px;
+    }
+    .besedilo pre {
+      padding-right: 16px;
+      padding-top: 52px;
+    }
+  }
+</style>

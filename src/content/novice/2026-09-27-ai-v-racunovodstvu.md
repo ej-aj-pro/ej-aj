@@ -1,5 +1,5 @@
 ---
-title: 'AI v računovodstvu: kaj zna, česa ne sme in kako začeti'
+title: 'Računovodstvo z umetno inteligenco: kaj zna, česa ne sme in kako začeti'
 description: 'Za računovodske servise in finančne službe: kje AI pri delu pomaga, zakaj zaupnost in e-računi od leta 2028 spreminjajo sliko, kaj svetujejo stroka in ponudniki ter kako začeti.'
 date: 2026-09-27
 type: vodnik

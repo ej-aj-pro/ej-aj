@@ -1,5 +1,6 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import { termIdsIn } from './markdown/slovar-povezave.mjs';
+import { TYPE_LABEL, formatDate } from './site';
 
 export async function getPosts() {
   const posts = await getCollection('novice', ({ data }) => import.meta.env.DEV || !data.draft);
@@ -13,6 +14,26 @@ export function guideSlug(id: string) {
 
 export function postPath(post: CollectionEntry<'novice'>) {
   return post.data.type === 'vodnik' ? `/vodniki/${guideSlug(post.id)}/` : `/novice/${post.id}/`;
+}
+
+// Plain Markdown copy of an article (/vodniki/<slug>.md, /novice/<id>.md, /llms-full.txt) for AI
+// assistants and agents that read pages as text: no navigation, absolute links, a header with the
+// dates and the canonical URL so a quote can be attributed.
+export function postMarkdownPath(post: CollectionEntry<'novice'>) {
+  return postPath(post).replace(/\/$/, '.md');
+}
+
+export function postMarkdown(post: CollectionEntry<'novice'>, site: URL) {
+  const { title, description, type, date, updated, period, podcast } = post.data;
+  const meta = [`Vrsta: ${TYPE_LABEL[type]}`, `Objavljeno: ${formatDate(date)}`];
+  if (updated) meta.push(`Posodobljeno: ${formatDate(updated)}`);
+  if (period) meta.push(`Obdobje: ${period}`);
+  if (podcast) meta.push(`Povzetek epizode: "${podcast.naslov}" (${podcast.oddaja}), ${podcast.url}`);
+  meta.push(`Izvirnik: ${new URL(postPath(post), site)}`);
+  const lines = [`# ${title}`, '', `> ${description}`, '', ...meta.map((m) => `- ${m}`)];
+  // Inline links "](/pot/)" and reference definitions "]: /pot/" point to this site.
+  const body = (post.body ?? '').trim().replace(/(\]\(|\]: )\/(?!\/)/g, `$1${site.origin}/`);
+  return [...lines, '', body, ''].join('\n');
 }
 
 // Glossary terms per article, computed once per build.

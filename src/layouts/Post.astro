@@ -2,10 +2,12 @@
 import { existsSync } from 'node:fs';
 import type { CollectionEntry } from 'astro:content';
 import { getCollection, render } from 'astro:content';
+import Podcast from '../components/Podcast.astro';
 import Video from '../components/Video.astro';
 import Base from './Base.astro';
 import Newsletter from '../components/Newsletter.astro';
-import { getPosts, postPath, relatedPosts } from '../lib';
+import { getPosts, guideSlug, postMarkdownPath, postPath, relatedPosts } from '../lib';
+import { pricePagesForGuide } from '../cene';
 import { SITE, TYPE_LABEL, formatDate } from '../site';
 
 interface Props {
@@ -31,6 +33,7 @@ const allVideos = post.data.videi.length ? await getCollection('videi') : [];
 const videos = post.data.videi.map((id) => allVideos.find((v) => v.id === id)).filter((v) => v !== undefined);
 // "Preberite še": articles that share the most glossary terms with this one.
 const related = relatedPosts(post, await getPosts());
+const prices = post.data.type === 'vodnik' ? pricePagesForGuide(guideSlug(post.id)) : [];
 const url = new URL(postPath(post), Astro.site).toString();
 const section =
   post.data.type === 'vodnik'
@@ -49,6 +52,8 @@ const image = existsSync(`public/og/${post.id}.png`) ? `/og/${post.id}.png` : '/
   published={post.data.date}
   modified={post.data.updated}
   image={image}
+  searchType={post.data.type === 'vodnik' ? 'Vodnik' : 'Novica'}
+  markdown={postMarkdownPath(post)}
   jsonLd={[
     {
       '@context': 'https://schema.org',
@@ -76,7 +81,7 @@ const image = existsSync(`public/og/${post.id}.png`) ? `/og/${post.id}.png` : '/
 >
   <article class="wrap narrow">
     <header class="article-head">
-      <div class="meta">
+      <div class="meta" data-pagefind-ignore>
         <span class="tag">{TYPE_LABEL[post.data.type]}</span>
         <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
         {post.data.updated && (
@@ -91,7 +96,7 @@ const image = existsSync(`public/og/${post.id}.png`) ? `/og/${post.id}.png` : '/
     </header>
     {
       toc.length >= 4 && (
-        <nav class="toc" aria-label="Vsebina">
+        <nav class="toc" aria-label="Vsebina" data-pagefind-ignore>
           <strong>Vsebina</strong>
           <ol>
             {toc.map((h) => (
@@ -103,12 +108,13 @@ const image = existsSync(`public/og/${post.id}.png`) ? `/og/${post.id}.png` : '/
         </nav>
       )
     }
+    {post.data.podcast && <Podcast podcast={post.data.podcast} />}
     <div class="prose">
       <Content />
     </div>
     {
       videos.length > 0 && (
-        <section class="post-videos">
+        <section class="post-videos" data-pagefind-ignore>
           <h2>{videos.length === 1 ? 'Priporočen video' : videos.length === 2 ? 'Priporočena videa' : 'Priporočeni videi'}</h2>
           {videos.map((v) => (
             <Video video={v} />
@@ -118,7 +124,7 @@ const image = existsSync(`public/og/${post.id}.png`) ? `/og/${post.id}.png` : '/
     }
     {
       series.length > 0 && (
-        <nav class="series-nav" aria-label="Priročnik">
+        <nav class="series-nav" aria-label="Priročnik" data-pagefind-ignore>
           <a class="series-hub" href="/prirocnik/">
             Priročnik: korak {at + 1} od {series.length}
           </a>
@@ -142,8 +148,18 @@ const image = existsSync(`public/og/${post.id}.png`) ? `/og/${post.id}.png` : '/
       )
     }
     {
+      prices.length > 0 && (
+        <nav class="price-links" aria-label="Cene orodij" data-pagefind-ignore>
+          <span>Trenutne cene paketov:</span>
+          {prices.map((p) => (
+            <a href={`/cene/${p.slug}/`}>Koliko stane {p.ime}</a>
+          ))}
+        </nav>
+      )
+    }
+    {
       related.length > 0 && (
-        <section class="related-posts" aria-labelledby="preberite-se">
+        <section class="related-posts" aria-labelledby="preberite-se" data-pagefind-ignore>
           <h2 id="preberite-se">Preberite še</h2>
           <ul>
             {related.map((r) => (
@@ -156,7 +172,7 @@ const image = existsSync(`public/og/${post.id}.png`) ? `/og/${post.id}.png` : '/
         </section>
       )
     }
-    <p class="disclosure">
+    <p class="disclosure" data-pagefind-ignore>
       Pri pripravi je pomagal AI (Claude). Vsako trditev smo preverili pri navedenem viru, besedilo
       je pred objavo pregledal in uredil {SITE.author}. Ste opazili napako?
       <a href="https://github.com/ej-aj-pro/ej-aj/issues">Sporočite jo na GitHubu</a>.
@@ -166,6 +182,23 @@ const image = existsSync(`public/og/${post.id}.png`) ? `/og/${post.id}.png` : '/
 </Base>
 
 <style>
+  .price-links {
+    margin: 40px 0 0;
+    padding: 14px 18px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 18px;
+    font-size: 0.95rem;
+  }
+  .price-links span {
+    color: var(--muted);
+  }
+  .price-links a {
+    font-weight: 650;
+  }
   .related-posts {
     margin: 40px 0 0;
     border-top: 1px solid var(--line);

@@ -12,14 +12,16 @@ Stanje: 3. oktober 2026.
 | `/` | naslovnica z razdelki novice, modeli in cene, statistika, slovar, vodniki | |
 | `/novice/` | tedenski pregledi in članki | `src/content/novice/*.md` |
 | `/vodniki/` | praktični vodniki (trajni naslovi brez datuma) | `src/content/novice/*.md`, `type: vodnik` |
-| `/modeli/` | naročnine (23 paketov) in 15 modelov s cenami API | `src/data/narocnine.yaml`, `src/data/modeli.yaml` |
+| `/modeli/` | naročnine (23 paketov), 15 modelov s cenami API in zadnje spremembe tabel (vsaka sprememba modela ali cene, tudi zunaj mesečne rutine, dobi vnos) | `src/data/narocnine.yaml`, `src/data/modeli.yaml`, `src/data/spremembe.yaml` |
 | `/cene/` | preusmeritev 301 na `/modeli/#narocnine` | `public/_redirects` |
+| `/razpisi/` | razpisi za AI, digitalizacijo in tehnologijo (odprti, napovedani, zaprti v zadnjih 12 mesecih), samo seznam s povezavo na uradno objavo; dni do roka računa brskalnik | `src/data/razpisi.yaml`, osvežuje skill `posodobi-razpise` (oblačna rutina ob ponedeljkih) |
 | `/statistika/` | raba AI v Sloveniji, 10 interaktivnih grafov | `src/data/statistika.json`, generira `scripts/osvezi-statistiko.mjs` |
 | `/prirocnik/` | priročnik: 10 vodnikov o dobri rabi Claude (`serija: prirocnik`, `korak`) | `src/content/novice/*.md` |
 | `/videi/` | priporočeni videi (YouTube, naloži se šele ob kliku) | `src/data/videi.yaml` |
 | `/slovar/`, `/slovar/<id>/` | 54 izrazov, vsak s svojo stranjo | `src/data/slovar.yaml` |
 | `/o-projektu/`, `/zasebnost/` (še v PR #7) | | |
-| `/rss.xml`, `/llms.txt`, `/sitemap-index.xml` | generirano | |
+| `/rss.xml`, `/llms.txt`, `/llms-full.txt`, `/sitemap-index.xml` | generirano | |
+| `/vodniki/<slug>.md`, `/novice/<id>.md` | članek v Markdownu za AI pomočnike (GEO, `docs/seo.md`) | |
 
 Objavljeno (25 člankov): tedenski pregled #1, 2 novičarska članka (`type: clanek`: Claude Sonnet
 5.5, nov Microsoft Copilot s Home, Code in Autopilot), 12 samostojnih vodnikov (AI Act, varna raba,
@@ -55,7 +57,7 @@ slovar. Analitika: Cloudflare Web Analytics (brez piškotkov).
 
 ## Tehnika, ki jo moraš poznati
 
-- Repo: `/Users/anze/Desktop/ej-aj`, GitHub `ej-aj-pro/ej-aj` (javen). Aktivni `gh` račun na Macu je
+- Repo: `/Users/anze/Desktop/Claude/ej-aj`, GitHub `ej-aj-pro/ej-aj` (javen). Aktivni `gh` račun na Macu je
   **AnzeNoc** in ga ne preklapljaj (`gh auth switch` pokvari drugo sejo). Vsak omrežni ukaz:
   `GH_TOKEN="$(gh auth token --user ej-aj-pro 2>/dev/null || gh auth token --user AnzeNocAI)" git push ...`, enako za `gh pr ...`.
   Račun ej-aj-pro (id 326904133) je v gh keyringu še shranjen pod starim imenom **AnzeNocAI**, zato
@@ -77,6 +79,13 @@ slovar. Analitika: Cloudflare Web Analytics (brez piškotkov).
   Letnice na strani se berejo iz podatkov, razlagalne povedi pa je treba ob novih podatkih preveriti.
 - Grafi na `/statistika/` so v čistem SVG brez knjižnic (`src/scripts/grafi.ts`); paleta je
   preverjena za barvno slepoto, barve so CSS spremenljivke na `.viz`.
+- **Iskanje** (`/iskanje/`): Pagefind zgradi indeks po `astro build` (skripta `build` v
+  `package.json`), zato v `npm run dev` iskanje ne deluje; preizkusi ga z `npm run build` in
+  `npm run preview`. Indeksira se `<main>`; `Base` ima `search={false}` za strani s seznami
+  (naslovnica, /novice/, /vodniki/, /slovar/) in `searchType` za filter "Vrsta". Ponavljajoče se
+  bloke (Preberite še, newsletter, kazalo) izključi `data-pagefind-ignore`. Slovenskega krnjenja
+  Pagefind nima, zato `src/pages/iskanje.astro` iskanim besedam odreže eno končnico, Pagefind pa
+  vsako besedo išče kot začetek ("naročnina" najde naročnine, naročnino ...).
 - Validator: `node scripts/preveri.mjs --links <datoteka>`; CI ga poganja ob vsakem PR-ju in blokira
   `[DOPOLNI: ...]` v straneh. Lokalno v peskovniku povezave vrnejo "fetch failed"; preveri jih CI.
 - Predogled delovne kopije: `.claude/launch.json` kaže na glavni checkout. Za worktree začasno dodaj
@@ -84,7 +93,7 @@ slovar. Analitika: Cloudflare Web Analytics (brez piškotkov).
   `git checkout .claude/launch.json`.
 - Worktreeji rutin in skillov: `~/.cache/ej-aj-worktrees/` (Namizje se sinhronizira v iCloud).
 - Skilli v repu: `tedenski-pregled` (predlaga tudi do 3 nova gesla za slovar), `posodobi-modele`
-  (modeli, naročnine in statistika), `nov-vodnik` (iz zapiska v `~/Desktop/ej-aj-inbox/`),
+  (modeli, naročnine in statistika), `nov-vodnik` (iz zapiska v `/Users/anze/Desktop/Claude/ej-aj/ej-aj-inbox/`),
   `newsletter`.
 - **Brskalnik:** Cloudflare, Domenca, Search Console in Bing so na računu anze999@gmail.com v
   Anžetovem Chrome profilu **anze999** (Claude in Chrome). V tem profilu klikanje po koordinatah
@@ -100,19 +109,25 @@ slovar. Analitika: Cloudflare Web Analytics (brez piškotkov).
 
 ## Odprto
 
-0. **HTTPS:** `http://ej-aj.si` 2. 10. še vedno vrne 200 namesto preusmeritve. Anže mora v
-   Cloudflaru vklopiti SSL/TLS, Edge Certificates, Always Use HTTPS (agentu varnostno pravilo
-   aplikacije preklopa ne dovoli). Search Console pregled po 14. 10. (glej `docs/seo.md`).
-1. **Newsletter** (PR #7 objavljen 29. 9.): Buttondown, uporabnik `ej-aj`, račun noc.anze@gmail.com,
+0. **HTTPS:** urejeno, `http://ej-aj.si` 13. 10. vrne 301 na https. Odprt je še pregled v
+   Search Console po 14. 10. (glej `docs/seo.md`).
+1. **Newsletter** (PR #7 objavljen 29. 9.): Buttondown, uporabnik `ej-aj`, Anžetov Gmail račun,
    brezplačni paket. Ime ej-aj.si, barva #1f3bd6, odgovori na pozdrav@ej-aj.si, slovenska noga.
    Slovenščine Buttondown ne podpira, potrditveni mail je v angleščini (lastno besedilo zahteva
    paket Standard). API ključ je v `~/.zshrc` kot `BUTTONDOWN_API_KEY`. Prvi mail je osnutek v
-   Buttondownu (`~/Desktop/ej-aj-newsletter/2026-09-29.md`), pošlje ga Anže. Brez stalnega urnika,
-   zato besedilo ne obljublja "vsak petek". Odprto: pošiljanje z `newsletter@ej-aj.si` (sending
-   domain v Buttondownu, DNS v Cloudflare, Email Routing za ta naslov; Anže je odobril).
-2. **Rutini** sta od 26. 9. 2026 ustvarjeni v tej instanci (glej spodaj). Anže naj stari v instanci
-   DIA izklopi in novi prvič požene z "Run now", da se shranijo odobritve orodij. Prvi zagoni:
-   posodobitev modelov 1. oktobra, tedenski pregled #2 2. oktobra.
+   Buttondownu (`/Users/anze/Desktop/Claude/ej-aj/ej-aj-newsletter/2026-09-29.md`), pošlje ga Anže. Brez stalnega urnika,
+   zato besedilo ne obljublja "vsak petek".
+   Pošiljanje z `newsletter@ej-aj.si` je urejeno (29. 9.): sending domain `ej-aj.si` je v Buttondownu
+   potrjen (`sending_domain_status: valid`), pošiljatelj je `newsletter@ej-aj.si`, ime pošiljatelja
+   "ej-aj.si". V Cloudflare DNS so dodani DKIM (TXT `20260929134901pm._domainkey`), CNAME
+   `pm-bounces` na `pm.mtasv.net` in `track` na `webhook-consumer.buttondown.email` (oba DNS only)
+   ter DMARC (TXT `_dmarc`, `p=quarantine`, poročila na Postmark). Email Routing posreduje
+   `newsletter@ej-aj.si` na isti cilj kot `pozdrav@`. Obstoječi MX, SPF in DKIM za Email Routing so
+   nespremenjeni. Pozor: zaradi `p=quarantine` pošta, poslana "kot" `@ej-aj.si` mimo Buttondowna
+   (npr. iz Gmaila prek njegovega SMTP), ne prestane DMARC. Tabela zapisov v Buttondownu včasih
+   za hip pokaže "Required"; merodajen je API ali `dig`.
+2. **Rutini** tečeta v drugi Claude instanci (Anže, 13. 10. 2026). Kopiji v tej instanci sta
+   namenoma izklopljeni; ne predlagaj ponovnega vklopa.
 3. **Tabela naročnin:** Microsoft je še v USD (obstajajo slovenske cene v EUR), Mistral Team po
    francoski ceni (za Slovenijo 30,49 €). Popravi ju mesečna rutina 1. oktobra; skill to že ve.
 4. E-pošta `pozdrav@ej-aj.si` se preusmerja na anze999@gmail.com (Cloudflare Email Routing).
@@ -160,11 +175,14 @@ slovar. Analitika: Cloudflare Web Analytics (brez piškotkov).
   preverjevalec našel napake (14 oziroma 13, predvsem pretiravanja in mnenja kot dejstva).
 - Preimenovanja, ki jih morajo upoštevati prihodnji članki: NotebookLM je zdaj Gemini Notebook,
   Mistral Le Chat je zdaj Vibe, Microsoft 365 Copilot Chat je zdaj Microsoft Copilot Chat.
+- Vloge vsebin so zapisane v `AGENTS.md` ("Content types"): pregled za vse novice, članek samo za
+  teme, ki izpolnijo tri pogoje, vodnik za trajno znanje. Skill `tedenski-pregled` v PR predlaga
+  0 do 2 kandidata za članek; Anže izbere, vsak izbrani je svoj PR.
 - Validator obravnava `www.perplexity.ai` kot gostitelja, ki blokira skripte.
 - Repo je zdaj v `/Users/anze/Desktop/Claude/ej-aj`; worktreeje po selitvi popravi
   `git worktree repair <pot>`.
 
-Odprta vprašanja za Anžeta so v `~/Desktop/ej-aj-vprasanja.md` (zunaj repa).
+Odprta vprašanja za Anžeta so v `/Users/anze/Desktop/Claude/ej-aj/ZA-ANZETA.md` (v mapi repa, git jo prezre).
 
 ## Narejeno 3. oktobra 2026
 
@@ -201,8 +219,8 @@ Trends; brez podatkov o obsegu iskanj):
 4. ~~AI pismenost zaposlenih~~ (objavljeno 27. 9., #37).
 5. **Search Console**: čez nekaj tednov pogledati, kateri iskalni nizi prinašajo obiske (Anže
    mora dovoliti delo v svojem Chrome profilu).
-6. **Vodniki iz Anžetovih zapiskov** (skill `nov-vodnik`), ko bo v `~/Desktop/ej-aj-inbox/` kaj.
-7. Iskanje (Pagefind): s 25 članki se približujemo meji približno 30.
+6. **Vodniki iz Anžetovih zapiskov** (skill `nov-vodnik`), ko bo v `/Users/anze/Desktop/Claude/ej-aj/ej-aj-inbox/` kaj.
+7. ~~Iskanje (Pagefind)~~ (13. 10., stran `/iskanje/`, glej Tehnika).
 
 ## Rutine (za ponovno ustvarjanje)
 
@@ -214,20 +232,27 @@ Trends; brez podatkov o obsegu iskanj):
 ```
 You are running as a scheduled local routine for Anže. Task: prepare the next weekly AI news digest ("Tedenski pregled") for his public site ej-aj.si and open a pull request. You never merge and never push to main; merging is publishing and only Anže does that.
 
-Repo: /Users/anze/Desktop/ej-aj (GitHub: ej-aj-pro/ej-aj). Always use absolute paths.
+Repo: /Users/anze/Desktop/Claude/ej-aj (GitHub: ej-aj-pro/ej-aj). Always use absolute paths.
 
 GitHub auth: the active gh account on this Mac is a different one (AnzeNoc) and must NOT be switched with `gh auth switch`, because another Claude session relies on it. Prefix every network command (git fetch, git push, gh ...) with GH_TOKEN="$(gh auth token --user ej-aj-pro 2>/dev/null || gh auth token --user AnzeNocAI)".
 
 Steps:
-1. cd /Users/anze/Desktop/ej-aj && GH_TOKEN="$(gh auth token --user ej-aj-pro 2>/dev/null || gh auth token --user AnzeNocAI)" git fetch origin
+1. cd /Users/anze/Desktop/Claude/ej-aj && GH_TOKEN="$(gh auth token --user ej-aj-pro 2>/dev/null || gh auth token --user AnzeNocAI)" git fetch origin
 2. Load the current instructions from main, not from whatever branch is checked out locally:
    git show origin/main:.claude/skills/tedenski-pregled/SKILL.md
    git show origin/main:AGENTS.md
    If the skill file does not exist on origin/main, stop and report in Slovenian: "Skill tedenski-pregled še ni na main. Mergaj PR #3 (https://github.com/ej-aj-pro/ej-aj/pull/3), potem rutino zaženi ročno." Do nothing else.
-3. Follow the skill exactly, step by step. It creates its own worktree under /Users/anze/.cache/ej-aj-worktrees/ (outside iCloud), uses parallel subagents to collect news, a fact-checker subagent, runs scripts/preveri.mjs and the build, and opens the PR. Do not touch the main checkout at /Users/anze/Desktop/ej-aj beyond git fetch and git worktree commands.
+3. Follow the skill exactly, step by step. It creates its own worktree under /Users/anze/.cache/ej-aj-worktrees/ (outside iCloud), uses parallel subagents to collect news, a fact-checker subagent, runs scripts/preveri.mjs and the build, and opens the PR. Do not touch the main checkout at /Users/anze/Desktop/Claude/ej-aj beyond git fetch and git worktree commands.
 4. Rules that always apply: Slovenian copy, no em dashes or en dashes; every news item has a source link and every number, date and name must come from an opened source; never invent anything; no client names or client data (his private knowledge-base report may be read only as a list of leads, never copied).
 5. Final message in Slovenian, short: the PR link, the headlines, failed sources, and anything Anže must check by hand. If any step failed, say exactly which one and what state things were left in; do not work around failures silently.
 ```
+
+### ej-aj posodobi razpise (oblačna rutina)
+
+- Teče v oblaku (claude.ai, routine `trig_015XrvdAK5saQgJGd8JSmU35`, https://claude.ai/code/routines/trig_015XrvdAK5saQgJGd8JSmU35), zato Mac ne rabi biti prižgan. Ustvarjena 23. 10. 2026; nadomešča lokalno rutino `ej-aj-posodobi-razpise`, ki je izklopljena.
+- Urnik: `0 7 * * 1` v UTC, torej ob ponedeljkih ob 8.00 pozimi in ob 9.00 poleti. Model Claude Opus 5.5, okolje Default, repo `ej-aj-pro/ej-aj`, brez konektorjev.
+- Odpre PR in nikoli ne mergea. Anže je 23. 10. želel samodejno objavo; samodejni varnostni pregled je zapis pravila za samodejni merge zavrnil, zato merge ostaja ročen.
+- Prompt je shranjen v rutini: prebere `.claude/skills/posodobi-razpise/SKILL.md` z `origin/main` in sledi razdelku "Cloud routine".
 
 ### ej-aj-posodobi-modele
 
@@ -237,12 +262,12 @@ Steps:
 ```
 You are running as a scheduled local routine for Anže. Task: re-check the model comparison (src/data/modeli.yaml), the subscription prices (src/data/narocnine.yaml) and the AI statistics page (src/data/statistika.json, page /statistika/) on his public site ej-aj.si, and open a pull request if anything changed. You never merge and never push to main; merging is publishing and only Anže does that.
 
-Repo: /Users/anze/Desktop/ej-aj (GitHub: ej-aj-pro/ej-aj). Always use absolute paths.
+Repo: /Users/anze/Desktop/Claude/ej-aj (GitHub: ej-aj-pro/ej-aj). Always use absolute paths.
 
 GitHub auth: the active gh account on this Mac is a different one (AnzeNoc) and must NOT be switched with `gh auth switch`. Prefix every network command (git fetch, git push, gh ...) with GH_TOKEN="$(gh auth token --user ej-aj-pro 2>/dev/null || gh auth token --user AnzeNocAI)".
 
 Steps:
-1. cd /Users/anze/Desktop/ej-aj && GH_TOKEN="$(gh auth token --user ej-aj-pro 2>/dev/null || gh auth token --user AnzeNocAI)" git fetch origin
+1. cd /Users/anze/Desktop/Claude/ej-aj && GH_TOKEN="$(gh auth token --user ej-aj-pro 2>/dev/null || gh auth token --user AnzeNocAI)" git fetch origin
 2. Load the current instructions from main:
    git show origin/main:.claude/skills/posodobi-modele/SKILL.md
    git show origin/main:AGENTS.md

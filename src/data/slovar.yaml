@@ -162,6 +162,16 @@
     temelji na MCP.
   glej: [mcp]
 
+- id: podatkovno-skladisce
+  izraz: Podatkovno skladišče
+  angl: Data warehouse
+  razlaga: >-
+    Osrednja zbirka podatkov podjetja, v kateri so urejeni podatki iz različnih sistemov,
+    na primer prodaje, računovodstva in spletne trgovine, pripravljeni za analize in poročila.
+    AI orodja se lahko s skladiščem povežejo in iz njega sestavijo poročila ali nadzorne
+    plošče.
+  glej: [konektor, zasebnost-podatkov]
+
 - id: rutina
   izraz: Rutina (načrtovano opravilo)
   angl: Routine, scheduled task
@@ -197,6 +207,17 @@
     model naučil. Modeli imajo od nekaj milijard do več bilijonov parametrov. Več
     parametrov običajno pomeni zmogljivejši, a dražji in počasnejši model.
   glej: [ucenje-in-sklepanje, odprte-utezi]
+
+- id: mesanica-strokovnjakov
+  izraz: Mešanica strokovnjakov (MoE)
+  angl: Mixture of experts
+  razlaga: >-
+    Zasnova modela, ki je razdeljen na več delov ("strokovnjakov"), za vsak del besedila pa
+    se vklopijo le nekateri. Model ima zato veliko parametrov, pri vsakem odgovoru pa jih
+    uporabi le manjši del, kar ga naredi hitrejšega in cenejšega za delovanje kot enako velik
+    običajen model. Za namestitev
+    na lastni opremi mora biti kljub temu v pomnilniku ves model.
+  glej: [parametri, odprte-utezi]
 
 - id: ucenje-in-sklepanje
   izraz: Učenje in sklepanje
@@ -347,6 +368,16 @@
     preverite pogoje in GDPR.
   glej: [sencna-ai, odprte-utezi, ai-act]
 
+- id: obdelovalec-podatkov
+  izraz: Obdelovalec podatkov
+  angl: Data processor
+  razlaga: >-
+    Izraz iz GDPR za podjetje ali organizacijo, ki osebne podatke obdeluje v imenu druge organizacije in po
+    njenih navodilih, na primer ponudnik AI storitve, ki obdeluje besedila vaših zaposlenih
+    ali strank. Organizacija, ki določa, zakaj in kako se podatki obdelujejo, je upravljavec.
+    Z obdelovalcem mora upravljavec skleniti pogodbo o obdelavi osebnih podatkov.
+  glej: [zasebnost-podatkov, ai-act]
+
 - id: ai-act
   izraz: AI Act (Akt o umetni inteligenci)
   angl: EU Artificial Intelligence Act
@@ -356,6 +387,17 @@
     vsakdanje rabe pa predvsem preglednost. Veljati je začela avgusta 2024, obveznosti pa se
     uvajajo postopoma v več letih.
   glej: [zasebnost-podatkov]
+
+- id: algoritmicno-upravljanje
+  izraz: Algoritmično upravljanje
+  angl: Algorithmic management
+  razlaga: >-
+    Raba programov in AI za naloge, ki jih sicer opravljajo vodje: razporejanje dela in
+    izmen, spremljanje uspešnosti ali predlaganje odločitev o zaposlenih. Ker vpliva na
+    delovne pogoje, ga EU posebej ureja pri delu prek spletnih platform, AI Act pa
+    sisteme za zaposlovanje, dodeljevanje nalog ter spremljanje in ocenjevanje zaposlenih
+    uvršča med visoko tvegane.
+  glej: [ai-act, umetna-inteligenca]
 
 - id: chatgpt
   izraz: ChatGPT
@@ -431,6 +473,17 @@
     ročno. Primer: filter neželene pošte, ki se iz tisočih označenih sporočil nauči prepoznati
     nove.
   glej: [globoko-ucenje, umetna-inteligenca]
+
+- id: casovna-vrsta
+  izraz: Časovna vrsta
+  angl: Time series
+  razlaga: >-
+    Zaporedje meritev istega podatka, običajno v enakih časovnih presledkih, na primer dnevna prodaja,
+    mesečne zaloge ali urna poraba energije. Modeli za napovedovanje časovnih vrst iz
+    preteklih vrednosti ocenijo, kako se bo podatek gibal naprej. Za to se uporabljajo
+    statistične metode in modeli strojnega učenja, ki so praviloma precej manjši od
+    jezikovnih modelov.
+  glej: [strojno-ucenje, parametri]
 
 - id: globoko-ucenje
   izraz: Globoko učenje
@@ -527,3 +580,13 @@
     ni bilo. Za podjetja je največje tveganje prevara, na primer lažen glasovni klic
     "direktorja", ki naroči nujno nakazilo. Nenavadne zahteve vedno preverite po drugem kanalu.
   glej: [generativna-ai, ai-act]
+
+- id: vodni-zig
+  izraz: Vodni žig
+  angl: Watermark
+  razlaga: >-
+    Oznaka, pri AI običajno nevidna, ki jo ponudnik AI doda v ustvarjeno besedilo, sliko, video ali zvok, da
+    lahko programska oprema pozneje prepozna, da je vsebina nastala z AI. Pri besedilu je
+    oznaka skrita v izbiri besed, zato jo popravki in prevodi oslabijo. Če oznake ni, to ne
+    dokazuje, da je vsebino ustvaril človek.
+  glej: [deepfake, ai-act, generativna-ai]

@@ -10,7 +10,7 @@ Output: one new file `src/content/novice/YYYY-MM-DD-tedenski-pregled-N.md` on a 
 pull request. **Never merge, never push to `main`.** Merging
 is publishing, and only Anže does that.
 
-Repo: `/Users/anze/Desktop/ej-aj` (public, `ej-aj-pro/ej-aj`). Read `AGENTS.md` and
+Repo: `/Users/anze/Desktop/Claude/ej-aj` (public, `ej-aj-pro/ej-aj`). Read `AGENTS.md` and
 `docs/slog.md` there first: their writing, accuracy and confidentiality rules apply to
 everything below.
 
@@ -23,7 +23,7 @@ network command (`git fetch`, `git push`, `gh ...`) with
 Do not touch the main checkout (Anže may have uncommitted work there).
 
 ```bash
-cd /Users/anze/Desktop/ej-aj
+cd /Users/anze/Desktop/Claude/ej-aj
 GH_TOKEN="$(gh auth token --user ej-aj-pro 2>/dev/null || gh auth token --user AnzeNocAI)" git fetch origin
 TODAY=$(date +%F)
 WT=/Users/anze/.cache/ej-aj-worktrees/pregled-$TODAY
@@ -90,18 +90,39 @@ Source lists:
   AI Office). Slovenian news counts only if it is about AI and has a concrete fact (a decision,
   a programme, a model, an event with results).
 
-Also read, as a list of leads only, Anže's private weekly report if one exists for today:
-`/Users/anze/Desktop/Claude/GitHub Repository (Anze)/knowledge/ai-research/tedenski-pregled/<today>.md`.
-Any lead you use must be re-verified at its primary source. Never copy text or client
-references from that report; it is private.
+Also read, as a list of leads only, Anže's private weekly reports: every
+`/Users/anze/Desktop/Claude/GitHub Repository (Anze)/knowledge/ai-research/tedenski-pregled/YYYY-MM-DD.md`
+dated inside the window (a separate routine writes one on Friday morning, before this one runs).
+They summarise about 20 newsletters and podcasts (Ben's Bites, The Neuron, How I AI, Nate B Jones,
+Simon Willison and others) and are the main source of leads for practical items: new tools and
+features, real company use cases, methods for bringing AI into work, skills, company memory.
+These newsletters are secondary sources: for every lead you use, find and open the primary source
+(the company's own announcement, documentation or case study) and link that. If there is no
+primary source, link the newsletter and say whose account it is. Never copy text, ideas for
+workshops or client references from those reports; they are private. If no report exists for
+the window, carry on without it and say so under **Za preveriti**.
+
+Also read `docs/namigi-za-pregled.md` in the worktree (leads Anže asked to include, with their
+primary sources). Treat every lead like a collector item: re-open the source, keep it only if it
+falls in the window and the page still supports it, and follow any note there about articles
+that already cover a topic. In the digest PR, delete the leads you used or rejected from that
+file and list rejected ones with the reason under **Za preveriti**.
 
 ## 4. Select 5 to 10 items
 
 Reader: a Slovenian business person curious about AI, not an engineer. Pick what changes what
 they can do or buy. A good mix: 2 to 3 model or product releases, 1 practical feature,
 1 research or safety story if it is striking, 1 policy or EU item, 1 Slovenian item when there
-is a real one. Merge duplicates (one item, several sources). Drop items whose facts you cannot
+is a real one, 1 concrete use case or adoption method (how a company actually uses AI) when
+there is one with a primary source. Merge duplicates (one item, several sources). Drop items whose facts you cannot
 support with an opened page. Fewer good items beat more weak ones; 5 is fine.
+
+Then pick 0 to 2 **article candidates** among the selected items, using the three criteria in
+`AGENTS.md` ("Content types"). Most weeks have zero or one. Do not write the articles in this
+run: list them in the PR body so Anže can choose, and each chosen one becomes its own PR
+(`clanek/<slug>`). If an item already has an article on `origin/main`
+(`grep -l "type: clanek" src/content/novice/*.md`), keep it short in the digest and end it with
+`Podrobneje: [<article title>](/novice/<id>/)` after the `Vir:` line.
 
 ## 5. Write the draft
 
@@ -186,16 +207,19 @@ PR body (Slovenian, short):
 - **Nova gesla v slovarju:** one line per entry, `- [ ] <izraz>: <first sentence of razlaga>`
   with a link to `/slovar/<id>/` on the preview, or "brez". Anže deletes the ones he doesn't
   want before merging.
+- **Kandidati za članek:** 0 to 2 lines, `- [ ] <topic>: <one line on why it meets the three
+  criteria>`, or "brez". Anže ticks the ones he wants written as separate PRs.
 - **Za preveriti:** anything the fact-checker could not confirm, sources that failed, and
   anything you were unsure about
 - validator result (errors / warnings) and "Build: OK"
 - last line: "Merge = objava na ej-aj.si. Cloudflare bo spodaj dodal preview povezavo."
 
-Then remove the worktree: `cd /Users/anze/Desktop/ej-aj && git worktree remove "$WT"`.
+Then remove the worktree: `cd /Users/anze/Desktop/Claude/ej-aj && git worktree remove "$WT"`.
 
 ## 9. Final message
 
-Slovenian, short: the PR link, the item headlines, new glossary entries, failed sources,
+Slovenian, short: the PR link, the item headlines, new glossary entries, article candidates,
+failed sources,
 anything Anže must check.
 If a step failed, say which one and what state things were left in. Do not work around a
 failure silently.

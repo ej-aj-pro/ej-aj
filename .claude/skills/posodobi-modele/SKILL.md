@@ -7,7 +7,7 @@ description: Monthly refresh of the ej-aj.si model comparison (src/data/modeli.y
 
 Output: a branch `modeli/YYYY-MM` with changes to `src/data/modeli.yaml`, `src/data/narocnine.yaml`
 and `src/data/statistika.json`, and an open PR.
-**Never merge, never push to `main`.** Read `/Users/anze/Desktop/ej-aj/AGENTS.md` first.
+**Never merge, never push to `main`.** Read `/Users/anze/Desktop/Claude/ej-aj/AGENTS.md` first.
 
 Every `gh` and network `git` command needs the prefix
 `GH_TOKEN="$(gh auth token --user ej-aj-pro 2>/dev/null || gh auth token --user AnzeNocAI)"` (the active gh account is a different one and
@@ -16,7 +16,7 @@ must not be switched).
 ## 1. Worktree
 
 ```bash
-cd /Users/anze/Desktop/ej-aj
+cd /Users/anze/Desktop/Claude/ej-aj
 GH_TOKEN="$(gh auth token --user ej-aj-pro 2>/dev/null || gh auth token --user AnzeNocAI)" git fetch origin
 MONTH=$(date +%Y-%m)
 WT=/Users/anze/.cache/ej-aj-worktrees/modeli-$MONTH
@@ -99,11 +99,25 @@ node scripts/osvezi-statistiko.mjs
   Slovenian company (one sentence), and `opomba` only for facts from the source.
 - Slovenian copy, no em or en dashes.
 
+## 3b. Changelog (`src/data/spremembe.yaml`)
+
+The section "Zadnje spremembe" on `/modeli/` shows readers what changed. For every change a
+reader would care about, add one entry at the top of the file (format in its header comment):
+a model added or removed, an API price, context window or availability that changed, a plan
+added or removed, or a plan price that changed. Not for entries where only `preverjeno` moved,
+and not for wording changes in `za_kaj` or `kaj_dobite`.
+
+- `datum`: today. `podrocje`: `modeli` or `narocnine`. `vir`: the page that confirms the change.
+- `besedilo`: one or two plain Slovenian sentences with the old and the new value, e.g. "ChatGPT
+  Business pri letnem plačilu stane 25 USD na uporabnika na mesec, prej 30 USD." Numbers in
+  Slovenian format, no judgements, no em or en dashes.
+- Several price changes of one product in the same month go into one entry.
+
 ## 4. Check, commit, PR
 
 ```bash
 npm run build
-git add src/data/modeli.yaml src/data/narocnine.yaml src/data/statistika.json src/pages/statistika.astro
+git add src/data/modeli.yaml src/data/narocnine.yaml src/data/spremembe.yaml src/data/statistika.json src/pages/statistika.astro
 git commit -m "Refresh model comparison ($MONTH)"
 GH_TOKEN="$(gh auth token --user ej-aj-pro 2>/dev/null || gh auth token --user AnzeNocAI)" git push -u origin "modeli/$MONTH"
 GH_TOKEN="$(gh auth token --user ej-aj-pro 2>/dev/null || gh auth token --user AnzeNocAI)" gh pr create --repo ej-aj-pro/ej-aj --base main \
@@ -111,11 +125,11 @@ GH_TOKEN="$(gh auth token --user ej-aj-pro 2>/dev/null || gh auth token --user A
 ```
 
 PR body (Slovenian): a table of changes (model, field, old, new, source), added and removed
-models, a section "Statistika" with the script's list of changed values and the sentences you
+models, the new changelog entries, a section "Statistika" with the script's list of changed values and the sentences you
 rewrote (or "brez sprememb"), sources that failed, and "Merge = objava na ej-aj.si". If nothing changed, do not open
 a PR; report "brez sprememb" instead and delete the branch.
 
-Remove the worktree at the end: `git -C /Users/anze/Desktop/ej-aj worktree remove "$WT"`.
+Remove the worktree at the end: `git -C /Users/anze/Desktop/Claude/ej-aj worktree remove "$WT"`.
 
 ## 5. Final message
 

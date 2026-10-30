@@ -1,0 +1,220 @@
+# Predloge promptov za /prompti/. Vsaka predloga: id (slug), kategorija (id iz KATEGORIJE v
+# src/pages/prompti.astro), naslov (naloga), za_kaj (ena poved: kdaj jo uporabiti), prompt
+# (besedilo; [oglati oklepaji] so mesta, ki jih bralec zamenja), nasvet (neobvezno: na kaj
+# paziti pri rezultatu). Predloge sledijo vodniku /vodniki/kako-napisati-dober-prompt/:
+# kontekst, za koga, zakaj, oblika, kaj storiti, ko podatka ni. Brez trditev o orodjih ali
+# številkah, ki bi zastarele, in brez primerov iz resničnih podjetij.
+
+- id: odgovor-na-pritozbo
+  kategorija: pisanje
+  naslov: Odgovor na pritožbo stranke
+  za_kaj: Ko morate stranki odgovoriti hitro, vljudno in brez obljub, ki jih ne morete izpolniti.
+  prompt: |
+    Pripravi osnutek odgovora na pritožbo stranke. Pritožba je spodaj.
+
+    Smo [kratek opis podjetja]. Odgovor bo bral [kdo, na primer stranka, ki je jezna zaradi zamude], zato naj bo vljuden, kratek in konkreten.
+
+    Kaj lahko ponudimo: [na primer novo dostavo do petka, 10 % popusta pri naslednjem nakupu].
+    Česa ne smemo obljubiti: [na primer vračila denarja brez vrnjenega izdelka].
+
+    Ne opravičuj se za stvari, za katere iz pritožbe ni jasno, da so naša napaka. Če za odgovor manjka kakšen podatek, ga označi z [manjka: ...], namesto da si ga izmisliš.
+
+    Pritožba:
+    [prilepite besedilo pritožbe]
+  nasvet: Preverite, ali odgovor obljublja kaj, česar niste navedli med tem, kar lahko ponudite.
+
+- id: opomin-za-neplacan-racun
+  kategorija: pisanje
+  naslov: Vljuden opomin za neplačan račun
+  za_kaj: Ko želite stranko spomniti na plačilo, ne da bi pokvarili odnos.
+  prompt: |
+    Napiši kratek opomin za neplačan račun. Stranka z nami sodeluje [koliko časa] in je doslej plačevala redno, zato naj bo ton prijazen in stvaren, brez groženj.
+
+    Podatki o računu: številka [številka], znesek [znesek], zapadel [datum].
+    Prosimo za plačilo do [datum]. Če je bil račun že plačan, naj stranka to sporoči na [e-naslov].
+
+    Mail naj bo krajši od 120 besed. Na koncu predlagaj še eno različico, ki je za odtenek odločnejša, za primer, da prvi opomin ne zaleže.
+  nasvet: Podatke o računu preverite v računovodskem programu; AI jih samo prepiše iz vašega besedila.
+
+- id: skrajsaj-in-poenostavi
+  kategorija: pisanje
+  naslov: Skrajšaj in poenostavi besedilo
+  za_kaj: Ko je besedilo predolgo ali preveč strokovno za ljudi, ki ga bodo brali.
+  prompt: |
+    Spodnje besedilo bodo brali [kdo, na primer zaposleni v proizvodnji, ki niso pravniki], večinoma na telefonu. Prepiši ga tako, da bo največ [število] besed dolgo, s kratkimi povedmi in vsakdanjimi besedami.
+
+    Ohrani vsa pravila, roke in številke. Ničesar ne dodajaj. Če kak strokovni izraz ostane, ga razloži v nekaj besedah.
+
+    Na koncu naštej, kaj si izpustil, da lahko preverim, ali je bilo res nepomembno.
+
+    Besedilo:
+    [prilepite besedilo]
+
+- id: lektoriranje
+  kategorija: pisanje
+  naslov: Jezikovni pregled slovenskega besedila
+  za_kaj: Ko želite popraviti slovnico in vejice, vsebino in slog pa ohraniti.
+  prompt: |
+    Preglej spodnje besedilo in popravi samo jezikovne napake: pravopis, vejice, sklone, ujemanje in velike začetnice. Vsebine, vrstnega reda in sloga ne spreminjaj, tudi če bi kaj napisal drugače.
+
+    Najprej izpiši popravljeno besedilo. Nato v tabeli naštej vse spremembe: prvotno, popravljeno in kratek razlog. Če pri kakem mestu nisi prepričan, ga ne popravi, ampak ga zapiši v tabelo z oznako "preveri".
+
+    Besedilo:
+    [prilepite besedilo]
+  nasvet: AI v slovenščini dela napake tudi sam. Tabela sprememb vam pokaže, kaj je spremenil, da lahko vsako spremembo potrdite.
+
+- id: povzetek-dolgega-dokumenta
+  kategorija: dokumenti
+  naslov: Povzetek dolgega dokumenta
+  za_kaj: Ko imate dolg dokument (razpis, pravilnik, poročilo) in morate hitro vedeti, kaj v njem velja za vas.
+  prompt: |
+    <dokument>
+    [prilepite dokument ali ga priložite]
+    </dokument>
+
+    Ta dokument moram razumeti kot [vloga, na primer vodja nabave v podjetju s 30 zaposlenimi]. Zanima me predvsem [kaj, na primer kaj moramo narediti in do kdaj].
+
+    Najprej izpiši dobesedne odlomke iz dokumenta, ki so pomembni za to vprašanje, z navedbo poglavja ali strani. Nato napiši povzetek v največ 10 alinejah. Če dokument o čem ne govori, to povej, ne ugibaj.
+  nasvet: Pri dolgih dokumentih postavite dokument pred vprašanje. Odlomki vam pokažejo, na čem temelji povzetek, zato ga lažje preverite.
+
+- id: zapisnik-sestanka
+  kategorija: dokumenti
+  naslov: Zapisnik sestanka iz zapiskov ali prepisa
+  za_kaj: Ko imate neurejene zapiske ali samodejni prepis in potrebujete zapisnik s sklepi in nalogami.
+  prompt: |
+    Iz spodnjih zapiskov sestanka pripravi zapisnik za udeležence. Sestanek je bil [datum, tema].
+
+    Zapisnik naj ima tri dele: kratek povzetek (do 5 povedi), sprejete sklepe in tabelo nalog s stolpci naloga, odgovorna oseba in rok.
+
+    Navedi samo, kar je v zapiskih. Če pri nalogi ni jasno, kdo jo prevzame ali do kdaj, napiši [ni določeno]. Imen ne ugibaj.
+
+    Zapiski:
+    [prilepite zapiske ali prepis]
+  nasvet: Preden zapisnik pošljete, preverite naloge in roke. Pri prepisih AI rad zamenja govorce.
+
+- id: primerjava-ponudb
+  kategorija: dokumenti
+  naslov: Primerjava ponudb dobaviteljev
+  za_kaj: Ko imate več ponudb v različnih oblikah in jih želite videti drugo ob drugi.
+  prompt: |
+    Priložene so [število] ponudbe za [kaj]. Primerjaj jih v tabeli s stolpci: ponudnik, skupna cena brez DDV, kaj je vključeno, kaj ni vključeno, rok dobave, plačilni pogoji, garancija.
+
+    Podatke vzemi samo iz ponudb. Če ponudba kakega podatka nima, napiši "ni navedeno". Cen ne preračunavaj, razen če to izrecno zahtevam.
+
+    Pod tabelo naštej razlike, ki jih je pri odločitvi lahko spregledati, in vprašanja, ki bi jih morali zastaviti posameznemu ponudniku.
+  nasvet: Zneske v tabeli preverite v izvirnih ponudbah, preden se odločite.
+
+- id: vprasanja-o-pogodbi
+  kategorija: dokumenti
+  naslov: Vprašanja o pogodbi pred podpisom
+  za_kaj: Ko želite pred pogovorom s pravnikom vedeti, na kaj v pogodbi biti pozorni.
+  prompt: |
+    Spodaj je pogodba, ki jo bomo podpisali kot [vloga, na primer naročnik storitve]. Pravnega znanja nimam.
+
+    1. V preprostem jeziku povzemi, kaj se z njo zavežemo mi in kaj druga stran.
+    2. Naštej določila, ki bi lahko bila za nas neugodna (na primer odpovedni roki, kazni, samodejno podaljšanje, omejitev odgovornosti), s številko člena.
+    3. Pripravi seznam vprašanj, ki jih zastavim pravniku ali drugi strani.
+
+    Ne presojaj, ali je pogodba zakonita, in ne svetuj, ali naj jo podpišem.
+
+    Pogodba:
+    [prilepite pogodbo]
+  nasvet: To ni pravni nasvet. Pogodbe z zaupnimi podatki vnesite samo v orodje s poslovnim paketom, glejte vodnik o varni rabi AI.
+
+- id: excel-formula
+  kategorija: podatki
+  naslov: Formula za Excel ali Google Preglednice
+  za_kaj: Ko veste, kaj želite izračunati, ne veste pa, katero funkcijo uporabiti.
+  prompt: |
+    Potrebujem formulo za [Excel ali Google Preglednice]. Program je v [slovenščini ali angleščini], ločilo med argumenti je [podpičje ali vejica].
+
+    Podatki: v stolpcu A je [kaj], v stolpcu B [kaj], v stolpcu C [kaj]. Prva vrstica so naslovi, podatki so od vrstice 2 do [vrstica].
+
+    Želim: [na primer seštevek zneskov iz stolpca C za vse vrstice, kjer je v stolpcu A "Ljubljana" in je datum v stolpcu B v letu 2026].
+
+    Napiši formulo, razloži, kaj dela vsak del, in povej, kaj se zgodi, če je kakšna celica prazna.
+  nasvet: Formulo preizkusite na nekaj vrsticah, kjer rezultat poznate.
+
+- id: analiza-tabele
+  kategorija: podatki
+  naslov: Hiter pregled tabele s podatki
+  za_kaj: Ko imate izvoz iz programa (prodaja, stroški, obiski) in želite vedeti, kaj kaže.
+  prompt: |
+    Priložena je tabela [kaj vsebuje, za katero obdobje]. Poročilo bo bral [kdo], ki ga zanima predvsem [kaj, na primer kateri izdelki rastejo in kateri padajo].
+
+    1. Najprej opiši, kaj je v tabeli: stolpci, število vrstic, obdobje, manjkajoče ali sumljive vrednosti.
+    2. Nato naštej največ pet ugotovitev, vsako s številkami iz tabele.
+    3. Na koncu napiši, česa iz teh podatkov ni mogoče sklepati.
+
+    Številke izračunaj iz podatkov, ne oceni jih. Če računaš, pokaži, kako.
+  nasvet: Klepetalniki znajo pri velikih tabelah narobe sešteti. Ključne številke preverite v preglednici sami.
+
+- id: ciscenje-podatkov
+  kategorija: podatki
+  naslov: Poenotenje neurejenega seznama
+  za_kaj: Ko imate seznam strank, naslovov ali izdelkov, zapisan vsakič malo drugače.
+  prompt: |
+    Spodnji seznam [kaj, na primer imen podjetij] je zapisan neenotno. Poenoti ga po teh pravilih: [na primer pravna oblika vedno kot "d.o.o.", kraj z veliko začetnico, brez odvečnih presledkov].
+
+    Vrni tabelo s stolpcema prvotno in poenoteno, v istem vrstnem redu kot seznam. Vrstic ne združuj in ne briši, tudi če se zdijo podvojene; podvojene označi v tretjem stolpcu.
+
+    Seznam:
+    [prilepite seznam]
+
+- id: razlozi-izraz
+  kategorija: ucenje
+  naslov: Razlaga neznanega izraza na primeru iz vašega dela
+  za_kaj: Ko naletite na izraz ali koncept, ki ga ne razumete, in želite razlago, ki se navezuje na vaše delo.
+  prompt: |
+    Razloži mi [izraz ali koncept]. Delam kot [poklic ali vloga] in s tem področjem nimam izkušenj.
+
+    Razlaga naj bo v največ treh odstavkih, brez strokovnih izrazov, ki jih ne razložiš. Dodaj en primer iz mojega dela.
+
+    Na koncu mi zastavi tri vprašanja, s katerimi preverim svoje razumevanje. Odgovore pokaži šele, ko ti odgovorim.
+
+- id: hudicev-odvetnik
+  kategorija: ucenje
+  naslov: Kritičen pregled predloga pred predstavitvijo
+  za_kaj: Ko želite pred sestankom slišati ugovore, ki jih boste verjetno dobili.
+  prompt: |
+    Spodaj je predlog, ki ga bo poslušalo [kdo, na primer vodstvo]. Bodi kritičen poslušalec, ki predlogu ni naklonjen.
+
+    Naštej pet najmočnejših ugovorov, vsakega z vprašanjem, ki bi ga ta poslušalec zastavil. Nato za vsak ugovor predlagaj, kaj bi moral dodati ali spremeniti v predlogu. Ne hvali predloga.
+
+    Predlog:
+    [prilepite predlog]
+
+- id: nacrt-projekta
+  kategorija: ucenje
+  naslov: Razdelitev projekta na korake
+  za_kaj: Ko imate cilj, ne veste pa, kje začeti in kaj vse je treba narediti.
+  prompt: |
+    Cilj: [na primer uvesti nov sistem za evidenco delovnega časa do 1. marca].
+    Okoliščine: [velikost ekipe, kdo je odgovoren, proračun, kaj že imamo].
+
+    Pripravi načrt v korakih. Za vsak korak napiši, kaj je rezultat, kdo ga po tvojem predlogu naredi in koliko časa približno vzame. Posebej označi korake, ki so odvisni od drugih.
+
+    Preden načrt napišeš, mi zastavi do pet vprašanj o stvareh, ki jih ne veš, a vplivajo na načrt.
+
+- id: izboljsaj-prompt
+  kategorija: ai
+  naslov: Naj AI izboljša vaš prompt
+  za_kaj: Ko odgovori niso taki, kot ste želeli, in ne veste, kaj v navodilu manjka.
+  prompt: |
+    Spodaj je prompt, ki ga uporabljam za [naloga]. Rezultati so [kaj je narobe, na primer predolgi in preveč splošni].
+
+    Najprej mi zastavi vprašanja o vsem, kar bi sodelavec, ki naloge ne pozna, moral vedeti, da bi jo dobro opravil. Ko odgovorim, napiši izboljšan prompt in na kratko razloži, kaj si spremenil in zakaj.
+
+    Moj prompt:
+    [prilepite prompt]
+  nasvet: Izboljšan prompt preizkusite na istih primerih kot starega in primerjajte rezultate.
+
+- id: preveri-odgovor
+  kategorija: ai
+  naslov: Seznam trditev, ki jih je treba preveriti
+  za_kaj: Ko vam AI napiše besedilo z dejstvi in ga želite pred uporabo preveriti.
+  prompt: |
+    V svojem zadnjem odgovoru poišči vse trditve, ki jih je mogoče preveriti: številke, datume, imena, citate, zakone, cene.
+
+    Naštej jih v tabeli s stolpci: trditev, ali izhaja iz dokumentov, ki sem ti jih dal, ali iz tvojega splošnega znanja, in kje jo lahko preverim. Označi trditve, pri katerih nisi prepričan.
+  nasvet: Tabela vam pove, kje začeti s preverjanjem. Ne pomeni, da so trditve, ki jih AI ne označi, zagotovo pravilne.

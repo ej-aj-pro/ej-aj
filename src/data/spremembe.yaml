@@ -1,0 +1,66 @@
+# Changelog for the tables on /modeli/ and /cene/<orodje>/ (src/data/modeli.yaml,
+# src/data/narocnine.yaml). One entry per change a reader would care about: a model added or
+# removed, a price, context window or availability that changed, a plan added or removed.
+# Not for re-checks where only `preverjeno` moved. Newest first.
+# Fields: id (YYYY-MM-DD-slug), datum (day the change went into the table), podrocje
+# (modeli | narocnine), besedilo (one or two Slovenian sentences, facts only, numbers from the
+# source), vir (the page that confirms the change).
+
+- id: 2026-10-17-claude-haiku-5-5
+  datum: 2026-10-17
+  podrocje: modeli
+  besedilo: >-
+    V tabelo modelov je dodan Claude Haiku 5.5 (izid 7. oktobra 2026) z ceno 0,10 $ za milijon
+    vhodnih in 0,50 $ za milijon izhodnih tokenov ter kontekstom 1.000.000 tokenov. Umaknjen je
+    Claude Haiku 4.5, ki ga Anthropic vodi kot starejši model.
+  vir: https://platform.claude.com/docs/en/models/haiku-5-5/overview
+
+- id: 2026-10-17-gemini-4-argon
+  datum: 2026-10-17
+  podrocje: modeli
+  besedilo: >-
+    V tabelo modelov je dodan Gemini 4 Argon (izid 13. oktobra 2026). Cena prek API je do 30.
+    novembra 2026 2 $ za milijon vhodnih in 10 $ za milijon izhodnih tokenov, nato 4 $ in 20 $.
+  vir: https://ai.google.dev/gemini-api/docs/models/gemini-4-argon
+
+- id: 2026-10-17-gpt-6-1-sol
+  datum: 2026-10-17
+  podrocje: modeli
+  besedilo: >-
+    GPT-6.1 Sol (izid 29. septembra 2026) je v tabeli zamenjal GPT-6 Sol. Cena ostaja 2 $ za
+    milijon vhodnih in 10 $ za milijon izhodnih tokenov.
+  vir: https://developers.openai.com/api/docs/models/gpt-6.1-sol
+
+- id: 2026-10-17-mistral-large-4
+  datum: 2026-10-17
+  podrocje: modeli
+  besedilo: >-
+    V tabelo je dodan Mistral Large 4 v javnem predogledu (izid 6. oktobra 2026) s kontekstom
+    1.000.000 tokenov in redno ceno 1,36 $ za milijon vhodnih ter 4,18 $ za milijon izhodnih
+    tokenov, ob trenutnem 50-odstotnem popustu 0,68 $ in 2,09 $.
+  vir: https://docs.mistral.ai/models/mistral-large-4
+
+- id: 2026-10-17-microsoft-cene-v-evrih
+  datum: 2026-10-17
+  podrocje: narocnine
+  besedilo: >-
+    Microsoftove cene so zamenjane z evrskimi cenami za Slovenijo: Microsoft 365 Personal 10 €
+    na mesec, Premium 22 € na mesec in Microsoft 365 Copilot Business 18,20 € na uporabnika na
+    leto, brez DDV.
+  vir: https://www.microsoft.com/sl-si/copilot/pricing/individuals
+
+- id: 2026-10-17-mistral-cene-za-slovenijo
+  datum: 2026-10-17
+  podrocje: narocnine
+  besedilo: >-
+    Mistral Pro stane za Slovenijo 18,29 € na mesec in Mistral Team 30,49 € na uporabnika na
+    mesec z DDV (prej francoski ceni 17,99 € in 29,99 €).
+  vir: https://mistral.ai/pricing/
+
+- id: 2026-09-29-claude-sonnet-5-5
+  datum: 2026-09-29
+  podrocje: modeli
+  besedilo: >-
+    Claude Sonnet 5.5 je v tabeli modelov zamenjal Claude Sonnet 5. Cena prek API ostaja 2 $ za
+    milijon vhodnih in 10 $ za milijon izhodnih tokenov.
+  vir: https://www.anthropic.com/claude-sonnet-5-5
