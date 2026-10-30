@@ -208,6 +208,17 @@
     parametrov običajno pomeni zmogljivejši, a dražji in počasnejši model.
   glej: [ucenje-in-sklepanje, odprte-utezi]
 
+- id: mesanica-strokovnjakov
+  izraz: Mešanica strokovnjakov (MoE)
+  angl: Mixture of experts
+  razlaga: >-
+    Zasnova modela, ki je razdeljen na več delov ("strokovnjakov"), za vsak del besedila pa
+    se vklopijo le nekateri. Model ima zato veliko parametrov, pri vsakem odgovoru pa jih
+    uporabi le manjši del, kar ga naredi hitrejšega in cenejšega za delovanje kot enako velik
+    običajen model. Za namestitev
+    na lastni opremi mora biti kljub temu v pomnilniku ves model.
+  glej: [parametri, odprte-utezi]
+
 - id: ucenje-in-sklepanje
   izraz: Učenje in sklepanje
   angl: Training and inference
@@ -356,6 +367,16 @@
     podatki modeli ne učijo, pri brezplačnih različicah pa to ni nujno. Pred uvedbo
     preverite pogoje in GDPR.
   glej: [sencna-ai, odprte-utezi, ai-act]
+
+- id: obdelovalec-podatkov
+  izraz: Obdelovalec podatkov
+  angl: Data processor
+  razlaga: >-
+    Izraz iz GDPR za podjetje ali organizacijo, ki osebne podatke obdeluje v imenu druge organizacije in po
+    njenih navodilih, na primer ponudnik AI storitve, ki obdeluje besedila vaših zaposlenih
+    ali strank. Organizacija, ki določa, zakaj in kako se podatki obdelujejo, je upravljavec.
+    Z obdelovalcem mora upravljavec skleniti pogodbo o obdelavi osebnih podatkov.
+  glej: [zasebnost-podatkov, ai-act]
 
 - id: ai-act
   izraz: AI Act (Akt o umetni inteligenci)
