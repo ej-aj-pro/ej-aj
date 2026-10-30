@@ -22,6 +22,11 @@ const models = (await getCollection('modeli')).sort((a, b) => {
   return (b.data.cena_izhod ?? 0) - (a.data.cena_izhod ?? 0);
 });
 
+// Latest changes to both tables (src/data/spremembe.yaml).
+const changes = (await getCollection('spremembe'))
+  .sort((a, b) => b.data.datum.valueOf() - a.data.datum.valueOf())
+  .slice(0, 10);
+
 const lastChecked = new Date(
   Math.max(...models.map((m) => m.data.preverjeno.valueOf()), ...plans.map((p) => p.data.preverjeno.valueOf())),
 );
@@ -62,6 +67,7 @@ function sourceLabels(urls: string[]) {
       <nav class="jump" aria-label="Na tej strani">
         <a href="#narocnine">Naročnine</a>
         <a href="#modeli">Modeli prek API</a>
+        {changes.length > 0 && <a href="#spremembe">Zadnje spremembe</a>}
         <a href="#kako-izbrati">Kako izbrati</a>
       </nav>
     </header>
@@ -156,6 +162,28 @@ function sourceLabels(urls: string[]) {
       </div>
     </section>
 
+    {
+      changes.length > 0 && (
+        <section id="spremembe" class="block narrow">
+          <h2>Zadnje spremembe</h2>
+          <p class="how">
+            Kaj se je v tabelah spremenilo ob mesečnem preverjanju ali ob izidu novega modela.
+            Datum je dan, ko smo spremembo vnesli.
+          </p>
+          <ul class="changes">
+            {changes.map((c) => (
+              <li>
+                <time datetime={c.data.datum.toISOString()}>{formatDate(c.data.datum)}</time>
+                <span>
+                  {c.data.besedilo} <a href={c.data.vir}>Vir: {host(c.data.vir)}</a>
+                </span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+
     <div class="prose narrow notes" id="kako-izbrati">
       <h2>Kako izbrati</h2>
       <p>
@@ -187,6 +215,30 @@ function sourceLabels(urls: string[]) {
 </Base>
 
 <style>
+  .changes {
+    list-style: none;
+    padding: 0;
+    margin: 12px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .changes li {
+    display: grid;
+    grid-template-columns: 11em 1fr;
+    gap: 12px;
+  }
+  .changes time {
+    color: var(--muted);
+    font-size: 0.92rem;
+    padding-top: 0.1em;
+  }
+  @media (max-width: 560px) {
+    .changes li {
+      grid-template-columns: 1fr;
+      gap: 2px;
+    }
+  }
   .jump {
     display: flex;
     flex-wrap: wrap;

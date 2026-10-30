@@ -203,7 +203,7 @@
   odprte_utezi: false
   dostop: Mistral API
   za_kaj: Zahtevnejše naloge za podjetja, ki želijo ostati pri evropskem ponudniku.
-  opomba: Še v fazi predogleda. Trenutno s 50 % popustom (0,68 $ in 2,09 $). Mistral je napovedal objavo uteži do konca oktobra 2026.
+  opomba: Še v fazi predogleda. Trenutno s 50 % popustom (0,68 $ in 2,09 $). Mistral je uteži objavil 29. oktobra 2026, ob tem pa na svoji strani navedel ceno 0,70 $ in 2,10 $ za milijon vhodnih in izhodnih tokenov (preveri ob mesečni osvežitvi).
   viri:
     - https://docs.mistral.ai/models/mistral-large-4
     - https://docs.mistral.ai/inference/pricing

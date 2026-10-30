@@ -110,6 +110,17 @@ const narocnine = defineCollection({
   }),
 });
 
+// Changelog of the tables on /modeli/ (src/data/spremembe.yaml), filled by the monthly refresh.
+const spremembe = defineCollection({
+  loader: file('src/data/spremembe.yaml'),
+  schema: z.object({
+    datum: z.coerce.date(),
+    podrocje: z.enum(['modeli', 'narocnine']),
+    besedilo: z.string(),
+    vir: z.url(),
+  }),
+});
+
 // Prompt templates for /prompti/ (src/data/prompti.yaml).
 const prompti = defineCollection({
   loader: file('src/data/prompti.yaml'),
@@ -149,4 +160,4 @@ const razpisi = defineCollection({
   }),
 });
 
-export const collections = { novice, slovar, modeli, narocnine, videi, prompti, razpisi };
+export const collections = { novice, slovar, modeli, narocnine, videi, prompti, razpisi, spremembe };
