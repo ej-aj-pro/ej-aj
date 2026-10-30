@@ -94,7 +94,7 @@ const sections = [
                 {s.rows.map((r) => (
                   <tr id={r.id} data-rok={r.data.stanje === 'odprt' && r.data.rok ? iso(r.data.rok) : undefined}>
                     <th scope="row">
-                      <a class="name" href={r.data.viri[0]}>
+                      <a class="name" href={r.data.viri[0]} target="_blank" rel="noopener">
                         {r.data.naslov}
                       </a>
                       <span class="sub">
@@ -115,7 +115,7 @@ const sections = [
                         {r.data.viri.map((v, i) => (
                           <>
                             {i > 0 && ', '}
-                            <a href={v}>{host(v)}</a>
+                            <a href={v} target="_blank" rel="noopener">{host(v)}</a>
                           </>
                         ))}
                         . Preverjeno {short(r.data.preverjeno)}.
@@ -153,7 +153,7 @@ const sections = [
         Seznam zajema razpise za AI, digitalizacijo, kibernetsko varnost, raziskave in razvoj ter
         startupe. Splošnih razpisov (energetika, kmetijstvo, zaposlovanje, turizem) ni, prav tako še
         ne občinskih. Širši pregled vseh razpisov za podjetja ima
-        <a href="https://www.podjetniski-portal.si/razpisi">Podjetniški portal</a> agencije SPIRIT.
+        <a href="https://www.podjetniski-portal.si/razpisi" target="_blank" rel="noopener">Podjetniški portal</a> agencije SPIRIT.
       </p>
       <p>
         Seznam ni svetovanje pri prijavi. Pred prijavo preberite razpisno dokumentacijo na uradni
