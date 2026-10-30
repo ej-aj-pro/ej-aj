@@ -8,14 +8,14 @@ description: Turn the latest published ej-aj.si weekly digest into a newsletter 
 The newsletter is the weekly digest by email. Its job is to bring readers back to ej-aj.si, so
 the email is shorter than the article and every item links to the site.
 
-Repo: `/Users/anze/Desktop/ej-aj`. Read `AGENTS.md` first (Slovenian, no em or en dashes,
+Repo: `/Users/anze/Desktop/Claude/ej-aj`. Read `AGENTS.md` first (Slovenian, no em or en dashes,
 Slovenian number formats). **Never send an email and never schedule one.** Anže sends from
 Buttondown himself.
 
 ## 1. Find the issue
 
 Use the newest `type: tedenski-pregled` file on `origin/main`
-(`git fetch origin` with `GH_TOKEN="$(gh auth token --user ej-aj-pro)"`, then
+(`git fetch origin` with `GH_TOKEN="$(gh auth token --user ej-aj-pro 2>/dev/null || gh auth token --user AnzeNocAI)"`, then
 `git show origin/main:src/content/novice/<file>`). Only published issues go out: if the newest
 digest is still in an open PR, stop and say so.
 
@@ -31,7 +31,7 @@ digest is still in an open PR, stop and say so.
   - closing line with a link to the full issue and to `/slovar/` or `/modeli/` when relevant
 - Facts only from the published article. Do not add new information.
 
-Save it to `/Users/anze/Desktop/ej-aj-newsletter/YYYY-MM-DD.md` (outside the repo) with the
+Save it to `/Users/anze/Desktop/Claude/ej-aj/ej-aj-newsletter/YYYY-MM-DD.md` (ignored by git) with the
 subject and preview text at the top.
 
 ## 3. Buttondown draft (optional)

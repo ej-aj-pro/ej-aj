@@ -13,7 +13,31 @@ Naročnino na AI orodje je lahko skleniti, pri odpovedi pa se hitro zatakne: kje
 - Izbris aplikacije naročnine ne odpove. Izbris računa pri ChatGPT odpove le naročnino, plačano neposredno pri OpenAI, naročnine prek Apple ne.
 - Pri ChatGPT in Claudu odpovejte vsaj 24 ur pred naslednjim plačilom, sicer vam lahko zaračunajo še eno obdobje.
 - Po odpovedi plačljive funkcije praviloma ostanejo do konca obdobja, ki ste ga plačali. Denarja za to obdobje praviloma ne dobite nazaj samodejno (izjema je Mistral ob odpovedi v 14 dneh od prvega nakupa).
-- OpenAI, Anthropic in Google za kupce v EU oziroma EGP navajajo pravico do vračila ali odstopa v 14 dneh od nakupa, Mistral pa vrne denar ob odpovedi v 14 dneh od prvega nakupa na spletu. Pri OpenAI in Anthropicu je vračilo sorazmerno, Microsoft pa ima svoja pravila.
+- OpenAI, Anthropic in Google za kupce v EU oziroma Evropskem gospodarskem prostoru (EGP) navajajo pravico do vračila ali odstopa v 14 dneh od nakupa, Mistral pa vrne denar ob odpovedi v 14 dneh od prvega nakupa na spletu. Pri OpenAI in Anthropicu je vračilo sorazmerno, Microsoft pa ima svoja pravila.
+
+```grafika
+vrsta: kartice
+naslov: Kje odpoveste naročnino in kdaj dobite denar nazaj
+kartice:
+  - naslov: ChatGPT
+    ton: siva
+    opis: Settings, Billing, Cancel plan. Odpovejte vsaj 24 ur pred plačilom. V EU sorazmerno vračilo, če odpoveste v 14 dneh od nakupa. Zahtevate ga v klepetu pomoči.
+  - naslov: Claude
+    ton: siva
+    opis: Začetnice, Settings, Billing, Cancel. Odpovejte vsaj 24 ur pred plačilom. V EGP vračilo, sorazmerno z rabo, v 14 dneh od nakupa. Zahtevate ga prek Get help.
+  - naslov: Gemini (Google One)
+    ton: siva
+    opis: Google One, Nastavitve, Prekliči naročnino. Po koncu obdobja ostane le 15 GB prostora. V EGP lahko v 14 dneh od nakupa odstopite, a ob odstopu ugodnosti izgubite takoj.
+  - naslov: Microsoft 365 s Copilotom
+    ton: siva
+    opis: account.microsoft.com, Services & subscriptions, Manage, Cancel. Vračilo v večini primerov v 30 dneh od prvega nakupa ali pred prvim ponavljajočim se plačilom, kar je prej. Enkrat na račun tudi vračilo zadnjega podaljšanja, če odpoveste v 30 dneh po plačilu.
+  - naslov: Mistral (Vibe)
+    ton: siva
+    opis: admin.mistral.ai, Subscriptions, Unsubscribe. Ob odpovedi v 14 dneh od prvega nakupa samodejno vračilo.
+  - naslov: App Store ali Google Play
+    ton: rumena
+    opis: Naročnino, kupljeno v aplikaciji, odpoveste v trgovini. Vračilo urejata Apple oziroma Google.
+```
 
 ## ChatGPT
 

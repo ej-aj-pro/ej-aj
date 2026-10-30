@@ -27,7 +27,7 @@ Primeri so eden najzanesljivejših načinov, da dobite želeno obliko in ton. An
 
 ## Ločite navodila, podatke in primere
 
-Ko je prompt daljši, AI lažje sledi, če so deli jasno ločeni. Anthropic za to predlaga oznake, kot so `<navodila>`, `<dokument>` in `<primer>`, OpenAI in Google pa tudi naslove v obliki Markdown. Oblika ni pomembna, pomembno je, da se ve, kaj je navodilo in kaj besedilo, ki ga je treba obdelati.
+Ko je prompt daljši, AI lažje sledi, če so deli jasno ločeni. Anthropic za to predlaga oznake, kot so `<navodila>`, `<dokument>` in `<primer>`, OpenAI in Google pa tudi naslove v obliki Markdown (preprost zapis oblikovanja z znaki, na primer # za naslov). Oblika ni pomembna, pomembno je, da se ve, kaj je navodilo in kaj besedilo, ki ga je treba obdelati.
 
 ## Dolgi dokumenti: najprej dokument, nato vprašanje
 
@@ -73,5 +73,7 @@ Drugi prompt je daljši, a pove, kdo je stranka, kdo bo bral, kaj je pomembno, i
 - [ ] Ali sem priložil dokument ali primer, namesto da ga opisujem?
 - [ ] Ali je jasno, kakšno obliko in dolžino želim?
 - [ ] Ali piše, kaj naj AI naredi, ko podatka nima?
+
+Predloge za pogoste naloge, napisane po teh pravilih, so zbrane na strani [Predloge promptov](/prompti/).
 
 Ko imate dober prompt za nalogo, ki se ponavlja, ga ne pišite vsakič znova. Shranite ga v projekt ali skill, kot je opisano v naslednjih delih priročnika.

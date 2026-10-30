@@ -162,6 +162,16 @@
     temelji na MCP.
   glej: [mcp]
 
+- id: podatkovno-skladisce
+  izraz: Podatkovno skladišče
+  angl: Data warehouse
+  razlaga: >-
+    Osrednja zbirka podatkov podjetja, v kateri so urejeni podatki iz različnih sistemov,
+    na primer prodaje, računovodstva in spletne trgovine, pripravljeni za analize in poročila.
+    AI orodja se lahko s skladiščem povežejo in iz njega sestavijo poročila ali nadzorne
+    plošče.
+  glej: [konektor, zasebnost-podatkov]
+
 - id: rutina
   izraz: Rutina (načrtovano opravilo)
   angl: Routine, scheduled task
@@ -306,6 +316,19 @@
     pa počasnejše in manj zanesljivo od neposredne povezave.
   glej: [agent, mcp]
 
+- id: digitalni-dvojcek
+  izraz: Digitalni dvojček
+  angl: Digital twin
+  razlaga: >-
+    Virtualni model fizičnega predmeta, naprave ali procesa, ki ga sproti posodabljajo podatki
+    iz resničnega sveta, na primer iz senzorjev. Na njem lahko preizkušate spremembe in
+    simulirate razmere, ne da bi posegali v pravi predmet. AI pomaga, da so simulacije in
+    napovedi hitrejše.
+  primer: >-
+    Proizvajalec avtomobilov v digitalnem dvojčku preizkusi, kako nova oblika vpliva na
+    zračni upor, preden izdela pravi prototip.
+  glej: [strojno-ucenje, umetna-inteligenca]
+
 - id: vibe-coding
   izraz: Vibe coding
   angl: Vibe coding
@@ -343,6 +366,17 @@
     vsakdanje rabe pa predvsem preglednost. Veljati je začela avgusta 2024, obveznosti pa se
     uvajajo postopoma v več letih.
   glej: [zasebnost-podatkov]
+
+- id: algoritmicno-upravljanje
+  izraz: Algoritmično upravljanje
+  angl: Algorithmic management
+  razlaga: >-
+    Raba programov in AI za naloge, ki jih sicer opravljajo vodje: razporejanje dela in
+    izmen, spremljanje uspešnosti ali predlaganje odločitev o zaposlenih. Ker vpliva na
+    delovne pogoje, ga EU posebej ureja pri delu prek spletnih platform, AI Act pa
+    sisteme za zaposlovanje, dodeljevanje nalog ter spremljanje in ocenjevanje zaposlenih
+    uvršča med visoko tvegane.
+  glej: [ai-act, umetna-inteligenca]
 
 - id: chatgpt
   izraz: ChatGPT
@@ -419,6 +453,17 @@
     nove.
   glej: [globoko-ucenje, umetna-inteligenca]
 
+- id: casovna-vrsta
+  izraz: Časovna vrsta
+  angl: Time series
+  razlaga: >-
+    Zaporedje meritev istega podatka, običajno v enakih časovnih presledkih, na primer dnevna prodaja,
+    mesečne zaloge ali urna poraba energije. Modeli za napovedovanje časovnih vrst iz
+    preteklih vrednosti ocenijo, kako se bo podatek gibal naprej. Za to se uporabljajo
+    statistične metode in modeli strojnega učenja, ki so praviloma precej manjši od
+    jezikovnih modelov.
+  glej: [strojno-ucenje, parametri]
+
 - id: globoko-ucenje
   izraz: Globoko učenje
   angl: Deep learning
@@ -463,6 +508,19 @@
     zaupne podatke, izvedel plačilo brez potrditve ali odgovarjal zunaj svojega področja.
   glej: [vrivanje-navodil, zasebnost-podatkov]
 
+- id: peskovnik
+  izraz: Peskovnik (sandbox)
+  angl: Sandbox
+  razlaga: >-
+    Izolirano okolje, v katerem program ali agent dela, ne da bi lahko posegel v preostali
+    sistem. Do datotek, omrežja in drugih orodij dostopa le tako, kot dovolijo vnaprej
+    določena pravila. Če agent naredi napako ali ga kdo zlorabi, je škoda praviloma omejena
+    na peskovnik.
+  primer: >-
+    Agent, ki ureja programsko kodo, dela na kopiji projekta v peskovniku in nima dostopa do
+    gesel ali produkcijske baze podatkov.
+  glej: [agent, varovala, vrivanje-navodil]
+
 - id: evalvacija
   izraz: Evalvacija (eval)
   angl: Evaluation, eval
@@ -501,3 +559,13 @@
     ni bilo. Za podjetja je največje tveganje prevara, na primer lažen glasovni klic
     "direktorja", ki naroči nujno nakazilo. Nenavadne zahteve vedno preverite po drugem kanalu.
   glej: [generativna-ai, ai-act]
+
+- id: vodni-zig
+  izraz: Vodni žig
+  angl: Watermark
+  razlaga: >-
+    Oznaka, pri AI običajno nevidna, ki jo ponudnik AI doda v ustvarjeno besedilo, sliko, video ali zvok, da
+    lahko programska oprema pozneje prepozna, da je vsebina nastala z AI. Pri besedilu je
+    oznaka skrita v izbiri besed, zato jo popravki in prevodi oslabijo. Če oznake ni, to ne
+    dokazuje, da je vsebino ustvaril človek.
+  glej: [deepfake, ai-act, generativna-ai]

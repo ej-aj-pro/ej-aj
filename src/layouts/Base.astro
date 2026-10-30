@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import '../styles/grafike.css';
 import { SITE } from '../site';
 import Ikona from '../components/Ikona.astro';
 
@@ -9,14 +10,24 @@ interface Props {
   type?: 'website' | 'article';
   /** ISO date for articles (article:published_time). */
   published?: Date;
+  /** ISO date of the last substantive update (article:modified_time). */
+  modified?: Date;
   /** Page-specific schema.org objects, added next to the site-wide ones. */
   jsonLd?: Record<string, unknown>[];
   /** Share image path (1200x630), e.g. "/og/<id>.png". Defaults to the site image. */
   image?: string;
+  /** Include the page in site search (Pagefind). Off for listing pages, whose cards only repeat other pages. */
+  search?: boolean;
+  /** Search filter "Vrsta" shown next to results, e.g. "Vodnik" or "Slovar". */
+  searchType?: string;
+  /** Path of the page's plain Markdown copy (articles), announced with rel="alternate". */
+  markdown?: string;
 }
 
-const { title, description = SITE.description, type = 'website', published, jsonLd = [], image = '/og.png' } = Astro.props;
-const fullTitle = title ? `${title} | ${SITE.name}` : `${SITE.name}: ${SITE.tagline}`;
+const { title, description = SITE.description, type = 'website', published, modified, jsonLd = [], image = '/og.png', search = true, searchType, markdown } = Astro.props;
+// Search results show about 60 characters of a title; long titles drop the site name suffix so
+// the words that describe the page are the ones that stay visible.
+const fullTitle = !title ? `${SITE.domain}: AI novice, vodniki in cene AI orodij v slovenščini` : title.length > 52 ? title : `${title} | ${SITE.name}`;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const ogImage = new URL(image, Astro.site);
 const siteLd = [
@@ -36,7 +47,14 @@ const siteLd = [
     '@type': 'Organization',
     '@id': `${Astro.site}#avtor`,
     name: SITE.domain,
-    url: new URL('/o-projektu/', Astro.site).toString(),
+    url: Astro.site?.toString(),
+    description: SITE.description,
+    logo: { '@type': 'ImageObject', url: new URL('/icon-512.png', Astro.site).toString(), width: 512, height: 512 },
+    // How content is made and checked; search and answer engines read it as the editorial policy.
+    publishingPrinciples: new URL('/o-projektu/', Astro.site).toString(),
+    sameAs: ['https://github.com/ej-aj-pro/ej-aj'],
+    areaServed: { '@type': 'Country', name: 'Slovenija' },
+    knowsAbout: ['umetna inteligenca', 'generativna umetna inteligenca', 'AI Act', 'cene AI orodij'],
   },
 ];
 const path = Astro.url.pathname;
@@ -45,6 +63,7 @@ const nav = [
   { href: '/vodniki/', label: 'Vodniki' },
   { href: '/prirocnik/', label: 'Priročnik' },
   { href: '/modeli/', label: 'Modeli in cene' },
+  { href: '/razpisi/', label: 'Razpisi' },
   { href: '/statistika/', label: 'Statistika' },
   { href: '/slovar/', label: 'Slovar' },
 ];
@@ -61,6 +80,7 @@ const nav = [
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="alternate" type="application/rss+xml" title={SITE.name} href="/rss.xml" />
+    {markdown && <link rel="alternate" type="text/markdown" href={markdown} />}
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta property="og:type" content={type} />
     <meta property="og:title" content={fullTitle} />
@@ -73,6 +93,7 @@ const nav = [
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
     {published && <meta property="article:published_time" content={published.toISOString()} />}
+    {modified && <meta property="article:modified_time" content={modified.toISOString()} />}
     {
       [...siteLd, ...jsonLd].map((ld) => (
         <script type="application/ld+json" set:html={JSON.stringify(ld)} />
@@ -92,11 +113,14 @@ const nav = [
               </a>
             ))
           }
+          <a class="nav-iskanje" href="/iskanje/" aria-label="Iskanje" title="Iskanje" aria-current={path.startsWith('/iskanje/') ? 'page' : undefined}>
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" /></svg>
+          </a>
         </nav>
       </div>
     </header>
 
-    <main>
+    <main data-pagefind-body={search ? '' : undefined} data-pagefind-filter={search && searchType ? `Vrsta:${searchType}` : undefined}>
       <slot />
     </main>
 
@@ -105,7 +129,7 @@ const nav = [
         <p><strong>ej-aj.si</strong>: {SITE.tagline.toLowerCase()}.</p>
         <p>
           Vsebino pripravlja AI (Claude Code), pred objavo jo pregleda in uredi {SITE.author}.{' '}
-          <a href="/o-projektu/">O projektu</a> · <a href="/zasebnost/">Zasebnost</a> · <a href="/rss.xml">RSS</a>
+          <a href="/zacnite/">Začnite tukaj</a> · <a href="/o-projektu/">O projektu</a> · <a href="/zasebnost/">Zasebnost</a> · <a href="/rss.xml">RSS</a>
         </p>
       </div>
     </footer>

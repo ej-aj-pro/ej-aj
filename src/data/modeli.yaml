@@ -17,7 +17,7 @@
   viri:
     - https://platform.claude.com/docs/en/about-claude/models/overview
     - https://platform.claude.com/docs/en/models/fable-5-1/overview
-  preverjeno: 2026-09-26
+  preverjeno: 2026-10-17
 
 - id: claude-mythos-5-1
   ponudnik: Anthropic
@@ -28,12 +28,12 @@
   cena_izhod: 50
   kontekst: 1000000
   odprte_utezi: false
-  dostop: samo na povabilo (Project Glasswing)
+  dostop: samo za organizacije, ki jih preveri Anthropic (na primer Cyber Verification Program)
   za_kaj: Za večino podjetij ni dosegljiv; v tabeli je zaradi popolnosti.
-  opomba: Enaka cena kot Fable 5.1, dostop le za udeležence programa Project Glasswing.
+  opomba: Enaka cena kot Fable 5.1, dostop le za organizacije, ki opravijo Anthropicovo preverjanje.
   viri:
     - https://platform.claude.com/docs/en/models/mythos-5-1/overview
-  preverjeno: 2026-09-26
+  preverjeno: 2026-10-17
 
 - id: claude-opus-5-5
   ponudnik: Anthropic
@@ -50,39 +50,42 @@
   viri:
     - https://platform.claude.com/docs/en/about-claude/models/overview
     - https://www.anthropic.com/claude-opus-5-5
-  preverjeno: 2026-09-26
+  preverjeno: 2026-10-17
 
-- id: claude-sonnet-5
+- id: claude-sonnet-5-5
   ponudnik: Anthropic
-  ime: Claude Sonnet 5
-  api_id: claude-sonnet-5
-  izid: '2026-06-30'
+  ime: Claude Sonnet 5.5
+  api_id: claude-sonnet-5-5
+  izid: '2026-09-28'
   cena_vhod: 2
   cena_izhod: 10
   kontekst: 1000000
   odprte_utezi: false
   dostop: Claude aplikacije, Claude API, AWS, Google Cloud, Microsoft Foundry
-  za_kaj: Vsakdanje pisarniško delo in avtomatizacije, kjer štejeta hitrost in cena.
+  za_kaj: Vsakdanje pisarniško delo, dokumenti, predstavitve in preglednice, kjer štejeta hitrost in cena.
+  opomba: Nasledil je Sonnet 5; na nalogo do 30 % cenejši pri isti ceni na token.
   viri:
     - https://platform.claude.com/docs/en/about-claude/models/overview
-    - https://platform.claude.com/docs/en/models/sonnet-5/overview
-  preverjeno: 2026-09-26
+    - https://www.anthropic.com/claude-sonnet-5-5
+    - https://www.anthropic.com/claude/sonnet
+  preverjeno: 2026-10-17
 
-- id: claude-haiku-4-5
+- id: claude-haiku-5-5
   ponudnik: Anthropic
-  ime: Claude Haiku 4.5
-  api_id: claude-haiku-4-5
-  izid: '2025-10-15'
-  cena_vhod: 1
-  cena_izhod: 5
-  kontekst: 200000
+  ime: Claude Haiku 5.5
+  api_id: claude-haiku-5-5
+  izid: '2026-10-07'
+  cena_vhod: 0.1
+  cena_izhod: 0.5
+  kontekst: 1000000
   odprte_utezi: false
   dostop: Claude API, AWS, Google Cloud, Microsoft Foundry
-  za_kaj: Preproste naloge v velikih količinah, na primer razvrščanje sporočil.
-  opomba: Anthropic ga ne bo umaknil pred 15. oktobrom 2026.
+  za_kaj: Preproste naloge v velikih količinah, na primer razvrščanje sporočil in izpis podatkov iz dokumentov.
+  opomba: Novejša različica modela Haiku 4.5. Za pozive nad 100 tisoč tokenov je cena višja (0,50 $ in 2,50 $). Novi tokenizator isto besedilo šteje kot približno 30 % več tokenov kot Haiku 4.5.
   viri:
-    - https://platform.claude.com/docs/en/about-claude/models/overview
-  preverjeno: 2026-09-26
+    - https://platform.claude.com/docs/en/models/haiku-5-5/overview
+    - https://platform.claude.com/docs/en/about-claude/pricing
+  preverjeno: 2026-10-17
 
 - id: gpt-6-astra
   ponudnik: OpenAI
@@ -98,23 +101,26 @@
   opomba: Najzmogljivejši OpenAI model.
   viri:
     - https://developers.openai.com/api/docs/models
-  preverjeno: 2026-09-26
+  preverjeno: 2026-10-17
 
-- id: gpt-6-sol
+- id: gpt-6-1-sol
   ponudnik: OpenAI
-  ime: GPT-6 Sol
-  api_id: gpt-6-sol
-  izid: '2026-09-22'
+  ime: GPT-6.1 Sol
+  api_id: gpt-6.1-sol
+  izid: '2026-09-29'
   cena_vhod: 2
   cena_izhod: 10
   kontekst: 1050000
   odprte_utezi: false
-  dostop: ChatGPT (plačljivi paketi), Codex, OpenAI API
+  dostop: ChatGPT Work in Codex (paketi Plus, Pro, Business, Enterprise in Edu), OpenAI API
   za_kaj: Vsakdanje delo in avtomatizacije za podjetja, ki uporabljajo ChatGPT.
+  opomba: Nadgradnja modela GPT-6 Sol, cena je enaka. Za pozive nad 272 tisoč tokenov je cena višja (4 $ in 15 $).
   viri:
-    - https://developers.openai.com/api/docs/models
-    - https://community.openai.com/t/announcing-gpt-6-sol-and-gpt-6-luna-in-the-api-codex-and-chatgpt/1399925
-  preverjeno: 2026-09-26
+    - https://developers.openai.com/api/docs/models/gpt-6.1-sol
+    - https://developers.openai.com/api/docs/pricing
+    - https://developers.openai.com/api/docs/changelog
+    - https://openai.com/index/introducing-gpt-6-1-sol/
+  preverjeno: 2026-10-17
 
 - id: gpt-6-luna
   ponudnik: OpenAI
@@ -130,7 +136,26 @@
   viri:
     - https://developers.openai.com/api/docs/models
     - https://community.openai.com/t/announcing-gpt-6-sol-and-gpt-6-luna-in-the-api-codex-and-chatgpt/1399925
-  preverjeno: 2026-09-26
+  preverjeno: 2026-10-17
+
+- id: gemini-4-argon
+  ponudnik: Google
+  ime: Gemini 4 Argon
+  api_id: gemini-4-argon
+  izid: '2026-10-13'
+  cena_vhod: 2
+  cena_izhod: 10
+  kontekst: 1048576
+  odprte_utezi: false
+  dostop: Gemini aplikacija (paketa Google AI Pro in Ultra), Gemini API, Google AI Studio
+  za_kaj: Najzahtevnejše naloge, programiranje in agenti za podjetja, ki delajo v Googlovem okolju.
+  opomba: Najzmogljivejši Googlov model. Cena velja do 30. novembra 2026, od 1. decembra 2026 4 $ in 20 $.
+  viri:
+    - https://ai.google.dev/gemini-api/docs/models/gemini-4-argon
+    - https://ai.google.dev/gemini-api/docs/pricing
+    - https://ai.google.dev/gemini-api/docs/changelog
+    - https://blog.google/innovation-and-ai/products/gemini-app/gemini-4-availability
+  preverjeno: 2026-10-17
 
 - id: gemini-3-1-pro
   ponudnik: Google
@@ -139,31 +164,51 @@
   izid: null
   cena_vhod: 2
   cena_izhod: 12
-  kontekst: null
+  kontekst: 1048576
   odprte_utezi: false
   dostop: Gemini API, Google AI Studio, Vertex AI
   za_kaj: Zahtevnejše naloge za podjetja, ki delajo v Google Workspace.
   opomba: Še v fazi predogleda. Za pozive nad 200 tisoč tokenov je cena višja (4 $ in 18 $).
   viri:
     - https://ai.google.dev/gemini-api/docs/pricing
-    - https://ai.google.dev/gemini-api/docs/models
-  preverjeno: 2026-09-26
+    - https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview
+  preverjeno: 2026-10-17
 
 - id: gemini-3-8-flash
   ponudnik: Google
   ime: Gemini 3.8 Flash
   api_id: gemini-3.8-flash
-  izid: null
+  izid: '2026-09-02'
   cena_vhod: 0.75
   cena_izhod: 3.75
-  kontekst: null
+  kontekst: 1048576
   odprte_utezi: false
   dostop: Gemini aplikacija, Gemini API, Google AI Studio, Vertex AI
   za_kaj: Hitre in cenovno ugodne avtomatizacije v Googlovem okolju.
   opomba: Promocijska cena do 31. decembra 2026, od 1. januarja 2027 1,50 $ in 7,50 $.
   viri:
     - https://ai.google.dev/gemini-api/docs/pricing
-  preverjeno: 2026-09-26
+    - https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash
+    - https://ai.google.dev/gemini-api/docs/changelog
+  preverjeno: 2026-10-17
+
+- id: mistral-large-4
+  ponudnik: Mistral
+  ime: Mistral Large 4 (predogled)
+  api_id: mistral-large-4-0
+  izid: '2026-10-06'
+  cena_vhod: 1.36
+  cena_izhod: 4.18
+  kontekst: 1000000
+  odprte_utezi: false
+  dostop: Mistral API
+  za_kaj: Zahtevnejše naloge za podjetja, ki želijo ostati pri evropskem ponudniku.
+  opomba: Še v fazi predogleda. Trenutno s 50 % popustom (0,68 $ in 2,09 $). Mistral je napovedal objavo uteži do konca oktobra 2026.
+  viri:
+    - https://docs.mistral.ai/models/mistral-large-4
+    - https://docs.mistral.ai/inference/pricing
+    - https://mistral.ai/news/mistral-large-4
+  preverjeno: 2026-10-17
 
 - id: mistral-medium-3-5
   ponudnik: Mistral
@@ -178,9 +223,9 @@
   za_kaj: Evropski ponudnik z odprtimi utežmi; za podjetja, ki želijo ostati v EU.
   opomba: Licenca Modified MIT.
   viri:
-    - https://mistral.ai/pricing/api/
+    - https://docs.mistral.ai/inference/pricing
     - https://docs.mistral.ai/models/mistral-medium-3-5-26-04
-  preverjeno: 2026-09-26
+  preverjeno: 2026-10-17
 
 - id: ministral-3-8b
   ponudnik: Mistral
@@ -195,9 +240,9 @@
   za_kaj: Majhen model, ki ga lahko poganjate tudi na lastnem strežniku.
   opomba: Licenca Apache 2.0.
   viri:
-    - https://mistral.ai/pricing/api/
+    - https://docs.mistral.ai/inference/pricing
     - https://docs.mistral.ai/models/ministral-3-8b-25-12
-  preverjeno: 2026-09-26
+  preverjeno: 2026-10-17
 
 - id: llama-4-maverick
   ponudnik: Meta
@@ -213,7 +258,24 @@
   opomba: Meta ga ne prodaja prek lastnega API-ja, zato uradne cene ni. Licenca Llama 4 Community License.
   viri:
     - https://huggingface.co/meta-llama/Llama-4-Maverick-17B-128E-Instruct
-  preverjeno: 2026-09-26
+  preverjeno: 2026-10-17
+
+- id: muse-spark-open
+  ponudnik: Meta
+  ime: Muse Spark Open
+  api_id: null
+  izid: '2026-10-15'
+  cena_vhod: null
+  cena_izhod: null
+  kontekst: 1000000
+  odprte_utezi: true
+  dostop: prenos uteži (Hugging Face), pri različnih ponudnikih gostovanja
+  za_kaj: Najnovejši Metin model z odprtimi utežmi, namenjen predvsem programiranju in agentom; za lastno postavitev potrebujete zmogljive strežnike.
+  opomba: Uradne cene ni, Meta ga ponuja prek zunanjih ponudnikov, kot so Baseten, Fireworks AI, Groq in Together AI. Licenca Muse Model License z omejenimi pogoji za komercialno rabo.
+  viri:
+    - https://huggingface.co/meta-models/Muse-Spark-open-816B-A42B
+    - https://research.meta.ai/blog/muse-spark-open
+  preverjeno: 2026-10-17
 
 - id: deepseek-v4-pro
   ponudnik: DeepSeek
@@ -230,7 +292,7 @@
   viri:
     - https://api-docs.deepseek.com/quick_start/pricing
     - https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro-0813
-  preverjeno: 2026-09-26
+  preverjeno: 2026-10-17
 
 - id: gams3-12b
   ponudnik: CJVT / UL FRI
@@ -246,4 +308,4 @@
   opomba: Razvit na Univerzi v Ljubljani na osnovi modela Gemma 3. Licenca Gemma.
   viri:
     - https://huggingface.co/cjvt/GaMS3-12B-Instruct
-  preverjeno: 2026-09-26
+  preverjeno: 2026-10-17

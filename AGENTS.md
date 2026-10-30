@@ -24,11 +24,15 @@ Read it at the start of every session.
 - `.claude/skills/tedenski-pregled/`: prepares the weekly digest as a PR (parallel collector
   subagents, fact-checker subagent, validator). Run by a local Friday routine
   (`ej-aj-tedenski-pregled`), or on request.
-- `.claude/skills/nov-vodnik/`: turns a note from `~/Desktop/ej-aj-inbox/` (outside the repo,
+- `.claude/skills/nov-vodnik/`: turns a note from `/Users/anze/Desktop/Claude/ej-aj/ej-aj-inbox/` (in the repo folder but ignored by git,
   synced via iCloud) into a draft guide PR, with a confidentiality pass and `[DOPOLNI: ...]`
   placeholders that the validator blocks. Manual for now.
+- `.claude/skills/posodobi-razpise/`: weekly refresh of `/razpisi/` (`src/data/razpisi.yaml`):
+  re-checks every call on its official page, adds new AI, digital and R&D calls (helpers in
+  `scripts/razpisi.mjs`), fact-checker subagent, opens a PR. Run by a weekly **cloud** routine
+  (claude.ai routine "ej-aj posodobi razpise", Mondays 07:00 UTC), so it runs with the Mac off.
 - `.claude/skills/newsletter/`: turns the latest published digest into a newsletter email
-  (file in `~/Desktop/ej-aj-newsletter/`, optional Buttondown draft via API). Never sends.
+  (file in `/Users/anze/Desktop/Claude/ej-aj/ej-aj-newsletter/`, optional Buttondown draft via API). Never sends.
 - Routines and skills do their work in git worktrees under `~/.cache/ej-aj-worktrees/`, never
   in the main checkout and never inside iCloud-synced folders.
 
@@ -44,6 +48,8 @@ Read it at the start of every session.
   repo Anže appears by first name only, never with his surname.
 - Slovenian number format: `1.500`, `0,10 USD`, `40 %`.
 - Separate fact (what was announced) from interpretation (**Kaj to pomeni za vas:**).
+- Visual aids: timelines, decision steps and card rows are written as ```grafika blocks in the
+  Markdown (`docs/grafike.md`); their facts are fact-checked like the text.
 
 ## Accuracy rules
 

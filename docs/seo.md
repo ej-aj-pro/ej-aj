@@ -1,0 +1,185 @@
+# SEO: stanje in načrt
+
+Analiza 30. septembra 2026. Stran je stara pet dni, zato Search Console še nima uporabnih
+podatkov; iskalni nizi spodaj so iz predlogov iskanja Google in Bing za Slovenijo (brez obsega
+iskanj). Po 14. oktobru preveri v Search Console, kateri nizi dejansko prinašajo prikaze
+(Anže je 30. 9. dovolil, da to agent naredi v njegovem Chrome profilu anze999).
+
+## Tehnično (urejeno v PR tehnicno/seo-osnove)
+
+- `<lastmod>` v sitemapu za vse članke (iz `updated`, sicer `date`).
+- Novo neobvezno polje `updated` v front matterju: `dateModified` v JSON-LD, `article:modified_time`
+  in "Posodobljeno ..." ob datumu. Nastavi ga, ko se v vodniku spremenijo dejstva, cene ali
+  razdelki, ne ob popravku tipkarske napake.
+- `BreadcrumbList` na vseh člankih (slovar ga je že imel).
+- Blok "Preberite še" pod vsakim člankom: trije članki z največ skupnimi izrazi iz slovarja.
+- Strani slovarja: daljši meta opis (cele povedi do 158 znakov) in seznam "Kje o tem pišemo"
+  (do 6 člankov, ki izraz omenjajo). Strani slovarja so bile zelo kratke (en odstavek).
+- Dolgi naslovi (nad 52 znakov) v `<title>` nimajo več pripone " | ej-aj", da Google pokaže
+  besede, ki opisujejo stran.
+- IndexNow (`scripts/indexnow.mjs`, workflow `IndexNow`): po vsakem pushu na `main` Bingu
+  sporoči spremenjene strani. Bing poganja tudi iskanje v ChatGPT in Copilot. Ročni zagon v
+  zavihku Actions pošlje vse strani iz sitemapa (enkrat po mergeu).
+- Naslovi in opisi naslovnice, /novice/, /vodniki/ in /slovar/ s ključnimi besedami.
+
+## GEO: citati v AI odgovorih (13. oktober 2026)
+
+AI pomočniki s spletnim iskanjem (ChatGPT prek Binga in lastnega indeksa, Gemini prek Googla,
+Claude prek Brave Search, Perplexity z lastnim indeksom) izberejo vire med prvimi zadetki svojih
+poizvedb. Za ej-aj.si zato velja isto kot za SEO: rangirati v Bingu, Googlu in Brave. Posebnih
+oznak, ki bi same od sebe prinesle citate, ni. Prednost imamo pri vprašanjih, na katera angleški
+viri ne odgovorijo (cene v evrih, slovenščina, slovenska statistika, AI Act v slovenski praksi).
+
+Tehnično (PR tehnicno/geo):
+
+- Vsak članek ima različico v Markdownu (`/vodniki/<slug>.md`, `/novice/<id>.md`), napovedano z
+  `<link rel="alternate" type="text/markdown">`. Glava ima datum objave, posodobitve in povezavo
+  do izvirnika, relativne povezave so absolutne. Pomočniki in agenti, ki stran berejo kot
+  besedilo, tako dobijo čisto vsebino brez navigacije.
+- `/llms-full.txt`: vsi članki (najprej vodniki) in slovar v eni datoteki; `/llms.txt` nanjo kaže.
+- `Organization` v JSON-LD ima `logo`, `description`, `publishingPrinciples` (/o-projektu/),
+  `sameAs` (GitHub), `areaServed` in `knowsAbout`; `url` kaže na naslovnico.
+- `FAQPage` na vodnikih namenoma ni: le en naslov razdelka je vprašanje, odgovori pa morajo biti
+  vidni na strani. Smiselno postane, ko vodniki dobijo razdelke v obliki vprašanj.
+- AI crawlerji (GPTBot, OAI-SearchBot, ChatGPT-User, ClaudeBot, Claude-SearchBot, PerplexityBot,
+  Google-Extended) 13. 10. dobijo 200. Test z user agentom ne zazna Cloudflarove blokade za
+  preverjene bote, zato naj Anže v Cloudflaru (AI Crawl Control) preveri, da "Block AI bots" ni
+  vklopljen. Tam je vidno tudi, kateri AI boti stran obiskujejo.
+
+Merjenje: `node scripts/geo-meritve.mjs` postavi vprašanja iz `scripts/geo-vprasanja.yaml`
+Claudu, ChatGPT, Geminiju in Perplexityju prek API-ja z vklopljenim iskanjem in lokacijo
+Slovenija ter zapiše, ali odgovor citira ej-aj.si ali ga je iskanje le našlo. Rezultati gredo v
+`docs/geo-meritve/<datum>.json` in `.md` (primerjava s prejšnjo meritvijo, najpogosteje citirane
+domene). Ponudnik teče le, če je nastavljen njegov ključ (`ANTHROPIC_API_KEY`, `OPENAI_API_KEY`,
+`GEMINI_API_KEY`, `PERPLEXITY_API_KEY`; shrani jih v `~/.zshrc` tako kot `BUTTONDOWN_API_KEY`). Meritev stane
+nekaj dolarjev, zato enkrat na mesec; `--dry-run` izpiše vprašanja in po buildu preveri, da
+ciljne strani obstajajo. Seznam vprašanj ostane stabilen, nova vprašanja gredo na konec.
+
+## Nastavitve, ki jih mora narediti Anže (Cloudflare)
+
+- **Always Use HTTPS**: urejeno, `http://ej-aj.si/` 13. 10. vrne 301 na https (30. 9. je še
+  vrnil 200).
+- Po želji HSTS (SSL/TLS, Edge Certificates), zdaj ko HTTPS preusmeritev deluje.
+- **AI Crawl Control**: preveri, da "Block AI bots" ni vklopljen (glej razdelek GEO zgoraj).
+
+## Kaj ljudje iščejo (predlogi Google in Bing, Slovenija)
+
+- Brezplačno: "chatgpt slovenija brezplačno", "umetna inteligenca brezplačno", "umetna
+  inteligenca zastonj", "brezplačna ai orodja", "chatgpt brez prijave", "chat gpt v slovenščini
+  free".
+- Slovenščina: "chatgpt v slovenščini", "umetna inteligenca v slovenščini", "copilot
+  slovenščina", "gemini v slovenščini", "umetna inteligenca aplikacija v slovenščini".
+- Slike in video: "umetna inteligenca za slike", "ai za ustvarjanje slik", "ai za slike free",
+  "ai video generator", "umetna inteligenca video iz slike".
+- Cene: "chatgpt cena", "chatgpt plus cena", "chatgpt plus vs go", "claude pricing".
+- Šola: "umetna inteligenca v šoli", "copilot arnes", "copilot za učitelje", "gemini za
+  študente", "ai detektor slovenščina", "ai detector slovenija".
+- Razlage: "umetna inteligenca kaj je to", "kako deluje", "chatgpt kaj je to", "claude kaj je
+  to", "ai agent", "notebooklm".
+- Področja: "ai za pravnike", "umetna inteligenca v računovodstvu" (oba že pokrita), "v javni
+  upravi", "v zdravstvu", "v izobraževanju", "copilot za računovodje".
+- Drugo: "ai prevajalnik", "ai prezentacija", "ai tečaj", "elements of ai tečaj".
+
+## Predlogi vsebin (po pričakovani vrednosti)
+
+1. **Brezplačna AI orodja: kaj dobite zastonj pri ChatGPT, Claude, Gemini in Copilot** (PR #52, 2. 10.; omejitve
+   brezplačnih paketov, prijava, slovenščina, kaj se zgodi s podatki). Največ iskanj od vseh tem.
+2. **ChatGPT v slovenščini: kako začeti** (PR #53, 2. 10.; prijava, nastavitev jezika, glas, aplikacija, kdaj se
+   splača Go ali Plus). Iskalci tega niza so začetniki, ki jih druge strani ne nagovarjajo.
+3. **Microsoft Copilot v slovenščini: brezplačni Copilot, Copilot Chat in Microsoft 365 Copilot**
+   (razlike, kaj imate že v službenem računu). "copilot slovenščina" je drugi predlog za "copilot".
+4. **AI za ustvarjanje slik: orodja, cene, avtorske pravice in označevanje po AI Act** (PR #64, 3. 10.). Veliko
+   iskanj; povezava na vodnik AI Act (člen 50).
+5. **Koliko stane ChatGPT (Free, Go, Plus, Pro, Business) v evrih** (PR #58, 3. 10.: strani `/cene/<orodje>/` iz `narocnine.yaml`), enako za Claude in Gemini.
+   Lahko samodejno iz `narocnine.yaml` kot strani `/cene/chatgpt/` ... (zdaj `/cene/` preusmerja
+   na `/modeli/`), mesečna rutina jih osvežuje. Funkcija, ne samo članek.
+6. **AI v šoli: kaj lahko učitelji in dijaki uporabljajo** (Arnes, pravila, preverjanje). Preveri
+   pri Arnesu in MVI, kaj dejansko ponujajo; brez tega ne pisati.
+7. **Ali zaznavalniki AI besedila delujejo (tudi za slovenščino)** (PR #60, 3. 10.). Iščejo učitelji, študenti in
+   delodajalci; odgovor je podprt z raziskavami.
+8. **Kaj je umetna inteligenca in kako deluje: razlaga za začetnike** (PR #59, 3. 10.). Temeljna stran, na katero
+   kažejo vsi vodniki; slovar ima le kratko geslo.
+9. **NotebookLM: kaj je in kako ga uporabiti za dokumente podjetja**.
+10. **AI prevajalniki za slovenščino: DeepL, Google Translate, ChatGPT, Claude** (povezava na
+    vodnik o slovenščini).
+11. **AI tečaji in usposabljanja v Sloveniji (tudi brezplačni)**: dobro se poveže z vodnikom o AI
+    pismenosti, na tak seznam radi kažejo drugi (povratne povezave).
+12. Področni vodniki po vzoru računovodstva in prava: javna uprava, zdravstvo, šole.
+
+Pri 1 do 3 in 5 so naslovi lahko skoraj enaki iskalnemu nizu; to ni click bait, ker natančno
+povedo, kaj članek je.
+
+Dodano 3. 10. 2026 (seja, ko je Anže prosil za SEO in nove vsebine):
+
+- **Kateri AI model za katero nalogo** (plonk listek, PR #62) in **AI za video, glasbo in glas**
+  (PR #63, poudarek na podpori za slovenščino).
+- **Najbolj uporabljeni AI klepetalniki po državah** (`/statistika/klepetalniki-po-drzavah/`, PR #57):
+  StatCounter za 48 držav, osveži se z mesečno rutino. Slovenija ima najvišji delež ChatGPT od vseh
+  48 držav (90,2 %, julij do september 2026): dobra zgodba za medije in povratne povezave.
+- Meta keywords namenoma ne uporabljamo (Google jih ne upošteva, Bing jih šteje kot možen spam).
+- Naslednje teme iz seznama: 3 (Copilot v slovenščini), 6 (AI v šoli), 10 (prevajalniki),
+  11 (tečaji). Nova ideja: stran `/skilli/` z brezplačnimi slovenskimi skilli (glej spodaj).
+
+## Search Console, prvi izvoz (22. oktober 2026)
+
+Izvoz "Performance on Search", spletno iskanje, 25. 9. do 20. 10. 2026 (19. in 20. 10. še brez
+podatkov zaradi zamika). Skupaj 21 klikov in 1.022 prikazov, 93 % iz Slovenije, povprečno mesto
+okoli 8. Google skrije večino poizvedb: seznam poizvedb pojasni le 5 od 21 klikov. Številke so
+majhne, zato kažejo smer, ne trdnih razlik. Naslednji pregled: konec novembra 2026.
+
+Trend: prvi teden okoli 17 prikazov na dan, drugi okoli 50, zadnji okoli 70.
+
+Kaj deluje:
+
+- **Cene** prinašajo največ klikov na poizvedbo: "claude cena", "gemini cena", "cena claude",
+  "copilot cena", "claude paketi", "gemini cenik", "copilot business cena" (skupaj okoli 45
+  prikazov, mesta 3 do 10). `/cene/claude/` ima 3 klike, mesto 4,1, CTR 7,9 %.
+- **Agenti in priročnik:** `/vodniki/lasten-ai-agent/` (3 kliki, mesto 4,8, CTR 7,3 %) in
+  `/prirocnik/` (3 kliki, mesto 5,2).
+- Ime strani že iščejo ("ej aj", "aj ai", "ej ai").
+
+Priložnosti:
+
+1. **"chat gpt v slovenščini"** je največja poizvedba (37 prikazov, mesto 7,4, 0 klikov). Okoli nje
+   so "gemini v slovenščini", "chat gpt slovenščina", "slovenski ai chat", "umetna inteligenca v
+   slovenščini", "gpt slovenija". Manjkata vodnika **Gemini v slovenščini** in **Claude v
+   slovenščini**; smiselna je zbirna stran **AI v slovenščini**, ki poveže ChatGPT, Copilot,
+   Gemini, Claude, "Kako dobro AI zna slovensko" (37 prikazov, mesto 14) in prevajalnike.
+2. **`/cene/chatgpt/` v izvozu ni**, čeprav je v sitemapu od 3. 10. in ima enak naslov kot
+   `/cene/claude/`. Anže naj v Search Console preveri URL (pregled URL-ja, zahteva za indeksiranje).
+3. **Slovar** dobi okoli tretjino prikazov (gpt 46, prompt 25, vibe coding 23, agent 21, token 22,
+   veliki jezikovni model 20, mcp 19), klikov pa skoraj nič: na razlage izrazov Google pogosto
+   odgovori sam. Slovar je vhod; vsako geslo mora voditi naprej na vodnik ali ceno.
+4. **Agenti:** "agent" mesto 22, "ai agenti" 100, "ai pomočnik" 30, "ai asistent" 73. Manjka
+   trajni vodnik **AI agenti za podjetja: kaj so in kako začeti**, na katerega kažejo novice o
+   Claude Duet, Dots in Muse.
+5. **Dobro mesto, malo klikov:** "ChatGPT, Claude ali Gemini" (72 prikazov, mesto 7, 1 klik),
+   odpoved naročnine (51 prikazov, mesto 4,4, 1 klik), "ChatGPT v slovenščini" (41, mesto 7,2,
+   0 klikov).
+6. Šibko: "kaj je umetna inteligenca" (mesto 58, vodnik 18,7), "skladnost z ai act" (64; vodnik
+   AI Act 13,7, orodje `/ai-act-preverjanje/` v izvozu še ni), "ai orodja za podjetnike" (80).
+
+Novice in tedenski pregledi imajo v iskanju 1 do 2 prikaza na članek. Obisk iz iskanja prinašajo
+vodniki, cene in slovar; novice so za redne bralce in newsletter. Pri novih vsebinah imajo zato
+prednost trajni vodniki.
+
+Narejeno na podlagi izvoza (PR `tehnicno/seo-search-console`):
+
+- Vodniki, ki jih strani s cenami že navajajo (`vodniki` v `src/cene.ts`), pod besedilom
+  povežejo nazaj na `/cene/<orodje>/`; gesla ChatGPT, GPT, Claude, Claude Code, Gemini in Copilot
+  v slovarju povežejo na ceno (`slovar` v `src/cene.ts`). Prej je na strani s cenami kazal le en
+  članek.
+- Naslova "ChatGPT v slovenščini" in "ChatGPT, Claude ali Gemini" sta bližje iskanim nizom
+  ("brezplačno", "kateri izbrati").
+
+## Zunaj strani (največji vzvod za novo domeno)
+
+Nova domena brez povratnih povezav bo mesece rangirala nizko ne glede na vsebino. Možnosti, ki
+ne kršijo pravil (brez LinkedIna in imena):
+
+- Predloga pravil rabe AI (Word) in stran `/statistika/` sta vsebini, na katere drugi radi
+  povežejo: ponudi ju zbornicam (GZS, OZS), stičiščem (DIH Slovenija), knjižnicam, šolam.
+- Vpis v slovenske imenike in sezname virov o AI (KCUI, SLAIS, univerzitetne strani z viri).
+- Odgovori na forumih in v skupinah (Reddit r/Slovenia, slo-tech), kjer je povezava na vodnik
+  res odgovor na vprašanje.
+- Newsletter: vsak poslan mail je vir ponovnih obiskov.

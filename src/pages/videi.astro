@@ -6,7 +6,7 @@ import Video from '../components/Video.astro';
 const videos = (await getCollection('videi')).sort((a, b) => b.data.datum.valueOf() - a.data.datum.valueOf());
 ---
 
-<Base
+<Base searchType="Video"
   title="Priporočeni videi o AI"
   description="Izbrane epizode podcastov in predavanja o delu z AI, od agentov do novih modelov, s kratkim povzetkom v slovenščini."
 >
