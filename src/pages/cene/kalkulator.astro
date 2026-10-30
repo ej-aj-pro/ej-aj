@@ -1,0 +1,273 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { PRODUCTS, host, planPrice, users } from '../../cene';
+import { formatDate } from '../../site';
+import '../../styles/tabele.css';
+
+// Cost calculator for company plans in src/data/narocnine.yaml: price per seat times the number
+// of people, monthly or annual billing. Everything shown comes from the data file, which the
+// monthly refresh (skill posodobi-modele) keeps current, so this page needs no edits when
+// prices change. Plans with a price "po dogovoru" (Enterprise) are listed but not calculated.
+const all = (await getCollection('narocnine')).filter((p) => p.data.za === 'podjetje');
+const priced = all.filter((p) => p.data.cena_mesec !== null || p.data.cena_letno !== null);
+const onRequest = all.filter((p) => p.data.cena_mesec === null && p.data.cena_letno === null);
+const slugOf = (produkt: string) => PRODUCTS.find((x) => x.produkt === produkt)?.slug;
+// Reader-facing product name from PRODUCTS (Mistral Le Chat is now Vibe), without repeating it
+// when the plan name already contains it ("Microsoft 365 Copilot Business").
+const label = (produkt: string, paket: string) => {
+  const ime = PRODUCTS.find((x) => x.produkt === produkt)?.ime.replace(/ \(.*\)$/, '') ?? produkt;
+  return paket.includes(ime.split(' ').at(-1)!) ? paket : `${ime} ${paket}`;
+};
+const rows = priced.map((p) => ({
+  id: p.id,
+  ime: label(p.data.produkt, p.data.paket),
+  cenaStran: slugOf(p.data.produkt) ? `/cene/${slugOf(p.data.produkt)}/` : null,
+  mesec: p.data.cena_mesec,
+  letno: p.data.cena_letno,
+  valuta: p.data.valuta,
+  ddv: p.data.ddv,
+  min: p.data.min_uporabnikov,
+  opomba: p.data.opomba ?? null,
+  vir: p.data.vir,
+  virIme: host(p.data.vir),
+  preverjeno: formatDate(p.data.preverjeno),
+}));
+const checked = new Date(Math.max(...all.map((p) => p.data.preverjeno.valueOf())));
+const START = 10;
+// Server-rendered result for 10 people on monthly billing: what readers without JavaScript and
+// search engines see. The script below replaces it as soon as the inputs change.
+const fmt = (v: number, valuta: string) => planPrice(Math.round(v * 100) / 100, valuta);
+function calc(n: number, letno: boolean) {
+  return rows
+    .map((r) => {
+      const wanted = letno ? r.letno : r.mesec;
+      const price = wanted ?? r.letno ?? r.mesec ?? 0;
+      const seats = Math.max(n, r.min ?? 1);
+      const notes: string[] = [];
+      if (wanted === null) notes.push(letno ? 'samo mesečno plačilo' : 'samo letno plačilo');
+      if (seats > n) notes.push(`najmanj ${users(r.min ?? 1)}, izračun za ${users(seats)}`);
+      return { ...r, price, seats, month: price * seats, notes };
+    })
+    .sort((a, b) => (a.valuta === b.valuta ? a.month - b.month : a.valuta === 'EUR' ? -1 : 1));
+}
+const initial = calc(START, false);
+---
+
+<Base
+  title="Kalkulator stroškov AI orodij za podjetje: ChatGPT, Claude, Copilot, Gemini"
+  description="Koliko stanejo ChatGPT Business, Claude Team, Microsoft 365 Copilot, Gemini in Mistral za vašo ekipo: vnesite število ljudi in način plačila."
+  searchType="Cene"
+  jsonLd={[
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebApplication',
+      name: 'Kalkulator stroškov AI orodij za podjetje',
+      url: new URL('/cene/kalkulator/', Astro.site).toString(),
+      applicationCategory: 'BusinessApplication',
+      operatingSystem: 'Spletni brskalnik',
+      inLanguage: 'sl-SI',
+      offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+    },
+  ]}
+>
+  <div class="wrap">
+    <header class="article-head narrow">
+      <span class="eyebrow">Cene</span>
+      <h1>Kalkulator stroškov AI orodij za podjetje</h1>
+      <p class="lede">
+        Vnesite, koliko ljudi bo orodje uporabljalo, in izberite mesečno ali letno plačilo. Izračun
+        uporabi cene poslovnih paketov z naše strani <a href="/modeli/#narocnine">Modeli in cene</a>,
+        nazadnje preverjene {formatDate(checked)}.
+      </p>
+    </header>
+
+    <form class="kalk narrow" id="kalkulator" onsubmit="return false">
+      <label class="kalk-polje">
+        <span>Število uporabnikov</span>
+        <input type="number" name="n" min="1" max="1000" step="1" value={START} inputmode="numeric" />
+      </label>
+      <fieldset class="kalk-polje">
+        <legend>Plačilo</legend>
+        <label><input type="radio" name="placilo" value="mesec" checked /> mesečno</label>
+        <label><input type="radio" name="placilo" value="letno" /> letno (cena na mesec ob letni obvezi)</label>
+      </fieldset>
+    </form>
+
+    <div class="table-wrap" aria-live="polite">
+      <table class="data kalk-tabela">
+        <thead>
+          <tr>
+            <th scope="col">Paket</th>
+            <th scope="col" class="num">Na uporabnika na mesec</th>
+            <th scope="col" class="num">Skupaj na mesec</th>
+            <th scope="col" class="num">Skupaj na leto</th>
+          </tr>
+        </thead>
+        <tbody id="kalk-rezultati">
+          {
+            initial.map((r) => (
+              <tr>
+                <th scope="row">
+                  <span class="name">{r.cenaStran ? <a href={r.cenaStran}>{r.ime}</a> : r.ime}</span>
+                  {r.notes.length > 0 && <span class="sub">{r.notes.join(', ')}</span>}
+                  {r.opomba && <span class="note">{r.opomba}</span>}
+                  <span class="sources">
+                    {r.ddv && <>{r.ddv}. </>}Vir: <a href={r.vir}>{r.virIme}</a>, preverjeno {r.preverjeno}
+                  </span>
+                </th>
+                <td class="num" data-label="Na uporabnika na mesec">{fmt(r.price, r.valuta)}</td>
+                <td class="num" data-label="Skupaj na mesec"><strong>{fmt(r.month, r.valuta)}</strong></td>
+                <td class="num" data-label="Skupaj na leto">{fmt(r.month * 12, r.valuta)}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <div class="prose narrow">
+      <h2>Kaj izračun upošteva</h2>
+      <ul>
+        <li>Ceno na uporabnika na mesec, kot jo navaja ponudnik, pomnoženo s številom uporabnikov. Letni znesek je dvanajstkratnik mesečnega.</li>
+        <li>Najmanjše število uporabnikov: če ga paket zahteva in vnesete manj ljudi, izračun upošteva najmanjše število.</li>
+        <li>Pri letnem plačilu ceno na mesec ob letni obvezi. Paket, ki ima samo eno vrsto plačila, je izračunan s to ceno in označen.</li>
+        <li>DDV je naveden pri paketih, kjer ga ponudnik navede. Nekatere cene so v naših podatkih še v USD. V evre jih ne preračunavamo, ker se evrska cena ponudnika za Slovenijo lahko razlikuje od preračuna po tečaju.</li>
+        <li>Promocijske cene, dražje različice paketov in dodatne stroške (na primer porabo po cenah API) navajamo v opombi pod imenom paketa. V izračun niso vključeni, razen če je promocijska cena v podatkih zapisana kot cena paketa.</li>
+      </ul>
+      {
+        onRequest.length > 0 && (
+          <p>
+            Brez objavljene cene (po dogovoru s ponudnikom):{' '}
+            {onRequest.map((p) => `${p.data.produkt} ${p.data.paket}`).join(', ')}.
+          </p>
+        )
+      }
+      <p>
+        Cena ni edino merilo. Kako izbrati orodje glede na podatke, varnost in jezik, piše v vodniku{' '}
+        <a href="/vodniki/kako-izbrati-ai-orodje-za-podjetje/">Kako izbrati AI orodje za podjetje</a>, kaj
+        dobite brezplačno, pa v vodniku <a href="/vodniki/brezplacna-ai-orodja/">Brezplačna AI orodja</a>.
+      </p>
+    </div>
+  </div>
+
+  <script type="application/json" id="kalk-podatki" set:html={JSON.stringify(rows)} />
+</Base>
+
+<script>
+  type Row = {
+    ime: string;
+    cenaStran: string | null;
+    mesec: number | null;
+    letno: number | null;
+    valuta: string;
+    ddv: string | null;
+    min: number | null;
+    opomba: string | null;
+    vir: string;
+    virIme: string;
+    preverjeno: string;
+  };
+  const rows: Row[] = JSON.parse(document.getElementById('kalk-podatki')!.textContent || '[]');
+  const form = document.getElementById('kalkulator') as HTMLFormElement;
+  const body = document.getElementById('kalk-rezultati')!;
+  const whole = new Intl.NumberFormat('sl-SI', { maximumFractionDigits: 0, useGrouping: 'always' });
+  const cents = new Intl.NumberFormat('sl-SI', { minimumFractionDigits: 2, maximumFractionDigits: 2, useGrouping: 'always' });
+  const money = (v: number, valuta: string) => {
+    const r = Math.round(v * 100) / 100;
+    return `${(Number.isInteger(r) ? whole : cents).format(r)} ${valuta === 'EUR' ? '€' : '$'}`;
+  };
+  const users = (n: number) => {
+    const m = n % 100;
+    return `${n} ${m === 1 ? 'uporabnik' : m === 2 ? 'uporabnika' : m === 3 || m === 4 ? 'uporabniki' : 'uporabnikov'}`;
+  };
+  const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+  function render() {
+    const n = Math.min(1000, Math.max(1, Math.round(Number((form.elements.namedItem('n') as HTMLInputElement).value) || 1)));
+    const letno = (form.querySelector('input[name="placilo"]:checked') as HTMLInputElement).value === 'letno';
+    const out = rows
+      .map((r) => {
+        const wanted = letno ? r.letno : r.mesec;
+        const price = wanted ?? r.letno ?? r.mesec ?? 0;
+        const seats = Math.max(n, r.min ?? 1);
+        const notes: string[] = [];
+        if (wanted === null) notes.push(letno ? 'samo mesečno plačilo' : 'samo letno plačilo');
+        if (seats > n) notes.push(`najmanj ${users(r.min ?? 1)}, izračun za ${users(seats)}`);
+        return { r, price, month: price * seats, notes };
+      })
+      .sort((a, b) => (a.r.valuta === b.r.valuta ? a.month - b.month : a.r.valuta === 'EUR' ? -1 : 1));
+    body.innerHTML = out
+      .map(({ r, price, month, notes }) => {
+        const name = r.cenaStran ? `<a href="${r.cenaStran}">${esc(r.ime)}</a>` : esc(r.ime);
+        const sub = notes.length ? `<span class="sub">${esc(notes.join(', '))}</span>` : '';
+        const vat = r.ddv ? `${esc(r.ddv)}. ` : '';
+        const note = r.opomba ? `<span class="note">${esc(r.opomba)}</span>` : '';
+        return `<tr><th scope="row"><span class="name">${name}</span>${sub}${note}<span class="sources">${vat}Vir: <a href="${esc(r.vir)}">${esc(r.virIme)}</a>, preverjeno ${esc(r.preverjeno)}</span></th>
+<td class="num" data-label="Na uporabnika na mesec">${money(price, r.valuta)}</td>
+<td class="num" data-label="Skupaj na mesec"><strong>${money(month, r.valuta)}</strong></td>
+<td class="num" data-label="Skupaj na leto">${money(month * 12, r.valuta)}</td></tr>`;
+      })
+      .join('');
+  }
+  form.addEventListener('input', render);
+  render();
+</script>
+
+<style>
+  .kalk {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 28px;
+    align-items: flex-end;
+    margin: 8px 0 20px;
+    padding: 16px 18px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+  }
+  .kalk-polje {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 0.95rem;
+  }
+  .kalk-polje > span,
+  .kalk-polje legend {
+    font-weight: 600;
+    padding: 0;
+    margin-bottom: 4px;
+  }
+  .kalk-polje input[type='number'] {
+    width: 9rem;
+    font: inherit;
+    font-size: 1.1rem;
+    padding: 8px 10px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--bg);
+    color: var(--ink);
+  }
+  .kalk-polje label {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .kalk-tabela .note {
+    display: block;
+    font-weight: 400;
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+  .kalk-tabela .sources {
+    display: block;
+    font-weight: 400;
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+</style>

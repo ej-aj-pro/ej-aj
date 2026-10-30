@@ -18,7 +18,7 @@
   "2026-09-27-rutine-claude": "Rutine v Claudu: kako AI dela sam ob določenem času",
   "2026-09-27-subagenti": "Subagenti v Claude Code: kaj so in kdaj jih uporabiti",
   "2026-09-27-ai-za-pravnike-in-odvetnike": "Umetna inteligenca za pravnike in odvetnike: kaj dovoljuje odvetniška tajnost in kako začeti",
-  "2026-09-27-chatgpt-claude-ali-gemini": "ChatGPT, Claude ali Gemini: primerjava cen, funkcij in zasebnosti",
+  "2026-09-27-chatgpt-claude-ali-gemini": "ChatGPT, Claude ali Gemini: kateri izbrati? Primerjava cen, funkcij in zasebnosti",
   "2026-09-27-odpoved-narocnine-ai": "Kako odpovedati naročnino na ChatGPT, Claude ali Gemini in kdaj dobite denar nazaj",
   "2026-09-27-ai-pismenost-zaposlenih": "Usposabljanje zaposlenih za AI pismenost: kaj zahteva AI Act in kako ga pripraviti",
   "2026-09-29-claude-sonnet-5-5": "Anthropic izdal Claude Sonnet 5.5: kaj je novega in kdaj ga izbrati namesto Opus 5.5",
@@ -26,7 +26,7 @@
   "2026-09-29-kako-preveriti-ali-ai-deluje": "Kako preizkusiti AI rešitev na svojih nalogah, preden jo uvedete v podjetju",
   "2026-10-02-tedenski-pregled-2": "Tedenski pregled #2: GPT-6.1 Sol in agenti Dots, OpenAI preklical Astro, Gemini 4 Argon, Claude Sonnet 5.5",
   "2026-10-02-brezplacna-ai-orodja": "Brezplačna AI orodja: kaj dobite zastonj pri ChatGPT, Claude, Gemini, Copilot in drugih",
-  "2026-10-02-chatgpt-v-slovenscini": "ChatGPT v slovenščini: kako ustvarite račun, nastavite jezik in začnete",
+  "2026-10-02-chatgpt-v-slovenscini": "ChatGPT v slovenščini: kako začnete brezplačno, nastavite jezik in uporabljate glas",
   "2026-10-03-kaj-je-umetna-inteligenca": "Kaj je umetna inteligenca in kako deluje: razlaga za začetnike",
   "2026-10-03-zaznavalniki-ai-besedila": "Ali zaznavalniki AI besedila delujejo: kaj kažejo raziskave in kaj to pomeni za slovenščino",
   "2026-10-03-kateri-model-za-kaj": "Kateri AI model izbrati za katero nalogo: plonk listek za ChatGPT, Claude, Gemini in Copilot",
@@ -42,6 +42,9 @@
   "2026-10-16-ai-tecaji-in-usposabljanja": "Tečaji in usposabljanja za AI v Sloveniji: brezplačni spletni tečaji, delavnice in sofinanciranje",
   "2026-10-16-ai-v-javni-upravi": "Javni uslužbenci in AI: kaj dovoljujejo smernice države, Informacijski pooblaščenec in AI Act",
   "2026-10-16-ai-v-soli": "Umetna inteligenca v šoli: kaj ponujata Arnes in ministrstvo ter kaj velja za učitelje in učence",
+  "2026-10-22-kako-nastaja-pregled-razpisov": "Razpisi za AI in digitalizacijo: kako z AI sestavljamo tedenski pregled",
+  "2026-10-30-ai-week-2026-ljubljana": "AI WEEK 2026 v Ljubljani: program, cena in prijava za konferenco od 3. do 5. novembra",
+  "2026-10-30-tedenski-pregled-6": "Tedenski pregled #6: Mistral Large 4 z odprtimi utežmi, Genie 4, poročila o rabi Claude in GPT-6.1 Terra",
   "2026-10-22-claude-duet": "Anthropic predstavil Claude Duet: kaj je, kdaj bo na voljo in za kaj ga uporabljajo prvi uporabniki",
   "2026-10-22-kriticni-ranljivosti-php": "Kritični ranljivosti v PHP (PHP2Shell), ki ju je pomagala najti AI: kaj morajo storiti podjetja s spletno stranjo"
 }

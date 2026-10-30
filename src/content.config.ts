@@ -122,4 +122,31 @@ const prompti = defineCollection({
   }),
 });
 
-export const collections = { novice, slovar, modeli, narocnine, videi, prompti };
+// Calls for AI, digitalisation and technology funding for /razpisi/ (src/data/razpisi.yaml).
+const razpisi = defineCollection({
+  loader: file('src/data/razpisi.yaml'),
+  schema: z.object({
+    naslov: z.string(),
+    razpisovalec: z.string(),
+    raven: z.enum(['slovenija', 'eu']),
+    // stalno: support without a deadline (innovation hubs, access to supercomputers).
+    stanje: z.enum(['odprt', 'napovedan', 'stalno', 'zaprt']),
+    // Announced calls: when the issuer says it will publish, e.g. "druga polovica 2026".
+    napoved: z.string().optional(),
+    // Announced calls with a known opening date.
+    odpre: z.coerce.date().optional(),
+    za_koga: z.string(),
+    kaj: z.string(),
+    znesek: z.string().nullable(),
+    // Application deadline; null when not yet known.
+    rok: z.coerce.date().nullable(),
+    // What the deadline means when it is not the only one, e.g. "drugi in zadnji rok".
+    rok_opis: z.string().optional(),
+    teme: z.array(z.enum(['ai', 'digitalizacija', 'kibernetska-varnost', 'raziskave', 'startup', 'intelektualna-lastnina', 'zdravje'])).min(1),
+    // First URL is the official call page; the page links to it.
+    viri: z.array(z.url()).min(1),
+    preverjeno: z.coerce.date(),
+  }),
+});
+
+export const collections = { novice, slovar, modeli, narocnine, videi, prompti, razpisi };
