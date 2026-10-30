@@ -111,13 +111,21 @@ slovar. Analitika: Cloudflare Web Analytics (brez piškotkov).
 
 0. **HTTPS:** urejeno, `http://ej-aj.si` 13. 10. vrne 301 na https. Odprt je še pregled v
    Search Console po 14. 10. (glej `docs/seo.md`).
-1. **Newsletter** (PR #7 objavljen 29. 9.): Buttondown, uporabnik `ej-aj`, račun noc.anze@gmail.com,
+1. **Newsletter** (PR #7 objavljen 29. 9.): Buttondown, uporabnik `ej-aj`, Anžetov Gmail račun,
    brezplačni paket. Ime ej-aj.si, barva #1f3bd6, odgovori na pozdrav@ej-aj.si, slovenska noga.
    Slovenščine Buttondown ne podpira, potrditveni mail je v angleščini (lastno besedilo zahteva
    paket Standard). API ključ je v `~/.zshrc` kot `BUTTONDOWN_API_KEY`. Prvi mail je osnutek v
    Buttondownu (`/Users/anze/Desktop/Claude/ej-aj/ej-aj-newsletter/2026-09-29.md`), pošlje ga Anže. Brez stalnega urnika,
-   zato besedilo ne obljublja "vsak petek". Odprto: pošiljanje z `newsletter@ej-aj.si` (sending
-   domain v Buttondownu, DNS v Cloudflare, Email Routing za ta naslov; Anže je odobril).
+   zato besedilo ne obljublja "vsak petek".
+   Pošiljanje z `newsletter@ej-aj.si` je urejeno (29. 9.): sending domain `ej-aj.si` je v Buttondownu
+   potrjen (`sending_domain_status: valid`), pošiljatelj je `newsletter@ej-aj.si`, ime pošiljatelja
+   "ej-aj.si". V Cloudflare DNS so dodani DKIM (TXT `20260929134901pm._domainkey`), CNAME
+   `pm-bounces` na `pm.mtasv.net` in `track` na `webhook-consumer.buttondown.email` (oba DNS only)
+   ter DMARC (TXT `_dmarc`, `p=quarantine`, poročila na Postmark). Email Routing posreduje
+   `newsletter@ej-aj.si` na isti cilj kot `pozdrav@`. Obstoječi MX, SPF in DKIM za Email Routing so
+   nespremenjeni. Pozor: zaradi `p=quarantine` pošta, poslana "kot" `@ej-aj.si` mimo Buttondowna
+   (npr. iz Gmaila prek njegovega SMTP), ne prestane DMARC. Tabela zapisov v Buttondownu včasih
+   za hip pokaže "Required"; merodajen je API ali `dig`.
 2. **Rutini** tečeta v drugi Claude instanci (Anže, 13. 10. 2026). Kopiji v tej instanci sta
    namenoma izklopljeni; ne predlagaj ponovnega vklopa.
 3. **Tabela naročnin:** Microsoft je še v USD (obstajajo slovenske cene v EUR), Mistral Team po
