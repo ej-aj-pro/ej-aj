@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import { getPosts, postPath, postsMentioning } from '../../lib';
+import { pricePageForTerm } from '../../cene';
 
 export async function getStaticPaths() {
   const entries = (await getCollection('slovar')).sort((a, b) =>
@@ -29,6 +30,7 @@ for (const s of sentences.slice(1)) {
 if (description.length > 158) description = `${description.slice(0, 155)}...`;
 // Articles that use the term, so a short definition leads on to the longer explanations.
 const articles = postsMentioning(entry.id, await getPosts()).slice(0, 6);
+const price = pricePageForTerm(entry.id);
 ---
 
 <Base searchType="Slovar"
@@ -72,6 +74,13 @@ const articles = postsMentioning(entry.id, await getPosts()).slice(0, 6);
               <strong>Primer:</strong> {primer}
             </p>
           </blockquote>
+        )
+      }
+      {
+        price && (
+          <p>
+            Cene paketov za posameznike in podjetja: <a href={`/cene/${price.slug}/`}>Koliko stane {price.ime}</a>.
+          </p>
         )
       }
     </div>

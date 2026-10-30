@@ -14,6 +14,7 @@ export const PRODUCTS = [
     ime: 'ChatGPT',
     ponudnik: 'OpenAI',
     vodniki: ['chatgpt-v-slovenscini', 'chatgpt-claude-ali-gemini', 'brezplacna-ai-orodja', 'odpoved-narocnine-ai'],
+    slovar: ['chatgpt', 'gpt'],
   },
   {
     slug: 'claude',
@@ -21,6 +22,7 @@ export const PRODUCTS = [
     ime: 'Claude',
     ponudnik: 'Anthropic',
     vodniki: ['chatgpt-claude-ali-gemini', 'claude-code-ali-klepet', 'brezplacna-ai-orodja', 'odpoved-narocnine-ai'],
+    slovar: ['claude', 'claude-code'],
   },
   {
     slug: 'gemini',
@@ -28,13 +30,15 @@ export const PRODUCTS = [
     ime: 'Gemini',
     ponudnik: 'Google',
     vodniki: ['chatgpt-claude-ali-gemini', 'brezplacna-ai-orodja', 'odpoved-narocnine-ai', 'kako-izbrati-ai-orodje-za-podjetje'],
+    slovar: ['gemini'],
   },
   {
     slug: 'microsoft-copilot',
     produkt: 'Microsoft Copilot',
     ime: 'Microsoft Copilot',
     ponudnik: 'Microsoft',
-    vodniki: ['ai-v-excelu-wordu-outlooku', 'kako-izbrati-ai-orodje-za-podjetje', 'brezplacna-ai-orodja'],
+    vodniki: ['copilot-v-slovenscini', 'ai-v-excelu-wordu-outlooku', 'kako-izbrati-ai-orodje-za-podjetje', 'brezplacna-ai-orodja'],
+    slovar: ['copilot'],
   },
   {
     slug: 'mistral',
@@ -42,6 +46,7 @@ export const PRODUCTS = [
     ime: 'Mistral Vibe (prej Le Chat)',
     ponudnik: 'Mistral',
     vodniki: ['brezplacna-ai-orodja', 'kako-izbrati-ai-orodje-za-podjetje'],
+    slovar: [],
   },
   {
     slug: 'perplexity',
@@ -49,8 +54,19 @@ export const PRODUCTS = [
     ime: 'Perplexity',
     ponudnik: 'Perplexity',
     vodniki: ['brezplacna-ai-orodja'],
+    slovar: [],
   },
 ] as const;
+
+// Reverse links, so guides and glossary terms point back to the price pages that list them
+// (Search Console, October 2026: the price pages get clicks, but almost nothing linked to them).
+export function pricePagesForGuide(slug: string) {
+  return PRODUCTS.filter((p) => (p.vodniki as readonly string[]).includes(slug));
+}
+
+export function pricePageForTerm(id: string) {
+  return PRODUCTS.find((p) => (p.slovar as readonly string[]).includes(id));
+}
 
 export function sortPlans(plans: Plan[]) {
   return plans.slice().sort((a, b) => {

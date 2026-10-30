@@ -6,7 +6,8 @@ import Podcast from '../components/Podcast.astro';
 import Video from '../components/Video.astro';
 import Base from './Base.astro';
 import Newsletter from '../components/Newsletter.astro';
-import { getPosts, postMarkdownPath, postPath, relatedPosts } from '../lib';
+import { getPosts, guideSlug, postMarkdownPath, postPath, relatedPosts } from '../lib';
+import { pricePagesForGuide } from '../cene';
 import { SITE, TYPE_LABEL, formatDate } from '../site';
 
 interface Props {
@@ -32,6 +33,7 @@ const allVideos = post.data.videi.length ? await getCollection('videi') : [];
 const videos = post.data.videi.map((id) => allVideos.find((v) => v.id === id)).filter((v) => v !== undefined);
 // "Preberite še": articles that share the most glossary terms with this one.
 const related = relatedPosts(post, await getPosts());
+const prices = post.data.type === 'vodnik' ? pricePagesForGuide(guideSlug(post.id)) : [];
 const url = new URL(postPath(post), Astro.site).toString();
 const section =
   post.data.type === 'vodnik'
@@ -146,6 +148,16 @@ const image = existsSync(`public/og/${post.id}.png`) ? `/og/${post.id}.png` : '/
       )
     }
     {
+      prices.length > 0 && (
+        <nav class="price-links" aria-label="Cene orodij" data-pagefind-ignore>
+          <span>Trenutne cene paketov:</span>
+          {prices.map((p) => (
+            <a href={`/cene/${p.slug}/`}>Koliko stane {p.ime}</a>
+          ))}
+        </nav>
+      )
+    }
+    {
       related.length > 0 && (
         <section class="related-posts" aria-labelledby="preberite-se" data-pagefind-ignore>
           <h2 id="preberite-se">Preberite še</h2>
@@ -170,6 +182,23 @@ const image = existsSync(`public/og/${post.id}.png`) ? `/og/${post.id}.png` : '/
 </Base>
 
 <style>
+  .price-links {
+    margin: 40px 0 0;
+    padding: 14px 18px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 18px;
+    font-size: 0.95rem;
+  }
+  .price-links span {
+    color: var(--muted);
+  }
+  .price-links a {
+    font-weight: 650;
+  }
   .related-posts {
     margin: 40px 0 0;
     border-top: 1px solid var(--line);
