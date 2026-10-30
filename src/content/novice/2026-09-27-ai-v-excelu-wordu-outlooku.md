@@ -1,5 +1,5 @@
 ---
-title: 'AI v Excelu, Wordu in Outlooku: Copilot, Claude, ChatGPT in Gemini'
+title: 'Excel, Word in Outlook z umetno inteligenco: Copilot, Claude, ChatGPT in Gemini'
 description: 'Kaj zna AI v Excelu, Wordu in Outlooku: Microsoft Copilot, Claude za Microsoft 365, ChatGPT za Excel in Gemini v Google Workspace. Cene za Slovenijo, slovenščina in omejitve.'
 date: 2026-09-27
 type: vodnik

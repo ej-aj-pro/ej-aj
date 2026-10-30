@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import { getPosts, postPath, postsMentioning } from '../../lib';
+import { pricePageForTerm } from '../../cene';
 
 export async function getStaticPaths() {
   const entries = (await getCollection('slovar')).sort((a, b) =>
@@ -29,9 +30,10 @@ for (const s of sentences.slice(1)) {
 if (description.length > 158) description = `${description.slice(0, 155)}...`;
 // Articles that use the term, so a short definition leads on to the longer explanations.
 const articles = postsMentioning(entry.id, await getPosts()).slice(0, 6);
+const price = pricePageForTerm(entry.id);
 ---
 
-<Base
+<Base searchType="Slovar"
   title={`${izraz}: kaj pomeni?`}
   description={description}
   jsonLd={[
@@ -74,11 +76,18 @@ const articles = postsMentioning(entry.id, await getPosts()).slice(0, 6);
           </blockquote>
         )
       }
+      {
+        price && (
+          <p>
+            Cene paketov za posameznike in podjetja: <a href={`/cene/${price.slug}/`}>Koliko stane {price.ime}</a>.
+          </p>
+        )
+      }
     </div>
 
     {
       related.length > 0 && (
-        <section class="related">
+        <section class="related" data-pagefind-ignore>
           <h2>Povezani izrazi</h2>
           <ul>
             {related.map((r) => (
@@ -93,7 +102,7 @@ const articles = postsMentioning(entry.id, await getPosts()).slice(0, 6);
 
     {
       articles.length > 0 && (
-        <section class="articles">
+        <section class="articles" data-pagefind-ignore>
           <h2>Kje o tem pišemo</h2>
           <ul>
             {articles.map((p) => (
@@ -106,7 +115,7 @@ const articles = postsMentioning(entry.id, await getPosts()).slice(0, 6);
       )
     }
 
-    <nav class="pager" aria-label="Sosednja gesla">
+    <nav class="pager" aria-label="Sosednja gesla" data-pagefind-ignore>
       {prev ? <a href={`/slovar/${prev.id}/`}>← {prev.data.izraz}</a> : <span />}
       <a href="/slovar/">Vsi izrazi</a>
       {next ? <a href={`/slovar/${next.id}/`}>{next.data.izraz} →</a> : <span />}

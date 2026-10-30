@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && pagefind --site dist",
     "preview": "astro preview",
     "astro": "astro",
     "preveri": "node scripts/preveri.mjs"
@@ -23,6 +23,8 @@
     "esbuild": true
   },
   "devDependencies": {
-    "docx": "^9.7.2"
+    "@anthropic-ai/sdk": "^0.133.0",
+    "docx": "^9.7.2",
+    "pagefind": "1.5.2"
   }
 }

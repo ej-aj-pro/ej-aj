@@ -51,7 +51,7 @@ function sourceLabels(urls: string[]) {
 }
 ---
 
-<Base
+<Base searchType="Cene"
   title="Cene AI orodij in primerjava modelov"
   description="Naročnine za ChatGPT, Claude, Gemini, Microsoft Copilot in druga AI orodja ter cene modelov prek API-ja. Za posameznike in podjetja, z viri in datumom preverjanja."
 >
@@ -87,6 +87,9 @@ function sourceLabels(urls: string[]) {
             <a href={`/cene/${p.slug}/`}>{p.ime.replace(/ \(.*\)$/, '')}</a>
           </>
         ))}
+      </p>
+      <p class="how narrow">
+        Koliko bi plačali za celotno ekipo, izračunate v <a href="/cene/kalkulator/">kalkulatorju stroškov</a>.
       </p>
 
       {

@@ -1,5 +1,5 @@
 ---
-title: 'AI Act za slovenska podjetja: kaj velja jeseni 2026'
+title: 'Akt o umetni inteligenci (AI Act): kaj velja za slovenska podjetja jeseni 2026'
 description: 'Kaj Akt o umetni inteligenci zahteva od podjetij, ki uporabljajo ChatGPT, Claude ali Copilot: AI pismenost, prepovedi, preglednost, novi roki in kdo nadzira v Sloveniji.'
 date: 2026-09-26
 type: vodnik
@@ -25,17 +25,38 @@ Obveznosti za modele za splošne namene (veliki modeli, kot so GPT, Claude ali G
 
 ## Časovnica
 
-| Datum | Kaj velja |
-|---|---|
-| 1. avgust 2024 | Uredba začne veljati. |
-| 2. februar 2025 | Prepovedane prakse in obveznost AI pismenosti. |
-| 2. avgust 2025 | Obveznosti ponudnikov modelov za splošne namene, nadzorna pravila. |
-| 21. november 2025 | V Sloveniji začne veljati zakon o izvajanju (ZIUDHPUI). |
-| 27. julij 2026 | Začne veljati Digital Omnibus, paket sprememb, s katerim je EU spremenila AI Act. Premakne roke za visoko tvegane sisteme. |
-| 2. avgust 2026 | Pravila o preglednosti (člen 50): klepetalniki, označevanje ponarejenih posnetkov (deepfake) in besedil o zadevah javnega interesa. Nadzorni organi začnejo nadzirati tudi AI pismenost. |
-| 2. december 2026 | Nove prepovedi (sistemi, ki ustvarjajo intimne podobe ljudi brez njihove izrecne privolitve, in gradivo spolne zlorabe otrok). Do tega dne morajo ponudniki generativnih sistemov AI, danih na trg pred 2. avgustom 2026, uvesti strojno berljivo označevanje vsebin, torej oznako, ki jo prebere računalnik, na primer digitalni vodni žig ali metapodatke (člen 50(2)). |
-| 2. december 2027 | Pravila za visoko tvegane rabe s seznama v Prilogi III uredbe (zaposlovanje, krediti ...). |
-| 2. avgust 2028 | Pravila za AI, vgrajen v izdelke (medicinski pripomočki, dvigala, igrače). |
+```grafika
+vrsta: casovnica
+naslov: Kdaj začnejo veljati pravila AI Act (stanje oktobra 2026)
+tocke:
+  - datum: 1. avgust 2024
+    besedilo: Uredba začne veljati.
+    stanje: velja
+  - datum: 2. februar 2025
+    besedilo: Prepovedane prakse in obveznost AI pismenosti.
+    stanje: velja
+  - datum: 2. avgust 2025
+    besedilo: Obveznosti ponudnikov modelov za splošne namene, nadzorna pravila.
+    stanje: velja
+  - datum: 21. november 2025
+    besedilo: V Sloveniji začne veljati zakon o izvajanju (ZIUDHPUI).
+    stanje: velja
+  - datum: 27. julij 2026
+    besedilo: Začne veljati Digital Omnibus, paket sprememb, s katerim je EU spremenila AI Act. Premakne roke za visoko tvegane sisteme.
+    stanje: velja
+  - datum: 2. avgust 2026
+    besedilo: "Pravila o preglednosti (člen 50): klepetalniki, označevanje ponarejenih posnetkov (deepfake) in besedil o zadevah javnega interesa. Nadzorni organi začnejo nadzirati tudi AI pismenost."
+    stanje: velja
+  - datum: 2. december 2026
+    besedilo: Nove prepovedi (sistemi, ki ustvarjajo intimne podobe ljudi brez njihove izrecne privolitve, in gradivo spolne zlorabe otrok). Do tega dne morajo ponudniki generativnih sistemov AI, danih na trg pred 2. avgustom 2026, uvesti strojno berljivo označevanje vsebin, torej oznako, ki jo prebere računalnik, na primer digitalni vodni žig ali metapodatke (člen 50(2)).
+    stanje: prihaja
+  - datum: 2. december 2027
+    besedilo: Pravila za visoko tvegane rabe s seznama v Prilogi III uredbe (zaposlovanje, krediti ...).
+    stanje: prihaja
+  - datum: 2. avgust 2028
+    besedilo: Pravila za AI, vgrajen v izdelke (medicinski pripomočki, dvigala, igrače).
+    stanje: prihaja
+```
 
 Viri: [Evropska komisija, vprašanja in odgovori o AI Act](https://digital-strategy.ec.europa.eu/en/faqs/ai-act-questions-answers), [Uradni list RS 85/2025](https://www.uradni-list.si/glasilo-uradni-list-rs/vsebina/2025-01-3035/zakon-o-izvajanju-uredbe-eu-o-dolocitvi-harmoniziranih-pravil-o-umetni-inteligenci-ziudhpui)
 
@@ -110,6 +131,8 @@ AI Act je uredba, zato velja neposredno. Slovenija je njeno izvajanje uredila z 
 Pri uvajanju AI pomagata **Kompetenčni center za umetno inteligenco (KCUI)**, ki ponuja oceno pripravljenosti in gradiva, ter pobuda **AI4SI** pri GZS, ki je izdala vodič za uvajanje AI v podjetja.
 
 Viri: [Uradni list RS 85/2025](https://www.uradni-list.si/glasilo-uradni-list-rs/vsebina/2025-01-3035/zakon-o-izvajanju-uredbe-eu-o-dolocitvi-harmoniziranih-pravil-o-umetni-inteligenci-ziudhpui), [Informacijski pooblaščenec](https://www.ip-rs.si/umetna-inteligenca/pogosta-vprasanja/), [KCUI](https://www.kcui.si/), [AI4SI, vodič uvajanja UI](https://ai4si.gzs.si/b/vodic-uvajanja-umetne-inteligence-v-podjetja-20)
+
+Katere obveznosti veljajo za vašo rabo, lahko preverite z odkljukanjem v orodju [Ali je moja raba AI visoko tvegana?](/ai-act-preverjanje/).
 
 ## Kontrolni seznam
 

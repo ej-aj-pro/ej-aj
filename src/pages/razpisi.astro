@@ -1,0 +1,251 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { formatDate } from '../site';
+import { host } from '../cene';
+import '../styles/tabele.css';
+
+// Calls for AI, digitalisation and technology (src/data/razpisi.yaml), refreshed weekly by the
+// posodobi-razpise skill. Only a list: every row links to the official call page.
+const all = await getCollection('razpisi');
+const time = (d: Date | null | undefined) => (d ? d.valueOf() : Number.MAX_SAFE_INTEGER);
+const open = all.filter((r) => r.data.stanje === 'odprt').sort((a, b) => time(a.data.rok) - time(b.data.rok));
+const announced = all
+  .filter((r) => r.data.stanje === 'napovedan')
+  .sort((a, b) => time(a.data.odpre ?? a.data.rok) - time(b.data.odpre ?? b.data.rok));
+const ongoing = all.filter((r) => r.data.stanje === 'stalno').sort((a, b) => a.data.naslov.localeCompare(b.data.naslov, 'sl'));
+const closed = all.filter((r) => r.data.stanje === 'zaprt').sort((a, b) => time(b.data.rok) - time(a.data.rok));
+const lastChecked = new Date(Math.max(...all.map((r) => r.data.preverjeno.valueOf())));
+
+const TEME: Record<string, string> = {
+  ai: 'AI',
+  digitalizacija: 'digitalizacija',
+  'kibernetska-varnost': 'kibernetska varnost',
+  raziskave: 'raziskave in razvoj',
+  startup: 'startupi',
+  'intelektualna-lastnina': 'intelektualna lastnina',
+  zdravje: 'zdravje',
+};
+const short = (d: Date) => d.toLocaleDateString('sl-SI', { day: 'numeric', month: 'numeric', year: 'numeric' });
+const iso = (d: Date) => d.toISOString().slice(0, 10);
+
+const sections = [
+  { id: 'odprti', title: 'Odprti razpisi', rows: open, how: 'Prijave so mogoče. Razvrščeno po roku, najbližji je zgoraj.' },
+  {
+    id: 'napovedani',
+    title: 'Napovedani razpisi',
+    rows: announced,
+    how: 'Razpisovalec jih je napovedal v svojem planu objav, objavljeni pa še niso. Termini in zneski se do objave lahko spremenijo.',
+  },
+  {
+    id: 'brez-roka',
+    title: 'Podpora in dostop brez roka',
+    rows: ongoing,
+    how: 'Storitve inovacijskih stičišč in dostop do superračunalnikov, kamor se lahko prijavite kadar koli, brez enkratnega razpisnega roka. Pogoje in morebitne cene preverite pri izvajalcu.',
+  },
+  {
+    id: 'zaprti',
+    title: 'Zaprti v zadnjih 12 mesecih',
+    rows: closed,
+    how: 'Za orientacijo: podobni razpisi se pogosto ponovijo. Ko je ponovitev napovedana, jo uvrstimo med napovedane.',
+  },
+];
+---
+
+<Base
+  searchType="Razpisi"
+  title="Razpisi za AI, digitalizacijo in tehnologijo"
+  description="Odprti in napovedani razpisi v Sloveniji in EU za podjetja, ki uvajajo AI, digitalizirajo poslovanje ali razvijajo tehnologijo. Z roki, zneski in povezavo na uradno objavo."
+>
+  <div class="wrap">
+    <header class="article-head narrow">
+      <span class="eyebrow">Razpisi</span>
+      <h1>Razpisi za AI, digitalizacijo in tehnologijo</h1>
+      <p class="lede">
+        Odprti in napovedani razpisi v Sloveniji in EU za podjetja, ki uvajajo AI, digitalizirajo
+        poslovanje ali razvijajo tehnologijo. Pri vsakem razpisu je povezava na uradno objavo, kjer
+        so vsi pogoji. Seznam pregledamo vsak teden, zadnje preverjanje: {formatDate(lastChecked)}.
+      </p>
+      <nav class="jump" aria-label="Na tej strani">
+        <a href="#odprti">Odprti ({open.length})</a>
+        <a href="#napovedani">Napovedani ({announced.length})</a>
+        <a href="#brez-roka">Brez roka ({ongoing.length})</a>
+        <a href="#zaprti">Zaprti</a>
+        <a href="/vodniki/kako-nastaja-pregled-razpisov/">Kako nastaja seznam</a>
+      </nav>
+    </header>
+
+    {
+      sections.map((s) => (
+        <section id={s.id} class="block">
+          <h2>{s.title}</h2>
+          <p class="how narrow">{s.how}</p>
+          <div class="table-wrap">
+            <table class="data razpisi">
+              <thead>
+                <tr>
+                  <th scope="col">Razpis</th>
+                  <th scope="col">Za koga in za kaj</th>
+                  <th scope="col">Koliko</th>
+                  <th scope="col">Rok</th>
+                </tr>
+              </thead>
+              <tbody>
+                {s.rows.map((r) => (
+                  <tr id={r.id} data-rok={r.data.stanje === 'odprt' && r.data.rok ? iso(r.data.rok) : undefined}>
+                    <th scope="row">
+                      <a class="name" href={r.data.viri[0]} target="_blank" rel="noopener">
+                        {r.data.naslov}
+                      </a>
+                      <span class="sub">
+                        {r.data.razpisovalec}
+                        {r.data.raven === 'eu' ? ' · EU' : ''}
+                      </span>
+                      <span class="teme">
+                        {r.data.teme.map((t) => (
+                          <span class="tag">{TEME[t]}</span>
+                        ))}
+                      </span>
+                    </th>
+                    <td class="use" data-label="Za koga in za kaj">
+                      {r.data.za_koga}
+                      <span class="note">{r.data.kaj}</span>
+                      <span class="sources">
+                        Vir:{' '}
+                        {r.data.viri.map((v, i) => (
+                          <>
+                            {i > 0 && ', '}
+                            <a href={v} target="_blank" rel="noopener">{host(v)}</a>
+                          </>
+                        ))}
+                        . Preverjeno {short(r.data.preverjeno)}.
+                      </span>
+                    </td>
+                    <td data-label="Koliko">{r.data.znesek ?? 'Ni navedeno, glejte razpis.'}</td>
+                    <td class="rok" data-label="Rok">
+                      {r.data.rok ? (
+                        <>
+                          <span class="datum">{short(r.data.rok)}</span>
+                          {r.data.rok_opis && <span class="sub">{r.data.rok_opis}</span>}
+                        </>
+                      ) : (
+                        <>
+                          <span class="datum">{r.data.stanje === 'stalno' ? 'brez roka' : 'še ni znan'}</span>
+                          {r.data.rok_opis && <span class="sub">{r.data.rok_opis}</span>}
+                        </>
+                      )}
+                      {r.data.odpre && <span class="sub">odpre se {short(r.data.odpre)}</span>}
+                      {r.data.napoved && <span class="sub">napovedano: {r.data.napoved}</span>}
+                      {r.data.stanje === 'odprt' && <span class="ostane sub" hidden />}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      ))
+    }
+
+    <section class="block narrow">
+      <h2>Česa na seznamu ni</h2>
+      <p>
+        Seznam zajema razpise za AI, digitalizacijo, kibernetsko varnost, raziskave in razvoj ter
+        startupe. Splošnih razpisov (energetika, kmetijstvo, zaposlovanje, turizem) ni, prav tako še
+        ne občinskih. Širši pregled vseh razpisov za podjetja ima
+        <a href="https://www.podjetniski-portal.si/razpisi" target="_blank" rel="noopener">Podjetniški portal</a> agencije SPIRIT.
+      </p>
+      <p>
+        Seznam ni svetovanje pri prijavi. Pred prijavo preberite razpisno dokumentacijo na uradni
+        strani; če se podatek na naši strani razlikuje, velja uradna objava.
+      </p>
+    </section>
+  </div>
+</Base>
+
+<style>
+  /* Same section and jump-link styles as /modeli/. */
+  .jump {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .jump a {
+    padding: 4px 12px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-size: 0.9rem;
+    text-decoration: none;
+    background: var(--surface);
+  }
+  .block {
+    margin: 40px 0;
+    scroll-margin-top: 80px;
+  }
+  .block h2 {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    margin: 0 0 10px;
+  }
+  .how {
+    color: var(--muted);
+    font-size: 0.98rem;
+    margin: 0 0 8px;
+  }
+  @media (max-width: 760px) {
+    /* The sticky header wraps to two rows on phones. */
+    .block {
+      scroll-margin-top: 150px;
+    }
+  }
+  .razpisi .name {
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .razpisi .name:hover {
+    text-decoration: underline;
+  }
+  .razpisi .teme {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 8px;
+  }
+  .razpisi .rok {
+    white-space: nowrap;
+  }
+  .razpisi .datum {
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+  .razpisi tr.blizu .ostane {
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .razpisi tr.potekel {
+    opacity: 0.6;
+  }
+</style>
+
+<script>
+  // Days left until each open call's deadline, counted in the reader's browser, so the page stays
+  // right between weekly refreshes. A call whose deadline has passed is marked, not hidden.
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  for (const row of document.querySelectorAll<HTMLTableRowElement>('tr[data-rok]')) {
+    const out = row.querySelector<HTMLElement>('.ostane');
+    if (!out) continue;
+    const deadline = new Date(`${row.dataset.rok}T00:00:00`);
+    const days = Math.round((deadline.valueOf() - today.valueOf()) / 86_400_000);
+    if (days < 0) {
+      row.classList.add('potekel');
+      out.textContent = 'rok je potekel';
+    } else {
+      const word = days === 1 ? 'dan' : days === 2 ? 'dneva' : days === 3 || days === 4 ? 'dnevi' : 'dni';
+      out.textContent = days === 0 ? 'rok je danes' : `še ${days} ${word}`;
+      if (days <= 14) row.classList.add('blizu');
+    }
+    out.hidden = false;
+  }
+</script>
