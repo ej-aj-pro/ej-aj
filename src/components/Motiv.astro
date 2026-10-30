@@ -1,0 +1,22 @@
+---
+// Topic illustration for an article (src/data/motivi.mjs): a line icon on a tinted band.
+// Decorative: the title next to it says what the article is about, so it is hidden from
+// screen readers.
+import type { CollectionEntry } from 'astro:content';
+import { MOTIVI, motivZa } from '../data/motivi.mjs';
+
+interface Props {
+  post: CollectionEntry<'novice'>;
+  class?: string;
+}
+
+const { post, class: className } = Astro.props;
+const id = motivZa(post);
+const { ton, d } = MOTIVI[id as keyof typeof MOTIVI];
+---
+
+<div class:list={['motiv', className]} data-motiv={id} style={`--ton: var(--t-${ton})`} aria-hidden="true">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    {d.map((path) => <path d={path} />)}
+  </svg>
+</div>

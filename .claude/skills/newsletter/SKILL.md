@@ -31,7 +31,7 @@ digest is still in an open PR, stop and say so.
   - closing line with a link to the full issue and to `/slovar/` or `/modeli/` when relevant
 - Facts only from the published article. Do not add new information.
 
-Save it to `/Users/anze/Desktop/ej-aj-newsletter/YYYY-MM-DD.md` (outside the repo) with the
+Save it to `/Users/anze/Desktop/Claude/ej-aj/ej-aj-newsletter/YYYY-MM-DD.md` (ignored by git) with the
 subject and preview text at the top.
 
 ## 3. Buttondown draft (optional)

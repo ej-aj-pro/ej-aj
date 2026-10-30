@@ -1,5 +1,5 @@
 ---
-title: 'AI pismenost zaposlenih: kaj zahteva AI Act in kako pripraviti usposabljanje'
+title: 'Usposabljanje zaposlenih za AI pismenost: kaj zahteva AI Act in kako ga pripraviti'
 description: 'Kaj po julijski spremembi zahteva člen 4 AI Act, kaj Evropska komisija šteje za zadostne ukrepe, kako usposabljanje prilagoditi vlogam, kako ga zapisati in kje so brezplačna gradiva.'
 date: 2026-09-27
 type: vodnik
@@ -77,10 +77,19 @@ Viri: [Elements of AI v slovenščini](https://course.elementsofai.com/sl/), [AI
 
 ## Postopek
 
-1. Popišite, katera AI orodja se v podjetju uporabljajo, kdo jih uporablja in za kaj. Vključite tudi zunanje sodelavce.
-2. Sprejmite pravila rabe AI in jih dajte vsem, ki uporabljajo AI.
-3. Po tabeli zgoraj določite, katera skupina potrebuje kaj, in izberite obliko.
-4. Izvedite usposabljanje in ga zapišite.
-5. Pravila in zapis osvežite, ko uvedete novo orodje, in vsaj enkrat na leto.
+```grafika
+vrsta: postopek
+naslov: AI pismenost v podjetju v petih korakih
+koraki:
+  - naslov: Popišite AI orodja.
+    besedilo: Zapišite, katera orodja se v podjetju uporabljajo, kdo jih uporablja in za kaj. Vključite tudi zunanje sodelavce.
+  - naslov: Sprejmite pravila rabe AI.
+    besedilo: Dajte jih vsem, ki uporabljajo AI.
+  - naslov: Določite, kdo potrebuje kaj.
+    besedilo: Po tabeli zgoraj določite, katera skupina potrebuje kaj, in izberite obliko.
+  - naslov: Izvedite usposabljanje in ga zapišite.
+  - naslov: Osvežujte pravila in zapis.
+    besedilo: Osvežite jih, ko uvedete novo orodje, in vsaj enkrat na leto.
+```
 
 Po podatkih Eurostata za leto 2025 je pomanjkanje znanja najpogostejši razlog, zakaj slovenska podjetja, ki so o AI razmišljala, tega še ne uporabljajo. Več številk je na strani [AI v Sloveniji v številkah](/statistika/).

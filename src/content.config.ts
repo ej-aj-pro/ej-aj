@@ -8,6 +8,8 @@ const novice = defineCollection({
     title: z.string(),
     description: z.string().max(200),
     date: z.coerce.date(),
+    // Date of the last substantive update (facts, prices, sections), not typo fixes.
+    updated: z.coerce.date().optional(),
     type: z.enum(['tedenski-pregled', 'clanek', 'vodnik']),
     // Obdobje, ki ga pokriva tedenski pregled, npr. "17. do 26. september 2026".
     period: z.string().optional(),
@@ -15,8 +17,27 @@ const novice = defineCollection({
     // Series of guides with a hub page, e.g. "prirocnik" -> /prirocnik/; korak orders them.
     serija: z.enum(['prirocnik']).optional(),
     korak: z.number().optional(),
+    // Topic illustration on cards and lists (src/data/motivi.mjs); chosen from the file name when
+    // left out.
+    motiv: z
+      .enum(['zakon', 'varnost', 'ljudje', 'sola', 'stavba', 'dokument', 'kalkulator', 'klepet', 'jezik', 'slika', 'predvajanje', 'koda', 'novice', 'cip', 'kljukica', 'zvezek', 'denar'])
+      .optional(),
     // YouTube ids from src/data/videi.yaml, shown as recommended videos under the article.
     videi: z.array(z.string()).default([]),
+    // Podcast episode the article summarises, shown as a card with its cover above the text.
+    // slika is the thumbnail_url from the platform's oEmbed (loaded from its CDN, like YouTube).
+    podcast: z
+      .object({
+        oddaja: z.string(),
+        naslov: z.string(),
+        datum: z.coerce.date(),
+        trajanje: z.string().optional(),
+        url: z.url(),
+        // Locative, used as "Poslušajte na {platforma}", e.g. "Spotifyju".
+        platforma: z.string(),
+        slika: z.url(),
+      })
+      .optional(),
   }),
 });
 
@@ -89,4 +110,43 @@ const narocnine = defineCollection({
   }),
 });
 
-export const collections = { novice, slovar, modeli, narocnine, videi };
+// Prompt templates for /prompti/ (src/data/prompti.yaml).
+const prompti = defineCollection({
+  loader: file('src/data/prompti.yaml'),
+  schema: z.object({
+    kategorija: z.enum(['pisanje', 'dokumenti', 'podatki', 'ucenje', 'ai']),
+    naslov: z.string(),
+    za_kaj: z.string(),
+    prompt: z.string(),
+    nasvet: z.string().optional(),
+  }),
+});
+
+// Calls for AI, digitalisation and technology funding for /razpisi/ (src/data/razpisi.yaml).
+const razpisi = defineCollection({
+  loader: file('src/data/razpisi.yaml'),
+  schema: z.object({
+    naslov: z.string(),
+    razpisovalec: z.string(),
+    raven: z.enum(['slovenija', 'eu']),
+    // stalno: support without a deadline (innovation hubs, access to supercomputers).
+    stanje: z.enum(['odprt', 'napovedan', 'stalno', 'zaprt']),
+    // Announced calls: when the issuer says it will publish, e.g. "druga polovica 2026".
+    napoved: z.string().optional(),
+    // Announced calls with a known opening date.
+    odpre: z.coerce.date().optional(),
+    za_koga: z.string(),
+    kaj: z.string(),
+    znesek: z.string().nullable(),
+    // Application deadline; null when not yet known.
+    rok: z.coerce.date().nullable(),
+    // What the deadline means when it is not the only one, e.g. "drugi in zadnji rok".
+    rok_opis: z.string().optional(),
+    teme: z.array(z.enum(['ai', 'digitalizacija', 'kibernetska-varnost', 'raziskave', 'startup', 'intelektualna-lastnina', 'zdravje'])).min(1),
+    // First URL is the official call page; the page links to it.
+    viri: z.array(z.url()).min(1),
+    preverjeno: z.coerce.date(),
+  }),
+});
+
+export const collections = { novice, slovar, modeli, narocnine, videi, prompti, razpisi };

@@ -3,7 +3,7 @@
 Za agenta, ki nadaljuje delo na ej-aj.si. Najprej preberi `AGENTS.md` (pravila pisanja, točnosti,
 zaupnosti), `docs/slog.md` (kako ne zveneti kot AI), nato ta dokument, `docs/postavitev.md`
 (domena, Cloudflare, računi) in `docs/kako-objavim.md` (kako Anže pregleduje in objavlja).
-Stanje: 30. september 2026.
+Stanje: 3. oktober 2026.
 
 ## Kaj je na strani (ej-aj.si)
 
@@ -14,12 +14,14 @@ Stanje: 30. september 2026.
 | `/vodniki/` | praktični vodniki (trajni naslovi brez datuma) | `src/content/novice/*.md`, `type: vodnik` |
 | `/modeli/` | naročnine (23 paketov) in 15 modelov s cenami API | `src/data/narocnine.yaml`, `src/data/modeli.yaml` |
 | `/cene/` | preusmeritev 301 na `/modeli/#narocnine` | `public/_redirects` |
+| `/razpisi/` | razpisi za AI, digitalizacijo in tehnologijo (odprti, napovedani, zaprti v zadnjih 12 mesecih), samo seznam s povezavo na uradno objavo; dni do roka računa brskalnik | `src/data/razpisi.yaml`, osvežuje skill `posodobi-razpise` (oblačna rutina ob ponedeljkih) |
 | `/statistika/` | raba AI v Sloveniji, 10 interaktivnih grafov | `src/data/statistika.json`, generira `scripts/osvezi-statistiko.mjs` |
 | `/prirocnik/` | priročnik: 10 vodnikov o dobri rabi Claude (`serija: prirocnik`, `korak`) | `src/content/novice/*.md` |
 | `/videi/` | priporočeni videi (YouTube, naloži se šele ob kliku) | `src/data/videi.yaml` |
 | `/slovar/`, `/slovar/<id>/` | 54 izrazov, vsak s svojo stranjo | `src/data/slovar.yaml` |
 | `/o-projektu/`, `/zasebnost/` (še v PR #7) | | |
-| `/rss.xml`, `/llms.txt`, `/sitemap-index.xml` | generirano | |
+| `/rss.xml`, `/llms.txt`, `/llms-full.txt`, `/sitemap-index.xml` | generirano | |
+| `/vodniki/<slug>.md`, `/novice/<id>.md` | članek v Markdownu za AI pomočnike (GEO, `docs/seo.md`) | |
 
 Objavljeno (25 člankov): tedenski pregled #1, 2 novičarska članka (`type: clanek`: Claude Sonnet
 5.5, nov Microsoft Copilot s Home, Code in Autopilot), 12 samostojnih vodnikov (AI Act, varna raba,
@@ -77,6 +79,13 @@ slovar. Analitika: Cloudflare Web Analytics (brez piškotkov).
   Letnice na strani se berejo iz podatkov, razlagalne povedi pa je treba ob novih podatkih preveriti.
 - Grafi na `/statistika/` so v čistem SVG brez knjižnic (`src/scripts/grafi.ts`); paleta je
   preverjena za barvno slepoto, barve so CSS spremenljivke na `.viz`.
+- **Iskanje** (`/iskanje/`): Pagefind zgradi indeks po `astro build` (skripta `build` v
+  `package.json`), zato v `npm run dev` iskanje ne deluje; preizkusi ga z `npm run build` in
+  `npm run preview`. Indeksira se `<main>`; `Base` ima `search={false}` za strani s seznami
+  (naslovnica, /novice/, /vodniki/, /slovar/) in `searchType` za filter "Vrsta". Ponavljajoče se
+  bloke (Preberite še, newsletter, kazalo) izključi `data-pagefind-ignore`. Slovenskega krnjenja
+  Pagefind nima, zato `src/pages/iskanje.astro` iskanim besedam odreže eno končnico, Pagefind pa
+  vsako besedo išče kot začetek ("naročnina" najde naročnine, naročnino ...).
 - Validator: `node scripts/preveri.mjs --links <datoteka>`; CI ga poganja ob vsakem PR-ju in blokira
   `[DOPOLNI: ...]` v straneh. Lokalno v peskovniku povezave vrnejo "fetch failed"; preveri jih CI.
 - Predogled delovne kopije: `.claude/launch.json` kaže na glavni checkout. Za worktree začasno dodaj
@@ -84,7 +93,7 @@ slovar. Analitika: Cloudflare Web Analytics (brez piškotkov).
   `git checkout .claude/launch.json`.
 - Worktreeji rutin in skillov: `~/.cache/ej-aj-worktrees/` (Namizje se sinhronizira v iCloud).
 - Skilli v repu: `tedenski-pregled` (predlaga tudi do 3 nova gesla za slovar), `posodobi-modele`
-  (modeli, naročnine in statistika), `nov-vodnik` (iz zapiska v `~/Desktop/ej-aj-inbox/`),
+  (modeli, naročnine in statistika), `nov-vodnik` (iz zapiska v `/Users/anze/Desktop/Claude/ej-aj/ej-aj-inbox/`),
   `newsletter`.
 - **Brskalnik:** Cloudflare, Domenca, Search Console in Bing so na računu anze999@gmail.com v
   Anžetovem Chrome profilu **anze999** (Claude in Chrome). V tem profilu klikanje po koordinatah
@@ -100,16 +109,17 @@ slovar. Analitika: Cloudflare Web Analytics (brez piškotkov).
 
 ## Odprto
 
+0. **HTTPS:** urejeno, `http://ej-aj.si` 13. 10. vrne 301 na https. Odprt je še pregled v
+   Search Console po 14. 10. (glej `docs/seo.md`).
 1. **Newsletter** (PR #7 objavljen 29. 9.): Buttondown, uporabnik `ej-aj`, račun noc.anze@gmail.com,
    brezplačni paket. Ime ej-aj.si, barva #1f3bd6, odgovori na pozdrav@ej-aj.si, slovenska noga.
    Slovenščine Buttondown ne podpira, potrditveni mail je v angleščini (lastno besedilo zahteva
    paket Standard). API ključ je v `~/.zshrc` kot `BUTTONDOWN_API_KEY`. Prvi mail je osnutek v
-   Buttondownu (`~/Desktop/ej-aj-newsletter/2026-09-29.md`), pošlje ga Anže. Brez stalnega urnika,
+   Buttondownu (`/Users/anze/Desktop/Claude/ej-aj/ej-aj-newsletter/2026-09-29.md`), pošlje ga Anže. Brez stalnega urnika,
    zato besedilo ne obljublja "vsak petek". Odprto: pošiljanje z `newsletter@ej-aj.si` (sending
    domain v Buttondownu, DNS v Cloudflare, Email Routing za ta naslov; Anže je odobril).
-2. **Rutini** sta od 26. 9. 2026 ustvarjeni v tej instanci (glej spodaj). Anže naj stari v instanci
-   DIA izklopi in novi prvič požene z "Run now", da se shranijo odobritve orodij. Prvi zagoni:
-   posodobitev modelov 1. oktobra, tedenski pregled #2 2. oktobra.
+2. **Rutini** tečeta v drugi Claude instanci (Anže, 13. 10. 2026). Kopiji v tej instanci sta
+   namenoma izklopljeni; ne predlagaj ponovnega vklopa.
 3. **Tabela naročnin:** Microsoft je še v USD (obstajajo slovenske cene v EUR), Mistral Team po
    francoski ceni (za Slovenijo 30,49 €). Popravi ju mesečna rutina 1. oktobra; skill to že ve.
 4. E-pošta `pozdrav@ej-aj.si` se preusmerja na anze999@gmail.com (Cloudflare Email Routing).
@@ -148,21 +158,49 @@ slovar. Analitika: Cloudflare Web Analytics (brez piškotkov).
   ponovno `node scripts/og-slike.mjs`.
 - Ukaz za GitHub žeton v skillih in tem dokumentu popravljen na obliko z rezervo (glej Tehnika).
 
-## Narejeno 2. oktobra 2026
+## Narejeno 30. septembra in 2. oktobra 2026
 
-- Tedenski pregled #2 (#51) in newsletter zanj (`ej-aj-newsletter/2026-10-02.md`, osnutek ni bil
-  ustvarjen, ker `BUTTONDOWN_API_KEY` ni nastavljen).
-- Vloge vsebin zapisane v `AGENTS.md` ("Content types"): pregled za vse novice, članek samo za
+- SEO osnove (#50): `lastmod` v sitemapu, polje `updated`, drobtinice, "Preberite še" pod
+  članki, "Kje o tem pišemo" na slovarju, naslovi rubrik, IndexNow (workflow po vsakem pushu na
+  `main`; 2. 10. enkrat ročno poslanih vseh 94 strani, HTTP 200). Analiza in teme: `docs/seo.md`.
+- Vodnika iz SEO načrta: brezplačna AI orodja (#52) in ChatGPT v slovenščini (#53). Pri obeh je
+  preverjevalec našel napake (14 oziroma 13, predvsem pretiravanja in mnenja kot dejstva).
+- Preimenovanja, ki jih morajo upoštevati prihodnji članki: NotebookLM je zdaj Gemini Notebook,
+  Mistral Le Chat je zdaj Vibe, Microsoft 365 Copilot Chat je zdaj Microsoft Copilot Chat.
+- Vloge vsebin so zapisane v `AGENTS.md` ("Content types"): pregled za vse novice, članek samo za
   teme, ki izpolnijo tri pogoje, vodnik za trajno znanje. Skill `tedenski-pregled` v PR predlaga
   0 do 2 kandidata za članek; Anže izbere, vsak izbrani je svoj PR.
-- Repo je zdaj v `/Users/anze/Desktop/Claude/ej-aj`; poti v skillih in tem dokumentu popravljene.
-  Rutini v `~/.claude/scheduled-tasks/` imata še staro pot (Anže ju posodobi sam ali naroči).
-- Mapi `ej-aj-inbox/` in `ej-aj-newsletter/` sta trenutno znotraj repa (nesledeni), skilli pa ju
-  pričakujejo na `~/Desktop/`. Odločitev, kje naj bosta, je odprta.
+- Validator obravnava `www.perplexity.ai` kot gostitelja, ki blokira skripte.
+- Repo je zdaj v `/Users/anze/Desktop/Claude/ej-aj`; worktreeje po selitvi popravi
+  `git worktree repair <pot>`.
 
-Odprta vprašanja za Anžeta so v `~/Desktop/ej-aj-vprasanja.md` (zunaj repa).
+Odprta vprašanja za Anžeta so v `/Users/anze/Desktop/Claude/ej-aj/ZA-ANZETA.md` (v mapi repa, git jo prezre).
+
+## Narejeno 3. oktobra 2026
+
+Anže je bil odsoten in prosil za samostojno delo na SEO in vsebinah. Vse je v PR-jih:
+
+- #57 statistika: AI klepetalniki po 48 državah (`scripts/osvezi-statistiko.mjs` zdaj prenese
+  tudi države, povprečje zadnjih treh mesecev; sloga grafov v `src/styles/grafi.css`).
+- #58 strani s cenami `/cene/<orodje>/` iz `narocnine.yaml` (komponenta `NarocnineTabela.astro`,
+  pomožne funkcije v `src/cene.ts`, sloga v `src/styles/tabele.css`; `/cene/` še vedno preusmerja).
+- #59 vodnik Kaj je umetna inteligenca, #60 zaznavalniki AI besedila (mergaj po #59),
+  #62 plonk listek modelov (popravi tudi stavek o GPT-6 v vodniku ChatGPT, Claude ali Gemini),
+  #63 AI za video, glasbo in glas, #64 AI za ustvarjanje slik (mergaj skupaj z #63).
+- #61 (mergano): validator pozna več gostiteljev, ki blokirajo skripte.
+- Ugotovitve raziskave, ki zadevajo stare strani (modeli.yaml, Sonnet 5.5, Microsoft v EUR), so
+  zapisane v opisu PR #62; popravi jih mesečna rutina.
+- Rutina `ej-aj-posodobi-modele` 1. 10. ni tekla (0 zagonov), Anže jo mora pognati ročno.
+- Vprašanje o skillih: priporočilo je stran `/skilli/` z brezplačnimi skilli in javni repo
+  `ej-aj-pro/skilli`; prodaje zaenkrat ne (ZEPT zahteva podatke prodajalca, kar je v nasprotju z
+  anonimnostjo strani). Čaka Anžetovo odločitev.
+- Preverjevalci dejstev so pri vsaki vsebini našli od 17 do 31 pripomb. Pri orodjih za slike in
+  video so cene in imena modelov najbolj nestabilni; vodnika še nista v mesečni rutini.
+- Vgrajeni brskalnik je v Sloveniji in pokaže evrske cene (Synthesia, Suno, Adobe), WebFetch pa USD.
 
 ## Predlogi za naslednje funkcije (po vrednosti)
+
+**SEO analiza 30. 9. 2026 in nov seznam tem: `docs/seo.md`.** Spodnji seznam je starejši.
 
 Iz raziskave ključnih besed 27. 9. 2026 (predlogi iskanja Google in Bing za Slovenijo, Google
 Trends; brez podatkov o obsegu iskanj):
@@ -173,8 +211,8 @@ Trends; brez podatkov o obsegu iskanj):
 4. ~~AI pismenost zaposlenih~~ (objavljeno 27. 9., #37).
 5. **Search Console**: čez nekaj tednov pogledati, kateri iskalni nizi prinašajo obiske (Anže
    mora dovoliti delo v svojem Chrome profilu).
-6. **Vodniki iz Anžetovih zapiskov** (skill `nov-vodnik`), ko bo v `~/Desktop/ej-aj-inbox/` kaj.
-7. Iskanje (Pagefind): s 25 članki se približujemo meji približno 30.
+6. **Vodniki iz Anžetovih zapiskov** (skill `nov-vodnik`), ko bo v `/Users/anze/Desktop/Claude/ej-aj/ej-aj-inbox/` kaj.
+7. ~~Iskanje (Pagefind)~~ (13. 10., stran `/iskanje/`, glej Tehnika).
 
 ## Rutine (za ponovno ustvarjanje)
 
@@ -200,6 +238,13 @@ Steps:
 4. Rules that always apply: Slovenian copy, no em dashes or en dashes; every news item has a source link and every number, date and name must come from an opened source; never invent anything; no client names or client data (his private knowledge-base report may be read only as a list of leads, never copied).
 5. Final message in Slovenian, short: the PR link, the headlines, failed sources, and anything Anže must check by hand. If any step failed, say exactly which one and what state things were left in; do not work around failures silently.
 ```
+
+### ej-aj posodobi razpise (oblačna rutina)
+
+- Teče v oblaku (claude.ai, routine `trig_015XrvdAK5saQgJGd8JSmU35`, https://claude.ai/code/routines/trig_015XrvdAK5saQgJGd8JSmU35), zato Mac ne rabi biti prižgan. Ustvarjena 23. 10. 2026; nadomešča lokalno rutino `ej-aj-posodobi-razpise`, ki je izklopljena.
+- Urnik: `0 7 * * 1` v UTC, torej ob ponedeljkih ob 8.00 pozimi in ob 9.00 poleti. Model Claude Opus 5.5, okolje Default, repo `ej-aj-pro/ej-aj`, brez konektorjev.
+- Odpre PR in nikoli ne mergea. Anže je 23. 10. želel samodejno objavo; samodejni varnostni pregled je zapis pravila za samodejni merge zavrnil, zato merge ostaja ročen.
+- Prompt je shranjen v rutini: prebere `.claude/skills/posodobi-razpise/SKILL.md` z `origin/main` in sledi razdelku "Cloud routine".
 
 ### ej-aj-posodobi-modele
 

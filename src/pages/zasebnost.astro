@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 import { SITE } from '../site';
 ---
 
-<Base title="Zasebnost" description="Kako ej-aj.si ravna z osebnimi podatki: analitika brez piškotkov in newsletter.">
+<Base search={false} title="Zasebnost" description="Kako ej-aj.si ravna z osebnimi podatki: analitika brez piškotkov in newsletter.">
   <article class="wrap narrow">
     <header class="article-head">
       <span class="eyebrow">Zasebnost</span>
@@ -32,6 +32,13 @@ import { SITE } from '../site';
         sličico, ki se naloži s strežnika YouTube (i.ytimg.com), zato ta vidi vaš IP naslov.
         Predvajalnik se naloži šele ob kliku, in sicer z youtube-nocookie.com, ki piškotkov ne
         nastavi, dokler videa ne predvajate.
+      </p>
+
+      <h2>Podcasti</h2>
+      <p>
+        Pri povzetkih podcastov stran prikaže naslovno sliko epizode, ki se naloži s strežnika
+        platforme (na primer Spotify), zato ta vidi vaš IP naslov. Predvajalnika na strani ni:
+        povezava epizodo odpre na platformi.
       </p>
 
       <h2>Newsletter</h2>
