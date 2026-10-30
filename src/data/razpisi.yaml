@@ -19,7 +19,7 @@
   teme: [ai, raziskave]
   viri:
     - https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-EIC-2026-PATHFINDERCHALLENGES-01-03
-  preverjeno: 2026-10-22
+  preverjeno: 2026-10-26
 
 - id: eic-accelerator-2026
   naslov: 'EIC Accelerator: kratka prijava'
@@ -34,7 +34,7 @@
   teme: [ai, startup, raziskave]
   viri:
     - https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-EIC-2026-ACCELERATOR-01
-  preverjeno: 2026-10-22
+  preverjeno: 2026-10-26
 
 - id: digital-ai4sme
   naslov: 'Digitalna Evropa: kibernetska varnost MSP z rešitvami na podlagi AI'
@@ -48,7 +48,22 @@
   teme: [ai, kibernetska-varnost]
   viri:
     - https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/DIGITAL-ECCC-2027-DEPLOY-CYBER-11-AI4SME
-  preverjeno: 2026-10-22
+  preverjeno: 2026-10-26
+
+- id: eic-women-techeu-2
+  naslov: 'Women TechEU 2: podpora startupom, ki jih vodijo ženske'
+  razpisovalec: Konzorcij projekta Women TechEU 2 EIC, financira Evropski svet za inovacije (EIC) iz programa Obzorje Evropa
+  raven: eu
+  stanje: odprt
+  za_koga: Mlada podjetja (startupi), ki ustrezajo opredelitvi malega ali srednjega podjetja (MSP) in so samostojna, s sedežem v EU ali v državi, pridruženi programu Obzorje Evropa, ki je upravičena do tega razpisa. Delovati morajo v enem od sektorjev deep tech, naštetih v smernicah za prijavitelje. Ob presečnem datumu, za katerega oddate obrazec, je podjetje registrirano vsaj šest mesecev in največ pet let. Podjetje je zbralo manj kot 1 milijon EUR lastniškega kapitala in še nima minimalnega delujočega izdelka (tehnologija je na stopnji 4 do 6 na lestvici tehnološke zrelosti TRL). Ob oddaji obrazca je soustanoviteljica na vodilnem položaju (CEO, CTO, CSO ali podobno), ženske imajo vsaj 25 % deležev. Prijavitelj ne sme biti v nasprotju interesov s partnerji konzorcija Women TechEU 2 EIC. Prijava ni mogoča za projekte, ki so že dobili sredstva Women TechEU ali EIC Accelerator. Prijava je v angleščini.
+  kaj: Nepovratna sredstva in šestmesečni program podpore (mentorice, priprava na vlagatelje in izvoz, prodajna strategija). Najprej oddate obrazec za preverjanje upravičenosti (odprt do 13. 7. 2027 do 17. ure, presečni datum je vsak torek ob 17. uri, odgovor prejmete v enem tednu), upravičene startupe nato povabijo k polni prijavi. Če potrdilo o upravičenosti prejmete več kot 15 dni pred naslednjim rokom, morate polno prijavo oddati v tem roku. V vsakem roku je 40 % sredstev rezerviranih za startupe iz t. i. območij Widening.
+  znesek: 75.000 EUR na startup, v vsakem roku 3 milijone EUR za 40 startupov (skupaj 12 milijonov EUR v štirih rokih, prvi je že potekel)
+  rok: 2027-01-14
+  rok_opis: naslednji rok za polno prijavo (do 17. ure), nato 1. 4. in 8. 7. 2027
+  teme: [startup, raziskave]
+  viri:
+    - https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/48106227
+  preverjeno: 2026-10-26
 
 - id: sps-v2
   naslov: 'Vavčer za patente, modele in znamke (V2)'
@@ -62,7 +77,7 @@
   teme: [intelektualna-lastnina]
   viri:
     - https://www.podjetniskisklad.si/v2-vavcer-za-patente-modele-znamke/
-  preverjeno: 2026-10-22
+  preverjeno: 2026-10-26
 
 - id: sps-v6
   naslov: 'Vavčer za pripravo prijave na Obzorje Evropa (V6)'
@@ -76,7 +91,7 @@
   teme: [raziskave]
   viri:
     - https://www.podjetniskisklad.si/v6-vavcer-za-sofinanciranje-priprave-projektnih-predlogov-na-razpise-drugega-stebra-okvirnega-programa-eu-obzorje-evropa/
-  preverjeno: 2026-10-22
+  preverjeno: 2026-10-26
 
 - id: sps-v7
   naslov: 'Vavčer za pripravo prijave na EIC (V7)'
@@ -90,7 +105,7 @@
   teme: [startup, raziskave]
   viri:
     - https://www.podjetniskisklad.si/v7-vavcer-za-sofinanciranje-priprave-projektnih-predlogov-na-razpise-podprogramov-evropskega-sveta-za-inovacije-eic-v-okviru-programa-obzorje-evropa/
-  preverjeno: 2026-10-22
+  preverjeno: 2026-10-26
 
 # Napovedani
 
@@ -107,7 +122,7 @@
   teme: [kibernetska-varnost, digitalizacija]
   viri:
     - https://www.podjetniskisklad.si/javni-razpisi-pozivi-programi/plan-objav-razpisov-in-pozivov/
-  preverjeno: 2026-10-22
+  preverjeno: 2026-10-26
 
 - id: sps-v9
   naslov: 'Vavčer za prototipiranje (V9)'
@@ -122,7 +137,7 @@
   teme: [startup, raziskave]
   viri:
     - https://www.podjetniskisklad.si/javni-razpisi-pozivi-programi/plan-objav-razpisov-in-pozivov/
-  preverjeno: 2026-10-22
+  preverjeno: 2026-10-26
 
 - id: aris-ai-aplikativni
   naslov: 'Aplikativni projekti manjših vrednosti na področju umetne inteligence'
@@ -138,7 +153,7 @@
   viri:
     - https://www.aris-rs.si/objave/razpisi/podpora-aplikativnim-projektom-manjsih-vrednosti-na-podrocju-umetne-inteligence-2026-12-31
     - https://www.aris-rs.si/objave/nacrtovani-razpisi
-  preverjeno: 2026-10-22
+  preverjeno: 2026-10-26
 
 - id: aris-rri-2026-2
   naslov: 'Spodbude za raziskovalno razvojne projekte, drugi krog (JR RRI 2026/2)'
@@ -155,7 +170,7 @@
     - https://www.aris-rs.si/objave/razpisi/jr-rri-2026-2-2026-12-31
     - https://www.aris-rs.si/objave/nacrtovani-razpisi
     - https://www.aris-rs.si/objave/razpisi/javni-razpis-spodbude-za-raziskovalno-razvojne-projekte-2026-1-jr-rri-2026-1-2026-03-03
-  preverjeno: 2026-10-22
+  preverjeno: 2026-10-26
 
 - id: aris-eureka
   naslov: 'Eureka 2027 do 2031'
@@ -171,7 +186,7 @@
   viri:
     - https://www.aris-rs.si/objave/razpisi/javni-razpis-eureka-2027-2031-2026-12-31
     - https://www.aris-rs.si/objave/nacrtovani-razpisi
-  preverjeno: 2026-10-22
+  preverjeno: 2026-10-26
 
 - id: horizon-apply-ai-booster
   naslov: 'Obzorje Evropa, Apply AI: inovacije z AI v prednostnih sektorjih'
@@ -186,7 +201,7 @@
   teme: [ai, raziskave, zdravje]
   viri:
     - https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL4-2027-04-DIGITAL-EMERGING-04
-  preverjeno: 2026-10-22
+  preverjeno: 2026-10-26
 
 - id: eic-pre-accelerator-widening
   naslov: 'EIC Pre-accelerator za države Widening'
@@ -203,7 +218,7 @@
     - https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-WIDERA-2027-01-WIDENING-01
     - https://rea.ec.europa.eu/news/bridging-innovation-gaps-horizon-europe-boosting-ri-emerging-regions-2026-03-18_en
     - https://eic.ec.europa.eu/eic-funding-opportunities/eic-pre-accelerator_en
-  preverjeno: 2026-10-22
+  preverjeno: 2026-10-26
 
 # Napovedani (preneseno iz PR #91)
 
@@ -323,7 +338,7 @@
   teme: [raziskave, digitalizacija]
   viri:
     - https://www.aris-rs.si/objave/razpisi/javni-razpis-inovacijski-vavcerji-2026-kratica-javnega-poziva-jr-vavcerji-2026-05-12
-  preverjeno: 2026-10-22
+  preverjeno: 2026-10-26
 
 - id: sps-p2-2026
   naslov: 'Spodbude za zagon inovativnih podjetij (P2 2026)'
@@ -337,4 +352,4 @@
   teme: [startup]
   viri:
     - https://www.gov.si/zbirke/javne-objave/javni-razpis-spodbude-za-zagon-inovativnih-podjetij-v-letu-2026/
-  preverjeno: 2026-10-22
+  preverjeno: 2026-10-26
