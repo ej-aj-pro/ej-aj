@@ -110,6 +110,19 @@ const narocnine = defineCollection({
   }),
 });
 
+const skilli = defineCollection({
+  loader: file('src/data/skilli.yaml'),
+  schema: z.object({
+    naslov: z.string(),
+    kaj: z.string(),
+    za_koga: z.string(),
+    // Example request in the user's words.
+    primer: z.string(),
+    // Public sources the skill was built from (our guides or external pages).
+    viri: z.array(z.object({ ime: z.string(), url: z.string() })).min(1),
+  }),
+});
+
 // Changelog of the tables on /modeli/ (src/data/spremembe.yaml), filled by the monthly refresh.
 const spremembe = defineCollection({
   loader: file('src/data/spremembe.yaml'),
@@ -160,4 +173,4 @@ const razpisi = defineCollection({
   }),
 });
 
-export const collections = { novice, slovar, modeli, narocnine, videi, prompti, razpisi, spremembe };
+export const collections = { novice, slovar, modeli, narocnine, videi, prompti, razpisi, spremembe, skilli };

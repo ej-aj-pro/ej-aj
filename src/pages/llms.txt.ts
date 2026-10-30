@@ -31,6 +31,7 @@ export const GET: APIRoute = async ({ site }) => {
     `- [AI slovar](${abs('/slovar/')}): ${terms.length} izrazov umetne inteligence, razloženih po domače.`,
     `- [Priročnik: kako dobro uporabljati Claude](${abs('/prirocnik/')}): 10 vodnikov po vrsti o promptih, kontekstu podjetja, Claude Code, skillih, subagentih, hookih, rutinah in lastnih agentih.`,
     `- [Predloge promptov](${abs('/prompti/')}): predloge v slovenščini za pogoste pisarniške naloge (maili, povzetki, zapisniki, primerjava ponudb, Excel, učenje), s pojasnilom, na kaj paziti.`,
+    `- [Brezplačni skilli v slovenščini](${abs('/skilli/')}): pet skillov za Claude, Claude Code in druga orodja po standardu Agent Skills (pregled skilla, AI v delovni postopek, baza znanja na GitHubu, slovenski slog, pravila rabe AI), z ZIP datotekami in namestitvijo.`,
     `- [Priporočeni videi](${abs('/videi/')}): izbrane epizode o delu z AI s povzetki v slovenščini.`,
     `- [Novice](${abs('/novice/')}): tedenski pregledi AI novic z vplivom na slovenska podjetja.`,
     `- [O projektu](${abs('/o-projektu/')}): kdo piše in kako nastaja vsebina.`,
