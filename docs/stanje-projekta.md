@@ -175,6 +175,9 @@ slovar. Analitika: Cloudflare Web Analytics (brez piškotkov).
   preverjevalec našel napake (14 oziroma 13, predvsem pretiravanja in mnenja kot dejstva).
 - Preimenovanja, ki jih morajo upoštevati prihodnji članki: NotebookLM je zdaj Gemini Notebook,
   Mistral Le Chat je zdaj Vibe, Microsoft 365 Copilot Chat je zdaj Microsoft Copilot Chat.
+- Vloge vsebin so zapisane v `AGENTS.md` ("Content types"): pregled za vse novice, članek samo za
+  teme, ki izpolnijo tri pogoje, vodnik za trajno znanje. Skill `tedenski-pregled` v PR predlaga
+  0 do 2 kandidata za članek; Anže izbere, vsak izbrani je svoj PR.
 - Validator obravnava `www.perplexity.ai` kot gostitelja, ki blokira skripte.
 - Repo je zdaj v `/Users/anze/Desktop/Claude/ej-aj`; worktreeje po selitvi popravi
   `git worktree repair <pot>`.

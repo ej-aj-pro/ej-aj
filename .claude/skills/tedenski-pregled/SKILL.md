@@ -117,6 +117,13 @@ is a real one, 1 concrete use case or adoption method (how a company actually us
 there is one with a primary source. Merge duplicates (one item, several sources). Drop items whose facts you cannot
 support with an opened page. Fewer good items beat more weak ones; 5 is fine.
 
+Then pick 0 to 2 **article candidates** among the selected items, using the three criteria in
+`AGENTS.md` ("Content types"). Most weeks have zero or one. Do not write the articles in this
+run: list them in the PR body so Anže can choose, and each chosen one becomes its own PR
+(`clanek/<slug>`). If an item already has an article on `origin/main`
+(`grep -l "type: clanek" src/content/novice/*.md`), keep it short in the digest and end it with
+`Podrobneje: [<article title>](/novice/<id>/)` after the `Vir:` line.
+
 ## 5. Write the draft
 
 Follow the format in `AGENTS.md` ("Weekly digest format") and the first issue
@@ -200,6 +207,8 @@ PR body (Slovenian, short):
 - **Nova gesla v slovarju:** one line per entry, `- [ ] <izraz>: <first sentence of razlaga>`
   with a link to `/slovar/<id>/` on the preview, or "brez". Anže deletes the ones he doesn't
   want before merging.
+- **Kandidati za članek:** 0 to 2 lines, `- [ ] <topic>: <one line on why it meets the three
+  criteria>`, or "brez". Anže ticks the ones he wants written as separate PRs.
 - **Za preveriti:** anything the fact-checker could not confirm, sources that failed, and
   anything you were unsure about
 - validator result (errors / warnings) and "Build: OK"
@@ -209,7 +218,8 @@ Then remove the worktree: `cd /Users/anze/Desktop/Claude/ej-aj && git worktree r
 
 ## 9. Final message
 
-Slovenian, short: the PR link, the item headlines, new glossary entries, failed sources,
+Slovenian, short: the PR link, the item headlines, new glossary entries, article candidates,
+failed sources,
 anything Anže must check.
 If a step failed, say which one and what state things were left in. Do not work around a
 failure silently.
