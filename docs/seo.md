@@ -172,6 +172,35 @@ Narejeno na podlagi izvoza (PR `tehnicno/seo-search-console`):
 - Naslova "ChatGPT v slovenščini" in "ChatGPT, Claude ali Gemini" sta bližje iskanim nizom
   ("brezplačno", "kateri izbrati").
 
+## Padec v Googlu 19. oktobra 2026
+
+Od 19. 10. 2026 ima stran v Googlu skoraj nič prikazov (prej 50 do 70 na dan, povprečno mesto 9).
+Pregled v Search Console 1. 11. 2026:
+
+- ročni ukrepi, varnostne težave, odstranitve in filtriranje varnega iskanja: nič;
+- 112 strani je indeksiranih, številka po 19. 10. ni padla;
+- pregled URL-ja `/cene/claude/`: "URL je v Googlu", kanonični URL pravilen, preizkus v živo uspešen,
+  zadnje preiskovanje 18. 10. ob 20.33;
+- statistika preiskovanja: gostitelj brez težav, 95 % odgovorov 200, preiskovanje teče naprej.
+
+Strani so v indeksu (`site:ej-aj.si` jih vrne), pri iskanju pa se ne pojavijo niti pri točnem
+naslovu ali pri "claude cena ej-aj". To kaže na samodejno znižanje celotne strani zaradi kakovosti,
+ne na tehnično napako. Google o tem ne pošlje sporočila in zahteve za ponoven pregled ni.
+Časovno se ujema z 16. in 17. 10., ko je naenkrat izšlo 8 vodnikov, tedenski pregled, dve orodji,
+12 člankov je dobilo nov naslov in vsak članek je dobil javno kopijo `.md`.
+
+Narejeno (PR `tehnicno/seo-padec-oktober`):
+
+- kopije `.md`, `llms.txt` in `llms-full.txt` imajo glavo `X-Robots-Tag: noindex`
+  (`public/_headers`): ostanejo dostopne AI orodjem, v iskanju pa niso dvojniki strani HTML;
+- novice in tedenski pregledi imajo `noindex, follow` in niso več v sitemapu. Obnavljajo objave
+  drugih podjetij in so imeli po 1 do 2 prikaza; ostanejo na strani, v RSS in v newsletterju.
+
+Kako naprej: manj novih strani naenkrat, vsaka z lastno vrednostjo (preverjene cene, podatki,
+primeri iz prakse). Prikaze preveri sredi decembra 2026; znižanja se običajno popravijo šele ob
+naslednjih Googlovih posodobitvah. Če se do takrat nič ne premakne, naslednji kandidat za
+`noindex` so najkrajša gesla v slovarju.
+
 ## Zunaj strani (največji vzvod za novo domeno)
 
 Nova domena brez povratnih povezav bo mesece rangirala nizko ne glede na vsebino. Možnosti, ki
