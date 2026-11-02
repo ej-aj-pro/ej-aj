@@ -19,7 +19,7 @@
   teme: [ai, raziskave]
   viri:
     - https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-EIC-2026-PATHFINDERCHALLENGES-01-03
-  preverjeno: 2026-10-26
+  preverjeno: 2026-11-02
 
 - id: eic-accelerator-2026
   naslov: 'EIC Accelerator: kratka prijava'
@@ -34,7 +34,7 @@
   teme: [ai, startup, raziskave]
   viri:
     - https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-EIC-2026-ACCELERATOR-01
-  preverjeno: 2026-10-26
+  preverjeno: 2026-11-02
 
 - id: digital-ai4sme
   naslov: 'Digitalna Evropa: kibernetska varnost MSP z rešitvami na podlagi AI'
@@ -48,7 +48,7 @@
   teme: [ai, kibernetska-varnost]
   viri:
     - https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/DIGITAL-ECCC-2027-DEPLOY-CYBER-11-AI4SME
-  preverjeno: 2026-10-26
+  preverjeno: 2026-11-02
 
 - id: eic-women-techeu-2
   naslov: 'Women TechEU 2: podpora startupom, ki jih vodijo ženske'
@@ -63,7 +63,7 @@
   teme: [startup, raziskave]
   viri:
     - https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/48106227
-  preverjeno: 2026-10-26
+  preverjeno: 2026-11-02
 
 - id: sps-v2
   naslov: 'Vavčer za patente, modele in znamke (V2)'
@@ -77,7 +77,7 @@
   teme: [intelektualna-lastnina]
   viri:
     - https://www.podjetniskisklad.si/v2-vavcer-za-patente-modele-znamke/
-  preverjeno: 2026-10-26
+  preverjeno: 2026-11-02
 
 - id: sps-v6
   naslov: 'Vavčer za pripravo prijave na Obzorje Evropa (V6)'
@@ -91,7 +91,7 @@
   teme: [raziskave]
   viri:
     - https://www.podjetniskisklad.si/v6-vavcer-za-sofinanciranje-priprave-projektnih-predlogov-na-razpise-drugega-stebra-okvirnega-programa-eu-obzorje-evropa/
-  preverjeno: 2026-10-26
+  preverjeno: 2026-11-02
 
 - id: sps-v7
   naslov: 'Vavčer za pripravo prijave na EIC (V7)'
@@ -105,7 +105,7 @@
   teme: [startup, raziskave]
   viri:
     - https://www.podjetniskisklad.si/v7-vavcer-za-sofinanciranje-priprave-projektnih-predlogov-na-razpise-podprogramov-evropskega-sveta-za-inovacije-eic-v-okviru-programa-obzorje-evropa/
-  preverjeno: 2026-10-26
+  preverjeno: 2026-11-02
 
 # Napovedani
 
@@ -122,7 +122,7 @@
   teme: [kibernetska-varnost, digitalizacija]
   viri:
     - https://www.podjetniskisklad.si/javni-razpisi-pozivi-programi/plan-objav-razpisov-in-pozivov/
-  preverjeno: 2026-10-26
+  preverjeno: 2026-11-02
 
 - id: sps-v9
   naslov: 'Vavčer za prototipiranje (V9)'
@@ -137,7 +137,7 @@
   teme: [startup, raziskave]
   viri:
     - https://www.podjetniskisklad.si/javni-razpisi-pozivi-programi/plan-objav-razpisov-in-pozivov/
-  preverjeno: 2026-10-26
+  preverjeno: 2026-11-02
 
 - id: aris-ai-aplikativni
   naslov: 'Aplikativni projekti manjših vrednosti na področju umetne inteligence'
@@ -153,7 +153,7 @@
   viri:
     - https://www.aris-rs.si/objave/razpisi/podpora-aplikativnim-projektom-manjsih-vrednosti-na-podrocju-umetne-inteligence-2026-12-31
     - https://www.aris-rs.si/objave/nacrtovani-razpisi
-  preverjeno: 2026-10-26
+  preverjeno: 2026-11-02
 
 - id: aris-rri-2026-2
   naslov: 'Spodbude za raziskovalno razvojne projekte, drugi krog (JR RRI 2026/2)'
@@ -170,7 +170,7 @@
     - https://www.aris-rs.si/objave/razpisi/jr-rri-2026-2-2026-12-31
     - https://www.aris-rs.si/objave/nacrtovani-razpisi
     - https://www.aris-rs.si/objave/razpisi/javni-razpis-spodbude-za-raziskovalno-razvojne-projekte-2026-1-jr-rri-2026-1-2026-03-03
-  preverjeno: 2026-10-26
+  preverjeno: 2026-11-02
 
 - id: aris-eureka
   naslov: 'Eureka 2027 do 2031'
@@ -186,7 +186,7 @@
   viri:
     - https://www.aris-rs.si/objave/razpisi/javni-razpis-eureka-2027-2031-2026-12-31
     - https://www.aris-rs.si/objave/nacrtovani-razpisi
-  preverjeno: 2026-10-26
+  preverjeno: 2026-11-02
 
 - id: horizon-apply-ai-booster
   naslov: 'Obzorje Evropa, Apply AI: inovacije z AI v prednostnih sektorjih'
@@ -201,7 +201,7 @@
   teme: [ai, raziskave, zdravje]
   viri:
     - https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL4-2027-04-DIGITAL-EMERGING-04
-  preverjeno: 2026-10-26
+  preverjeno: 2026-11-02
 
 - id: eic-pre-accelerator-widening
   naslov: 'EIC Pre-accelerator za države Widening'
@@ -218,7 +218,7 @@
     - https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-WIDERA-2027-01-WIDENING-01
     - https://rea.ec.europa.eu/news/bridging-innovation-gaps-horizon-europe-boosting-ri-emerging-regions-2026-03-18_en
     - https://eic.ec.europa.eu/eic-funding-opportunities/eic-pre-accelerator_en
-  preverjeno: 2026-10-26
+  preverjeno: 2026-11-02
 
 # Napovedani (preneseno iz PR #91)
 
@@ -237,7 +237,7 @@
     - https://www.aris-rs.si/objave/razpisi/podpora-inovacijskim-projektom-s-podrocja-umetne-inteligence-2026-12-31
     - https://www.gov.si/assets/ministrstva/MNZJU/MDP/DDD/DDD-dokumenti/Program-ukrepov-spodbujanja-podjetnistva-MDP/Dopolnjen_program_ukrepov_MDP-V9_050126.pdf
     - https://www.aris-rs.si/uploads/sl/finan/inc/PDFN2026_ARIS.pdf
-  preverjeno: 2026-10-23
+  preverjeno: 2026-11-02
 
 - id: slaif
   naslov: 'SLAIF, slovenska tovarna umetne inteligence'
@@ -306,7 +306,8 @@
   viri:
     - https://www.eurohpc-ju.europa.eu/ai-factories/ai-factories-access-modes_en
     - https://www.eurohpc-ju.europa.eu/playground-access-ai-factories_en
-  preverjeno: 2026-10-23
+    - https://www.eurohpc-ju.europa.eu/large-scale-access-ai-factories_en
+  preverjeno: 2026-11-02
 
 - id: sling-vega
   naslov: 'Pilotni dostop za gospodarstvo do superračunalnika Vega'
@@ -338,7 +339,7 @@
   teme: [raziskave, digitalizacija]
   viri:
     - https://www.aris-rs.si/objave/razpisi/javni-razpis-inovacijski-vavcerji-2026-kratica-javnega-poziva-jr-vavcerji-2026-05-12
-  preverjeno: 2026-10-26
+  preverjeno: 2026-11-02
 
 - id: sps-p2-2026
   naslov: 'Spodbude za zagon inovativnih podjetij (P2 2026)'
@@ -352,4 +353,4 @@
   teme: [startup]
   viri:
     - https://www.gov.si/zbirke/javne-objave/javni-razpis-spodbude-za-zagon-inovativnih-podjetij-v-letu-2026/
-  preverjeno: 2026-10-26
+  preverjeno: 2026-11-02
