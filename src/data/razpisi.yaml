@@ -12,7 +12,7 @@
   razpisovalec: Evropska komisija, Evropski svet za inovacije (EIC)
   raven: eu
   stanje: zaprt
-  za_koga: Konzorciji ali posamezne organizacije iz EU ali pridruženih držav (univerze, raziskovalne organizacije, MSP, startupi). Velika podjetja se ne morejo prijaviti sama.
+  za_koga: Konzorciji ali posamezne organizacije iz EU ali pridruženih držav (univerze, raziskovalne organizacije, MSP, startupi). Podjetja s srednjo tržno kapitalizacijo in velika podjetja se ne morejo prijaviti sama.
   kaj: Raziskave modelov in arhitektur AI, ki zmorejo sklepanje, abstrakcijo in načrtovanje ter delajo z več vrstami podatkov.
   znesek: null
   rok: 2026-10-28
@@ -26,11 +26,11 @@
   razpisovalec: Evropska komisija, Evropski svet za inovacije (EIC)
   raven: eu
   stanje: odprt
-  za_koga: Predvsem posamezno malo ali srednje podjetje (tudi startup) iz EU ali pridružene države. Izjemoma tudi manjša srednje velika podjetja in posamezniki, ki podjetje šele ustanavljajo.
+  za_koga: Predvsem posamezno malo ali srednje podjetje (tudi startup) iz EU ali pridružene države. Izjemoma, za hitro rast, tudi manjše podjetje s srednjo tržno kapitalizacijo (do 499 zaposlenih) ter posamezniki, ki podjetje šele ustanavljajo.
   kaj: Nepovratna sredstva, naložba v kapital in podpora pri rasti za inovacije, ki temeljijo na znanstvenem ali tehnološkem preboju in potrebujejo veliko denarja in časa do prvih prihodkov.
   znesek: null
   rok: 2026-11-04
-  rok_opis: rok za kratke prijave v letu 2026
+  rok_opis: rok za kratke prijave v letu 2026 (do 17. ure), naslednji krog se odpre novembra 2026
   teme: [ai, startup, raziskave]
   viri:
     - https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-EIC-2026-ACCELERATOR-01
@@ -146,7 +146,7 @@
   stanje: napovedan
   napoved: četrto četrtletje 2026
   za_koga: Pogoji še niso objavljeni.
-  kaj: Podpora manjšim aplikativnim projektom s področja AI, torej projektom, ki znanje prenesejo v uporabo.
+  kaj: Podpora manjšim aplikativnim projektom s področja AI. Podrobnosti še niso objavljene.
   znesek: null
   rok: null
   teme: [ai]
@@ -161,7 +161,7 @@
   raven: slovenija
   stanje: napovedan
   napoved: četrto četrtletje 2026
-  za_koga: V prvem krogu podjetja s sedežem v Sloveniji ne glede na velikost, tudi konzorciji do treh podjetij.
+  za_koga: V prvem krogu podjetja s sedežem v Sloveniji ne glede na velikost, tudi konzorciji do treh podjetij. Javni zavodi so bili izključeni. Vsako podjetje je moralo imeti konec leta 2024 vsaj tri zaposlene in vsaj 30 % kapitala v virih sredstev.
   kaj: Raziskovalno razvojni projekti podjetij. Prvi krog (JR RRI 2026/1) je imel okvirno 15 milijonov EUR, sofinanciranje posameznega projekta je znašalo od 100.000 do 300.000 EUR, rok je bil 13. 5. 2026.
   znesek: null
   rok: null
@@ -194,7 +194,7 @@
   raven: eu
   stanje: napovedan
   odpre: 2026-11-17
-  za_koga: Konzorciji, v katerih so ključni partnerji podjetja iz ciljnega sektorja. Omejitve glede držav preverite v razpisu. MSP pridejo do sredstev na tekmovanju, ki ga organizira izbrani konzorcij.
+  za_koga: Konzorciji, v katerih so ključni partnerji podjetja iz ciljnega sektorja. Sodelujejo lahko le subjekti iz EU, Islandije, Norveške, Kanade, Izraela, Koreje, Nove Zelandije, Švice, Združenega kraljestva in Japonske. Subjekti pod nadzorom drugih držav potrebujejo jamstva, tisti pod nadzorom Kitajske ne morejo sodelovati. MSP pridejo do sredstev na tekmovanju, ki ga organizira izbrani konzorcij.
   kaj: Konzorcij organizira večstopenjsko tekmovanje, na katerem MSP z AI rešujejo izzive v zdravstvu, napredni proizvodnji ali avtonomni vožnji, in jim razdeli sredstva (najprej 10 po 300.000 EUR, nato 4 po 2.250.000 EUR).
   znesek: 42 milijonov EUR skupaj, predvidoma 3 projekti
   rok: 2027-03-18
@@ -209,9 +209,9 @@
   raven: eu
   stanje: napovedan
   odpre: 2027-05-05
-  za_koga: Posamezna mala in srednja podjetja (deep tech startupi) s sedežem v državah Widening, med katerimi je Slovenija.
+  za_koga: Posamezna mala in srednja podjetja (deep tech startupi) s sedežem v državah Widening, med katerimi je Slovenija. Tehnologija mora biti na stopnji TRL 4 (lestvica tehnološke zrelosti).
   kaj: Priprava inovacije na trg in na vlagatelje, na primer raziskava trga, poslovni model in pot do komercializacije.
-  znesek: 500.000 do 1.000.000 EUR na projekt, do 70 % upravičenih stroškov, skupaj 40 milijonov EUR, predvidoma 60 projektov
+  znesek: 500.000 do 1.000.000 EUR na projekt (pavšal), 70 % upravičenih stroškov, skupaj 40 milijonov EUR, predvidoma 60 projektov
   rok: 2027-11-18
   teme: [startup, raziskave]
   viri:
@@ -224,7 +224,7 @@
 
 - id: aris-ai-inovacijski-projekti
   naslov: 'Podpora inovacijskim projektom s področja umetne inteligence'
-  razpisovalec: ARIS in Ministrstvo za notranje zadeve in javno upravo
+  razpisovalec: ARIS (Javna agencija za znanstvenoraziskovalno in inovacijsko dejavnost) in ministrstvo, pristojno za digitalno preobrazbo
   raven: slovenija
   stanje: napovedan
   napoved: zadnje četrtletje 2026
