@@ -34,6 +34,7 @@ const price = pricePageForTerm(entry.id);
 ---
 
 <Base searchType="Slovar"
+  noindex={!entry.data.indeks}
   title={`${izraz}: kaj pomeni?`}
   description={description}
   jsonLd={[
