@@ -1,6 +1,7 @@
 # AI slovar za ej-aj.si. Razlage so splošne in ne vsebujejo podatkov, ki hitro zastarajo
 # (cen, imen najnovejših modelov, datumov izidov). Vsako geslo: id (slug), izraz, angl
-# (angleški izraz, neobvezno), razlaga (2 do 4 povedi), primer (neobvezno), glej (id-ji).
+# (angleški izraz, neobvezno), razlaga (2 do 4 povedi), primer (neobvezno), glej (id-ji),
+# indeks (neobvezno, true: stran gesla je v Googlovem indeksu; samo za razširjena gesla, glej docs/seo.md).
 
 - id: umetna-inteligenca
   izraz: Umetna inteligenca (AI)
@@ -23,6 +24,7 @@
 
 - id: veliki-jezikovni-model
   izraz: Veliki jezikovni model (LLM)
+  indeks: true
   angl: Large language model
   razlaga: >-
     Model, naučen na ogromni količini besedil, ki zna nadaljevati, povzemati, prevajati in
@@ -32,6 +34,7 @@
 
 - id: token
   izraz: Token
+  indeks: true
   angl: Token
   razlaga: >-
     Osnovna enota besedila, s katero dela jezikovni model. Token je lahko cela beseda, del
@@ -53,6 +56,7 @@
 
 - id: prompt
   izraz: Prompt (poziv, navodilo)
+  indeks: true
   angl: Prompt
   razlaga: >-
     Besedilo, s katerim modelu poveste, kaj želite. Dober prompt vsebuje kontekst (kdo ste
@@ -102,6 +106,7 @@
 
 - id: agent
   izraz: Agent
+  indeks: true
   angl: AI agent
   razlaga: >-
     AI, ki nalogo opravi v več korakih sam: načrtuje, uporablja orodja (brskalnik,
@@ -146,6 +151,7 @@
 
 - id: mcp
   izraz: MCP (Model Context Protocol)
+  indeks: true
   angl: Model Context Protocol
   razlaga: >-
     Odprt standard, prek katerega se AI asistent poveže z drugimi orodji in podatki:
@@ -342,6 +348,7 @@
 
 - id: vibe-coding
   izraz: Vibe coding
+  indeks: true
   angl: Vibe coding
   razlaga: >-
     Programiranje, pri katerem opišete, kaj želite, AI pa napiše kodo, pogosto ne da bi
@@ -440,6 +447,7 @@
 
 - id: gpt
   izraz: GPT
+  indeks: true
   angl: Generative pre-trained transformer
   razlaga: >-
     Kratica za generativni vnaprej naučeni transformer, vrsto jezikovnega modela, ki ga je
