@@ -41,6 +41,7 @@ const PHRASES = {
   mcp: ['MCP', 'Model Context Protocol'],
   skill: ['skill'],
   rag: ['RAG'],
+  'enotna-prijava': ['enotna prijava', 'enotne prijave', 'enotni prijavi', 'enotno prijavo', 'SSO', 'single sign-on'],
   vlozitev: ['vložitev', 'vložitve', 'vložitvi', 'vložitvami', 'embedding'],
   'odprte-utezi': ['odprte uteži', 'odprtih uteži', 'odprtimi utežmi', 'odprtokodni model'],
   benchmark: ['benchmark', 'primerjalni test'],
