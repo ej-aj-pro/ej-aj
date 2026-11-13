@@ -3,6 +3,7 @@ title: 'Hooki v Claude Code: kaj so in kako z njimi nastavite pravila, ki se izv
 description: 'Kaj so hooki v Claude Code, kako se razlikujejo od navodil v CLAUDE.md, katere dogodke poznajo, kako zaustavijo dejanje in na kaj paziti pri varnosti.'
 date: 2026-09-27
 type: vodnik
+noindex: true
 serija: prirocnik
 korak: 8
 ---

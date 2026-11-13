@@ -3,6 +3,7 @@ title: 'Subagenti v Claude Code: kaj so in kdaj jih uporabiti'
 description: 'Kaj so subagenti v Claude Code, zakaj imajo svoj kontekst, kateri so vgrajeni, kako naredite svojega in kdaj se splačajo, ko delo razdelite na več agentov.'
 date: 2026-09-27
 type: vodnik
+noindex: true
 serija: prirocnik
 korak: 7
 videi: [dLiXiD8hOAI, qtKkzsQjAy0]

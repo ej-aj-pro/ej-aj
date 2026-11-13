@@ -21,13 +21,14 @@ for (const file of readdirSync('src/content/novice')) {
   const id = file.replace(/\.md$/, '');
   const path = fm.type === 'vodnik' ? `/vodniki/${id.replace(/^\d{4}-\d{2}-\d{2}-/, '')}/` : `/novice/${id}/`;
   lastmod.set(`https://ej-aj.si${path}`, new Date(fm.updated ?? fm.date).toISOString());
-  if (fm.type !== 'vodnik') noindex.add(`https://ej-aj.si${path}`);
+  if (fm.type !== 'vodnik' || fm.noindex) noindex.add(`https://ej-aj.si${path}`);
 }
 // Glossary entries without `indeks: true` and the search page carry noindex as well.
 for (const entry of yaml.load(readFileSync('src/data/slovar.yaml', 'utf8'))) {
   if (!entry.indeks) noindex.add(`https://ej-aj.si/slovar/${entry.id}/`);
 }
 noindex.add('https://ej-aj.si/iskanje/');
+noindex.add('https://ej-aj.si/videi/');
 
 export default defineConfig({
   site: 'https://ej-aj.si',
