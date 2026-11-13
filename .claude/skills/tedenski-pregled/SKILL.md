@@ -155,7 +155,10 @@ of every glossary term in an article is linked to it automatically
    without č/š/ž), `izraz` (Slovenian term, English or acronym in parentheses if common),
    `angl`, `razlaga` (2 to 4 sentences, general, no prices, model names or dates that go stale),
    optional `primer`, and `glej` with 1 to 3 related existing ids. Place it next to related
-   entries. Plain language per `docs/slog.md`, no em or en dashes.
+   entries. Plain language per `docs/slog.md`, no em or en dashes. Leave out `indeks`: new
+   entries are short, so their pages stay out of Google until someone expands them
+   (`CLAUDE.md`, "Search indexing and pace"). The digest itself is `noindex` too; it is for
+   readers and the newsletter, not for search.
 4. If the headword is also an everyday Slovenian word or a brand, add an entry to `PHRASES` or
    `SKIP` in `src/markdown/slovar-povezave.mjs` so the automatic links stay precise.
 5. Check the result: after `npm run build`, the digest page must link the new term

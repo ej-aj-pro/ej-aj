@@ -22,6 +22,15 @@ named. Audio files: there is no transcription tool on this Mac yet; tell him and
 One note becomes one guide. If a note is too thin for a guide (under about five sentences of
 substance), do not pad it: write back what is missing as questions and stop.
 
+Before writing, check the pace and overlap rules in `CLAUDE.md` ("Search indexing and pace"):
+
+- Search the existing guides for the topic (`grep -il '<keyword>' src/content/novice/*.md`, and
+  the titles in `docs/seo.md`). If a guide already covers it, propose extending that guide
+  (same file, `updated:` in the front matter) instead of a new one, and say so in the PR.
+- Count guides merged in the last seven days (`git log origin/main --since='7 days ago'
+  --diff-filter=A --name-only -- src/content/novice`). If two are already out, still open the
+  PR, but write in its first line that it should wait until next week.
+
 ## 2. Confidentiality pass (before writing anything)
 
 The repo and the site are public. Anže is under NDA with his clients (through Produktnica and

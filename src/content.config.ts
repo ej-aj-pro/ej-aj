@@ -67,6 +67,8 @@ const slovar = defineCollection({
     razlaga: z.string(),
     primer: z.string().optional(),
     glej: z.array(z.string()).default([]),
+    /** In Google's index. Off by default: a 40-word definition is a thin page, so only expanded entries are indexed (docs/seo.md). */
+    indeks: z.boolean().default(false),
   }),
 });
 

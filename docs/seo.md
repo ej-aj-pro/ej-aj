@@ -196,6 +196,33 @@ Narejeno (PR `tehnicno/seo-padec-oktober`):
 - novice in tedenski pregledi imajo `noindex, follow` in niso več v sitemapu. Obnavljajo objave
   drugih podjetij in so imeli po 1 do 2 prikaza; ostanejo na strani, v RSS in v newsletterju.
 
+Drugi korak (PR `tehnicno/seo-slovar-pravila`):
+
+- Slovar je imel 63 od 124 URL-jev v sitemapu, gesla v povprečju 42 besed. Strani gesel imajo
+  zdaj `noindex, follow`, razen gesel z `indeks: true` v `slovar.yaml`: gpt, prompt, vibe coding,
+  agent, token, veliki jezikovni model in mcp (imela so prikaze v prvem izvozu). Ta je treba
+  razširiti na 300 do 500 besed (primer rabe, pogoste zmote, povezava na vodnik ali ceno), sicer
+  ostanejo tanka. Zbirna stran `/slovar/` z vsemi razlagami ostane v indeksu.
+- `/iskanje/` ima `noindex` in ni več v sitemapu.
+- Pravila za tempo in indeksiranje so v `CLAUDE.md` ("Search indexing and pace") ter v skillih
+  `nov-vodnik` in `tedenski-pregled`.
+
+Vodniki, ki se prekrivajo (kandidati za združitev s preusmeritvijo 301, odloči Anže):
+
+1. Izbira orodja: "ChatGPT, Claude ali Gemini" (1.414 besed), "Kako izbrati AI orodje za
+   podjetje" (1.339) in "Kateri AI model izbrati za katero nalogo" (1.878).
+2. AI Act: "AI Act za slovenska podjetja" (1.678), "AI Act v podjetju: kdo kaj naredi" (2.117),
+   "Usposabljanje zaposlenih za AI pismenost" (1.272) in orodje `/ai-act-preverjanje/`.
+3. Kontekst podjetja: "Kako AI-ju dati kontekst podjetja" (684) in "Ali hraniti kontekst
+   podjetja na GitHubu" (656).
+4. Osnove: "Kako uporabljati ChatGPT in Claude pri delu" (690) in "Kako napisati dober prompt"
+   (784), poleg strani `/prompti/`.
+5. Priročnik o Claude Code: subagenti (523), hooki (558), lasten agent (545), rutine (624),
+   "Claude Code ali klepet" (607). Kratki in za bralca iz podjetja preozki; smiselno jih je
+   združiti v en daljši vodnik ali jim dati `noindex`.
+6. "Kako z AI sestavljamo tedenski pregled razpisov" (862) opisuje naš postopek in ne odgovarja
+   na iskanje; kandidat za `noindex`.
+
 Kako naprej: manj novih strani naenkrat, vsaka z lastno vrednostjo (preverjene cene, podatki,
 primeri iz prakse). Prikaze preveri sredi decembra 2026; znižanja se običajno popravijo šele ob
 naslednjih Googlovih posodobitvah. Če se do takrat nič ne premakne, naslednji kandidat za
