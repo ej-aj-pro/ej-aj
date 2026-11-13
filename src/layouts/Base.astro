@@ -22,9 +22,11 @@ interface Props {
   searchType?: string;
   /** Path of the page's plain Markdown copy (articles), announced with rel="alternate". */
   markdown?: string;
+  /** Keep the page out of search results (links are still followed). Pair with the sitemap filter in astro.config.mjs. */
+  noindex?: boolean;
 }
 
-const { title, description = SITE.description, type = 'website', published, modified, jsonLd = [], image = '/og.png', search = true, searchType, markdown } = Astro.props;
+const { title, description = SITE.description, type = 'website', published, modified, jsonLd = [], image = '/og.png', search = true, searchType, markdown, noindex = false } = Astro.props;
 // Search results show about 60 characters of a title; long titles drop the site name suffix so
 // the words that describe the page are the ones that stay visible.
 const fullTitle = !title ? `${SITE.domain}: AI novice, vodniki in cene AI orodij v slovenščini` : title.length > 52 ? title : `${title} | ${SITE.name}`;
@@ -76,6 +78,7 @@ const nav = [
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />

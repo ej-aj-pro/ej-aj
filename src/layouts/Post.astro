@@ -54,6 +54,7 @@ const image = existsSync(`public/og/${post.id}.png`) ? `/og/${post.id}.png` : '/
   image={image}
   searchType={post.data.type === 'vodnik' ? 'Vodnik' : 'Novica'}
   markdown={postMarkdownPath(post)}
+  noindex={post.data.type !== 'vodnik'}
   jsonLd={[
     {
       '@context': 'https://schema.org',
