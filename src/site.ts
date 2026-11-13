@@ -3,7 +3,7 @@ export const SITE = {
   domain: 'ej-aj.si',
   tagline: 'Umetna inteligenca po slovensko',
   description:
-    'Tedenski pregled AI novic, cene ChatGPT, Claude, Gemini in Copilot, praktični vodniki in AI slovar v slovenščini za podjetja in posameznike.',
+    'Cene ChatGPT, Claude, Gemini in Copilot, kalkulator stroškov, preverjanje po AI Act, razpisi in praktični vodniki o AI za slovenska podjetja.',
   // Reader-facing name of the person who reviews content. No personal name on the site.
   author: 'urednik',
   // Cloudflare Web Analytics site tag (public, cookieless; not a secret).

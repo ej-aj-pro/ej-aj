@@ -23,7 +23,8 @@ Read it at the start of every session.
 
 Since 19 October 2026 Google ranks almost nothing from the site (site-wide quality demotion
 after about 200 pages in four weeks, half of them 40-word glossary pages; details in
-`docs/seo.md`). Until impressions recover, and as the standing rule afterwards:
+`docs/seo.md`, recovery plan in `docs/seo-okrevanje.md`). Until impressions recover, and as the
+standing rule afterwards:
 
 - **At most two new indexed pages per week.** Never merge several content PRs in one go; leave
   at least a day between them. Data refreshes of existing pages (prices, calls, statistics)
@@ -37,6 +38,8 @@ after about 200 pages in four weeks, half of them 40-word glossary pages; detail
   `indeks: true` in `slovar.yaml`, sitemap filter in `astro.config.mjs`). Index them once
   they are substantial.
 - **No bulk title or URL changes.** Change one title at a time, based on Search Console.
+- **Guides can opt out:** `noindex: true` in front matter keeps a short or overlapping guide on
+  the site but out of the index and the sitemap.
 - **Weekly check:** Search Console impressions. If they drop by half or more week on week,
   stop publishing and find out why first.
 

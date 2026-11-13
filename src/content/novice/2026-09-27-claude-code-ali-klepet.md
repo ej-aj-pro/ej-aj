@@ -3,6 +3,7 @@ title: 'Claude Code ali klepet: razlike in kdaj Claude Code uporabiti tudi brez 
 description: 'Kaj je Claude Code, kako se razlikuje od klepeta v Claudu, v katerih paketih je na voljo in zakaj se splača tudi pisarniškim ljudem, ne samo programerjem.'
 date: 2026-09-27
 type: vodnik
+noindex: true
 serija: prirocnik
 korak: 4
 videi: [S-sYlFiGFv8]

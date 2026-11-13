@@ -2,26 +2,36 @@
 import Base from '../layouts/Base.astro';
 import PostCard from '../components/PostCard.astro';
 import Newsletter from '../components/Newsletter.astro';
-import Video from '../components/Video.astro';
 import { getCollection } from 'astro:content';
 import { getPosts, postPath } from '../lib';
 import stat from '../data/statistika.json';
 
 // Calls teaser: open calls and the nearest deadline, from the same data as /razpisi/.
 const calls = await getCollection('razpisi');
-const openCalls = calls.filter((r) => r.data.stanje === 'odprt' && r.data.rok);
+const narocnine = await getCollection('narocnine');
+// Built statically, so a deadline that passed after the last refresh would still show: count only
+// calls whose deadline is still ahead at build time.
+const today = new Date(new Date().toDateString());
+const openCalls = calls.filter((r) => r.data.stanje === 'odprt' && r.data.rok && r.data.rok >= today);
 const nextCall = [...openCalls].sort((a, b) => a.data.rok!.valueOf() - b.data.rok!.valueOf())[0];
 const announcedCalls = calls.filter((r) => r.data.stanje === 'napovedan').length;
 const shortDate = (d: Date) => d.toLocaleDateString('sl-SI', { day: 'numeric', month: 'numeric', year: 'numeric' });
 
 const all = await getPosts();
 // Handbook steps have their own section, so they don't push the digests out of "Zadnje".
-const posts = all.filter((p) => !p.data.serija).slice(0, 6);
+const posts = all.filter((p) => !p.data.serija && p.data.type !== 'vodnik').slice(0, 3);
+// Evergreen guides that answer what people search for (Search Console, docs/seo.md). They lead the
+// page; news is secondary because it retells other sites and carries noindex.
+const featuredIds = [
+  '2026-10-02-chatgpt-v-slovenscini',
+  '2026-10-02-brezplacna-ai-orodja',
+  '2026-09-27-chatgpt-claude-ali-gemini',
+  '2026-10-14-copilot-v-slovenscini',
+  '2026-09-26-ai-act-za-slovenska-podjetja',
+  '2026-10-03-kaj-je-umetna-inteligenca',
+];
+const featured = featuredIds.map((id) => all.find((p) => p.id === id)).filter((p) => p !== undefined);
 const handbook = all.filter((p) => p.data.serija === 'prirocnik').sort((a, b) => (a.data.korak ?? 99) - (b.data.korak ?? 99));
-const videos = (await getCollection('videi'))
-  .filter((v) => v.data.izpostavljen)
-  .sort((a, b) => b.data.datum.valueOf() - a.data.datum.valueOf())
-  .slice(0, 3);
 
 // Headline number for the statistics teaser, from the same data as /statistika/.
 const trend = stat.podjetja_trend;
@@ -37,18 +47,60 @@ const pct = (v: number) => `${new Intl.NumberFormat('sl-SI', { minimumFractionDi
     <span class="eyebrow">ej-aj.si</span>
     <h1>Umetna inteligenca <em>po slovensko</em>.</h1>
     <p>
-      AI novice, orodja in nasveti za slovenska podjetja.
+      Koliko stanejo ChatGPT, Claude, Gemini in Copilot, kaj od podjetja zahteva AI Act in
+      kako AI orodja uporabljati pri delu. Cene in podatke vsak mesec preverimo pri virih.
     </p>
     <a class="hero-start" href="/zacnite/">Kje začeti: vodniki po predznanju</a>
   </section>
 
   <section class="wrap section">
     <div class="section-head">
-      <h2>Zadnje</h2>
-      <a href="/novice/">Vse novice</a>
+      <h2>Orodja in podatki</h2>
+    </div>
+    <div class="grid tools">
+      <a class="card tool" href="/modeli/#narocnine">
+        <span class="tool-label">Cene</span>
+        <h3>Cene AI orodij</h3>
+        <p>{narocnine.length} paketov ChatGPT, Claude, Gemini, Copilot in drugih orodij za posameznike in podjetja, z virom pri vsaki ceni.</p>
+      </a>
+      <a class="card tool" href="/cene/kalkulator/">
+        <span class="tool-label">Kalkulator</span>
+        <h3>Koliko stane AI za vašo ekipo</h3>
+        <p>ChatGPT Business, Claude Team, Microsoft 365 Copilot, Gemini in Mistral: vnesite število ljudi in način plačila.</p>
+      </a>
+      <a class="card tool" href="/ai-act-preverjanje/">
+        <span class="tool-label">AI Act</span>
+        <h3>Ali je vaša raba AI visoko tvegana?</h3>
+        <p>Odkljukajte, za kaj podjetje uporablja AI, in preverite, ali gre za prepovedano ali visoko tvegano rabo in katere obveznosti veljajo.</p>
+      </a>
+      <a class="card tool" href="/razpisi/">
+        <span class="tool-label">Razpisi</span>
+        <h3>Razpisi za AI in digitalizacijo</h3>
+        <p>
+          {openCalls.length} odprtih in {announcedCalls} napovedanih razpisov v Sloveniji in EU.{' '}
+          {nextCall && <>Najbližji rok: {shortDate(nextCall.data.rok!)}.</>}
+        </p>
+      </a>
+      <a class="card tool" href="/statistika/">
+        <span class="tool-label">Statistika</span>
+        <h3>AI v Sloveniji v številkah</h3>
+        <p>Leta {entYear} je AI uporabljalo {pct(entSI)} slovenskih podjetij z vsaj 10 zaposlenimi (EU {pct(entEU)}).</p>
+      </a>
+      <a class="card tool" href="/modeli/">
+        <span class="tool-label">Modeli</span>
+        <h3>Primerjava AI modelov in cen API</h3>
+        <p>Cene prek API, kontekstno okno in za kaj je kateri model primeren, od Clauda in GPT do slovenskega GaMS.</p>
+      </a>
+    </div>
+  </section>
+
+  <section class="wrap section">
+    <div class="section-head">
+      <h2>Vodniki, s katerimi začnete</h2>
+      <a href="/vodniki/">Vsi vodniki</a>
     </div>
     <div class="grid">
-      {posts.map((post) => <PostCard post={post} />)}
+      {featured.map((post) => <PostCard post={post} />)}
     </div>
   </section>
 
@@ -87,58 +139,6 @@ const pct = (v: number) => `${new Intl.NumberFormat('sl-SI', { minimumFractionDi
     </p>
   </section>
 
-  {
-    videos.length > 0 && (
-      <section class="wrap section">
-        <div class="section-head">
-          <h2>Za ogled</h2>
-          <a href="/videi/">Vsi videi</a>
-        </div>
-        <div class="video-row">
-          {videos.map((v) => (
-            <Video video={v} compact />
-          ))}
-        </div>
-      </section>
-    )
-  }
-
-  <section class="wrap section">
-    <div class="section-head">
-      <h2>Razpisi za AI in digitalizacijo</h2>
-      <a href="/razpisi/">Vsi razpisi</a>
-    </div>
-    <p class="section-lede">
-      {openCalls.length} odprtih in {announcedCalls} napovedanih razpisov v Sloveniji in EU za
-      podjetja, ki uvajajo AI ali razvijajo tehnologijo.
-      {nextCall && <>Najbližji rok: {nextCall.data.naslov}, {shortDate(nextCall.data.rok!)}.</>} Pri
-      vsakem je povezava na uradno objavo, seznam pregledamo vsak teden.
-    </p>
-  </section>
-
-  <section class="wrap section">
-    <div class="section-head">
-      <h2>Modeli in cene</h2>
-      <a href="/modeli/">Odpri primerjavo</a>
-    </div>
-    <p class="section-lede">
-      Naročnine za ChatGPT, Claude, Gemini, Copilot in druga orodja, za posameznike in podjetja, ter
-      cene modelov prek API-ja, od Clauda in GPT do slovenskega GaMS. Vsak podatek ima vir. Koliko stane orodje za vašo ekipo, izračunate v <a href="/cene/kalkulator/">kalkulatorju stroškov</a>.
-    </p>
-  </section>
-
-  <section class="wrap section">
-    <div class="section-head">
-      <h2>AI v Sloveniji v številkah</h2>
-      <a href="/statistika/">Odpri statistiko</a>
-    </div>
-    <p class="section-lede">
-      Leta {entYear} je AI uporabljalo {pct(entSI)} slovenskih podjetij z vsaj 10 zaposlenimi (EU{' '}
-      {pct(entEU)}). Kje smo med državami EU, kdo AI uporablja in katere klepetalnike, v grafih s
-      podatki Eurostata, SURS, Microsofta in StatCounterja.
-    </p>
-  </section>
-
   <section class="wrap section">
     <div class="section-head">
       <h2>AI slovar</h2>
@@ -152,13 +152,12 @@ const pct = (v: number) => `${new Intl.NumberFormat('sl-SI', { minimumFractionDi
 
   <section class="wrap section">
     <div class="section-head">
-      <h2>Vodniki</h2>
-      <a href="/vodniki/">Vsi vodniki</a>
+      <h2>Zadnje novice</h2>
+      <a href="/novice/">Vse novice</a>
     </div>
-    <p class="section-lede">
-      Kaj velja, kaj smete in kako se česa lotiti, ko AI uvajate v podjetje.
-      <a href="/vodniki/ai-act-za-slovenska-podjetja/">AI Act za slovenska podjetja</a>
-    </p>
+    <div class="grid">
+      {posts.map((post) => <PostCard post={post} />)}
+    </div>
   </section>
 </Base>
 
@@ -186,9 +185,22 @@ const pct = (v: number) => `${new Intl.NumberFormat('sl-SI', { minimumFractionDi
     margin: 0 0 6px;
     break-inside: avoid;
   }
-  .video-row {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 24px;
+  .tool {
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.15s;
+  }
+  .tool:hover {
+    border-color: var(--accent);
+  }
+  .tool:hover h3 {
+    color: var(--accent);
+  }
+  .tool-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent);
   }
 </style>

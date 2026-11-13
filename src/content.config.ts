@@ -16,6 +16,8 @@ const novice = defineCollection({
     draft: z.boolean().default(false),
     // Series of guides with a hub page, e.g. "prirocnik" -> /prirocnik/; korak orders them.
     serija: z.enum(['prirocnik']).optional(),
+    /** Keep this guide out of Google's index (links still followed). For short or overlapping guides, docs/seo-okrevanje.md. */
+    noindex: z.boolean().default(false),
     korak: z.number().optional(),
     // Topic illustration on cards and lists (src/data/motivi.mjs); chosen from the file name when
     // left out.

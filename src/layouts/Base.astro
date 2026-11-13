@@ -29,7 +29,7 @@ interface Props {
 const { title, description = SITE.description, type = 'website', published, modified, jsonLd = [], image = '/og.png', search = true, searchType, markdown, noindex = false } = Astro.props;
 // Search results show about 60 characters of a title; long titles drop the site name suffix so
 // the words that describe the page are the ones that stay visible.
-const fullTitle = !title ? `${SITE.domain}: AI novice, vodniki in cene AI orodij v slovenščini` : title.length > 52 ? title : `${title} | ${SITE.name}`;
+const fullTitle = !title ? `${SITE.domain}: cene AI orodij, vodniki in AI Act za podjetja` : title.length > 52 ? title : `${title} | ${SITE.name}`;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const ogImage = new URL(image, Astro.site);
 const siteLd = [

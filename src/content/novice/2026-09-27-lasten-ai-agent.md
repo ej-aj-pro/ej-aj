@@ -3,6 +3,7 @@ title: 'Kako naredite svojega AI agenta s Claudom: pet načinov od najpreprostej
 description: 'Pet načinov, kako s Claudom narediti lastnega AI agenta: projekt, skill z rutino, subagent, Agent SDK in Managed Agents. Kdaj izbrati katerega in kaj potrebujete.'
 date: 2026-09-27
 type: vodnik
+noindex: true
 serija: prirocnik
 korak: 10
 videi: [zObYdmNB2Bo]

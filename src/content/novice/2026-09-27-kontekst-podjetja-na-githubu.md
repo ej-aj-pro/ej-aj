@@ -3,6 +3,7 @@ title: 'Ali hraniti kontekst podjetja za AI na GitHubu: prednosti, tveganja in k
 description: 'Ali naj podjetje dokumente za AI (CLAUDE.md, pravila, predloge) hrani v repozitoriju na GitHubu? Prednosti, tveganja, zasebni repozitoriji, gesla in kdaj je bolje ne.'
 date: 2026-09-27
 type: vodnik
+noindex: true
 serija: prirocnik
 korak: 5
 ---
