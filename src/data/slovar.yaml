@@ -162,6 +162,16 @@
     temelji na MCP.
   glej: [mcp]
 
+- id: plugin
+  izraz: Plugin (vtičnik)
+  angl: Plugin
+  razlaga: >-
+    Paket, ki AI asistentu naenkrat doda več zmožnosti: skille, konektorje do drugih
+    aplikacij ter druge nastavitve za določeno področje ali vlogo. Namesti se kot celota, zato
+    podjetju ni treba vsakega dela nastavljati posebej.
+  primer: Plugin za prodajo, ki prinese skill za pripravo ponudbe in konektor do CRM-ja.
+  glej: [skill, konektor, mcp]
+
 - id: podatkovno-skladisce
   izraz: Podatkovno skladišče
   angl: Data warehouse
