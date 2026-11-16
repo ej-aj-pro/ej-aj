@@ -101,7 +101,7 @@
   stanje: odprt
   za_koga: Posamezno malo ali srednje podjetje (tudi startup) iz EU ali pridružene države. Manjša podjetja s srednjo tržno kapitalizacijo (do 499 zaposlenih) samo za naložbo v kapital, izjemoma za kombinacijo nepovratnih sredstev in naložbe, kadar gre za hitro rast. Prijavijo se lahko tudi posamezniki, ki podjetje šele ustanavljajo.
   kaj: 'Prijava ima tri korake: kratka prijava, polna prijava in razgovor z žirijo EIC. Kratko prijavo lahko oddate kadar koli, odgovor dobite običajno v 4 do 6 tednih. Kdor dobi pozitivno oceno, odda polno prijavo na enega od datumov 20. 1., 17. 3., 1. 9. ali 4. 11. 2027. Za projekte na vnaprej določenih temah je EIC Accelerator Challenges, za vse druge tehnologije EIC Accelerator Open.'
-  znesek: nepovratna sredstva do 2,5 milijona EUR in naložba v kapital od 1 do 10 milijonov EUR na podjetje; v letu 2027 skupaj 428 milijonov EUR za Accelerator Open in 150 milijonov EUR za Accelerator Challenges
+  znesek: nepovratna sredstva do 2,5 milijona EUR in naložba (lastniški kapital ali na primer zamenljivo posojilo) od 1 do 10 milijonov EUR na podjetje; v letu 2027 skupaj 428 milijonov EUR za Accelerator Open in 150 milijonov EUR za Accelerator Challenges
   rok: 2027-12-16
   rok_opis: kratke prijave sprejemajo sproti, oddaja je odprta od 10. 11. 2026
   teme: [ai, startup, raziskave]
@@ -116,9 +116,9 @@
   razpisovalec: ARIS (Javna agencija za znanstvenoraziskovalno in inovacijsko dejavnost) za Ministrstvo za gospodarstvo, delo in šport
   raven: slovenija
   stanje: odprt
-  za_koga: 'Podjetja s sedežem v Sloveniji ne glede na velikost (tudi podjetja iz drugih držav EU s podružnico v Sloveniji), samostojno ali v konzorciju do petih partnerjev, v katerem so lahko tudi javne raziskovalne organizacije. Projekt se mora izvajati v kohezijski regiji Zahodna Slovenija, kjer mora imeti vsak partner sedež, poslovno enoto ali podružnico. Podjetje mora biti ustanovljeno vsaj dve leti pred oddajo vloge, 31. 12. 2025 je moralo imeti vsaj tri zaposlene, njegovi čisti prihodki v letu 2025 pa morajo biti vsaj tretjina načrtovanih upravičenih stroškov. Prijavitelj lahko odda samo eno vlogo.'
-  kaj: 'Projekti na področju kritičnih in nastajajočih strateških tehnologij v treh sektorjih: digitalne tehnologije in globokotehnološke (deep tech) inovacije, čiste tehnologije in biotehnologije. Sofinancira raziskave in razvoj, postavitev preskusne infrastrukture ter postavitev ali razširitev proizvodnje. Projekt se mora uvrstiti v vsaj eno prednostno področje slovenske strategije pametne specializacije (S5), traja največ 36 mesecev in se ne sme začeti pred oddajo vloge.'
-  znesek: 'od 1 do 10 milijonov EUR sofinanciranja na projekt, skupaj 30 milijonov EUR; pri raziskavah in razvoju do 45 % upravičenih stroškov za mikro in mala podjetja (v konzorciju z vsaj enim MSP do 60 %)'
+  za_koga: 'Podjetja s sedežem v Sloveniji ne glede na velikost (tudi podjetja iz drugih držav EU, ki se zavežejo, da bodo do začetka projekta registrirala podružnico v Zahodni Sloveniji), samostojno ali v konzorciju do petih partnerjev. V konzorciju so lahko tudi javne raziskovalne organizacije, ki pa ne morejo biti prijavitelj in skupaj dobijo največ 30 % sofinanciranja. Projekt se mora izvajati v kohezijski regiji Zahodna Slovenija, kjer mora imeti vsak partner sedež, poslovno enoto ali podružnico. Vsako podjetje (z nekaj izjemami za partnerje) mora biti ustanovljeno vsaj dve leti pred oddajo vloge, 31. 12. 2025 je moralo imeti vsaj tri zaposlene, njegovi čisti prihodki v letu 2025 morajo biti vsaj tretjina njegovih načrtovanih upravičenih stroškov, bonitetna ocena po metodologiji AJPES pa najmanj SB6. Prijavitelj lahko odda samo eno vlogo.'
+  kaj: 'Projekti na področju kritičnih in nastajajočih strateških tehnologij v treh sektorjih: digitalne tehnologije in globokotehnološke (deep tech) inovacije, čiste in z viri gospodarne tehnologije ter biotehnologije. Sofinancira raziskave in razvoj, postavitev preskusne in eksperimentalne infrastrukture ter postavitev ali razširitev proizvodnje. Projekt se mora uvrstiti v vsaj eno prednostno področje slovenske strategije pametne specializacije (S5), traja največ 36 mesecev (najdlje do 31. 5. 2030) in se ne sme začeti pred oddajo vloge.'
+  znesek: 'od 1 do 10 milijonov EUR sofinanciranja na projekt, skupaj 30 milijonov EUR; pri raziskavah in razvoju do 45 % upravičenih stroškov za mikro in mala, 35 % za srednja in 25 % za velika podjetja; do 15 odstotnih točk več v konzorciju, kjer raziskave izvajata vsaj dva nepovezana partnerja, vsaj eden je MSP in noben ne nosi več kot 70 % stroškov raziskav'
   rok: 2027-04-01
   rok_opis: do 14. ure
   teme: [digitalizacija, raziskave]
@@ -351,7 +351,7 @@
   razpisovalec: Evropska komisija, Evropski svet za inovacije (EIC)
   raven: eu
   stanje: zaprt
-  za_koga: Konzorciji ali posamezne organizacije iz EU ali pridruženih držav (univerze, raziskovalne organizacije, MSP, startupi). Velika podjetja se ne morejo prijaviti sama.
+  za_koga: Konzorciji ali posamezne organizacije iz EU ali pridruženih držav (univerze, raziskovalne organizacije, MSP, startupi). Samostojno se ne morejo prijaviti podjetja s srednjo tržno kapitalizacijo in velika podjetja.
   kaj: Raziskave modelov in arhitektur AI, ki zmorejo sklepanje, abstrakcijo in načrtovanje ter delajo z več vrstami podatkov.
   znesek: null
   rok: 2026-10-28
@@ -365,7 +365,7 @@
   razpisovalec: Evropska komisija, Evropski svet za inovacije (EIC)
   raven: eu
   stanje: zaprt
-  za_koga: Predvsem posamezno malo ali srednje podjetje (tudi startup) iz EU ali pridružene države. Izjemoma tudi manjša srednje velika podjetja in posamezniki, ki podjetje šele ustanavljajo.
+  za_koga: Predvsem posamezno malo ali srednje podjetje (tudi startup) iz EU ali pridružene države. Izjemoma tudi manjša podjetja s srednjo tržno kapitalizacijo (do 499 zaposlenih) in posamezniki, ki podjetje šele ustanavljajo.
   kaj: Nepovratna sredstva, naložba v kapital in podpora pri rasti za inovacije, ki temeljijo na znanstvenem ali tehnološkem preboju in potrebujejo veliko denarja in časa do prvih prihodkov.
   znesek: null
   rok: 2026-11-04
