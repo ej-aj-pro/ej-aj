@@ -333,6 +333,16 @@
     pa počasnejše in manj zanesljivo od neposredne povezave.
   glej: [agent, mcp]
 
+- id: model-sveta
+  izraz: Model sveta
+  angl: World model
+  razlaga: >-
+    AI, ki se iz videa in drugih podatkov nauči, kako se svet obnaša, in napove, kako se
+    okolje spremeni ob določenem dejanju. Nekateri modeli sveta iz besedila ali slike
+    ustvarijo interaktivno okolje, po katerem se lahko premikate. Uporabljajo se za
+    simulacije, učenje robotov in igre.
+  glej: [generativna-ai, digitalni-dvojcek, multimodalnost]
+
 - id: digitalni-dvojcek
   izraz: Digitalni dvojček
   angl: Digital twin
@@ -394,6 +404,19 @@
     vsakdanje rabe pa predvsem preglednost. Veljati je začela avgusta 2024, obveznosti pa se
     uvajajo postopoma v več letih.
   glej: [zasebnost-podatkov]
+
+- id: ocena-ucinka-na-temeljne-pravice
+  izraz: Ocena učinka na temeljne pravice (FRIA)
+  angl: Fundamental rights impact assessment
+  razlaga: >-
+    Ocena, ki jo AI Act zahteva od nekaterih uporabnikov visoko tveganih sistemov AI,
+    preden jih začnejo uporabljati: od javnih organov in izvajalcev javnih storitev ter od
+    tistih, ki z AI ocenjujejo kreditno sposobnost ali določajo cene življenjskih in
+    zdravstvenih zavarovanj. V njej opišejo, za kaj, kako dolgo in kako pogosto bodo
+    sistem uporabljali, na koga lahko vpliva, kakšna tveganja prinaša, kako bo potekal
+    človeški nadzor in kako bodo ukrepali, če gre kaj narobe. Rezultate sporočijo organu
+    za nadzor trga.
+  glej: [ai-act, pristranskost, algoritmicno-upravljanje]
 
 - id: algoritmicno-upravljanje
   izraz: Algoritmično upravljanje
