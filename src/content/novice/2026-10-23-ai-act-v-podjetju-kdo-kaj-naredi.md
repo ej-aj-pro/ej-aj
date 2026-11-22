@@ -3,6 +3,7 @@ title: 'AI Act v podjetju: kdo kaj naredi in kako pri tem sodelujejo kadrovska s
 description: 'Kako si vodstvo, kadrovska služba, IT in pooblaščena oseba za varstvo podatkov razdelijo naloge po AI Act ter kdaj je treba obvestiti sindikat in svet delavcev.'
 date: 2026-10-23
 type: vodnik
+aiActRoki: true
 ---
 
 Kaj Akt o umetni inteligenci (AI Act) zahteva od podjetij, ki AI uporabljajo, je opisano v vodniku [AI Act za slovenska podjetja](/vodniki/ai-act-za-slovenska-podjetja/). Ta vodnik odgovarja na naslednje vprašanje: kdo v podjetju to naredi. Veliko nalog po naši oceni pristane v kadrovski službi, ker gre za usposabljanje zaposlenih, pravila, ki jih morajo zaposleni upoštevati, in obveščanje delavcev. Pri tem veljata tudi Zakon o delovnih razmerjih (ZDR-1) in Zakon o sodelovanju delavcev pri upravljanju (ZSDU), ki ju vodniki o AI Act redko omenjajo. Viri so preverjeni 30. oktobra 2026. Vodnik ni pravni nasvet.

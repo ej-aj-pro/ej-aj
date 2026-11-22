@@ -18,6 +18,8 @@ const novice = defineCollection({
     serija: z.enum(['prirocnik']).optional(),
     /** Keep this guide out of Google's index (links still followed). For short or overlapping guides, docs/seo-okrevanje.md. */
     noindex: z.boolean().default(false),
+    /** Show the AI Act deadline countdown (src/components/AiActRoki.astro) under the title. */
+    aiActRoki: z.boolean().default(false),
     korak: z.number().optional(),
     // Topic illustration on cards and lists (src/data/motivi.mjs); chosen from the file name when
     // left out.

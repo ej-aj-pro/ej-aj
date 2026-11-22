@@ -1,0 +1,204 @@
+---
+// Countdown to the next AI Act application date, from src/data/ai-act-roki.yaml.
+// The page is static, so the server renders the next date as of the build and a small script
+// picks the next date again in the reader's browser and counts the days. The day count is only
+// filled in by the script: a number baked in at build time would be wrong in search snippets
+// a few days later. `compact` (home page) shows only the next date and links to the guide.
+import yaml from 'js-yaml';
+import rokiRaw from '../data/ai-act-roki.yaml?raw';
+
+interface Rok {
+  datum: Date | string;
+  naslov: string;
+  kaj: string;
+  zaVas: string;
+  clen: string;
+}
+interface Props {
+  compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
+const iso = (d: Date | string) => (d instanceof Date ? d.toISOString().slice(0, 10) : String(d));
+const roki = (yaml.load(rokiRaw) as Rok[]).map((r) => ({ ...r, datum: iso(r.datum) })).sort((a, b) => a.datum.localeCompare(b.datum));
+const today = new Date().toISOString().slice(0, 10);
+const ahead = roki.filter((r) => r.datum >= today);
+const next = ahead[0];
+const later = ahead.slice(1);
+const fmt = (d: string) => new Date(`${d}T12:00:00Z`).toLocaleDateString('sl-SI', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+const guide = '/vodniki/ai-act-za-slovenska-podjetja/';
+---
+
+{
+  next && (
+    <section class:list={['roki', { compact }]} aria-label="Roki AI Act" data-roki={JSON.stringify(roki.map((r) => ({ d: r.datum, n: r.naslov, k: r.kaj, z: r.zaVas, l: fmt(r.datum) })))}>
+      <div class="roki-next">
+        <p class="roki-label">Naslednji rok AI Act</p>
+        <p class="roki-datum">
+          <time data-roki-datum datetime={next.datum}>{fmt(next.datum)}</time>
+          <span class="roki-stevec" data-roki-stevec aria-live="polite" />
+        </p>
+        <p class="roki-naslov" data-roki-naslov>{next.naslov}</p>
+        {!compact && <p class="roki-kaj" data-roki-kaj>{next.kaj}</p>}
+        <p class="roki-zavas">
+          <strong>Kaj to pomeni za vas:</strong> <span data-roki-zavas>{next.zaVas}</span>
+        </p>
+        {compact && (
+          <p class="roki-povezava">
+            <a href={guide}>Vsi roki in obveznosti v vodniku AI Act</a> ·{' '}
+            <a href="/ai-act-preverjanje/">Preverite svojo rabo AI</a>
+          </p>
+        )}
+      </div>
+      {!compact && later.length > 0 && (
+        <ol class="roki-pozneje" data-roki-pozneje>
+          {later.map((r) => (
+            <li>
+              <time datetime={r.datum}>{fmt(r.datum)}</time>
+              <span>{r.naslov}</span>
+            </li>
+          ))}
+        </ol>
+      )}
+      {!compact && (
+        <p class="roki-vir">
+          Datumi po AI Act, kot ga je spremenil AI Omnibus (Uredba (EU) 2026/1744, velja od 27. julija 2026).{' '}
+          <a href="https://digital-strategy.ec.europa.eu/en/faqs/ai-act-questions-answers">Evropska komisija, vprašanja in odgovori o AI Act</a>
+        </p>
+      )}
+    </section>
+  )
+}
+
+<script>
+  // Slovenian plural of "dan": 1 dan, 2 dneva, 3 in 4 dnevi, 5 in več dni (by the last two digits).
+  function dni(n: number) {
+    const m = n % 100;
+    if (m === 1) return `${n} dan`;
+    if (m === 2) return `${n} dneva`;
+    if (m === 3 || m === 4) return `${n} dnevi`;
+    return `${n} dni`;
+  }
+  // Today's date in Slovenia, so the count changes at local midnight.
+  const today = new Intl.DateTimeFormat('sv-SE', { timeZone: 'Europe/Ljubljana' }).format(new Date());
+  for (const el of document.querySelectorAll<HTMLElement>('[data-roki]')) {
+    const roki: { d: string; n: string; k: string; z: string; l: string }[] = JSON.parse(el.dataset.roki ?? '[]');
+    const ahead = roki.filter((r) => r.d >= today);
+    if (!ahead.length) {
+      el.hidden = true;
+      continue;
+    }
+    const next = ahead[0];
+    const set = (sel: string, text: string) => {
+      const t = el.querySelector(sel);
+      if (t) t.textContent = text;
+    };
+    const time = el.querySelector('[data-roki-datum]');
+    time?.setAttribute('datetime', next.d);
+    set('[data-roki-datum]', next.l);
+    set('[data-roki-naslov]', next.n);
+    set('[data-roki-kaj]', next.k);
+    set('[data-roki-zavas]', next.z);
+    const days = Math.round((Date.parse(next.d) - Date.parse(today)) / 86400000);
+    set('[data-roki-stevec]', days === 0 ? 'začne veljati danes' : `še ${dni(days)}`);
+    const list = el.querySelector('[data-roki-pozneje]');
+    if (list) {
+      list.replaceChildren(
+        ...ahead.slice(1).map((r) => {
+          const li = document.createElement('li');
+          const t = document.createElement('time');
+          t.dateTime = r.d;
+          t.textContent = r.l;
+          const s = document.createElement('span');
+          s.textContent = r.n;
+          li.append(t, s);
+          return li;
+        }),
+      );
+    }
+  }
+</script>
+
+<style>
+  .roki {
+    margin: 28px 0 32px;
+    padding: 22px 22px 18px;
+    background: var(--accent-soft);
+    border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--line));
+    border-radius: var(--radius);
+  }
+  .roki-label {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .roki-datum {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px 14px;
+    margin-top: 6px;
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+  .roki-stevec {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--accent);
+    min-height: 1.3em;
+  }
+  .roki-naslov {
+    margin-top: 6px;
+    font-weight: 600;
+  }
+  .roki-kaj,
+  .roki-zavas,
+  .roki-povezava {
+    margin-top: 8px;
+    color: var(--ink);
+  }
+  .roki-povezava {
+    font-size: 0.95rem;
+  }
+  .roki-pozneje {
+    list-style: none;
+    margin: 16px 0 0;
+    padding: 14px 0 0;
+    border-top: 1px solid color-mix(in srgb, var(--accent) 25%, var(--line));
+    display: grid;
+    gap: 6px;
+  }
+  .roki-pozneje :global(li) {
+    display: grid;
+    grid-template-columns: 11em 1fr;
+    gap: 12px;
+  }
+  .roki-pozneje :global(time) {
+    font-weight: 600;
+  }
+  .roki-vir {
+    margin-top: 14px;
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+  .roki.compact {
+    margin: 0;
+  }
+  @media (max-width: 560px) {
+    .roki {
+      padding: 18px 16px 14px;
+    }
+    .roki-datum {
+      font-size: 1.35rem;
+    }
+    .roki-pozneje :global(li) {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+  }
+</style>
