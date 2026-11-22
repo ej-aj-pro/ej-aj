@@ -172,6 +172,62 @@ Narejeno na podlagi izvoza (PR `tehnicno/seo-search-console`):
 - Naslova "ChatGPT v slovenščini" in "ChatGPT, Claude ali Gemini" sta bližje iskanim nizom
   ("brezplačno", "kateri izbrati").
 
+## Padec v Googlu 19. oktobra 2026
+
+Od 19. 10. 2026 ima stran v Googlu skoraj nič prikazov (prej 50 do 70 na dan, povprečno mesto 9).
+Pregled v Search Console 1. 11. 2026:
+
+- ročni ukrepi, varnostne težave, odstranitve in filtriranje varnega iskanja: nič;
+- 112 strani je indeksiranih, številka po 19. 10. ni padla;
+- pregled URL-ja `/cene/claude/`: "URL je v Googlu", kanonični URL pravilen, preizkus v živo uspešen,
+  zadnje preiskovanje 18. 10. ob 20.33;
+- statistika preiskovanja: gostitelj brez težav, 95 % odgovorov 200, preiskovanje teče naprej.
+
+Strani so v indeksu (`site:ej-aj.si` jih vrne), pri iskanju pa se ne pojavijo niti pri točnem
+naslovu ali pri "claude cena ej-aj". To kaže na samodejno znižanje celotne strani zaradi kakovosti,
+ne na tehnično napako. Google o tem ne pošlje sporočila in zahteve za ponoven pregled ni.
+Časovno se ujema z 16. in 17. 10., ko je naenkrat izšlo 8 vodnikov, tedenski pregled, dve orodji,
+12 člankov je dobilo nov naslov in vsak članek je dobil javno kopijo `.md`.
+
+Narejeno (PR `tehnicno/seo-padec-oktober`):
+
+- kopije `.md`, `llms.txt` in `llms-full.txt` imajo glavo `X-Robots-Tag: noindex`
+  (`public/_headers`): ostanejo dostopne AI orodjem, v iskanju pa niso dvojniki strani HTML;
+- novice in tedenski pregledi imajo `noindex, follow` in niso več v sitemapu. Obnavljajo objave
+  drugih podjetij in so imeli po 1 do 2 prikaza; ostanejo na strani, v RSS in v newsletterju.
+
+Drugi korak (PR `tehnicno/seo-slovar-pravila`):
+
+- Slovar je imel 63 od 124 URL-jev v sitemapu, gesla v povprečju 42 besed. Strani gesel imajo
+  zdaj `noindex, follow`, razen gesel z `indeks: true` v `slovar.yaml`: gpt, prompt, vibe coding,
+  agent, token, veliki jezikovni model in mcp (imela so prikaze v prvem izvozu). Ta je treba
+  razširiti na 300 do 500 besed (primer rabe, pogoste zmote, povezava na vodnik ali ceno), sicer
+  ostanejo tanka. Zbirna stran `/slovar/` z vsemi razlagami ostane v indeksu.
+- `/iskanje/` ima `noindex` in ni več v sitemapu.
+- Pravila za tempo in indeksiranje so v `CLAUDE.md` ("Search indexing and pace") ter v skillih
+  `nov-vodnik` in `tedenski-pregled`.
+
+Vodniki, ki se prekrivajo (kandidati za združitev s preusmeritvijo 301, odloči Anže):
+
+1. Izbira orodja: "ChatGPT, Claude ali Gemini" (1.414 besed), "Kako izbrati AI orodje za
+   podjetje" (1.339) in "Kateri AI model izbrati za katero nalogo" (1.878).
+2. AI Act: "AI Act za slovenska podjetja" (1.678), "AI Act v podjetju: kdo kaj naredi" (2.117),
+   "Usposabljanje zaposlenih za AI pismenost" (1.272) in orodje `/ai-act-preverjanje/`.
+3. Kontekst podjetja: "Kako AI-ju dati kontekst podjetja" (684) in "Ali hraniti kontekst
+   podjetja na GitHubu" (656).
+4. Osnove: "Kako uporabljati ChatGPT in Claude pri delu" (690) in "Kako napisati dober prompt"
+   (784), poleg strani `/prompti/`.
+5. Priročnik o Claude Code: subagenti (523), hooki (558), lasten agent (545), rutine (624),
+   "Claude Code ali klepet" (607). Kratki in za bralca iz podjetja preozki; smiselno jih je
+   združiti v en daljši vodnik ali jim dati `noindex`.
+6. "Kako z AI sestavljamo tedenski pregled razpisov" (862) opisuje naš postopek in ne odgovarja
+   na iskanje; kandidat za `noindex`.
+
+Kako naprej: manj novih strani naenkrat, vsaka z lastno vrednostjo (preverjene cene, podatki,
+primeri iz prakse). Prikaze preveri sredi decembra 2026; znižanja se običajno popravijo šele ob
+naslednjih Googlovih posodobitvah. Če se do takrat nič ne premakne, naslednji kandidat za
+`noindex` so najkrajša gesla v slovarju.
+
 ## Zunaj strani (največji vzvod za novo domeno)
 
 Nova domena brez povratnih povezav bo mesece rangirala nizko ne glede na vsebino. Možnosti, ki

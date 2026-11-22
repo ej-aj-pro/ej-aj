@@ -1,0 +1,12 @@
+# Cloudflare Workers static assets headers (https://developers.cloudflare.com/workers/static-assets/headers/)
+# Plain-text copies for AI tools: readable by anyone, but kept out of search results so they do
+# not compete with the HTML pages as duplicates (added after the Google drop of 19 October 2026,
+# see docs/seo.md).
+/novice/*.md
+  X-Robots-Tag: noindex
+/vodniki/*.md
+  X-Robots-Tag: noindex
+/llms.txt
+  X-Robots-Tag: noindex
+/llms-full.txt
+  X-Robots-Tag: noindex

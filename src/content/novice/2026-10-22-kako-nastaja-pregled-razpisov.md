@@ -3,6 +3,7 @@ title: 'Razpisi za AI in digitalizacijo: kako z AI sestavljamo tedenski pregled'
 description: 'Kje se objavljajo razpisi za podjetja, kako jih AI agent vsak teden prebere, zakaj status preverimo na strani razpisa in kaj to pomeni za podjetje, ki želi zgraditi podobno orodje.'
 date: 2026-10-22
 type: vodnik
+noindex: true
 motiv: denar
 ---
 
