@@ -168,6 +168,17 @@
     temelji na MCP.
   glej: [mcp]
 
+- id: enotna-prijava
+  izraz: Enotna prijava (SSO)
+  angl: Single sign-on
+  razlaga: >-
+    Način, pri katerem se zaposleni z enim računom podjetja prijavijo v več aplikacij, namesto
+    da bi imeli za vsako svoje geslo. Prijavo potrdi ponudnik identitete, sistem, v katerem
+    podjetje vodi uporabnike. Ko nekdo odide, mu skrbnik na enem mestu zapre prijavo v vse
+    tako povezane aplikacije, odprte seje in lokalni računi pa lahko ostanejo do izteka ali
+    odstranitve.
+  glej: [konektor]
+
 - id: podatkovno-skladisce
   izraz: Podatkovno skladišče
   angl: Data warehouse
