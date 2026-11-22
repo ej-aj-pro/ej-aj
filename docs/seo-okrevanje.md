@@ -138,3 +138,18 @@ Predloga maila (s `pozdrav@ej-aj.si`, prilagodi prejemniku):
   novo domeno ni rešitev, ker ocena sledi vsebini.
 - Bing (Webmaster Tools) preveri vzporedno: če tam promet raste, je težava Googlova ocena, ne
   vsebina ali tehnika.
+
+## Pregled 22. 11. 2026
+
+- Search Console: od 12. 11. skoraj vsak dan 1 do 4 prikazi (prej večinoma 0), povprečno mesto
+  od 9 do 65. Znižanje še traja, prvi premik je majhen.
+- Zunanje povezave: 1 (Search Console, poročilo Povezave). To je največja vrzel; razdelek 3
+  zgoraj ostaja prednostna naloga za Anžeta.
+- Hitrost: strani HTML imajo 7 do 11 KB (stisnjeno), CSS 3 KB, odziv strežnika 0,1 do 0,17 s,
+  brez zamikov postavitve. Edina izboljšava: dolgo predpomnjenje datotek v `/_astro/` (#115).
+- Novo: odštevalnik do naslednjega roka AI Act (`src/components/AiActRoki.astro`, podatki v
+  `src/data/ai-act-roki.yaml`) na naslovnici, v obeh vodnikih o AI Act in na
+  `/ai-act-preverjanje/`. Brez novega URL-ja, torej brez nove indeksirane strani. Krepi strani,
+  ki so že v indeksu, in je primerna vsebina za predlogo maila zbornicam (razdelek 3).
+- Zamisel o odštevalniku do "napada AI in robotov" je opuščena: izmišljen datum je click bait,
+  kar je signal, zaradi katerega je bila stran znižana, AI asistenti pa takih strani ne citirajo.
