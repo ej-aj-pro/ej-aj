@@ -84,7 +84,7 @@
   raven: slovenija
   stanje: odprt
   za_koga: Mikro, mala in srednja podjetja s sedežem v Sloveniji, ki so vpisana v register inovativnih zagonskih podjetij in imajo ob oddaji vloge in ves čas projekta vsaj enega zaposlenega. Pred oddajo vloge potrebujete potrdilo člana Nacionalnega start-up konzorcija, da je izdelava prototipa smiselna.
-  kaj: Sofinanciranje storitev zunanjega izvajalca, ki izdela fizični ali digitalni prototip. Poziv je bil objavljen 6. 11. 2026.
+  kaj: Sofinanciranje storitev zunanjega izvajalca, ki izdela fizični ali digitalni prototip. Prototip ne sme biti izdelan pred oddajo vloge. Poziv je bil objavljen 6. 11. 2026.
   znesek: 500 do 5.000 EUR, 60 % upravičenih stroškov, skupaj 500.000 EUR za obdobje 2026 do 2028
   rok: 2028-03-31
   teme: [startup, raziskave]
@@ -113,9 +113,9 @@
   razpisovalec: ARIS (Javna agencija za znanstvenoraziskovalno in inovacijsko dejavnost) za Ministrstvo za gospodarstvo, delo in šport
   raven: slovenija
   stanje: odprt
-  za_koga: 'Podjetja s sedežem v Sloveniji ne glede na velikost (podjetja iz drugih držav EU morajo registrirati podružnico v Zahodni Sloveniji), samostojno ali v konzorciju do petih partnerjev. Javne raziskovalne organizacije so lahko le partnerji in skupaj dobijo največ 30 % sofinanciranja. Vsak mora imeti sedež, poslovno enoto ali podružnico v kohezijski regiji Zahodna Slovenija. Podjetje mora biti ustanovljeno vsaj dve leti pred oddajo vloge in je 31. 12. 2025 zaposlovalo vsaj tri osebe, čisti prihodki v letu 2025 morajo biti vsaj tretjina njegovih načrtovanih upravičenih stroškov, bonitetna ocena po metodologiji AJPES pa najmanj SB6 (za enega mlajšega partnerja veljajo blažji pogoji).'
+  za_koga: 'Podjetja s sedežem v Sloveniji ne glede na velikost (podjetja iz drugih držav EU morajo registrirati podružnico v Zahodni Sloveniji), samostojno ali v konzorciju do petih partnerjev. Javne raziskovalne organizacije so lahko le partnerji, ne sodelujejo pri proizvodnih naložbah in skupaj dobijo največ 30 % sofinanciranja. Vsak mora najpozneje ob začetku projekta imeti sedež, poslovno enoto ali podružnico v kohezijski regiji Zahodna Slovenija. Podjetje (razen podružnice tujega podjetja) mora biti ustanovljeno vsaj dve leti pred oddajo vloge in je 31. 12. 2025 zaposlovalo vsaj tri osebe, čisti prihodki v letu 2025 morajo biti vsaj tretjina njegovih načrtovanih upravičenih stroškov, bonitetna ocena po metodologiji AJPES pa najmanj SB6 (za enega mlajšega partnerja veljajo blažji pogoji).'
   kaj: 'Projekti v treh sektorjih: digitalne tehnologije in globokotehnološke (deep tech) inovacije, čiste in z viri gospodarne tehnologije ter biotehnologije. Sofinancira raziskave in razvoj, preskusno in eksperimentalno infrastrukturo ter proizvodne zmogljivosti. Projekt se mora uvrstiti v vsaj eno prednostno področje slovenske strategije pametne specializacije (S5), traja največ 36 mesecev (najdlje do 31. 5. 2030) in se ne sme začeti pred oddajo vloge.'
-  znesek: 'od 1 do 10 milijonov EUR sofinanciranja na projekt, skupaj 30 milijonov EUR; pri raziskavah in razvoju do 45 % upravičenih stroškov za mikro in mala, 35 % za srednja in 25 % za velika podjetja, v konzorciju z ustreznim sodelovanjem do 15 odstotnih točk več'
+  znesek: 'od 1 do 10 milijonov EUR sofinanciranja na projekt, skupaj 30 milijonov EUR; pri raziskavah in razvoju do 45 % upravičenih stroškov za mikro in mala, 35 % za srednja in 25 % za velika podjetja, v konzorciju vsaj dveh nepovezanih partnerjev, kjer nihče ne nosi več kot 70 % stroškov raziskav in razvoja, do 15 odstotnih točk več'
   rok: 2027-04-01
   rok_opis: do 14. ure
   teme: [digitalizacija, raziskave]
@@ -128,7 +128,7 @@
   razpisovalec: Evropska komisija, Obzorje Evropa
   raven: eu
   stanje: odprt
-  za_koga: Konzorciji, v katerih so ključni partnerji podjetja iz ciljnega sektorja. Omejitve glede držav preverite v razpisu. MSP pridejo do sredstev na tekmovanju, ki ga organizira izbrani konzorcij.
+  za_koga: Konzorciji, v katerih so ključni partnerji podjetja iz ciljnega sektorja. Sodelujejo lahko le organizacije iz EU, Islandije, Norveške, Kanade, Izraela, Koreje, Nove Zelandije, Švice in Združenega kraljestva. MSP (sama ali v manjši skupini, ki jo vodi MSP) pridejo do sredstev na tekmovanju, ki ga organizira izbrani konzorcij.
   kaj: Konzorcij organizira večstopenjsko tekmovanje, na katerem MSP z AI rešujejo izzive v zdravstvu, napredni proizvodnji ali avtonomni vožnji, in jim razdeli sredstva (najprej 10 po 300.000 EUR, nato 4 po 2.250.000 EUR).
   znesek: 42 milijonov EUR skupaj, predvidoma 3 projekti
   rok: 2027-03-18
@@ -344,7 +344,7 @@
   razpisovalec: Evropska komisija, Evropski svet za inovacije (EIC)
   raven: eu
   stanje: zaprt
-  za_koga: Predvsem posamezno malo ali srednje podjetje (tudi startup) iz EU ali pridružene države. Izjemoma tudi manjša srednje velika podjetja in posamezniki, ki podjetje šele ustanavljajo.
+  za_koga: Predvsem posamezno malo ali srednje podjetje (tudi startup) iz EU ali pridružene države. Izjemoma, za hitro rast, tudi manjša podjetja s srednjo tržno kapitalizacijo (do 499 zaposlenih) in posamezniki, ki podjetje šele ustanavljajo.
   kaj: Nepovratna sredstva, naložba v kapital in podpora pri rasti za inovacije, ki temeljijo na znanstvenem ali tehnološkem preboju in potrebujejo veliko denarja in časa do prvih prihodkov.
   znesek: null
   rok: 2026-11-04
@@ -373,7 +373,7 @@
   razpisovalec: ARIS (Javna agencija za znanstvenoraziskovalno in inovacijsko dejavnost)
   raven: slovenija
   stanje: zaprt
-  za_koga: Konzorciji od treh do petih podjetij s sedežem v Sloveniji ne glede na velikost. Med upravičenci so lahko tudi javne raziskovalne organizacije.
+  za_koga: Konzorciji od treh do petih podjetij s sedežem v Sloveniji ne glede na velikost. Vsak partner je moral imeti vsaj pet zaposlenih in izpolniti pogoj glede čistih prihodkov od prodaje. Javne raziskovalne organizacije so lahko konzorcijski partnerji.
   kaj: Konzorcijski projekti industrijskih raziskav in eksperimentalnega razvoja novih ali izboljšanih izdelkov, postopkov ali storitev, ki trajajo od 18 do 24 mesecev.
   znesek: 600.000 do 800.000 EUR na projekt, skupaj 9 milijonov EUR
   rok: 2026-09-21
