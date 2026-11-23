@@ -40,6 +40,7 @@ const PHRASES = {
   asistent: ['AI asistent'],
   mcp: ['MCP', 'Model Context Protocol'],
   skill: ['skill'],
+  plugin: ['plugin', 'vtičnik'],
   rag: ['RAG'],
   'enotna-prijava': ['enotna prijava', 'enotne prijave', 'enotni prijavi', 'enotno prijavo', 'SSO', 'single sign-on'],
   vlozitev: ['vložitev', 'vložitve', 'vložitvi', 'vložitvami', 'embedding'],
