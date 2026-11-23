@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import AiActRoki from '../components/AiActRoki.astro';
 
 // Interactive check: which AI Act obligations apply to a company that uses an AI system
 // (a deployer). Every statement summarises the AI Act as amended by the AI Omnibus (in force
@@ -14,7 +15,7 @@ const PREPOVEDI = [
   'Sklepanje o čustvih zaposlenih ali učencev na delovnem mestu ali v izobraževanju (razen iz zdravstvenih ali varnostnih razlogov).',
   'Biometrična kategorizacija posameznikov za sklepanje o njihovi rasi, političnem prepričanju, članstvu v sindikatu, veri ali filozofskem prepričanju, spolnem življenju ali spolni usmerjenosti.',
   'Biometrična identifikacija na daljavo v realnem času v javno dostopnih prostorih za kazenski pregon (razen ozkih izjem).',
-  'Ustvarjanje ali predelava realističnih slik, videov ali zvoka intimnih delov ali spolnih dejanj prepoznavne osebe brez njene izrecne privolitve ter ustvarjanje gradiva spolne zlorabe otrok (prepoved velja od 2. decembra 2026).',
+  'Ustvarjanje ali predelava realističnih slik, videov ali zvoka intimnih delov ali spolnih dejanj prepoznavne osebe brez njene privolitve ter ustvarjanje gradiva spolne zlorabe otrok (prepoved velja od 2. decembra 2026).',
 ];
 const PODROCJA = [
   ['Biometrija', 'prepoznavanje ljudi na daljavo, razvrščanje ljudi po občutljivih lastnostih na podlagi obraza, glasu ali drugih telesnih značilnosti, prepoznavanje čustev (ne pa preverjanje, ali je oseba res tista, za katero se izdaja, na primer odklep vrat z obrazom)'],
@@ -53,6 +54,7 @@ const PREGLEDNOST = [
         nasvet.
       </p>
     </header>
+    <AiActRoki />
 
     <form id="aiact" class="aia" onsubmit="return false">
       <fieldset>

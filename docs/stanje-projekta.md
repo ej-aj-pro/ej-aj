@@ -52,6 +52,10 @@ slovar. Analitika: Cloudflare Web Analytics (brez piškotkov).
 - Pred novo funkcijo premisli, ali doda vrednost: SEO, uporabno znanje, pomoč Anžetu pri delu
   (delavnice, stranke), promocija. Na kratko jo utemelji, preden začneš.
 - Nič iz strank (NDA): primeri so vedno generični.
+- **Tempo objav in indeksiranje** (od 3. 11. 2026, po padcu v Googlu 19. 10.): največ dve novi
+  indeksirani strani na teden, vsebinskih PR-jev ne združuješ v paketu, pred novim vodnikom
+  preveriš, ali tema že obstaja. Novice, tedenski pregledi in nova gesla v slovarju imajo
+  `noindex`. Podrobnosti v `CLAUDE.md` ("Search indexing and pace") in `docs/seo.md`.
 - Računov ne ustvarjaš ti; gesel ne vpisuješ. Pri dejanjih v brskalniku za strani, ki niso ta repo,
   vprašaj.
 

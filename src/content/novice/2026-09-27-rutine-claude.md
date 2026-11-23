@@ -3,6 +3,7 @@ title: 'Rutine v Claudu: kako AI dela sam ob določenem času'
 description: 'Kaj so rutine in načrtovana opravila v Claudu, razlika med lokalno rutino na vašem računalniku in rutino v oblaku, kako jo nastavite in kaj zapisati v navodila.'
 date: 2026-09-27
 type: vodnik
+noindex: true
 serija: prirocnik
 korak: 9
 videi: [p2qmX6TM0kw]

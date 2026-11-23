@@ -16,6 +16,10 @@ const novice = defineCollection({
     draft: z.boolean().default(false),
     // Series of guides with a hub page, e.g. "prirocnik" -> /prirocnik/; korak orders them.
     serija: z.enum(['prirocnik']).optional(),
+    /** Keep this guide out of Google's index (links still followed). For short or overlapping guides, docs/seo-okrevanje.md. */
+    noindex: z.boolean().default(false),
+    /** Show the AI Act deadline countdown (src/components/AiActRoki.astro) under the title. */
+    aiActRoki: z.boolean().default(false),
     korak: z.number().optional(),
     // Topic illustration on cards and lists (src/data/motivi.mjs); chosen from the file name when
     // left out.
@@ -67,6 +71,8 @@ const slovar = defineCollection({
     razlaga: z.string(),
     primer: z.string().optional(),
     glej: z.array(z.string()).default([]),
+    /** In Google's index. Off by default: a 40-word definition is a thin page, so only expanded entries are indexed (docs/seo.md). */
+    indeks: z.boolean().default(false),
   }),
 });
 
