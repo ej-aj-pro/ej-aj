@@ -10,3 +10,9 @@
   X-Robots-Tag: noindex
 /llms-full.txt
   X-Robots-Tag: noindex
+
+# Astro puts a content hash in every file name under /_astro/ (CSS, JS), so a changed file always
+# gets a new URL. Browsers can keep these for a year without asking again; HTML pages keep the
+# default revalidation, so a deploy is visible at once.
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable

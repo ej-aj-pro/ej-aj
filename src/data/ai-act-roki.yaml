@@ -1,0 +1,55 @@
+# Upcoming AI Act application dates, shown by src/components/AiActRoki.astro on the home page,
+# both AI Act guides and /ai-act-preverjanje/. One source for all of them: when a date or rule
+# changes, change it here and in the timeline (```grafika) of
+# src/content/novice/2026-09-26-ai-act-za-slovenska-podjetja.md, and fact-check both.
+# Dates are the AI Act as amended by the AI Omnibus (Regulation (EU) 2026/1744, in force
+# 27 July 2026). Past dates may stay in the list; the component shows only those still ahead.
+#
+# datum:   ISO date the rule starts to apply
+# naslov:  what starts to apply, short
+# kaj:     one or two sentences of fact
+# zaVas:   what it means for a company that uses AI tools (deployer), one sentence
+# clen:    article of the AI Act, shown in the source line
+
+- datum: 2026-12-02
+  naslov: Nove prepovedi in strojno berljivo označevanje
+  kaj: >-
+    Prepovedani postanejo sistemi, ki brez privolitve ustvarjajo ali predelujejo realistične intimne
+    podobe prepoznavnih ljudi, in sistemi, ki ustvarjajo gradivo spolne zlorabe otrok. Ponudniki generativnih orodij, danih na trg pred 2. avgustom
+    2026, morajo do tega dne vsebine označevati tudi strojno berljivo, na primer z vodnim žigom
+    ali metapodatki.
+  zaVas: >-
+    Če AI orodja samo uporabljate, za vas ne velja nova obveznost. Preverite le, da nobeno orodje
+    v podjetju ne spada med prepovedane.
+  clen: člen 5 in člen 111(4)
+
+- datum: 2027-12-02
+  naslov: Pravila za visoko tvegano rabo (Priloga III)
+  kaj: >-
+    Začnejo veljati pravila za rabe s seznama v Prilogi III, med njimi AI pri zaposlovanju, pri
+    odločanju o zaposlenih in pri oceni kreditne sposobnosti.
+  zaVas: >-
+    Če tak sistem uporabljate, morate zagotoviti človeški nadzor usposobljenih ljudi, dnevnike
+    delovanja, ki jih imate pod nadzorom, hraniti vsaj šest mesecev in pred uvedbo na delovnem mestu
+    obvestiti predstavnike delavcev in zaposlene.
+  clen: člen 26
+
+- datum: 2028-08-02
+  naslov: Pravila za AI, vgrajen v izdelke (Priloga I)
+  kaj: >-
+    Začnejo veljati pravila za visoko tvegane sisteme AI v izdelkih, kot so medicinski
+    pripomočki, dvigala in igrače.
+  zaVas: >-
+    Zadeva predvsem proizvajalce takih izdelkov. Podjetja, ki AI uporabljajo pri pisarniškem
+    delu, s tem rokom nimajo novih obveznosti.
+  clen: člen 113
+
+- datum: 2030-08-02
+  naslov: Uskladitev sistemov v javni upravi
+  kaj: >-
+    Ponudniki in uvajalci visoko tveganih sistemov, namenjenih organom javne oblasti, ki so bili
+    na trgu že prej, jih morajo uskladiti s pravili najpozneje do tega dne.
+  zaVas: >-
+    Če tak sistem razvijate, dobavljate ali uporabljate v javnem sektorju, načrtujte uskladitev do
+    tega roka.
+  clen: člen 111

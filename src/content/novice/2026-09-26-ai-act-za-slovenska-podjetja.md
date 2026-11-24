@@ -3,6 +3,7 @@ title: 'Akt o umetni inteligenci (AI Act): kaj velja za slovenska podjetja jesen
 description: 'Kaj Akt o umetni inteligenci zahteva od podjetij, ki uporabljajo ChatGPT, Claude ali Copilot: AI pismenost, prepovedi, preglednost, novi roki in kdo nadzira v Sloveniji.'
 date: 2026-09-26
 type: vodnik
+aiActRoki: true
 ---
 
 Večina slovenskih podjetij AI ne razvija, ampak ga uporablja: ChatGPT za maile, Claude za analize, Copilot v Wordu. Akt o umetni inteligenci (AI Act) takim podjetjem nalaga manj, kot se pogosto misli, nekaj obveznosti pa že velja. Ta vodnik povzema, kaj to pomeni za vas jeseni 2026, po spremembah, ki so začele veljati julija.
@@ -48,7 +49,7 @@ tocke:
     besedilo: "Pravila o preglednosti (člen 50): klepetalniki, označevanje ponarejenih posnetkov (deepfake) in besedil o zadevah javnega interesa. Nadzorni organi začnejo nadzirati tudi AI pismenost."
     stanje: velja
   - datum: 2. december 2026
-    besedilo: Nove prepovedi (sistemi, ki ustvarjajo intimne podobe ljudi brez njihove izrecne privolitve, in gradivo spolne zlorabe otrok). Do tega dne morajo ponudniki generativnih sistemov AI, danih na trg pred 2. avgustom 2026, uvesti strojno berljivo označevanje vsebin, torej oznako, ki jo prebere računalnik, na primer digitalni vodni žig ali metapodatke (člen 50(2)).
+    besedilo: Nove prepovedi (sistemi, ki brez privolitve ustvarjajo realistične intimne podobe prepoznavnih ljudi, in sistemi, ki ustvarjajo gradivo spolne zlorabe otrok). Do tega dne morajo ponudniki generativnih sistemov AI, danih na trg pred 2. avgustom 2026, uvesti strojno berljivo označevanje vsebin, torej oznako, ki jo prebere računalnik, na primer digitalni vodni žig ali metapodatke (člen 50(2)).
     stanje: prihaja
   - datum: 2. december 2027
     besedilo: Pravila za visoko tvegane rabe s seznama v Prilogi III uredbe (zaposlovanje, krediti ...).
