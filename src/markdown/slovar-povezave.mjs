@@ -48,6 +48,8 @@ const PHRASES = {
   benchmark: ['benchmark', 'primerjalni test'],
   'zasebnost-podatkov': ['zasebnost podatkov'],
   'ai-act': ['AI Act', 'Akt o umetni inteligenci'],
+  'model-sveta': ['model sveta', 'modela sveta', 'modeli sveta'],
+  'ocena-ucinka-na-temeljne-pravice': ['ocena učinka na temeljne pravice', 'oceno učinka na temeljne pravice', 'oceni učinka na temeljne pravice', 'FRIA'],
   agi: ['AGI', 'splošna umetna inteligenca'],
   evalvacija: ['evalvacija', 'eval'],
   deepfake: ['deepfake', 'globoki ponaredek'],
