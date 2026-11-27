@@ -168,6 +168,17 @@
     temelji na MCP.
   glej: [mcp]
 
+- id: artefakt
+  izraz: Artefakt
+  angl: Artifact
+  razlaga: >-
+    Samostojna vsebina, ki jo AI asistent naredi med pogovorom in jo prikaže ločeno od
+    besedila: dokument, diagram ali majhna spletna stran oziroma orodje, ki ga lahko takoj
+    uporabite. Artefakt lahko pozneje popravite z novim navodilom, ga delite s sodelavci
+    ali, kjer orodje to omogoča, namestite kot aplikacijo. Izraz uporablja predvsem Claude,
+    drugi asistenti imajo za podobno funkcijo svoja imena.
+  glej: [asistent, vibe-coding]
+
 - id: plugin
   izraz: Plugin (vtičnik)
   angl: Plugin
