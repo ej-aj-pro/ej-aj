@@ -153,3 +153,24 @@ Predloga maila (s `pozdrav@ej-aj.si`, prilagodi prejemniku):
   ki so že v indeksu, in je primerna vsebina za predlogo maila zbornicam (razdelek 3).
 - Zamisel o odštevalniku do "napada AI in robotov" je opuščena: izmišljen datum je click bait,
   kar je signal, zaradi katerega je bila stran znižana, AI asistenti pa takih strani ne citirajo.
+
+## Pregled 27. 11. 2026
+
+- Search Console, zadnjih 28 dni (29. 10. do 25. 11.): 50 prikazov, 4 kliki, povprečno mesto
+  27,7. Od 12. 11. večinoma 1 do 4 prikazi na dan, največ 7 (22. 11.). Klike prinaša samo
+  ime strani ("ej aj", mesto 1,8). Znižanje še traja; pogoja za okrevanje (več dni zapored nad
+  10 prikazov) ni.
+- Indeksiranje: 110 indeksiranih, 115 neindeksiranih. Google je 24. 11. poslal mail "New reasons
+  preventing your pages from being indexed: Excluded by 'noindex' tag". To je pričakovano: vseh
+  10 naštetih URL-jev ima `noindex` namenoma (novice, kratka gesla, vodniki priročnika iz PR
+  #106, #108 in #112). Število bo raslo, ko bo Google znova obiskal preostale strani z
+  `noindex`, indeksiranih pa bo manj (cilj je okoli 60, kolikor jih je v sitemapu). Ostali
+  razlogi so nespremenjeni in neškodljivi: 71 starih naslovov `http://` (kanonični je
+  `https://`), 19 preusmeritev, 11 "preiskano, ni indeksirano", 3 "odkrito, ni indeksirano",
+  1 dvojnik.
+- Sitemap `sitemap-index.xml`: oddan 13. 11., prebran 27. 11., 60 strani, brez napak.
+- Ta PR: `noindex` tudi za 7 preostalih indeksiranih gesel v slovarju (gpt, prompt, vibe coding,
+  agent, token, veliki jezikovni model, mcp). Imajo 35 do 56 besed, zato so tanke strani, ki jih
+  ta načrt navaja kot enega od vzrokov za znižanje. Geslo dobi `indeks: true` nazaj, ko je
+  razširjeno na 300 do 500 besed z lastno vsebino (primeri v slovenščini, povezave na vodnike).
+- Naslednji pregled: 15. 12. 2026.
