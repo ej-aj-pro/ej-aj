@@ -18,6 +18,8 @@ Google je 24. novembra splošno dostopne naredil MCP strežnike za Google Worksp
 
 Vir: [Google Workspace Updates, MCP servers, CLI, standardized usage tiers now available](http://workspaceupdates.googleblog.com/2026/11/mcp-servers-cli-standardized-usage-tiers-now-available.html)
 
+Podrobneje: [Google Workspace in AI agenti: kaj se spremeni 1. februarja 2027](/novice/2026-11-27-google-workspace-agenti-mcp/)
+
 ## 2. Konektorji v Claudu lahko prinesejo svoje skille
 
 Anthropic je 24. novembra objavil, da lahko MCP strežniki, na katerih temeljijo Claudovi konektorji, poleg orodij objavijo tudi skille, torej zapisana navodila, kako orodja uporabljati. Claude skill naloži šele, ko ga potrebuje, posodobi pa se skupaj s strežnikom. Funkcija je v javni preizkusni različici (beta) v Claudu in Claude Code: v paketih Pro, Max in Ultra je vklopljena privzeto, v paketu Team, ko jo vklopi skrbnik, za Enterprise pa prihaja. V paketih Pro, Max in Ultra sta splošno dostopni postali še dve zmožnosti, v pakete Team in Enterprise pa ju uvajajo: s Tasks strežnik daljše delo opravi v ozadju, z Elicitation pa se med delom ustavi in vas vpraša za podatek ali potrditev, na primer pred brisanjem ali pred stroškom.
